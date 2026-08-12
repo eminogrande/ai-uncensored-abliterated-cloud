@@ -1,5 +1,24 @@
 # ABLITERATED.cloud website releases
 
+## website-v0.8.2
+
+Pastel synapses now span the complete hero instead of forming a brain.
+
+### Changed
+
+- Fill the hero with the deterministic 1,280-node Canvas network on desktop
+  and mobile.
+- Use pastel pink, blue, green, peach and violet for resting connections and
+  pointer-activated glow.
+- Remove the brain outline, cortical folds and static image fallback.
+- Preserve copy contrast, pointer interaction, viewport pausing and reduced
+  motion behavior.
+
+### Safety and operations
+
+- Do not deploy, wake or start any Modal model or GPU.
+- Preserve all existing model runtime settings.
+
 ## website-v0.8.1
 
 The hero brain now carries substantially more synaptic connections while its
