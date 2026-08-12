@@ -4,6 +4,16 @@ All notable changes to MN Uncensored are documented here.
 
 ## [Unreleased]
 
+### Website 0.8.2
+
+- Replaced the brain-shaped point cloud with a deterministic 1,280-node
+  synapse field spanning the full hero on desktop and mobile.
+- Changed resting connections and pointer-activated lightning to pastel pink,
+  blue, green, peach and violet.
+- Removed brain contours, cortical folds and the static brain fallback while
+  retaining pointer interaction, viewport pausing and reduced-motion support.
+- Updated regression coverage for the full-hero bounds and pastel palette.
+
 ### Website 0.8.1
 
 - Increased the hero network from at most six to ten local connections per

@@ -303,14 +303,14 @@ def test_webmcp_registers_public_read_only_tools() -> None:
     assert "window.__webmcp_tools" in javascript
 
 
-def test_homepage_has_github_cta_and_accessible_brain_visual() -> None:
+def test_homepage_has_github_cta_and_accessible_synapse_visual() -> None:
     html, _ = parse_index()
     javascript = (WEBSITE / "app.js").read_text()
 
     assert "Star on GitHub" in html
     assert 'href="https://github.com/eminogrande/mn-uncensored"' in html
-    assert 'id="brain-canvas"' in html
-    assert "interactive point-cloud brain" in html
+    assert 'id="synapse-canvas"' in html
+    assert "interactive field of pastel synapses" in html
     assert 'rel="preload" as="image"' not in html
     assert "ResizeObserver" in javascript
     assert "IntersectionObserver" in javascript
@@ -321,7 +321,7 @@ def test_homepage_has_github_cta_and_accessible_brain_visual() -> None:
     assert "import(" not in javascript
 
 
-def test_brain_visual_is_shaped_and_pointer_interactive() -> None:
+def test_synapse_visual_fills_hero_and_is_pointer_interactive() -> None:
     html, _ = parse_index()
     css = (WEBSITE / "styles.css").read_text()
     javascript = (WEBSITE / "app.js").read_text()
@@ -337,25 +337,23 @@ def test_brain_visual_is_shaped_and_pointer_interactive() -> None:
     assert "CURRENTLY STOPPED" not in html
     assert "NOT DEPLOYED" not in html
     assert "model-status" not in html
-    assert "outlineControls" in javascript
-    assert "insideOutline" in javascript
+    assert "outlineControls" not in javascript
+    assert "insideOutline" not in javascript
+    assert "foldControls" not in javascript
     assert "const pointTarget = 1280" in javascript
     assert "const maximumDegree = 10" in javascript
     assert "const connectionRadius = 0.165" in javascript
-    assert "const foldControls" in javascript
-    assert 'edgeType === "fold"' in javascript
     assert 'stage.closest(".hero")' in javascript
     assert 'addEventListener("pointermove"' in javascript
     assert 'addEventListener("pointerleave"' in javascript
-    assert "const neon" in javascript
+    assert "const pastel" in javascript
     assert "shadowBlur" in javascript
-    assert ".brain-stage {" in css
+    assert ".synapse-stage {" in css
     assert "position: absolute" in css
+    assert "inset: 0" in css
     assert "pointer-events: none" in css
-    assert ".brain-stage::before" in css
-    assert "rgba(247, 247, 244, 0.98) 24%" in css
-    assert "transparent 72%" in css
-    assert ".brain-stage { inset: 250px -48% 12px -30%; opacity: 1; }" in css
+    assert ".synapse-stage::before" in css
+    assert "transparent 100%" in css
 
 
 def test_homepage_uses_one_mono_type_system_with_17px_minimum() -> None:
