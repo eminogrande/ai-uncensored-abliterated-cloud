@@ -62,7 +62,7 @@
   {
     "slug": "muse-glimmer-30b-abliterated",
     "type": "model",
-    "kicker": "29.8B · MOE · MUSE",
+    "kicker": "29.8B · DENSE · MUSE",
     "title": "The base of the wave: Muse-Glimmer-30B's measured de-refusal",
     "card_title": "jorkle/Muse-Glimmer-30B-Abliterated",
     "summary": "jorkle's KL-measured LoRA-SFT de-refusal of Meta's dense 29.8B agentic model — the Normal twin of a three-repo family with its own GGUF ladder and base-reference quants.",
