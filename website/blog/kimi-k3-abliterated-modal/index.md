@@ -10,6 +10,10 @@ Upstream claims (Moonshot's card, not our measurements): 2.8T-parameter MoE on K
 
 Abliterated Kimi K3 variants are plentiful (Uniboshi V1, Blackfrost Q2_K GGUF, penclaw GGUF, SHS-Lab original), but runnable ones are not. The r/LocalLLaMA thread "Waiting for someone to abliterate Kimi K3 and host it" captures the community state. We do not host this artifact; this is a field note on an unrunnable upload.
 
+## The idea, in plain words
+
+**What 2.78 trillion parameters actually means** — Numbers this big only make sense in hardware. Packed at 4 bits, Kimi K3's weights alone are about 1.35 TiB; a single H200 carries 141 GB of memory. So just holding the weights needs roughly eleven H200s, and running it needs more. That's the honest math behind 'uploaded, but nobody can run it'.
+
 Primary sources:
 
 - [Exact model card](https://huggingface.co/Resggg/Kimi-K3-Abliterated-modal)

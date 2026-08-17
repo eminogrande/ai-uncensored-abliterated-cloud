@@ -10,6 +10,10 @@ Empero's upstream benchmark claims for the distill (lm-evaluation-harness, ident
 
 Our serving estimate is approximately $2.34/hour on one L40S (approximate managed price estimate). The 4B class buys refusal-free, local, tool-calling text at that price; it does not buy frontier reasoning, and decensored does not mean truthful or harmless.
 
+## The idea, in plain words
+
+**A 2.4-trillion-parameter teacher writing homework for a 4-billion student** — Knowledge distillation trains a small model on the outputs of a huge one. The student copies how the teacher answers, compressed into a fraction of the size — here, a 4.5B model that fits in ~8 GB and runs on a laptop. You lose some ceiling, but you get a model you can actually run anywhere, uncensored.
+
 Primary sources:
 
 - [Exact model card](https://huggingface.co/insraq/Qwen3.5-4B-EmperoAI-Qwen3.8-Distill-Heretic-Abliterated)

@@ -10,6 +10,10 @@ The sleeper framing is literal. The exact artifact has 99 downloads and 18 likes
 
 Our prepared profile pins revision `7d7926ee0a8d02e46bdab97ead8d5396bfc071df`, serves one L40S at an approximate managed price estimate of $2.34/hour, and treats the edit as text-only. The publisher warns that safety filtering is significantly reduced and recommends research and controlled environments. "Abliterated" means refusal-reduced, not zero-refusal, capability-preserved or safe.
 
+## The idea, in plain words
+
+**Why an MIT license matters more than the benchmark table** — MIT is the 'do whatever you want' license: commercial use, modification, redistribution, no strings attached. Most capable vision models are not MIT. For a company, license terms decide whether a model is usable at all — which is why a smaller MIT model can beat a bigger restricted one in practice.
+
 Primary sources:
 
 - [Exact model card](https://huggingface.co/huihui-ai/Huihui-GLM-4.6V-Flash-abliterated)

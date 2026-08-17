@@ -48,6 +48,9 @@
       <p>Our prepared profile pins the exact revision above, serves a conservative 131,072-token text context and budgets one H200. That is an ABLITERATED.cloud hosting choice, not the upstream maximum. We do not transfer Qwen’s benchmarks to our endpoint until the exact artifact and runtime are measured.</p>
       <p>The Huihui card warns that safety filtering is significantly reduced and recommends research, testing or controlled environments with human review. “Abliterated” should be read as refusal-reduced—not truthful, legal, harmless or guaranteed to answer every request.</p>
 
+            <h2>The idea, in plain words</h2>
+      <div class="article-learn"><strong>A 36-billion-parameter model that only spends 3 billion per answer</strong><p>This is a mixture of experts (MoE). The weights hold 256 specialized 'expert' modules, and for every token the model wakes up just eight of them plus one shared expert. Big knowledge, small compute bill: you store a giant brain, but each thought only lights up the shelves it needs.</p></div>
+
       <h2>Primary sources</h2>
       <ul class="article-source-list"><li><a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated">Exact Huihui model card</a> and <a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated/tree/8f0ee727aff5e771ea72466d64d13ecd851d2cc7">pinned files</a></li><li><a href="https://huggingface.co/Qwen/Qwen3.6-35B-A3B">Official Qwen model card</a> and <a href="https://qwen.ai/blog?id=qwen3.6-35b-a3b">release article</a></li><li><a href="https://arxiv.org/abs/2406.11717">Refusal in Language Models Is Mediated by a Single Direction</a></li><li><a href="https://github.com/Sumandora/remove-refusals-with-transformers">Implementation linked by huihui-ai</a></li></ul>
     </div>

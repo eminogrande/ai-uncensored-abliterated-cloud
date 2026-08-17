@@ -8,6 +8,10 @@ Qwen released the upstream checkpoint on 15 April 2026. Huihui published this ab
 
 The upstream Qwen model reports 73.4 SWE-bench Verified, 67.2 SWE-bench Multilingual, 49.5 SWE-bench Pro, 51.5 Terminal-Bench 2.0 and 37.0 MCPMark. Those results do **not** belong to the abliterated derivative: Huihui publishes no post-edit benchmark or refusal-rate evaluation for this checkpoint.
 
+## The idea, in plain words
+
+**A 36-billion-parameter model that only spends 3 billion per answer** — This is a mixture of experts (MoE). The weights hold 256 specialized 'expert' modules, and for every token the model wakes up just eight of them plus one shared expert. Big knowledge, small compute bill: you store a giant brain, but each thought only lights up the shelves it needs.
+
 Primary sources:
 
 - [Exact model card](https://huggingface.co/huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated)

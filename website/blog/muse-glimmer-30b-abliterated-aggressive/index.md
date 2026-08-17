@@ -10,6 +10,10 @@ This SHS-Lab upload (17 August 2026) is a mirror of jorkle's identically named r
 
 Community opinion on the base's refusal behavior is split — see the "overly cencored?" thread on the base model's discussions. The only third-party measurement we found is TrevorS's harness: 128/150 (85.3%) base refusals dropping to 3/150 (2.0%) after projection, with prompt-injection and scope-adherence resistance unchanged on a 30-probe agentic axis. Meta's own base-model benchmark claims (SWE-Bench Verified 76.0, MCP Atlas 75.5, AIME 2026 94.7) do not transfer to this artifact.
 
+## The idea, in plain words
+
+**Two schools of removing refusals** — School one is weight projection (classic abliteration): find the refusal direction and carve it out of the weights. School two is a LoRA de-refusal: train a tiny adapter that nudges behavior without retraining the model. 'Aggressive' in this family means the scrub was turned up — 0/100 refusals measured — which also means more drift from the original model's behavior. Nothing is free.
+
 Primary sources:
 
 - [Exact SHS-Lab model card](https://huggingface.co/SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive)
