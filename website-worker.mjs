@@ -66,6 +66,12 @@ function replaceOrigin(text, origin) {
     .replaceAll("https://eminogrande.github.io/mn-uncensored", origin);
 }
 
+function negotiatedMarkdownPath(pathname) {
+  if (pathname === "/") return "/index.md";
+  if (pathname.endsWith("/")) return `${pathname}index.md`;
+  return null;
+}
+
 async function assetResponse(request, env, pathname, origin) {
   const assetUrl = new URL(request.url);
   assetUrl.pathname = pathname;
@@ -223,8 +229,12 @@ export default {
 
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: commonHeaders("text/plain; charset=utf-8", routePath) });
 
-    if (routePath === "/" && (request.headers.get("accept") || "").includes("text/markdown")) {
-      return assetResponse(request, env, "/index.md", origin);
+    if ((request.headers.get("accept") || "").includes("text/markdown")) {
+      const markdownPath = negotiatedMarkdownPath(pathname);
+      if (markdownPath) {
+        const markdown = await assetResponse(request, env, markdownPath, origin);
+        if (markdown.ok) return markdown;
+      }
     }
 
     if (routePath === "/mcp") return handleMcp(request, origin);

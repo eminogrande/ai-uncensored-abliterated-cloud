@@ -25,9 +25,40 @@ A valid token cannot wake a hard-stopped route. The operator must explicitly arm
 
 The 397B route additionally requires explicit operator cost acknowledgement for start, automatic mode, wake, or agent launch.
 
-## OAuth and agent-discovery status
+## Public agent registration
 
-The public website exposes OAuth discovery, anonymous dynamic registration and a real `client_credentials` flow for agents that inspect public model metadata. Its only scope is `public:read`; the resulting credential does not authorize inference. The model API itself currently uses operator-issued Bearer tokens, and inference OAuth is not implemented.
+Agents can register anonymously for a read-only website credential. This does not authorize model inference.
+
+### Step 1 — discover
+
+```http
+GET https://abliterated.cloud/.well-known/oauth-protected-resource
+Accept: application/json
+```
+
+```http
+GET https://abliterated.cloud/.well-known/oauth-authorization-server
+Accept: application/json
+```
+
+The authorization metadata publishes:
+
+- `agent_auth.skill`: `https://abliterated.cloud/auth.md`
+- `agent_auth.register_uri`: `https://abliterated.cloud/agent/auth`
+- `agent_auth.identity_types_supported`: `anonymous`
+- `agent_auth.anonymous.credential_types_supported`: `access_token`
+
+### Step 2 — register
+
+```http
+POST https://abliterated.cloud/agent/auth
+Content-Type: application/json
+Accept: application/json
+
+{"type":"anonymous","requested_credential_type":"access_token"}
+```
+
+The response contains an `access_token` credential with the single scope `public:read`. Public HTML, Markdown, model metadata and MCP tools remain readable without it. The model API itself uses operator-issued Bearer tokens; inference OAuth is not implemented.
 
 ## Request access
 

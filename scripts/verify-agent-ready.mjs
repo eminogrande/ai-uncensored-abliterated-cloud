@@ -51,15 +51,19 @@ async function verifyLocal() {
   const markdown = await fetch(target, { headers: { accept: "text/markdown" } });
   assert(markdown.ok && contentType(markdown).includes("text/markdown"), "Markdown negotiation failed");
 
-  for (const path of [
-    "/blog/",
-    "/blog/qwen3-6-35b-a3b-abliterated/",
-    "/blog/ornith-1-0-35b-abliterated/",
-    "/blog/qwythos-9b-claude-mythos-5-1m-abliterated/",
-    "/blog/ornith-1-0-397b-abliterated-w4a16/",
-  ]) {
+  const postManifest = await getJson("/blog/posts.json");
+  assert(postManifest.response.ok && Array.isArray(postManifest.json), "Blog post manifest is unavailable");
+  for (const path of ["/blog/", ...postManifest.json.map((post) => `/blog/${post.slug}/`)]) {
     const response = await fetch(new URL(path, target), { redirect: "manual" });
     assert(response.status === 200, `${path} returned ${response.status} instead of 200`);
+    if (path !== "/blog/") {
+      const markdownArticle = await fetch(new URL(path, target), { headers: { accept: "text/markdown" } });
+      assert(markdownArticle.ok && contentType(markdownArticle).includes("text/markdown"), `${path} Markdown negotiation failed`);
+    }
+  }
+  if (postManifest.json.length > 9) {
+    const pageTwo = await fetch(new URL("/blog/page/2/", target), { redirect: "manual" });
+    assert(pageTwo.status === 200, "/blog/page/2/ returned non-200");
   }
 
   for (const [path, expectedType] of [

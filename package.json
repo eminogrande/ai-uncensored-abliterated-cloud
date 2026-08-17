@@ -2,8 +2,9 @@
   "name": "abliterated-cloud-website",
   "private": true,
   "type": "module",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "scripts": {
+    "build:blog": "uv run python -I scripts/build-blog.py",
     "dev:website": "wrangler dev --config wrangler.jsonc --port 8788",
     "deploy:website:preview": "wrangler deploy --config wrangler.jsonc --env=",
     "deploy:website:production": "wrangler deploy --config wrangler.jsonc --env production",
