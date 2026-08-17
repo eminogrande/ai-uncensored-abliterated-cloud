@@ -143,8 +143,9 @@ def render_latest_html(posts: list[dict[str, str]]) -> str:
     for post in posts[:LATEST_LIMIT]:
         price = post.get("estimated_usd_per_hour")
         chip = f" · ≈ ${price:.2f}/h" if price else ""
+        badge = "ZERO REFUSALS · " if post.get("zero_refusal") else ""
         cards.append(
-            f'        <a class="blog-card" href="blog/{escape(post["slug"])}/"><span>{escape(post["kicker"])}{chip}</span><h3>{title_with_break(post["card_title"])}</h3><p>{escape(post["summary"])}</p><strong>Read the review →</strong></a>'
+            f'        <a class="blog-card" href="blog/{escape(post["slug"])}/"><span>{badge}{escape(post["kicker"])}{chip}</span><h3>{title_with_break(post["card_title"])}</h3><p>{escape(post["summary"])}</p><strong>Read the review →</strong></a>'
         )
     return "\n".join(cards) + "\n"
 
@@ -154,8 +155,9 @@ def render_latest_md(posts: list[dict[str, str]]) -> str:
     for post in posts[:LATEST_LIMIT]:
         price = post.get("estimated_usd_per_hour")
         price_line = f" (≈ ${price:.2f}/h estimate)" if price else ""
+        refusal_line = f" — {post['refusal_claim']}" if post.get("refusal_claim") else ""
         lines.append(
-            f'- [{post["title"]}](blog/{post["slug"]}/){price_line} — {post["summary"]}'
+            f'- [{post["title"]}](blog/{post["slug"]}/){price_line}{refusal_line} — {post["summary"]}'
         )
     return "\n".join(lines) + "\n"
 
