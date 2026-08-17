@@ -76,15 +76,22 @@ The words "abliterated", "decensored" and "uncensored" are upstream labels and p
 
 ## Source-linked model field notes
 
-- https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/index.md
-- https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/index.md
-- https://abliterated.cloud/blog/qwythos-9b-claude-mythos-5-1m-abliterated/index.md
-- https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/index.md
+- [Small uncensored agents: what a 4.5B Heretic distill is for](https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/index.md)
+- [What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/index.md)
+- [The 2.78-trillion-parameter abliteration nobody can run](https://abliterated.cloud/blog/kimi-k3-abliterated-modal/index.md)
+- [The 48-hour abliteration race](https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/index.md)
+- [DeepSeek V4 Flash, uncensored by dial: 757 KB against 284B](https://abliterated.cloud/blog/huihui-deepseek-v4-flash-0731-abliterated/index.md)
+- [The base of the wave: Muse-Glimmer-30B's measured de-refusal](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated/index.md)
+- [A pentesting model, with the refusals taken out](https://abliterated.cloud/blog/huihui-cyberstrike-offsec-35b-abliterated/index.md)
+- [Qwythos 9B: a model with three lives](https://abliterated.cloud/blog/qwythos-9b-claude-mythos-5-1m-abliterated/index.md)
+- [Inside Huihui-Qwen3.6: 256 experts and one refusal direction](https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/index.md)
+- [Ornith 397B: surgery on a model too large to hold at once](https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/index.md)
+- [Ornith 35B: can self-scaffolding survive abliteration?](https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/index.md)
+- [The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in](https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/index.md)
+- [The quiet classic: how Huihui-Qwen3.5-9B-abliterated became the small-model default](https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/index.md)
+- [The MIT vision sleeper that resurfaced in August](https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/index.md)
 
-The articles separate exact derivative facts from upstream benchmark claims,
-identify the public publishers without inventing team biographies, and link
-all material technical claims to primary Hugging Face cards, official project
-pages, source repositories, or original research papers.
+Each article labels exact derivative facts, upstream benchmark claims, third-party measurements and community reports separately. Creator biographies require a primary profile, company page or direct statement.
 
 ## Safe lifecycle
 
