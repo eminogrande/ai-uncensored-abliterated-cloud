@@ -10,6 +10,10 @@ The model is configured for 1,048,576 tokens through static YaRN, but Empero rep
 
 Huihui publishes no post-abliteration refusal test or benchmark rerun. Empero’s numbers belong to the pre-edit checkpoint.
 
+## The idea, in plain words
+
+**Why a 1-million-token context is a big deal** — Attention — the mechanism that lets a model connect what it reads — grows quadratically with length. Reading a million tokens means the model has to hold a whole book series in working memory at once, and every new token re-checks against all of them. That's why '1M' is a configured ceiling, not a promise that quality stays flat all the way up.
+
 Primary sources:
 
 - [Exact Huihui model card](https://huggingface.co/huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated)

@@ -44,6 +44,9 @@
       <h2>Why this is our inexpensive route</h2>
       <p>At roughly 19.3 GB BF16, Qwythos is dramatically smaller than either 35B artifact and tiny beside Ornith 397B. Our prepared profile pairs it with one L40S and a 131K context, making it the sensible route for experimentation. Small and inexpensive do not mean evaluated: the exact runtime still needs our own tool, coding, long-context and refusal measurements.</p>
 
+            <h2>The idea, in plain words</h2>
+      <div class="article-learn"><strong>Why a 1-million-token context is a big deal</strong><p>Attention — the mechanism that lets a model connect what it reads — grows quadratically with length. Reading a million tokens means the model has to hold a whole book series in working memory at once, and every new token re-checks against all of them. That's why '1M' is a configured ceiling, not a promise that quality stays flat all the way up.</p></div>
+
       <h2>Primary sources</h2>
       <ul class="article-source-list"><li><a href="https://huggingface.co/huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated">Exact Huihui model card</a> and <a href="https://huggingface.co/huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated/tree/efcc73cac15ff8fc5d46b8d41b53c22d571cf97d">pinned artifact</a></li><li><a href="https://huggingface.co/empero-ai/Qwythos-9B-Claude-Mythos-5-1M">Empero Qwythos model card, training and evaluations</a></li><li><a href="https://empero.org/">Official Empero site</a></li><li><a href="https://huggingface.co/Qwen/Qwen3.5-9B">Official Qwen3.5-9B repository</a></li><li><a href="https://arxiv.org/abs/2406.11717">Original refusal-direction paper</a></li></ul>
     </div>

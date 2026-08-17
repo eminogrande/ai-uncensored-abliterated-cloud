@@ -10,6 +10,10 @@ Flash-class economics drove the speed: 13B active ≈ 26 GFLOP/token (back-of-en
 
 What this does not establish: general capability was not benchmarked, 256k context was not measured (retrieval validated to 126,940 tokens), variance rises with λ, and at pin time the artifact has zero downloads, zero likes and no discussions. Direct Reddit scraping returned HTTP 403 during research, so community threads are cited from search snippets only.
 
+## The idea, in plain words
+
+**The dial that turns refusals up and down** — Refusal lives in a direction of the model's internal math. Classic abliteration removes that direction from the weights — permanent, baked in. This variant instead keeps the direction and applies it at runtime with a lambda dial: crank it to 1.5 and refusals drop to 0/10 on the measured triggers, drop it to 0 and you have the stock model back. A 757 KB file instead of a 157 GB re-download.
+
 Primary sources:
 
 - [Exact model card](https://huggingface.co/pocharlies/deepseek-v4-flash-0731-uncensored-abliterated-refusal-directions) and [pinned files](https://huggingface.co/pocharlies/deepseek-v4-flash-0731-uncensored-abliterated-refusal-directions/tree/d5d42ace94686374d97956698f89d7884aad5f84)

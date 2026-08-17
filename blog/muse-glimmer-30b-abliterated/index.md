@@ -10,6 +10,10 @@ Reported results: 13/100 refusals on harmful_behaviors where the base scores 100
 
 The ecosystem around the model is the story: the base's quant zoo (unsloth GGUF at 755k downloads, lmstudio-community, bartowski, mlx-community, NVFP4, exl3, ROCmFPX, Jundot's oQ4e) exploded within days, while the de-refusal fork splits on method — direction ablation versus KL-bounded SFT. The most-downloaded abliterated artifact is Blackfrost's GGUF ladder (68,580 downloads); this model, the most methodologically documented of the wave, has 344 downloads and one like.
 
+## The idea, in plain words
+
+**How you measure that an edited model is still the same model** — KL divergence is the ruler: it measures how far a model's answer distribution drifted from the original. A de-refusal that reports a KL table instead of benchmark scores is telling you the trade — refusals removed, but exactly how much the behavior moved. It's the honesty meter of the edit.
+
 Primary sources:
 
 - [jorkle model card](https://huggingface.co/jorkle/Muse-Glimmer-30B-Abliterated) and [pinned files](https://huggingface.co/jorkle/Muse-Glimmer-30B-Abliterated/tree/f98c6e1f6a268fa79d1e704c6b69fa89a61ddda6)

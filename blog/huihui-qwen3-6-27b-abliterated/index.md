@@ -12,6 +12,10 @@ The newer Huihui-Qwen3.8-27B-abliterated (August 2026) uses a different recipe �
 
 We pin the exact revision, budget one H200 at roughly $5.45/hour (approximate managed price estimate), and do not transfer upstream benchmarks to our endpoint until the exact artifact is measured. "Abliterated" means refusal-reduced, not zero-refusal, correct or harmless.
 
+## The idea, in plain words
+
+**How a language model sees images** — An LLM only reads tokens, so multimodal models bolt on a vision encoder that cuts an image into patches and turns them into tokens the language model can read. 'Image-text-to-text' means the model takes pictures and words in, and answers with words — the vision half is a separate organ that the abliteration usually leaves alone.
+
 Primary sources:
 
 - [Exact model card](https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated) and [pinned files](https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated/tree/27502c8717fd5a2f8c0c77188c10c243fd4f672e)

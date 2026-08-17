@@ -6,6 +6,10 @@ CyberStrike-OffSec-35B is a fine-tune of Qwen3.6-35B-A3B built by Orhan Yıldır
 
 The base’s A/B tool-call evaluation (18/24 genuine structured calls versus the previous model’s 0/24) is an upstream claim; the abliterated card publishes no refusal-rate measurement and no post-edit rerun. Third-party coverage (Resecurity, 30 July 2026) treats the OffSec model as dual-use: local GGUF execution without telemetry, weights that “lower the skill floor for adversaries.”
 
+## The idea, in plain words
+
+**How a model learns to call tools instead of guessing** — Base models often hallucinate function calls. Supervised fine-tuning (SFT) fixes that with examples: here, a ~300-example dataset taught the model to emit structured tool calls, and the base card measured the difference — 18 of 24 correct tool calls after, 0 of 24 before. That's what 'tool-calling' means in practice: the model doesn't know tools, it was shown when and how to call them.
+
 Primary sources:
 
 - [Exact model card](https://huggingface.co/huihui-ai/Huihui-CyberStrike-OffSec-35B-abliterated)

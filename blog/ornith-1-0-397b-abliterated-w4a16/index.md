@@ -10,6 +10,10 @@ On 40 harmful prompts, the publisher reports refusal falling from 30.0% for the 
 
 The tested deployment uses two 128 GB DGX Spark systems over 200 GbE. Our two-H200 profile remains explicitly deployment-disabled and uses a conservative 32K context.
 
+## The idea, in plain words
+
+**How 4-bit weights make a giant model almost portable** — Quantization shrinks numbers: store each weight at 4 bits instead of 16, and a 397-billion-parameter model drops from ~780 GB of storage to ~196 GB. The 'W4A16' tag means weights live at 4 bits while the math runs at 16-bit precision — enough accuracy to keep the model usable, cheap enough to fit on two H200s instead of a small supercomputer.
+
 Primary sources:
 
 - [Exact model card](https://huggingface.co/cebeuq/Ornith-1.0-397B-abliterated-W4A16)

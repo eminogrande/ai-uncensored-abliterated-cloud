@@ -8,6 +8,10 @@ YuYu1015 produced a weights-only abliterated derivative. The first version repor
 
 The model contains 35,107,181,936 BF16 parameters, 40 layers, 256 routed experts, eight selected experts per token and a shared expert. It retains multimodal and structured-tool machinery plus thinking blocks. YuYu1015 strongly recommends repetition penalty 1.0 and warns that 1.05 can truncate output.
 
+## The idea, in plain words
+
+**Editing weights vs retraining a model** — Abliteration is surgery, not schooling: instead of feeding a model new training data, you find one direction in its internal math that correlates with refusal and project it out of the weights. No dataset, no GPU weeks. 'Weights-only' means nothing else about the model's learned behavior was touched — a much lighter intervention than a fine-tune.
+
 Primary sources:
 
 - [Exact model card](https://huggingface.co/YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated)

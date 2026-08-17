@@ -460,6 +460,9 @@ summary:focus-visible {
 .article-callout { margin: 38px 0; padding: 24px 26px; border-left: 4px solid var(--accent); background: #eef2ff; }
 .article-callout strong { display: block; margin-bottom: 8px; color: var(--accent-dark); font-size: 17px; }
 .article-callout p { margin: 0; }
+.article-learn { margin: 38px 0; padding: 24px 26px; border-left: 4px solid var(--ink); background: var(--surface); }
+.article-learn strong { display: block; margin-bottom: 8px; font-size: 17px; }
+.article-learn p { margin: 0; }
 .article-source-list { padding-top: 26px; border-top: 1px solid var(--line); }
 .article-next { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 72px; padding-top: 28px; border-top: 1px solid var(--ink); }
 .article-next a { padding: 19px; border: 1px solid var(--line); font-size: 17px; font-weight: 800; }
