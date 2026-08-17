@@ -20,7 +20,7 @@ The GGUF companion ships twelve quantizations plus BF16 and an mmproj vision pro
 
 ## The creator: huihui.ai
 
-Qwen built and trained the base model. The checkpoint itself comes from the operator behind [huihui-ai](https://huggingface.co/huihui-ai) — huihui.ai — whose profile describes work on model ablations with the open-source NLP community and who maintains more than 180 model repositories. One-person-scale, not a lab: PRO user, "Open to Work", and the fastest abliteration pipeline in the open ecosystem — edit public inside 48 hours of the Qwen3.8 weights, GGUF ladder the same afternoon, announced on X. It runs on coffee and donations: updates on [@support_huihui](https://x.com/support_huihui), funding via [Ko-fi](https://ko-fi.com/huihuiai) or Bitcoin `bc1qqnkhuchxw0zqjh2ku3lu4hq45hc6gy84uk70ge`, collected in the [Qwen3.8 abliterated collection](https://huggingface.co/collections/huihui-ai/qwen38-abliterated). The card is honest about the trade: crude proof of concept, safety filtering significantly reduced, controlled environments recommended.
+Qwen built and trained the base model. The checkpoint itself comes from the operator behind [huihui-ai](https://huggingface.co/huihui-ai) — huihui.ai — whose profile describes work on model ablations with the open-source NLP community and who maintains more than 180 model repositories. One-person-scale, not a lab: PRO user, "Open to Work", and the fastest abliteration pipeline in the open ecosystem — edit public inside 48 hours of the Qwen3.8 weights, GGUF ladder the same afternoon, announced on X. It runs on coffee and donations: updates on [@support_huihui](https://x.com/support_huihui), funding via [Ko-fi](https://ko-fi.com/huihuiai) or Bitcoin `bc1qqnkhuchxw0zqjh2ku3lu4hq45hc6gy84uk70ge`, collected in the [Qwen3.8 abliterated collection](https://huggingface.co/collections/huihui-ai/qwen38-abliterated).
 
 Primary sources:
 
@@ -33,4 +33,4 @@ Primary sources:
 - [Original refusal-direction paper](https://arxiv.org/abs/2406.11717)
 - [Implementation linked by huihui-ai](https://github.com/Sumandora/remove-refusals-with-transformers)
 
-The publisher warns that safety filtering is significantly reduced and recommends controlled research use. "Abliterated" means refusal-reduced, not zero-refusal, correct, legal or harmless.
+The card says safety filtering is significantly reduced — which is the whole point of this one. "Abliterated" means refusal-reduced, and what you do with that is your call.
