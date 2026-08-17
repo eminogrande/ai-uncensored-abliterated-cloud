@@ -84,6 +84,26 @@ The exact articles are:
 - `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`;
 - `cebeuq/Ornith-1.0-397B-abliterated-W4A16`.
 
+### Publishing a new post
+
+Use the current article HTML and Markdown pair as the visual template. Add the
+post metadata to `blog/posts.json`, newest first, then run:
+
+```sh
+npm run build:blog
+uv run pytest tests/test_website.py -q
+```
+
+The build script validates the article pair and primary-source section, then
+regenerates the blog index, RSS, sitemap, `llms.txt`, and `llms-full.txt`.
+
+For a transcript post, keep a private quote ledger and copy displayed quotes
+character-for-character. For a researched model post, label each number as an
+exact derivative measurement, an upstream benchmark, a third-party test, or a
+publisher claim. Reddit and X can identify questions and community response;
+they never replace the model card, revision, official benchmark table, paper,
+or creator's own profile as the factual source.
+
 The site identity uses a brain mark in SVG, PNG and ICO formats. The generated
 PNG/ICO files are committed so browsers and devices do not need to rasterize
 the SVG at runtime.
@@ -166,7 +186,7 @@ Static GitHub Pages can publish discoverability files but cannot vary the
 homepage response on `Accept: text/markdown` or add arbitrary HTTP response
 headers. `website-worker.mjs` now provides:
 
-- real Markdown content negotiation at `/`;
+- real Markdown content negotiation at `/` and every article route;
 - `Link` and `Content-Signal` headers on every response;
 - the correct `application/linkset+json` media type;
 - OAuth and protected-resource discovery for public agent metadata;

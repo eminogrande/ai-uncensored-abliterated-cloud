@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "abliterated-cloud-website",
+  "account_id": "60aa4fd3b9c4c1c384a3234200f42672",
   "main": "website-worker.mjs",
   "compatibility_date": "2026-07-16",
   "compatibility_flags": ["nodejs_compat"],

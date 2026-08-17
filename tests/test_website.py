@@ -11,15 +11,11 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).parents[1]
 WEBSITE = ROOT / "website"
+BLOG_POSTS = json.loads((WEBSITE / "blog/posts.json").read_text())
 BLOG_ARTICLES = {
-    "qwen3-6-35b-a3b-abliterated":
-        "huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated",
-    "ornith-1-0-35b-abliterated":
-        "YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated",
-    "qwythos-9b-claude-mythos-5-1m-abliterated":
-        "huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated",
-    "ornith-1-0-397b-abliterated-w4a16":
-        "cebeuq/Ornith-1.0-397B-abliterated-W4A16",
+    post["slug"]: post["model_id"]
+    for post in BLOG_POSTS
+    if post["type"] == "model"
 }
 
 
@@ -388,7 +384,14 @@ def test_homepage_performance_budget() -> None:
 
 
 def test_blog_has_one_source_linked_article_for_every_catalog_model() -> None:
-    blog_index = (WEBSITE / "blog/index.html").read_text()
+    blog_index = "\n".join(
+        path.read_text()
+        for path in sorted((WEBSITE / "blog").glob("index.html"))
+    ) + "\n".join(
+        path.read_text()
+        for path in sorted((WEBSITE / "blog/page").glob("*/index.html"))
+        if (WEBSITE / "blog/page").is_dir()
+    )
     assert "MODEL FIELD NOTES" in blog_index
 
     for slug, model_id in BLOG_ARTICLES.items():
@@ -415,6 +418,32 @@ def test_blog_has_one_source_linked_article_for_every_catalog_model() -> None:
         assert "Primary sources" in markdown
         assert "huggingface.co/" in html
         assert "Pinned revision" in html
+
+
+def test_blog_manifest_drives_every_article_and_discovery_surface() -> None:
+    page_files = [(WEBSITE / "blog/index.html")]
+    if (WEBSITE / "blog/page").is_dir():
+        page_files.extend(sorted((WEBSITE / "blog/page").glob("*/index.html")))
+    blog_index = "\n".join(path.read_text() for path in page_files)
+    feed = (WEBSITE / "blog/feed.xml").read_text()
+    sitemap = (WEBSITE / "sitemap.xml").read_text()
+    llms = (WEBSITE / "llms.txt").read_text()
+    llms_full = (WEBSITE / "llms-full.txt").read_text()
+
+    slugs = [post["slug"] for post in BLOG_POSTS]
+    assert len(slugs) == len(set(slugs))
+    assert slugs
+    for post in BLOG_POSTS:
+        slug = post["slug"]
+        article = WEBSITE / "blog" / slug
+        assert (article / "index.html").is_file()
+        assert (article / "index.md").is_file()
+        assert f'href="/blog/{slug}/"' in blog_index
+        canonical = f"https://abliterated.cloud/blog/{slug}/"
+        assert canonical in feed
+        assert canonical in sitemap
+        assert f"{canonical}index.md" in llms
+        assert f"{canonical}index.md" in llms_full
 
 
 def test_blog_internal_links_and_assets_resolve() -> None:

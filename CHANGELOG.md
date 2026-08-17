@@ -4,6 +4,38 @@ All notable changes to MN Uncensored are documented here.
 
 ## [Unreleased]
 
+### Website 0.9.0
+
+- Added a homepage "Latest uncensored releases" section listing the ten
+  newest covered abliterated models with approximate managed price estimates,
+  generated from the blog manifest.
+- Published ten new source-linked field notes: Qwen3.8-27B (48-hour race),
+  Muse-Glimmer-30B standard and Aggressive variants, Kimi-K3-modal (2.78T,
+  not practically hostable), DeepSeek-V4-Flash-0731 refusal-directions dial,
+  CyberStrike-OffSec-35B, EmperoAI Qwen3.8-4B Heretic distill, Qwen3.6-27B,
+  Qwen3.5-9B, and GLM-4.6V-Flash.
+- Paginated the blog index (nine posts per page) with sitemap entries and
+  verifier coverage; all 14 posts remain reachable through RSS, `llms.txt`,
+  and `llms-full.txt`.
+- Extended Markdown content negotiation to every article route.
+- Documented anonymous agent registration in `auth.md` and made the local and
+  edge verifiers manifest-driven.
+
+### Agent-native daily publishing foundation
+
+- Added one manifest for model and transcript posts plus a dependency-free
+  build command that regenerates the blog index, RSS, sitemap, `llms.txt`, and
+  `llms-full.txt` without changing the existing article design.
+- Replaced hard-coded article lists in the local and edge verifiers with the
+  manifest and added regression coverage for every human and agent discovery
+  surface.
+- Expanded `auth.md` with the exact anonymous agent registration request and
+  discovery fields required by the published Worker endpoints.
+- Extended Markdown content negotiation from the homepage to every article
+  route, backed by its exact source-linked Markdown twin.
+- Documented the provenance boundary for transcript quotes, derivative scores,
+  upstream benchmarks, third-party tests, publisher claims and social signals.
+
 ### Website 0.8.2
 
 - Replaced the brain-shaped point cloud with a deterministic 1,280-node
