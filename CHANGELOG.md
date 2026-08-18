@@ -4,6 +4,17 @@ All notable changes to MN Uncensored are documented here.
 
 ## [Unreleased]
 
+### Website 0.9.7
+
+- Published two new model field notes: Goodoldjam's DiffusionGemma-26B-E38
+  abliterated NVFP4 (first abliterated diffusion LLM; 0/402 target refusals
+  publisher-measured; 1,053.64 tok/s aggregate on one RTX PRO 6000 Blackwell;
+  51.68 GB → 18.86 GB) and 0bserverx's Qwen3.8-27B RVN Heretic Abliterated
+  Uncensored GGUF (triple-pass ARA, KL 0.0085, refusals 0–1/100 measured,
+  106K downloads in four days; corrupted IQ3_M quant incident documented).
+- Homepage latest-releases list, blog index, RSS, sitemap, `llms.txt` and
+  `llms-full.txt` regenerated (16 posts).
+
 ### Website 0.9.0
 
 - Added a homepage "Latest uncensored releases" section listing the ten
