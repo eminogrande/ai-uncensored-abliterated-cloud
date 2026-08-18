@@ -162,8 +162,8 @@ def test_real_model_names_and_planned_prices_are_explicit() -> None:
         assert model in plain_html
         assert price in html
 
-    assert html.count("<dt>API model ID</dt>") == 4
-
+    # The API catalog moved to openapi.json; the homepage is one model list.
+    assert "<dt>API model ID</dt>" not in html
     assert "Free means the model weight files have no purchase price." in html
     assert "Published prices · access by invitation" in html
     assert "Customer accounts, quotas, metering, billing and invoicing" in html

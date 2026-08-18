@@ -171,7 +171,7 @@
       </div>
     </section>
 
-    <section class="latest-releases section" aria-labelledby="latest-releases-title">
+    <section class="latest-releases section" id="models" aria-labelledby="latest-releases-title">
       <div class="section-heading align-left">
         <p class="kicker">LATEST UNCENSORED RELEASES</p>
         <h2 id="latest-releases-title">The newest abliterated checkpoints, and what they cost.</h2>
@@ -190,9 +190,14 @@
         <a class="blog-card" href="blog/qwythos-9b-claude-mythos-5-1m-abliterated/"><span>9B class · Long context · ≈ $2.34/h</span><h3>huihui-ai/<wbr>Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated</h3><p>Qwen architecture, Empero post-training and huihui-ai&#x27;s final refusal-reduction pass, with a 1M label that deserves a closer look.</p><strong>Read the review →</strong></a>
         <a class="blog-card" href="blog/qwen3-6-35b-a3b-abliterated/"><span>36B MoE · Qwen · ≈ $5.45/h</span><h3>huihui-ai/<wbr>Huihui-Qwen3.6-35B-A3B-abliterated</h3><p>The multimodal proof of concept: how huihui-ai applied abliteration to a 36-billion-parameter mixture-of-experts checkpoint, and why uncensored still needs caveats.</p><strong>Read the review →</strong></a>
         <a class="blog-card" href="blog/ornith-1-0-397b-abliterated-w4a16/"><span>397B total · W4A16 · ≈ $10.90/h</span><h3>cebeuq/<wbr>Ornith-1.0-397B-abliterated-W4A16</h3><p>A shard-by-shard abliteration and W4A16 conversion of a 396.8-billion-parameter sparse model that still produces nearly 196 GiB of weights.</p><strong>Read the review →</strong></a>
+        <a class="blog-card" href="blog/ornith-1-0-35b-abliterated/"><span>35B MoE · Agentic coding · ≈ $5.45/h</span><h3>YuYu1015/<wbr>YuYu1015-Ornith-1.0-35B-abliterated</h3><p>DeepReinforce&#x27;s coding scaffold, YuYu1015&#x27;s corrected weights and the boundary between upstream and derivative benchmarks.</p><strong>Read the review →</strong></a>
+        <a class="blog-card" href="blog/huihui-qwen3-6-27b-abliterated/"><span>27.8B · MULTIMODAL · PROVEN · ≈ $5.45/h</span><h3>huihui-ai/<wbr>Huihui-Qwen3.6-27B-abliterated</h3><p>18,760 downloads in four months: what the community actually runs a dense 27B Qwen abliteration for, from red-teaming to quantization, and what its users report back.</p><strong>Read the review →</strong></a>
+        <a class="blog-card" href="blog/huihui-qwen3-5-9b-abliterated/"><span>9.7B · QWEN · CLASSIC · ≈ $2.34/h</span><h3>huihui-ai/<wbr>Huihui-Qwen3.5-9B-abliterated</h3><p>Abliterated Qwen3.5-9B (9,653,104,368 params, Apache-2.0) published 9 March 2026: 9,195 downloads and 125 likes on the base, with 58 downstream repos — GGUF/AWQ/MLX conversions and a preference-tuned Grimoire family — holding 64,688 combined downloads.</p><strong>Read the review →</strong></a>
+        <a class="blog-card" href="blog/huihui-glm-4-6v-flash-abliterated/"><span>10.3B · VISION · MIT · ≈ $2.34/h</span><h3>huihui-ai/<wbr>Huihui-GLM-4.6V-Flash-abliterated</h3><p>MIT-licensed text-side abliteration of Zhipu&#x27;s GLM-4.6V-Flash vision model (10,292,777,472 params), published 9 December 2025, dormant for eight months, freshly re-quantized with vision-projector files on 17 August 2026.</p><strong>Read the review →</strong></a>
 
 <!-- /ABLITERATED-LATEST-RELEASES -->
       </div>
+      <p class="catalog-note"><strong>Free means the model weight files have no purchase price.</strong> Managed cloud inference is paid because the GPUs, storage and operation cost money. Model licenses belong to their upstream repositories and should be reviewed before commercial use. Exact pinned revisions and technical caveats are listed in <a href="https://github.com/eminogrande/mn-uncensored/blob/main/docs/MODELS.md">our public model record</a>. Every model above links to its source-linked review; request access and we host it for you.</p>
       <a class="text-link blog-all-link" href="blog/">Open all field notes</a>
     </section>
 
@@ -217,91 +222,6 @@
         <article><span>02</span><h3>Choose a model</h3><p>Select one of the exact Hugging Face checkpoints listed below. Internal API shortcuts are only routing identifiers.</p></article>
         <article><span>03</span><h3>Use your client</h3><p>Connect Hermes, Pi, OpenCode, cURL or an OpenAI-compatible SDK to the same API base URL.</p></article>
       </div>
-    </section>
-
-    <section class="models-section section" id="models" aria-labelledby="models-title">
-      <div class="section-heading align-left">
-        <p class="kicker">MODEL CATALOG</p>
-        <h2 id="models-title">The four models we host today.</h2>
-        <p>These are the complete upstream repository names—not invented ABLITERATED.cloud product names. Click any name to inspect its weights and model card directly on Hugging Face.</p>
-      </div>
-
-      <div class="model-list">
-        <article class="model-row">
-          <div class="model-main">
-            <h3>Qwen3.6 35B A3B — Abliterated</h3>
-            <p class="repository"><span>Hugging Face repository</span><a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated">huihui-ai/<wbr>Huihui-Qwen3.6-35B-A3B-abliterated</a></p>
-            <p>A 36B-parameter mixture-of-experts Qwen3.6 checkpoint modified through abliteration to reduce refusal behavior. It is the general-purpose option in this catalog. The upstream model is multimodal; our current endpoint serves text.</p>
-            <a class="hf-link" href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated">Open this repository on Hugging Face ↗</a>
-          </div>
-          <dl class="model-facts">
-            <div><dt>Weights</dt><dd>Free download</dd></div>
-            <div><dt>License shown on HF</dt><dd>Apache-2.0</dd></div>
-            <div><dt>Parameters</dt><dd>36B MoE</dd></div>
-            <div><dt>Hosted context</dt><dd>131,072 tokens</dd></div>
-            <div><dt>Hosted on</dt><dd>1 × H200</dd></div>
-            <div><dt>Managed price</dt><dd><strong>$5.45/hour</strong></dd></div>
-            <div class="technical"><dt>API model ID</dt><dd><code>huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated</code></dd></div>
-          </dl>
-        </article>
-
-        <article class="model-row">
-          <div class="model-main">
-            <h3>Ornith 1.0 35B — Abliterated</h3>
-            <p class="repository"><span>Hugging Face repository</span><a href="https://huggingface.co/YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated">YuYu1015/<wbr>YuYu1015-Ornith-1.0-35B-abliterated</a></p>
-            <p>A 35B mixture-of-experts Ornith checkpoint for reasoning and coding, with thinking support and reduced refusals. This is the compact coding-focused choice in the current catalog.</p>
-            <a class="hf-link" href="https://huggingface.co/YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated">Open this repository on Hugging Face ↗</a>
-          </div>
-          <dl class="model-facts">
-            <div><dt>Weights</dt><dd>Free download</dd></div>
-            <div><dt>License shown on HF</dt><dd>Apache-2.0</dd></div>
-            <div><dt>Architecture</dt><dd>35B MoE · BF16</dd></div>
-            <div><dt>Hosted context</dt><dd>131,072 tokens</dd></div>
-            <div><dt>Hosted on</dt><dd>1 × H200</dd></div>
-            <div><dt>Managed price</dt><dd><strong>$5.45/hour</strong></dd></div>
-            <div class="technical"><dt>API model ID</dt><dd><code>YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated</code></dd></div>
-          </dl>
-        </article>
-
-        <article class="model-row">
-          <div class="model-main">
-            <h3>Qwythos 9B Claude Mythos 5 — Abliterated</h3>
-            <p class="repository"><span>Hugging Face repository</span><a href="https://huggingface.co/huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated">huihui-ai/<wbr>Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated</a></p>
-            <p>The smallest and least expensive model here: an abliterated Qwythos checkpoint tagged upstream for long context, function calling, tool use and agent workflows.</p>
-            <a class="hf-link" href="https://huggingface.co/huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated">Open this repository on Hugging Face ↗</a>
-          </div>
-          <dl class="model-facts">
-            <div><dt>Weights</dt><dd>Free download</dd></div>
-            <div><dt>License shown on HF</dt><dd>Apache-2.0</dd></div>
-            <div><dt>Parameters</dt><dd>10B</dd></div>
-            <div><dt>Hosted context</dt><dd>131,072 tokens</dd></div>
-            <div><dt>Hosted on</dt><dd>1 × L40S</dd></div>
-            <div><dt>Managed price</dt><dd><strong>$2.34/hour</strong></dd></div>
-            <div class="technical"><dt>API model ID</dt><dd><code>huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated</code></dd></div>
-          </dl>
-        </article>
-
-        <article class="model-row">
-          <div class="model-main">
-            <h3>Ornith 1.0 397B W4A16 — Abliterated</h3>
-            <p class="repository"><span>Hugging Face repository</span><a href="https://huggingface.co/cebeuq/Ornith-1.0-397B-abliterated-W4A16">cebeuq/<wbr>Ornith-1.0-397B-abliterated-W4A16</a></p>
-            <p>The largest model in the catalog: a roughly 196 GB, 397B-total mixture-of-experts checkpoint for multimodal reasoning, coding and agentic work. W4A16 quantization makes deployment on two H200 GPUs practical.</p>
-            <a class="hf-link" href="https://huggingface.co/cebeuq/Ornith-1.0-397B-abliterated-W4A16">Open this repository on Hugging Face ↗</a>
-          </div>
-          <dl class="model-facts">
-            <div><dt>Weights</dt><dd>Free download</dd></div>
-            <div><dt>License shown on HF</dt><dd>MIT</dd></div>
-            <div><dt>Parameters</dt><dd>397B total · ~17B active</dd></div>
-            <div><dt>Context</dt><dd>262K upstream · 32K profile</dd></div>
-            <div><dt>Hardware profile</dt><dd>2 × H200</dd></div>
-            <div><dt>Managed price</dt><dd><strong>$10.90/hour</strong></dd></div>
-            <div class="technical"><dt>API model ID</dt><dd><code>cebeuq/Ornith-1.0-397B-abliterated-W4A16</code></dd></div>
-          </dl>
-        </article>
-      </div>
-
-      <p class="catalog-note"><strong>Free means the model weight files have no purchase price.</strong> Managed cloud inference is paid because the GPUs, storage and operation cost money. Model licenses belong to their upstream repositories and should be reviewed before commercial use. Exact pinned revisions and technical caveats are listed in <a href="https://github.com/eminogrande/mn-uncensored/blob/main/docs/MODELS.md">our public model record</a>.</p>
-      <p class="catalog-note">These four are the models we currently host on our own GPUs. Newer uncensored releases are reviewed below with approximate price estimates — request access and we can bring them into the catalog.</p>
     </section>
 
     <section class="api-section section" id="api" aria-labelledby="api-title">

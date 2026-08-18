@@ -13,7 +13,7 @@ ROOT = Path(__file__).parents[1]
 WEBSITE = ROOT / "website"
 BLOG = WEBSITE / "blog"
 ORIGIN = "https://abliterated.cloud"
-LATEST_LIMIT = 10
+LATEST_LIMIT = 50
 PAGE_SIZE = 9
 
 

@@ -36,61 +36,14 @@ with an approximate managed price estimate and a source-linked review:
 - [Qwythos 9B: a model with three lives](blog/qwythos-9b-claude-mythos-5-1m-abliterated/) (≈ $2.34/h estimate) — Qwen architecture, Empero post-training and huihui-ai's final refusal-reduction pass, with a 1M label that deserves a closer look.
 - [Inside Huihui-Qwen3.6: 256 experts and one refusal direction](blog/qwen3-6-35b-a3b-abliterated/) (≈ $5.45/h estimate) — The multimodal proof of concept: how huihui-ai applied abliteration to a 36-billion-parameter mixture-of-experts checkpoint, and why uncensored still needs caveats.
 - [Ornith 397B: surgery on a model too large to hold at once](blog/ornith-1-0-397b-abliterated-w4a16/) (≈ $10.90/h estimate) — A shard-by-shard abliteration and W4A16 conversion of a 396.8-billion-parameter sparse model that still produces nearly 196 GiB of weights.
+- [Ornith 35B: can self-scaffolding survive abliteration?](blog/ornith-1-0-35b-abliterated/) (≈ $5.45/h estimate) — DeepReinforce's coding scaffold, YuYu1015's corrected weights and the boundary between upstream and derivative benchmarks.
+- [The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in](blog/huihui-qwen3-6-27b-abliterated/) (≈ $5.45/h estimate) — no refusal benchmark published (crude PoC) — 18,760 downloads in four months: what the community actually runs a dense 27B Qwen abliteration for, from red-teaming to quantization, and what its users report back.
+- [The quiet classic: how Huihui-Qwen3.5-9B-abliterated became the small-model default](blog/huihui-qwen3-5-9b-abliterated/) (≈ $2.34/h estimate) — no refusal benchmark published (crude PoC) — Abliterated Qwen3.5-9B (9,653,104,368 params, Apache-2.0) published 9 March 2026: 9,195 downloads and 125 likes on the base, with 58 downstream repos — GGUF/AWQ/MLX conversions and a preference-tuned Grimoire family — holding 64,688 combined downloads.
+- [The MIT vision sleeper that resurfaced in August](blog/huihui-glm-4-6v-flash-abliterated/) (≈ $2.34/h estimate) — no refusal benchmark published (text-only edit) — MIT-licensed text-side abliteration of Zhipu's GLM-4.6V-Flash vision model (10,292,777,472 params), published 9 December 2025, dormant for eight months, freshly re-quantized with vision-projector files on 17 August 2026.
 
 <!-- /ABLITERATED-LATEST-RELEASES-MD -->
 
-## Model catalog
-
-### Qwen3.6 35B A3B — Abliterated
-
-- Hugging Face repository: `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`
-- API model ID: `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`
-- Compatibility alias: `mn/god`
-- Revision: `8f0ee727aff5e771ea72466d64d13ecd851d2cc7`
-- Hugging Face metadata: Apache-2.0, uncensored, abliterated, image-text-to-text, 36B parameters, BF16
-- Context: 131,072 tokens
-- Maximum output: 16,384 tokens
-- Hardware: 1 x H200
-- ABLITERATED.cloud price: $5.45/hour
-
-### Ornith 1.0 35B — Abliterated
-
-- Hugging Face repository: `YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`
-- API model ID: `YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`
-- Compatibility alias: `mn/code`
-- Revision: `86065d1a9008773086a177637d54ec6dc2a56cbf`
-- Hugging Face metadata: Apache-2.0, 35B Qwen3.5 MoE, reasoning/thinking, English and Chinese, abliterated and uncensored
-- Context: 131,072 tokens
-- Maximum output: 16,384 tokens
-- Hardware: 1 x H200
-- ABLITERATED.cloud price: $5.45/hour
-
-### Qwythos 9B Claude Mythos 5 — Abliterated
-
-- Hugging Face repository: `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`
-- API model ID: `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`
-- Compatibility alias: `mn/fast`
-- Revision: `efcc73cac15ff8fc5d46b8d41b53c22d571cf97d`
-- Hugging Face metadata: Apache-2.0, 10B parameters, BF16, long-context, function-calling, tool-use, uncensored and abliterated
-- Context: 131,072 tokens
-- Maximum output: 16,384 tokens
-- Hardware: 1 x L40S
-- ABLITERATED.cloud price: $2.34/hour
-
-### Ornith 1.0 397B W4A16 — Abliterated
-
-- Hugging Face repository: `cebeuq/Ornith-1.0-397B-abliterated-W4A16`
-- API model ID: `cebeuq/Ornith-1.0-397B-abliterated-W4A16`
-- Compatibility aliases: `mn/ornith-397b`, `nuri/ornith-397b-abliterated`
-- Revision: `e5651d291be1c65ff1360eee47ab533ab13b3d97`
-- Hugging Face metadata: MIT, 397B total / about 17B active, multimodal Qwen3.5 MoE, W4A16, about 196 GB, uncensored and abliterated
-- Context: 32,768 tokens configured
-- Upstream context: 262,144 tokens
-- Maximum output: 8,192 tokens
-- Hardware: 2 x H200
-- ABLITERATED.cloud price: $10.90/hour
-
-The upstream terms "abliterated", "decensored" and "uncensored" describe publisher claims about reduced refusal behavior. They do not guarantee zero refusals, correctness, safety, legality or unrestricted capability. The two model cards that publish measurements still report non-zero refusal rates.
+"abliterated", "decensored" and "uncensored" describe publisher claims about reduced refusal behavior. They do not guarantee zero refusals, correctness, safety, legality or unrestricted capability. The two model cards that publish measurements still report non-zero refusal rates.
 
 ## Model field notes
 
