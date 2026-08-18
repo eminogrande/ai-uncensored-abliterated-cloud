@@ -42,6 +42,20 @@
     "zero_refusal": false
   },
   {
+    "slug": "diffusiongemma-26b-e38-abliterated-nvfp4",
+    "type": "model",
+    "kicker": "25.2B · DIFFUSION LM · NVFP4 · BLACKWELL",
+    "title": "The first abliterated diffusion LLM: 1,000+ tokens a second on one GPU",
+    "card_title": "Goodoldjam/DiffusionGemma-26B-E38-Abliterated-NVFP4",
+    "summary": "Abliterating a model that doesn't generate autoregressively, then quantizing it to NVFP4: 0/402 target refusals and 1,053.64 tok/s aggregate on one RTX PRO 6000, 51.68 GB cut to 18.86 GB.",
+    "published_at": "2026-08-16",
+    "modified_at": "2026-08-18",
+    "model_id": "Goodoldjam/DiffusionGemma-26B-E38-Abliterated-NVFP4",
+    "estimated_usd_per_hour": 5.45,
+    "refusal_claim": "0/402 target refusals, 0/249 benign false refusals (publisher measured)",
+    "zero_refusal": true
+  },
+  {
     "slug": "huihui-qwen3-8-27b-abliterated",
     "type": "model",
     "kicker": "27.8B · MULTIMODAL · QWEN",
@@ -53,6 +67,20 @@
     "model_id": "huihui-ai/Huihui-Qwen3.8-27B-abliterated",
     "estimated_usd_per_hour": 5.45,
     "refusal_claim": "no refusal benchmark published (crude PoC)",
+    "zero_refusal": false
+  },
+  {
+    "slug": "qwen3-8-27b-rvn-heretic-abliterated-uncensored",
+    "type": "model",
+    "kicker": "27B · ARA · TRIPLE-PASS · QWEN3.8",
+    "title": "Three ARA passes: how RVN got Qwen3.8-27B down to 0–1/100 refusals",
+    "card_title": "0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+    "summary": "Abliteration as a matrix optimization problem, run three times: KL 0.0535 → 0.0085, refusals 3/100 → 0–1/100, 106K downloads in four days, one corrupted quant and a loud community pushback.",
+    "published_at": "2026-08-14",
+    "modified_at": "2026-08-18",
+    "model_id": "0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+    "estimated_usd_per_hour": 5.45,
+    "refusal_claim": "0–1/100 refusals (publisher measured, prefix-forced)",
     "zero_refusal": false
   },
   {
