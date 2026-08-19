@@ -4,6 +4,17 @@ All notable changes to MN Uncensored are documented here.
 
 ## [Unreleased]
 
+### Website 0.9.8
+
+- Added the field note for `orcarouter/Qwen3.8-27B-Uncensored-FP8` (the
+  most-liked Qwen3.8 uncensored, 553 likes; gated OrcaRouter API at
+  $0.40/$4.21 per 1M tokens; third-party Artificial Analysis benchmarks).
+- Added prepared catalog profile `qwen38u` (`deployment_enabled=false`,
+  pinned revision `9228df5c6c9c509e1019f83b4e085cf643118bac`, 1 x H200) to
+  `config/mn.json` and `docs/MODELS.md`; five-model ceiling math updated.
+- Blog now covers 17 field notes; homepage, RSS, sitemap and llms surfaces
+  regenerated; settings and vLLM tests cover the five-profile catalog.
+
 ### Website 0.9.7
 
 - Published two new model field notes: Goodoldjam's DiffusionGemma-26B-E38

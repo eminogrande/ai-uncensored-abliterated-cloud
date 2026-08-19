@@ -1,5 +1,19 @@
 [
   {
+    "slug": "qwen3-8-27b-uncensored-aggressive",
+    "type": "model",
+    "kicker": "27.8B · AGGRESSIVE · FP8",
+    "title": "The lossless aggressive: Qwen3.8 27B Uncensored FP8",
+    "card_title": "orcarouter/Qwen3.8-27B-Uncensored-FP8",
+    "summary": "The most-liked Qwen3.8 uncensored on Hugging Face (553 likes): orcarouter's lossless aggressive edit, block-FP8 with the vision tower at full precision, served gated on OrcaRouter at $0.40/$4.21 per 1M tokens.",
+    "published_at": "2026-08-19",
+    "modified_at": "2026-08-19",
+    "model_id": "orcarouter/Qwen3.8-27B-Uncensored-FP8",
+    "estimated_usd_per_hour": 5.45,
+    "refusal_claim": "aggressive, fully unlocked (publisher claim); no measured refusal rate published",
+    "zero_refusal": false
+  },
+  {
     "slug": "qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated",
     "type": "model",
     "kicker": "4.5B · HERETIC · DISTILL",

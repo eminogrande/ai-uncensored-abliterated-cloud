@@ -3,13 +3,15 @@
 This document records the exact model artifacts configured for MN Uncensored.
 It is an operational attribution and release record, not legal advice.
 
-The source catalog contains four pinned model records. The first three
+The source catalog contains five pinned model records. The first three
 profiles are enabled in source and use a 131,072-token context window with a
 16,384-token output ceiling. The fourth,
 `cebeuq/Ornith-1.0-397B-abliterated-W4A16`, is retained with a conservative
 32,768-token context and 8,192-token output ceiling, but is explicitly blocked
-with `deployment_enabled=false`. These are prepared definitions; this source
-change does not deploy an app or start a GPU.
+with `deployment_enabled=false`. The fifth, the Qwen3.8-27B Uncensored
+(Aggressive) FP8 build from orcarouter, is likewise retained with
+`deployment_enabled=false`. These are prepared definitions; this source change
+does not deploy an app or start a GPU.
 
 Those are MN endpoint settings, not claims about the maximum capability of the
 upstream checkpoints. Only behavior measured against the exact pinned artifact
@@ -23,6 +25,7 @@ and current runtime may be reported as an MN benchmark.
 | `ornith35` | [`YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`](https://huggingface.co/YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated) | `yuyu1015-ornith-1-0-35b-abliterated` | `86065d1a9008773086a177637d54ec6dc2a56cbf` | Apache-2.0 | 131,072 context / 16,384 output | 1 x H200, $4.5396/hour | Prepared; enabled |
 | `qwythos9` | [`huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`](https://huggingface.co/huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated) | `huihui-qwythos-9b-claude-mythos-5-1m-abliterated` | `efcc73cac15ff8fc5d46b8d41b53c22d571cf97d` | Apache-2.0 | 131,072 context / 16,384 output | 1 x L40S, $1.9512/hour | Prepared; enabled |
 | `ornith397` | [`cebeuq/Ornith-1.0-397B-abliterated-W4A16`](https://huggingface.co/cebeuq/Ornith-1.0-397B-abliterated-W4A16) | `cebeuq-ornith-1-0-397b-abliterated-w4a16` | `e5651d291be1c65ff1360eee47ab533ab13b3d97` | MIT | 32,768 context / 8,192 output | 2 x H200, $9.0792/hour | Prepared; `deployment_enabled=false` |
+| `qwen38u` | [`orcarouter/Qwen3.8-27B-Uncensored-FP8`](https://huggingface.co/orcarouter/Qwen3.8-27B-Uncensored-FP8) | `orcarouter-qwen3-8-27b-uncensored-fp8` | `9228df5c6c9c509e1019f83b4e085cf643118bac` | Apache-2.0 | 131,072 context / 16,384 output | 1 x H200, $4.5396/hour | Prepared; `deployment_enabled=false` |
 
 The exact repository IDs above are the primary OpenAI-compatible API IDs.
 Legacy aliases exist only for client compatibility: `mn/god`, `mn/code`,
@@ -33,11 +36,11 @@ exclude CPU gateway usage, storage, network charges, and taxes. The current
 `routing_region` setting routes requests and does not itself add a
 compute-region multiplier; such a multiplier would need to be included if
 `compute_region` were constrained later. The three enabled source profiles
-have a combined base GPU ceiling of `$11.0304/hour`. If the disabled 397B profile
-were separately reviewed and enabled, the four-model ceiling would be
-`$20.1096/hour`, and five idle minutes across all four would cost about
-`$1.6758` before other charges. These are hypothetical risk ceilings, not
-current usage or proof that any application is deployed.
+have a combined base GPU ceiling of `$11.0304/hour`. If the disabled 397B and
+Qwen3.8 FP8 profiles were separately reviewed and enabled, the five-model
+ceiling would be `$24.6492/hour`, and five idle minutes across all five would
+cost about `$2.0541` before other charges. These are hypothetical risk
+ceilings, not current usage or proof that any application is deployed.
 
 ## `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`: documented compatibility fallback
 

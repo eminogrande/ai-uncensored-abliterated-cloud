@@ -34,7 +34,7 @@ def test_vllm_commands_are_model_specific() -> None:
         assert argument_value(command, "--tool-call-parser") == model.tool_call_parser
         if key == "ornith397":
             assert "--language-model-only" not in command
-        else:
+        elif model.language_model_only:
             assert "--language-model-only" in command
         assert model.tool_call_parser == "qwen3_xml"
         assert argument_value(command, "--reasoning-parser") == "qwen3"
@@ -43,7 +43,7 @@ def test_vllm_commands_are_model_specific() -> None:
             == '{"enable_thinking": false}'
         )
         assert "--enable-prefix-caching" not in command
-        assert key in {"qwen36", "ornith35", "qwythos9", "ornith397"}
+        assert key in {"qwen36", "ornith35", "qwythos9", "ornith397", "qwen38u"}
 
 
 def test_catalog_uses_model_chat_template_tool_parser() -> None:
