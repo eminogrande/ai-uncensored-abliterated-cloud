@@ -26,6 +26,7 @@ with an approximate managed price estimate and a source-linked review:
 
 <!-- ABLITERATED-LATEST-RELEASES-MD -->
 
+- [The lossless aggressive: Qwen3.8 27B Uncensored FP8](blog/qwen3-8-27b-uncensored-aggressive/) (≈ $5.45/h estimate) — aggressive, fully unlocked (publisher claim); no measured refusal rate published — The most-liked Qwen3.8 uncensored on Hugging Face (553 likes): orcarouter's lossless aggressive edit, block-FP8 with the vision tower at full precision, served gated on OrcaRouter at $0.40/$4.21 per 1M tokens.
 - [Small uncensored agents: what a 4.5B Heretic distill is for](blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/) (≈ $2.34/h estimate) — 6/100 refusals (measured) — A source-linked field note on insraq's Heretic v1.4.0 decensor of EmperoAI's Qwen3.8-4B distill: what the 4.5B class is for, and what it trades away.
 - [What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals](blog/muse-glimmer-30b-abliterated-aggressive/) (≈ $5.45/h estimate) — 0/100 refusals (measured, harmful_behaviors) — A relaxed-KL LoRA de-abliteration of Meta's 29.8B agentic model claiming 0/100 refusals at ~1.7x KL drift — a mirror upload with the benchmarks left unmeasured.
 - [The 2.78-trillion-parameter abliteration nobody can run](blog/kimi-k3-abliterated-modal/) (≈ $87.20/h estimate) — 98% of safeguard signal attenuated (publisher claim) — An abliterated re-upload of Moonshot's 2.78T-parameter Kimi K3 — any-to-any, MXFP4, 96 shards, ~1.56 TB — with zero downloads and no deployment: the scale math behind why nobody can run it.
