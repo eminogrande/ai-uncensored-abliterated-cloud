@@ -4,6 +4,22 @@ All notable changes to MN Uncensored are documented here.
 
 ## [Unreleased]
 
+### Website 0.9.9
+
+- Published a new model field note: **0xKitkat/Ornith-1.5-35B-A3B-Uncensored**
+  — the first task-vector transplant covered on this site: Qwen3.6's measured
+  uncensoring delta added to DeepReinforce's self-improving Ornith-1.5-35B-A3B
+  (102 of 693 compatible tensors modified, vision tower and MTP head intact,
+  0/16 heuristic refusals and 4/4 capability passes publisher-measured on a
+  llama.cpp Q4_K_M build with disclosed regex screening).
+- Same base, two classic edits covered alongside: alztrk's 40-layer
+  orthogonalization with a dynamic GGUF ladder (Q4_K_M 19.71 GB on consumer
+  GPUs) and pottokao's text-only single-direction ablation with an NVFP4
+  sibling. Angle: three uncensoring philosophies on one 35.9B MoE.
+- Blog now covers 18 field notes; homepage latest-releases list, blog index,
+  RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated; estimated managed
+  price $5.45/hour (1 × H200 profile).
+
 ### Website 0.9.8
 
 - Added the field note for `orcarouter/Qwen3.8-27B-Uncensored-FP8` (the
