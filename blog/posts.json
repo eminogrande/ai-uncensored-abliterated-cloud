@@ -1,5 +1,19 @@
 [
   {
+    "slug": "ornith-1-5-35b-a3b-uncensored-transplant",
+    "type": "model",
+    "kicker": "35.8B · TASK VECTOR · ORNITH 1.5",
+    "title": "One base, three uncensors: the Ornith-1.5 task-vector transplant",
+    "card_title": "0xKitkat/Ornith-1.5-35B-A3B-Uncensored",
+    "summary": "DeepReinforce's self-improving Ornith-1.5-35B-A3B, uncensored three ways in 48 hours: a streamed task-vector transplant that adds Qwen3.6's measured uncensoring delta to Ornith's weights (102 tensors changed, vision and MTP intact, 0/16 heuristic refusals on Q4_K_M), plus two classic orthogonalization edits.",
+    "published_at": "2026-08-20",
+    "modified_at": "2026-08-21",
+    "model_id": "0xKitkat/Ornith-1.5-35B-A3B-Uncensored",
+    "estimated_usd_per_hour": 5.45,
+    "refusal_claim": "0/16 heuristic refusals, 4/4 capability passes (publisher measured, llama.cpp Q4_K_M, disclosed regex screen)",
+    "zero_refusal": true
+  },
+  {
     "slug": "qwen3-8-27b-uncensored-aggressive",
     "type": "model",
     "kicker": "27.8B · AGGRESSIVE · FP8",
