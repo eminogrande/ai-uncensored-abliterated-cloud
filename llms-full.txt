@@ -76,6 +76,7 @@ The words "abliterated", "decensored" and "uncensored" are upstream labels and p
 
 ## Source-linked model field notes
 
+- [The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage](https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/index.md)
 - [One base, three uncensors: the Ornith-1.5 task-vector transplant](https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/index.md)
 - [The lossless aggressive: Qwen3.8 27B Uncensored FP8](https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/index.md)
 - [Small uncensored agents: what a 4.5B Heretic distill is for](https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/index.md)
