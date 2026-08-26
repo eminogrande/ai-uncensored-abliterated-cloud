@@ -4,6 +4,23 @@ All notable changes to MN Uncensored are documented here.
 
 ## [Unreleased]
 
+### Website 0.10.0
+
+- Published a new model field note: **HangGlidersRule/Darkstar-Nemotron-3.5-
+  Lightning-30B-A3B-Abliterated-BF16** — the first Nemotron-H coverage on this
+  site. NVIDIA's newest open model is a hybrid Mamba-2 + MoE + sparse-attention
+  30B-A3B built for agent execution; the Darkstar edit projects the layer-34
+  refusal direction out of 3,126 residual-writing tensors (2,944 routed-expert
+  down-projections, 23 shared-expert, 6 attention o_proj, 23 Mamba out_proj,
+  MTP head, embedding) with max normalized residual leakage 0.000160.
+  Publisher-measured behavior gate 200/200 harmful compliance, 0/83 safe
+  over-refusals (`zero_refusal: true`); NVFP4 twin (~22 GB) keeps Mamba/SSM
+  tensors in BF16 and scores GPQA 71.2% on one RTX PRO 6000 Blackwell, delta
+  to NVIDIA's 75.44 attributed to serving-stack config.
+- Blog now covers 19 field notes (3 pages); homepage latest-releases list, blog
+  index, RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated; estimated
+  managed price $5.45/hour (1 × H200 profile).
+
 ### Website 0.9.9
 
 - Published a new model field note: **0xKitkat/Ornith-1.5-35B-A3B-Uncensored**
