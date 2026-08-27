@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320 — ABLITERATED.cloud</title>
+  <meta name="description" content="Zhipu's first natively multimodal GLM-5, uncensored at weight level in FP8: 320/320 HarmBench compliance, 0 refusals, MMLU −0.48, 211 tok/s with MTP.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="https://abliterated.cloud/blog/glm-5-3-flash-crack/">
+  <link rel="alternate" type="text/markdown" href="index.md">
+  <meta property="og:type" content="article"><meta property="og:url" content="https://abliterated.cloud/blog/glm-5-3-flash-crack/"><meta property="og:title" content="GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320"><meta property="og:description" content="Zhipu's first natively multimodal GLM-5, uncensored at the weight level in official FP8 — 320/320 HarmBench, 0 refusals, MMLU −0.48, 211 tok/s with MTP."><meta property="og:image" content="https://abliterated.cloud/assets/og-card.png">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" sizes="any"><link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32"><link rel="shortcut icon" href="../../favicon.ico"><link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320","datePublished":"2026-08-26","dateModified":"2026-08-26","author":{"@type":"Organization","name":"ABLITERATED.cloud"},"publisher":{"@type":"Organization","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/"},"mainEntityOfPage":"https://abliterated.cloud/blog/glm-5-3-flash-crack/","about":{"@type":"SoftwareApplication","name":"dealignai/GLM-5.3-Flash-ABLITERATED-FP8"}}</script>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to article</a>
+  <header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="../../assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links"><a href="/">Home</a><a href="/#models">Models</a><a href="/blog/">Blog</a><a href="/#api">API</a></nav><a class="github-button" href="https://github.com/eminogrande/mn-uncensored"><span>Star on GitHub</span><span>↗</span></a></div></header>
+  <main class="article-main"><article class="article-shell" id="article">
+    <header class="article-header"><p class="kicker">MODEL FIELD NOTE · GLM-5 · 320B · CRACK</p><h1>GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320.</h1><p class="article-lead">A day after Zhipu released GLM-5.3-Flash — the first natively multimodal model in the GLM-5 series, 320B total parameters with just 18B active — dealignai published a CRACK release that removes refusal behavior at the weight level, in official FP8, then measured the result hard enough to matter. The headline number is 320/320: every behavior in a HarmBench-320 evaluation complied at greedy decoding, with zero refusals, and it holds at sampling parameters too. Capability loss is −0.48 points on MMLU-logit.</p><div class="article-meta"><span>Published 26 August 2026</span><span>Revision-pinned</span><span>Primary sources only</span></div></header>
+    <dl class="article-facts">
+      <div><dt>Exact artifact</dt><dd class="article-repository">dealignai/GLM-5.3-Flash-ABLITERATED-FP8</dd></div><div><dt>Pinned revision</dt><dd>68fdc7b…cc8fdf8b7</dd></div>
+      <div><dt>Parameters</dt><dd>321,323,031,390 total · ~18B active per token</dd></div><div><dt>Architecture</dt><dd>glm5_next hybrid MoE (KDA linear + sparse attention), vision + MTP</dd></div>
+      <div><dt>Repository size</dt><dd>FP8 ~321B params (NVFP4 twin ~165B)</dd></div><div><dt>Native context</dt><dd>1M tokens</dd></div>
+      <div><dt>License metadata</dt><dd>MIT (base and derivative)</dd></div><div><dt>Published</dt><dd>25 August 2026 (base) · 26 August 2026 (edit)</dd></div>
+      <div><dt>Estimated cost</dt><dd>$10.90/hour managed (2 × H200 class)</dd></div>
+    </dl>
+    <div class="article-body">
+      <h2>The base: Zhipu's first natively multimodal GLM-5</h2>
+      <p>GLM-5.3-Flash landed on Hugging Face on 25 August and picked up over a thousand likes within two days. The <a href="https://huggingface.co/zai-org/GLM-5.3-Flash">official card</a> introduces it as the first natively multimodal model in the GLM-5 series, with 320B total and 18B active parameters, "outperform[ing] GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks". For the first time in the GLM series it uses a hybrid architecture combining sparse and linear attention — cutting long-context serving cost while keeping long-context precision — plus Manifold-Constrained Hyper-Connections (mHC) and a 30-trillion-token multimodal pre-training corpus. License is MIT. Those are Zhipu's own claims from the card and the GLM-5 <a href="https://arxiv.org/abs/2602.15763">technical report</a>, not independent tests.</p>
+
+      <h2>The crack: a permanent edit with receipts</h2>
+      <p>dealignai's CRACK brand means no fine-tuning, no LoRA, no adapters, no steering vectors, no runtime hooks — a direct modification baked into the tensors, so stock vLLM serves it with the standard chat template. On this release the edit also extends to the MTP draft head, which has its own fused 512-expert MoE.</p>
+      <p>The published measurements, all from the <a href="https://huggingface.co/dealignai/GLM-5.3-Flash-ABLITERATED-FP8">editor's card</a>:</p>
+      <ul>
+        <li><strong>HarmBench-320, greedy:</strong> Standard 159/159, Contextual 81/81, Copyright 80/80 → 320/320 complied, 0 refusals.</li>
+        <li><strong>Sampling robustness:</strong> the 6 harshest behaviors sampled 5× each at temperature 1.0, top_p 0.95 → 30/30 complied, 0 refusals, 0 soft refusals, 0 garbage — the card argues this is not a greedy-decoding artifact.</li>
+        <li><strong>Capability:</strong> MMLU-logit over 1,026 questions: 86.74% base → 86.26% cracked, −0.48 points.</li>
+        <li><strong>Speed (TP4, native FP8 on H200):</strong> 163 tok/s decode, 211 tok/s with MTP speculative decoding (75.9% acceptance), ~19,400 tok/s prefill.</li>
+        <li><strong>Vision:</strong> the GLM-4.1V vision tower works, shipping the correct multimodal chat template.</li>
+      </ul>
+      <p>The card also includes a short essay on why KL divergence is not the right quality metric for a refusal ablation: changing refusal end-to-end is supposed to shift the distribution on refusal-adjacent tokens, so KL against the base mostly measures the intended change, not damage. Capability preservation is the metric that matters, and here it is essentially flat.</p>
+
+      <h2>The hosting math: what the refusals were costing</h2>
+      <p>The interesting angle of this particular crack is that it is cheap. Removing refusals cost 0.48 MMLU points and nothing on throughput — FP8 is native on Hopper, so the edit runs at the same tensor-core speed as the base. Turning on the cracked MTP head actually makes it ~30% faster (163 → 211 tok/s) while holding ~75.9% draft acceptance on un-refused, benign and copyright prompts alike. At 320B scale you no longer have to choose between an uncensored model and a fast one.</p>
+      <p>What it costs to run is a separate question. dealignai measured at TP4 on H200 — four GPUs. Our site-consistent approximate managed estimate for the 320B MoE class is <strong>$10.90/hour</strong> (2 × H200) for a servable deployment, with the full TP4 speed config closer to <strong>$21.80/hour</strong> (4 × H200). The NVFP4 twin (<code>dealignai/GLM-5.3-Flash-ABLITERATED-NVFP4</code>, ~165B safetensors) is the cheaper-memory path. There is also an <code>UNCENSORED-FP8</code> mirror with identical weights under a different name.</p>
+      <div class="article-callout"><strong>What is proven here?</strong><p>320/320 HarmBench-320 compliance at greedy decoding, 0 refusals, plus 30/30 at temperature 1.0/top_p 0.95 — the editor's own measurements on the editor's disclosed prompt sets. Capability retention (−0.48 MMLU) is measured the same way. Not independent verification, and not a "never refuses" guarantee.</p></div>
+
+      <h2>How to run it</h2>
+      <p>Native FP8 on Hopper, stock vLLM:</p>
+      <pre><code>vllm serve dealignai/GLM-5.3-Flash-ABLITERATED-FP8 \
+  --tensor-parallel-size 4 \
+  --tool-call-parser glm47 --reasoning-parser glm45 --enable-auto-tool-choice \
+  --speculative-config '{"method":"mtp","num_speculative_tokens":1}'</code></pre>
+      <p>OpenAI-compatible chat/completions, tools, reasoning and vision (<code>image_url</code>) all work, and MTP speculative decoding is on by that flag. The card notes DeepGEMM JIT-compiles a block-FP8 kernel at startup, so keep <code>nvcc</code> on <code>PATH</code>. Our approximate managed price estimate for the 320B MoE class is <strong>$10.90/hour</strong>; that is what ABLITERATED.cloud would host it for, with the TP4 high-throughput config as the premium option.</p>
+
+      <h2>The creator: Zhipu AI, and the editor dealignai</h2>
+      <p>The base is from <strong>Zhipu AI's GLM-5 team</strong> — the card credits "GLM-5-Team" with the <a href="https://arxiv.org/abs/2602.15763">GLM-5 technical report</a> ("from Vibe Coding to Agentic Engineering") and a long author list. Zhipu runs Z.ai as its API platform, and GLM-5.3-Flash is positioned there as the cheap agentic workhorse of the GLM-5 line. The crack comes from <strong>dealignai</strong> (X: @dealignai), the same independent editor behind the Qwen3.8-Flash-Next FP8 build covered in the other field note today — 99 Hugging Face models under the CRACK brand, 1,482 followers, "Open to Work" on their profile, compute on this release credited to X user @jordanschenck. Their profile tagline — "No cheap template tricks, no fine tuning here. Do the hard work of actually understanding." — matches how this card reads.</p>
+      <p>One honest line: guardrails are removed here, which is the entire point of a CRACK release, and the 320/320 is the editor's own measurement on the editor's disclosed prompt set.</p>
+
+      <h2>The idea, in plain words</h2>
+      <div class="article-learn"><strong>Multi-token prediction (MTP): the model guesses its own next token while it writes the current one</strong><p>A small extra "draft head" proposes the token that comes after, so on the next step the main model mostly verifies instead of generating from scratch. When ~3 of every 4 drafts are accepted (75.9% here), the model effectively emits two tokens per forward pass — that is why the same 320B model jumps from 163 to 211 tok/s. The draft head is separate from the main weights, which is also why it has to be uncensored separately: dealignai cracked the head too, so the speed-up survives on un-refused prompts.</p></div>
+
+      <h2>Primary sources</h2>
+      <ul class="article-source-list"><li><a href="https://huggingface.co/dealignai/GLM-5.3-Flash-ABLITERATED-FP8">Exact dealignai model card</a> and <a href="https://huggingface.co/dealignai/GLM-5.3-Flash-ABLITERATED-FP8/tree/68fdc7b6c6ef90c40583f5f9224d402cc8fdf8b7">pinned revision</a></li><li><a href="https://huggingface.co/dealignai/GLM-5.3-Flash-ABLITERATED-NVFP4">NVFP4 twin card</a></li><li><a href="https://huggingface.co/zai-org/GLM-5.3-Flash">Official Zhipu GLM-5.3-Flash card</a></li><li><a href="https://arxiv.org/abs/2602.15763">GLM-5 technical report</a></li><li><a href="https://z.ai/blog/glm-5.3-flash">GLM-5.3-Flash blog</a></li><li><a href="https://huggingface.co/dealignai">dealignai profile</a></li></ul>
+    </div>
+    <nav class="article-next" aria-label="More model field notes"><a href="../darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/">← The first Nemotron-H abliteration</a><a href="../">All field notes</a></nav>
+  </article></main>
+  <footer class="footer"><div><a class="brand" href="/"><img src="../../assets/logo.svg" width="28" height="28" alt=""><span>ABLITERATED.cloud</span></a><p>Intelligence, freed.<br>© 2026 ABLITERATED.cloud</p></div><nav><a href="/blog/">Blog</a><a href="/#models">Models</a><a href="https://signal.me/#p/+13103408213">Request access</a></nav></footer>
+</body>
+</html>

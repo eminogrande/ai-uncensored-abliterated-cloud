@@ -1,5 +1,33 @@
 [
   {
+    "slug": "qwen3-8-flash-next-abliterated-race",
+    "type": "model",
+    "kicker": "180B \u00b7 QWEN4-EXP \u00b7 ABLITERATION RACE",
+    "title": "The 180B abliteration race on the model nobody can serve yet",
+    "card_title": "dealignai/Qwen3.8-Flash-Next-ABLITERATED-FP8",
+    "summary": "Qwen released Qwen3.8-Flash-Next on 24 August as the experimental preview of the Qwen4 architecture \u2014 180B total parameters, ~6B active, hybrid Gated DeltaNet + micro-block sparse attention + 512-expert MoE + a 51B-parameter n-gram lookup table. Within 48 hours at least five editors raced to abliterate it. dealignai's FP8 build is the served, measured one: 100%/99.6% HarmBench-320 real-harm compliance at greedy decoding, MMLU 86.36\u219283.86, ~81% MTP draft acceptance. Jiunsong's BF16 edit is the architecture-aware method: 36 storage tensors \u2192 6,168 logical output projections, 842-pair corpus. The catch: released vLLM/SGLang still don't support qwen4_exp.",
+    "published_at": "2026-08-27",
+    "modified_at": "2026-08-27",
+    "model_id": "dealignai/Qwen3.8-Flash-Next-ABLITERATED-FP8",
+    "estimated_usd_per_hour": 10.9,
+    "refusal_claim": "HarmBench-320 greedy real-harm compliance 100% (reasoning low) / 99.6% (xhigh) / 97.1% (off), MMLU \u22122.50pp (publisher measured)",
+    "zero_refusal": false
+  },
+  {
+    "slug": "glm-5-3-flash-crack",
+    "type": "model",
+    "kicker": "320B \u00b7 18B ACTIVE \u00b7 GLM-5 \u00b7 CRACK",
+    "title": "GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320",
+    "card_title": "dealignai/GLM-5.3-Flash-ABLITERATED-FP8",
+    "summary": "Zhipu's first natively multimodal GLM-5 (320B total / 18B active, hybrid KDA linear + sparse attention, MIT) landed 25 August. dealignai's CRACK edit removes refusals at the weight level in official FP8: 320/320 HarmBench-320 greedy compliance, 0 refusals, 30/30 at temp 1.0/top_p 0.95, MMLU 86.74\u219286.26 (\u22120.48pp), 163\u2192211 tok/s with the cracked MTP head (75.9% acceptance) on 4\u00d7H200. NVFP4 twin (~165B) and an UNCENSORED-FP8 mirror with identical weights.",
+    "published_at": "2026-08-26",
+    "modified_at": "2026-08-26",
+    "model_id": "dealignai/GLM-5.3-Flash-ABLITERATED-FP8",
+    "estimated_usd_per_hour": 10.9,
+    "refusal_claim": "320/320 HarmBench behaviors complied, 0 refusals (greedy); 30/30 at temp 1.0/top_p 0.95 (publisher measured)",
+    "zero_refusal": true
+  },
+  {
     "slug": "darkstar-nemotron-3-5-lightning-30b-a3b-abliterated",
     "type": "model",
     "kicker": "30B-A3B \u00b7 HYBRID MAMBA-MOE \u00b7 NVIDIA",
