@@ -76,6 +76,8 @@ The words "abliterated", "decensored" and "uncensored" are upstream labels and p
 
 ## Source-linked model field notes
 
+- [The 180B abliteration race on the model nobody can serve yet](https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/index.md)
+- [GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320](https://abliterated.cloud/blog/glm-5-3-flash-crack/index.md)
 - [The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage](https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/index.md)
 - [One base, three uncensors: the Ornith-1.5 task-vector transplant](https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/index.md)
 - [The lossless aggressive: Qwen3.8 27B Uncensored FP8](https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/index.md)
