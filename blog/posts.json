@@ -1,5 +1,19 @@
 [
   {
+    "slug": "velum-unbound-1bit-uncensor",
+    "type": "model",
+    "kicker": "27B \u00b7 1-BIT \u00b7 Q1_0 \u00b7 HERETIC",
+    "title": "The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?",
+    "card_title": "guell00/Velum-Unbound-Uncensored",
+    "summary": "The Bonsai family, the most downloaded 1-bit experiment of the summer (1.95M downloads on the MLX pack alone), gained an uncensored branch this morning: a Heretic v1.4.0 decensor of Bonsai-27B (6/100 refusals vs 81/100, KL 0.0033, editor-measured at FP16) repacked to Q1_0 at 1.125 bits per weight. Velum-Unbound-Uncensored is two files: a ~4.35 GiB Q1_0 GGUF plus a ~1.81 GiB dspark speculative drafter, MIT-licensed, from Brazilian independent publisher guell00. The honest catch: every benchmark on the card is TBD, the refusal number belongs to the FP16 intermediate, and nobody has re-measured the 1-bit pack. Runs in ~3.9 GB on llama.cpp (PrismML fork); an H200 is overkill, a laptop suffices.",
+    "published_at": "2026-08-28",
+    "modified_at": "2026-08-28",
+    "model_id": "guell00/Velum-Unbound-Uncensored",
+    "estimated_usd_per_hour": 5.45,
+    "refusal_claim": "6/100 refusals on the FP16 Heretic edit (publisher measured, s3nh); not re-measured on the Q1_0 pack",
+    "zero_refusal": false
+  },
+  {
     "slug": "qwen3-8-flash-next-abliterated-race",
     "type": "model",
     "kicker": "180B \u00b7 QWEN4-EXP \u00b7 ABLITERATION RACE",
