@@ -2,7 +2,7 @@
   "name": "abliterated-cloud-website",
   "private": true,
   "type": "module",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "scripts": {
     "build:blog": "uv run python -I scripts/build-blog.py",
     "dev:website": "wrangler dev --config wrangler.jsonc --port 8788",
