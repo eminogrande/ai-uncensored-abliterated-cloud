@@ -4,6 +4,25 @@ All notable changes to MN Uncensored are documented here.
 
 ## [Unreleased]
 
+### Website 0.11.2
+
+- Published a new model field note: **Securelayer7/AFM-4.5B-Uncensored-
+  Abliterated** — the first Arcee Foundation Model abliteration, from
+  offensive-security vendor SecureLayer7. Heretic / Optuna TPE edit of the
+  attention output and MLP down-projections across all 36 layers, merged into
+  the weights; publisher-measured refusals 92/100 → 3/100 at KL 0.0200
+  (Apache-2.0, dense 4.5B, ~8.6 GiB). Honest boundary: partial edit, no
+  independent re-test, no discussions, zero downloads at research time
+  (`zero_refusal: false`); card itself requires serving-layer filtering.
+- Publisher context: SecureLayer7 (Pune and Austin, CREST/CERT-In/SOC 2/ISO
+  27001 per its own site), fifth uncensored release since 16 August alongside
+  the promptpurify guardrail; base AFM-4.5B trained on 8T tokens with GQA +
+  ReLU², 65,536-token native context (YaRN ×20).
+- Reddit community search blocked (HTTP 403), gap noted in the post.
+- Blog now covers 23 field notes (3 pages); homepage latest-releases list,
+  blog index, RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated;
+  estimated managed price $2.34/hour (1 × L40S class).
+
 ### Website 0.11.1
 
 - Published a new model field note: **guell00/Velum-Unbound-Uncensored** — a
