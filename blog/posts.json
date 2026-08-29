@@ -1,5 +1,19 @@
 [
   {
+    "slug": "securelayer7-afm-4-5b-uncensored-abliterated",
+    "type": "model",
+    "kicker": "4.5B \u00b7 ARCEE AFM \u00b7 SECURITY VENDOR EDIT",
+    "title": "The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100",
+    "card_title": "Securelayer7/AFM-4.5B-Uncensored-Abliterated",
+    "summary": "The first Arcee Foundation Model abliteration, published by an offensive-security vendor: SecureLayer7's Heretic/Optuna TPE edit cuts AFM-4.5B refusals from 92/100 to 3/100 at KL 0.0200, merged into the weights. Apache-2.0, 4.5B dense, ~8.6 GiB, fits one L40S.",
+    "published_at": "2026-08-28",
+    "modified_at": "2026-08-28",
+    "model_id": "Securelayer7/AFM-4.5B-Uncensored-Abliterated",
+    "estimated_usd_per_hour": 2.34,
+    "refusal_claim": "3/100 refusals at KL 0.0200, from 92/100 on the base (publisher measured, Heretic/Optuna TPE edit)",
+    "zero_refusal": false
+  },
+  {
     "slug": "velum-unbound-1bit-uncensor",
     "type": "model",
     "kicker": "27B \u00b7 1-BIT \u00b7 Q1_0 \u00b7 HERETIC",

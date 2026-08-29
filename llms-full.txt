@@ -76,6 +76,7 @@ The words "abliterated", "decensored" and "uncensored" are upstream labels and p
 
 ## Source-linked model field notes
 
+- [The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100](https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/index.md)
 - [The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?](https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/index.md)
 - [The 180B abliteration race on the model nobody can serve yet](https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/index.md)
 - [GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320](https://abliterated.cloud/blog/glm-5-3-flash-crack/index.md)
