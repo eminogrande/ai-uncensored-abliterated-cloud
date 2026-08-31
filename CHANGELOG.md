@@ -4,6 +4,30 @@ All notable changes to MN Uncensored are documented here.
 
 ## [Unreleased]
 
+### Website 0.11.4
+
+- Published a new model field note: **0xSojalSec/Tencent-Hy-30B-A3B-uncensored-heretic**
+  — the first decensor of a dedicated translation model. Tencent's Hy-MT2-30B-A3B
+  (30B total / ~3B active, hy_v3, 48 layers, 128 experts top-8, 262,144-token
+  context, 33 languages, Apache-2.0) is a specialist translation tool whose
+  refusal screen triggered on 100/100 keyword prompts in the aligned base. The
+  30 August 2026 edit by 0xSojalSec (Md Ismail Sojal) / OS-Software uses Heretic
+  v1.4.0+custom Arbitrary-Rank Ablation (LoRA adapter, row-norm preservation,
+  layers 18–28, ot_ridge). Publisher-measured: refusal keywords 100/100 → 0/100
+  at KL 0.0276 (`zero_refusal: true`), custom mixed-language set. Honest
+  boundary: publisher-measured, no independent re-run, prompt set unpublished.
+- Hosting math: 60.14 GB BF16 across 13 shards — one H200; estimated managed
+  price $5.45/hour. vLLM: `vllm serve "0xSojalSec/Tencent-Hy-30B-A3B-uncensored-heretic"`.
+  GGUF quants (OS-Software Q4_K_M ~18.2 GB fits 24 GB GPU; mradermacher
+  i1-imatrix IQ1–IQ4). No Ollama page yet; Tencent FP8 twin is the aligned
+  fallback (5,407 downloads).
+- Editor profile: 0xSojalSec = Md Ismail Sojal (7 models); org label OS-Software
+  (19 models, mostly Japanese-targeted "heretic-ja" Heretic edits); no donation
+  link on this card. Base: Tencent Hunyuan (arXiv 2605.22064), WMT26 partner.
+- Reddit community search blocked (HTTP 403), gap noted in the post.
+- Blog now covers **25 field notes**; homepage latest-releases list, blog index,
+  RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated.
+
 ### Website 0.11.3
 
 - Published a new model field note: **llmfan46/Laguna-S-2.1-Uncensored-Heretic**

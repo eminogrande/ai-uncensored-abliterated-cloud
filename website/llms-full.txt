@@ -76,6 +76,7 @@ The words "abliterated", "decensored" and "uncensored" are upstream labels and p
 
 ## Source-linked model field notes
 
+- [Why would a translation model refuse? Tencent's Hy-MT2, decensored](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/index.md)
 - [The 118B coding MoE nobody has refused](https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/index.md)
 - [The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100](https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/index.md)
 - [The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?](https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/index.md)
