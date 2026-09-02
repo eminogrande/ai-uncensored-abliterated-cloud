@@ -4,6 +4,38 @@ All notable changes to MN Uncensored are documented here.
 
 ## [Unreleased]
 
+### Website 0.11.5
+
+- Published a new model field note: **apetersson/DeepSeek-V4-Flash-Vision-Exp-
+  Abliterated** — the first abliteration of DeepSeek's first open multimodal
+  model, DeepSeek-V4-Flash-Vision-Exp (285B total / ~13B active, 256 experts
+  top-6 + 1 shared, 43 layers, 32-layer vision encoder, DSpark self-draft,
+  1M-token context, MIT, published 31 August 2026 06:16 UTC). Andreas
+  Petersson's rank-1 edit (targeted projection edits, not gradient fine-tuning)
+  landed 17:12 UTC the same day: 33 attention output projection tensors in
+  layers 10–42, one refusal direction, pinned revision 71e308af…6ddd5c94.
+  Honest boundary: text and focused image smoke tests pass, broader
+  quality/safety/production evaluation pending, no refusal-rate benchmark
+  published (`zero_refusal: false`).
+- Descendant pipeline: s-zaizen's NVFP4 graft (rank-1 direction at strength 3.5,
+  L2-preserving, 3 FP8 requant passes; 48/48 shards donor-matched, 8/8
+  safe-boundary prompts answered zero refusals, GSM8K 99/100 +3.0 vs its own
+  unedited base) and audreyt's IQ2_XXS ds4 GGUF (86.72 GB, SHA-256-verified
+  HTTP-Range graft; refusal direction traced to drowzeys's 0731 DSpark
+  abliteration); msuiche shipped a fourth cyber-flavored take the same day.
+- Hosting math: ~202 GB FP8-native (experts FP4, attention/norm/router FP8,
+  BF16 vision tower); estimated managed price $10.90/hour (2 × H200, 50–400B
+  MoE band). vLLM/SGLang with DSpark per DeepSeek card; Mac path via antirez's
+  ds4 runtime + Basic128-Routed-IQ2_M profile (95.76 GiB resident, ~23.4 tok/s
+  on M1 Ultra per card).
+- Editor profile: apetersson = Andreas Petersson (7 models), 0731 abliteration
+  specialist (DS4-Headroom128 GGUF 83,938 downloads, FP8 18,794); no socials or
+  donation links. Descendant builders: s-zaizen (Model Optimizer / DGX Spark
+  lineage), audreyt. Base: DeepSeek-AI.
+- Reddit community search blocked (HTTP 403), gap noted in the post.
+- Blog now covers **26 field notes**; homepage latest-releases list, blog index,
+  RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated.
+
 ### Website 0.11.4
 
 - Published a new model field note: **0xSojalSec/Tencent-Hy-30B-A3B-uncensored-heretic**
