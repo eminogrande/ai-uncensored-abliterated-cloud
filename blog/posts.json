@@ -1,5 +1,19 @@
 [
   {
+    "slug": "deepseek-v4-flash-vision-exp-abliterated",
+    "type": "model",
+    "kicker": "285B-A13B \u00b7 VISION MOE \u00b7 FIRST MULTIMODAL V4 \u00b7 11-HOUR ABLITERATION",
+    "title": "Eleven hours from DeepSeek drop to uncensor.",
+    "card_title": "apetersson/DeepSeek-V4-Flash-Vision-Exp-Abliterated",
+    "summary": "DeepSeek's first open multimodal model (285B total / 13B active MoE, 1M context, 32-layer vision tower, DSpark self-draft) landed 31 Aug 2026 at 06:16 UTC; apetersson's rank-1 abliteration (33 attention-output tensors, layers 10-42, strength 3.5, L2-preserving) followed at 17:12 UTC. Text and image smoke tests pass, broader evaluation pending; ~202 GB FP8-native, ~$10.90/h managed on 2 x H200. Within a day s-zaizen grafted the edit onto NVFP4 (8/8 safe prompts, 0 refusals, GSM8K 99/100) and audreyt onto an IQ2_XXS ds4 GGUF; every derivative pins the donor revision.",
+    "published_at": "2026-08-31",
+    "modified_at": "2026-08-31",
+    "model_id": "apetersson/DeepSeek-V4-Flash-Vision-Exp-Abliterated",
+    "estimated_usd_per_hour": 10.9,
+    "refusal_claim": "No refusal-evoking benchmark published (card: evaluation pending). Closest: s-zaizen NVFP4 descendant 8/8 safe-boundary prompts answered, zero refusals; GSM8K 99/100 (+3.0 vs unedited NVFP4 base).",
+    "zero_refusal": false
+  },
+  {
     "slug": "tencent-hy-mt2-30b-a3b-uncensored",
     "type": "model",
     "kicker": "30B-A3B \u00b7 TRANSLATION MOE \u00b7 HERETIC ARA",
