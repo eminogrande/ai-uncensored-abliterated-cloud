@@ -97,6 +97,10 @@ def test_cost_generator_rejects_inconsistent_rates():
 def test_archived_files_match_manifest():
     import hashlib
     manifest = json.loads((ROOT / "archive/modal/MANIFEST.json").read_text())
+    assert len(manifest["files"]) == manifest["summary"]["retained_files"]
     for row in manifest["files"]:
         file = ROOT / row["archived_path"]
         assert hashlib.sha256(file.read_bytes()).hexdigest() == row["archived_sha256"], file
+    for row in manifest["new_archive_files"]:
+        file = ROOT / row["path"]
+        assert hashlib.sha256(file.read_bytes()).hexdigest() == row["sha256"], file
