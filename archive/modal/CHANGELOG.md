@@ -1,0 +1,543 @@
+> **Historical archive — not current operating instructions.** Original path:
+> `CHANGELOG.md` at `2888dbfb99b81a87ceadb937d29ac2c61632619d`.
+> Statements below describe their original context, not current deployment status.
+> See the [archive overview](README.md) for current-document links and provenance.
+
+# Changelog
+
+All notable changes to MN Uncensored are documented here.
+
+## [Unreleased]
+
+### Website 0.11.5
+
+- Published a new model field note: **apetersson/DeepSeek-V4-Flash-Vision-Exp-
+  Abliterated** — the first abliteration of DeepSeek's first open multimodal
+  model, DeepSeek-V4-Flash-Vision-Exp (285B total / ~13B active, 256 experts
+  top-6 + 1 shared, 43 layers, 32-layer vision encoder, DSpark self-draft,
+  1M-token context, MIT, published 31 August 2026 06:16 UTC). Andreas
+  Petersson's rank-1 edit (targeted projection edits, not gradient fine-tuning)
+  landed 17:12 UTC the same day: 33 attention output projection tensors in
+  layers 10–42, one refusal direction, pinned revision 71e308af…6ddd5c94.
+  Honest boundary: text and focused image smoke tests pass, broader
+  quality/safety/production evaluation pending, no refusal-rate benchmark
+  published (`zero_refusal: false`).
+- Descendant pipeline: s-zaizen's NVFP4 graft (rank-1 direction at strength 3.5,
+  L2-preserving, 3 FP8 requant passes; 48/48 shards donor-matched, 8/8
+  safe-boundary prompts answered zero refusals, GSM8K 99/100 +3.0 vs its own
+  unedited base) and audreyt's IQ2_XXS ds4 GGUF (86.72 GB, SHA-256-verified
+  HTTP-Range graft; refusal direction traced to drowzeys's 0731 DSpark
+  abliteration); msuiche shipped a fourth cyber-flavored take the same day.
+- Hosting math: ~202 GB FP8-native (experts FP4, attention/norm/router FP8,
+  BF16 vision tower); estimated managed price $10.90/hour (2 × H200, 50–400B
+  MoE band). vLLM/SGLang with DSpark per DeepSeek card; Mac path via antirez's
+  ds4 runtime + Basic128-Routed-IQ2_M profile (95.76 GiB resident, ~23.4 tok/s
+  on M1 Ultra per card).
+- Editor profile: apetersson = Andreas Petersson (7 models), 0731 abliteration
+  specialist (DS4-Headroom128 GGUF 83,938 downloads, FP8 18,794); no socials or
+  donation links. Descendant builders: s-zaizen (Model Optimizer / DGX Spark
+  lineage), audreyt. Base: DeepSeek-AI.
+- Reddit community search blocked (HTTP 403), gap noted in the post.
+- Blog now covers **26 field notes**; homepage latest-releases list, blog index,
+  RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated.
+
+### Website 0.11.4
+
+- Published a new model field note: **0xSojalSec/Tencent-Hy-30B-A3B-uncensored-heretic**
+  — the first decensor of a dedicated translation model. Tencent's Hy-MT2-30B-A3B
+  (30B total / ~3B active, hy_v3, 48 layers, 128 experts top-8, 262,144-token
+  context, 33 languages, Apache-2.0) is a specialist translation tool whose
+  refusal screen triggered on 100/100 keyword prompts in the aligned base. The
+  30 August 2026 edit by 0xSojalSec (Md Ismail Sojal) / OS-Software uses Heretic
+  v1.4.0+custom Arbitrary-Rank Ablation (LoRA adapter, row-norm preservation,
+  layers 18–28, ot_ridge). Publisher-measured: refusal keywords 100/100 → 0/100
+  at KL 0.0276 (`zero_refusal: true`), custom mixed-language set. Honest
+  boundary: publisher-measured, no independent re-run, prompt set unpublished.
+- Hosting math: 60.14 GB BF16 across 13 shards — one H200; estimated managed
+  price $5.45/hour. vLLM: `vllm serve "0xSojalSec/Tencent-Hy-30B-A3B-uncensored-heretic"`.
+  GGUF quants (OS-Software Q4_K_M ~18.2 GB fits 24 GB GPU; mradermacher
+  i1-imatrix IQ1–IQ4). No Ollama page yet; Tencent FP8 twin is the aligned
+  fallback (5,407 downloads).
+- Editor profile: 0xSojalSec = Md Ismail Sojal (7 models); org label OS-Software
+  (19 models, mostly Japanese-targeted "heretic-ja" Heretic edits); no donation
+  link on this card. Base: Tencent Hunyuan (arXiv 2605.22064), WMT26 partner.
+- Reddit community search blocked (HTTP 403), gap noted in the post.
+- Blog now covers **25 field notes**; homepage latest-releases list, blog index,
+  RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated.
+
+### Website 0.11.3
+
+- Published a new model field note: **llmfan46/Laguna-S-2.1-Uncensored-Heretic**
+  — a Heretic weight edit of poolside's Laguna S 2.1 (118B total / ~8B active,
+  256 routed experts top-10 + 1 shared, 48 layers, 1M-token context,
+  OpenMDW-1.1), published 30 August 2026 by independent editor llmfan46 (HF PRO,
+  1,947 followers, 204 models, Ko-fi-funded). Publisher-measured: 6/100 refusals
+  vs 97/100 base at KL 0.0300. Honest boundary: editor's own evaluation set, no
+  independent re-run; card's comparison table mislabels the original as
+  Qwen3-Coder-Next (copy-paste bug), GGUF link broken/empty at writing
+  (`zero_refusal: false`).
+- Cross-check: second independent uncensored build of the same base
+  (Bizarrrr/Laguna-S-2.1-Uncensored, FriendliAI) measures EN refusals
+  92.71%→2.33% (686 prompts, Minos-v1), DE 74.49%→4.23% (NLLB-200
+  back-translation), XSTest 8.88%→1.87%, HumanEval 90.24%→85.37%.
+- Hosting math angle: "8B active" is routing, not storage — 218.99 GiB BF16
+  across 48 shards; estimated managed price $10.90/hour (2 × H200, 50–400B MoE
+  band). vLLM: `vllm serve "llmfan46/Laguna-S-2.1-Uncensored-Heretic"`. Base on
+  Ollama (q4_K_M ~96 GB).
+- Reddit community search blocked (HTTP 403), gap noted in the post.
+- Blog now covers **24 field notes**; homepage latest-releases list, blog index,
+  RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated.
+
+### Website 0.11.2
+
+- Published a new model field note: **Securelayer7/AFM-4.5B-Uncensored-
+  Abliterated** — the first Arcee Foundation Model abliteration, from
+  offensive-security vendor SecureLayer7. Heretic / Optuna TPE edit of the
+  attention output and MLP down-projections across all 36 layers, merged into
+  the weights; publisher-measured refusals 92/100 → 3/100 at KL 0.0200
+  (Apache-2.0, dense 4.5B, ~8.6 GiB). Honest boundary: partial edit, no
+  independent re-test, no discussions, zero downloads at research time
+  (`zero_refusal: false`); card itself requires serving-layer filtering.
+- Publisher context: SecureLayer7 (Pune and Austin, CREST/CERT-In/SOC 2/ISO
+  27001 per its own site), fifth uncensored release since 16 August alongside
+  the promptpurify guardrail; base AFM-4.5B trained on 8T tokens with GQA +
+  ReLU², 65,536-token native context (YaRN ×20).
+- Reddit community search blocked (HTTP 403), gap noted in the post.
+- Blog now covers 23 field notes (3 pages); homepage latest-releases list,
+  blog index, RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated;
+  estimated managed price $2.34/hour (1 × L40S class).
+
+### Website 0.11.1
+
+- Published a new model field note: **guell00/Velum-Unbound-Uncensored** — a
+  Heretic v1.4.0 decensor of Prism ML's 1-bit Bonsai-27B (a Qwen3.6-27B
+  derivative) repacked to Q1_0 GGUF at 1.125 bits per weight with a DSpark
+  speculative drafter. Full lineage sourced: gated Bonsai base → s3nh's FP16
+  edit (refusals 81/100 → 6/100, KL 0.0033, editor-measured) → Thox1-27b Q1_0
+  intermediate → Velum, published 28 August 2026 from Brazil (MIT card
+  license). Honest boundary: the refusal measurement belongs to the FP16
+  intermediate; the Q1_0 pack has no published re-test and every Velum
+  benchmark is TBD (`zero_refusal: false`).
+- Bonsai family context: ~3.1M total downloads across the 1-bit GGUF, MLX
+  1-bit and ternary packs; ~3.9 GB deployed footprint for a 27B-class model;
+  runs on llama.cpp (PrismML fork) including laptops.
+- Blog now covers 22 field notes (3 pages); homepage latest-releases list,
+  blog index, RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated;
+  estimated managed price $5.45/hour (1 × H200 class), with the cheaper
+  single-L40S path noted since the weight file is ~3.9 GB.
+
+### Website 0.11.0
+
+- Published a new model field note: **dealignai/Qwen3.8-Flash-Next-
+  ABLITERATED-FP8** — the Qwen4-experimental architecture (180B total / ~6B
+  active, Gated DeltaNet + micro-block QSA sparse attention + 512-expert MoE +
+  a 51.2B-parameter n-gram lookup table) abliterated five ways within 48 hours
+  of Qwen's 24 August release. dealignai's official-FP8 build is the served,
+  measured one: HarmBench-320 greedy real-harm compliance 100% (reasoning low)
+  / 99.6% (xhigh) / 97.1% (off), MMLU 86.36 → 83.86 (−2.50pp), ~81% MTP draft
+  acceptance, image + video working. Jiunsong's BF16 edit is the
+  architecture-aware method: 36 storage tensors → 6,168 logical output
+  projections, 842-pair corpus, hash-verified. Honest catch: released
+  vLLM/SGLang still do not support `qwen4_exp` (vLLM PR #53896, SGLang PR
+  #36497 open).
+- Published a new model field note: **dealignai/GLM-5.3-Flash-ABLITERATED-
+  FP8** — Zhipu's first natively multimodal GLM-5 (320B total / 18B active,
+  hybrid KDA linear + sparse attention, MIT) cracked at the weight level in
+  official FP8: HarmBench-320 greedy 320/320 complied with 0 refusals, 30/30
+  at temp 1.0 / top_p 0.95, MMLU-logit 86.74 → 86.26 (−0.48pp), decode 163 →
+  211 tok/s with the cracked MTP head (75.9% acceptance) on 4×H200. NVFP4 twin
+  (~165B safetensors) and an UNCENSORED-FP8 mirror with identical weights.
+- Blog now covers 21 field notes (3 pages); homepage latest-releases list,
+  blog index, RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated;
+  estimated managed price $10.90/hour (2 × H200 class) for both the 180B
+  Qwen4-preview MoE and the 320B GLM-5.3-Flash MoE.
+
+### Website 0.10.0
+
+- Published a new model field note: **HangGlidersRule/Darkstar-Nemotron-3.5-
+  Lightning-30B-A3B-Abliterated-BF16** — the first Nemotron-H coverage on this
+  site. NVIDIA's newest open model is a hybrid Mamba-2 + MoE + sparse-attention
+  30B-A3B built for agent execution; the Darkstar edit projects the layer-34
+  refusal direction out of 3,126 residual-writing tensors (2,944 routed-expert
+  down-projections, 23 shared-expert, 6 attention o_proj, 23 Mamba out_proj,
+  MTP head, embedding) with max normalized residual leakage 0.000160.
+  Publisher-measured behavior gate 200/200 harmful compliance, 0/83 safe
+  over-refusals (`zero_refusal: true`); NVFP4 twin (~22 GB) keeps Mamba/SSM
+  tensors in BF16 and scores GPQA 71.2% on one RTX PRO 6000 Blackwell, delta
+  to NVIDIA's 75.44 attributed to serving-stack config.
+- Blog now covers 19 field notes (3 pages); homepage latest-releases list, blog
+  index, RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated; estimated
+  managed price $5.45/hour (1 × H200 profile).
+
+### Website 0.9.9
+
+- Published a new model field note: **0xKitkat/Ornith-1.5-35B-A3B-Uncensored**
+  — the first task-vector transplant covered on this site: Qwen3.6's measured
+  uncensoring delta added to DeepReinforce's self-improving Ornith-1.5-35B-A3B
+  (102 of 693 compatible tensors modified, vision tower and MTP head intact,
+  0/16 heuristic refusals and 4/4 capability passes publisher-measured on a
+  llama.cpp Q4_K_M build with disclosed regex screening).
+- Same base, two classic edits covered alongside: alztrk's 40-layer
+  orthogonalization with a dynamic GGUF ladder (Q4_K_M 19.71 GB on consumer
+  GPUs) and pottokao's text-only single-direction ablation with an NVFP4
+  sibling. Angle: three uncensoring philosophies on one 35.9B MoE.
+- Blog now covers 18 field notes; homepage latest-releases list, blog index,
+  RSS, sitemap, `llms.txt` and `llms-full.txt` regenerated; estimated managed
+  price $5.45/hour (1 × H200 profile).
+
+### Website 0.9.8
+
+- Added the field note for `orcarouter/Qwen3.8-27B-Uncensored-FP8` (the
+  most-liked Qwen3.8 uncensored, 553 likes; gated OrcaRouter API at
+  $0.40/$4.21 per 1M tokens; third-party Artificial Analysis benchmarks).
+- Added prepared catalog profile `qwen38u` (`deployment_enabled=false`,
+  pinned revision `9228df5c6c9c509e1019f83b4e085cf643118bac`, 1 x H200) to
+  `config/mn.json` and `docs/MODELS.md`; five-model ceiling math updated.
+- Blog now covers 17 field notes; homepage, RSS, sitemap and llms surfaces
+  regenerated; settings and vLLM tests cover the five-profile catalog.
+
+### Website 0.9.7
+
+- Published two new model field notes: Goodoldjam's DiffusionGemma-26B-E38
+  abliterated NVFP4 (first abliterated diffusion LLM; 0/402 target refusals
+  publisher-measured; 1,053.64 tok/s aggregate on one RTX PRO 6000 Blackwell;
+  51.68 GB → 18.86 GB) and 0bserverx's Qwen3.8-27B RVN Heretic Abliterated
+  Uncensored GGUF (triple-pass ARA, KL 0.0085, refusals 0–1/100 measured,
+  106K downloads in four days; corrupted IQ3_M quant incident documented).
+- Homepage latest-releases list, blog index, RSS, sitemap, `llms.txt` and
+  `llms-full.txt` regenerated (16 posts).
+
+### Website 0.9.0
+
+- Added a homepage "Latest uncensored releases" section listing the ten
+  newest covered abliterated models with approximate managed price estimates,
+  generated from the blog manifest.
+- Published ten new source-linked field notes: Qwen3.8-27B (48-hour race),
+  Muse-Glimmer-30B standard and Aggressive variants, Kimi-K3-modal (2.78T,
+  not practically hostable), DeepSeek-V4-Flash-0731 refusal-directions dial,
+  CyberStrike-OffSec-35B, EmperoAI Qwen3.8-4B Heretic distill, Qwen3.6-27B,
+  Qwen3.5-9B, and GLM-4.6V-Flash.
+- Paginated the blog index (nine posts per page) with sitemap entries and
+  verifier coverage; all 14 posts remain reachable through RSS, `llms.txt`,
+  and `llms-full.txt`.
+- Extended Markdown content negotiation to every article route.
+- Documented anonymous agent registration in `auth.md` and made the local and
+  edge verifiers manifest-driven.
+
+### Agent-native daily publishing foundation
+
+- Added one manifest for model and transcript posts plus a dependency-free
+  build command that regenerates the blog index, RSS, sitemap, `llms.txt`, and
+  `llms-full.txt` without changing the existing article design.
+- Replaced hard-coded article lists in the local and edge verifiers with the
+  manifest and added regression coverage for every human and agent discovery
+  surface.
+- Expanded `auth.md` with the exact anonymous agent registration request and
+  discovery fields required by the published Worker endpoints.
+- Extended Markdown content negotiation from the homepage to every article
+  route, backed by its exact source-linked Markdown twin.
+- Documented the provenance boundary for transcript quotes, derivative scores,
+  upstream benchmarks, third-party tests, publisher claims and social signals.
+
+### Website 0.8.2
+
+- Replaced the brain-shaped point cloud with a deterministic 1,280-node
+  synapse field spanning the full hero on desktop and mobile.
+- Changed resting connections and pointer-activated lightning to pastel pink,
+  blue, green, peach and violet.
+- Removed brain contours, cortical folds and the static brain fallback while
+  retaining pointer interaction, viewport pausing and reduced-motion support.
+- Updated regression coverage for the full-hero bounds and pastel palette.
+
+### Website 0.8.1
+
+- Increased the hero network from at most six to ten local connections per
+  point and widened its local connection radius from `0.145` to `0.165`,
+  producing substantially more visible synapses without adding dependencies.
+- Restored a directional fade over the left side of the brain so the headline,
+  lead and actions remain easy to read while the complete right hemisphere
+  stays crisp.
+- Added regression coverage for both the increased synapse density and the
+  precise left-to-right fade.
+
+### Website 0.8.0
+
+- Added a complete model field-notes blog with one source-linked HTML and
+  Markdown article for every exact catalog artifact, covering model lineage,
+  architecture, parameter and storage numbers, context, post-training,
+  abliteration, quantization, evaluation boundaries, public publishers and
+  deployment implications.
+- Added `TechArticle` and `Blog` structured data, canonical metadata, an RSS
+  feed, sitemap entries, homepage discovery, and agent-readable article links
+  in `llms.txt` and `llms-full.txt`.
+- Replaced shorthand blog headings with full Hugging Face `owner/repository`
+  identities and explicitly distinguish publisher measurements, upstream
+  benchmarks, hosting choices, and unverified derivative capability.
+- Refined the Canvas hero into a denser 1,280-node brain with more synapses,
+  visible cortical fold paths, a stronger contour and no opacity fade.
+- Changed the supporting statement to exactly “Abliterated open models. One
+  simple API.”
+- Replaced the corner mark and browser favicon with a brain-and-synapse symbol
+  and supplied SVG, 32 px PNG, 192 px PNG, 512 px PNG and ICO variants.
+- Expanded regression coverage for the four articles, exact model IDs,
+  primary-source sections, JSON-LD, internal links, RSS discovery, sitemap
+  inclusion and icon completeness.
+- Fixed a Cloudflare Static Assets redirect loop by preserving canonical
+  trailing slashes when the Worker passes blog directory requests to the asset
+  binding.
+- Replaced informational OAuth route stubs with a truthful anonymous
+  `client_credentials` flow limited to public metadata and made the public
+  verifier require an exact computed 100 score.
+
+### Website custom domain
+
+- Configured `abliterated.cloud` as the production GitHub Pages custom domain
+  and added the matching deploy-time `website/CNAME` file.
+- Replaced Porkbun parking DNS with GitHub's four official apex A records, four
+  apex AAAA records, and `www` CNAME while retaining Porkbun nameservers.
+- Changed canonical, Open Graph, structured-data, sitemap, robots, LLM index,
+  and Agent Skill URLs from the temporary project path to the production
+  origin.
+- Documented GitHub TLS provisioning, public verification commands, and the
+  distinction between the active static Pages site and the optional prepared
+  Cloudflare edge layer.
+
+### Model identity migration
+
+- Replaced the public shorthand identities with exact Hugging Face repository
+  IDs throughout the prepared API, clients, website, and current operations
+  documentation. The short selectors are now `qwen36`, `ornith35`,
+  `qwythos9`, and `ornith397`.
+- Renamed the prepared Modal applications to
+  `huihui-qwen3-6-35b-a3b-abliterated`,
+  `yuyu1015-ornith-1-0-35b-abliterated`,
+  `huihui-qwythos-9b-claude-mythos-5-1m-abliterated`,
+  `cebeuq-ornith-1-0-397b-abliterated-w4a16`, and
+  `abliterated-cloud-api`. This prepares definitions only; it does not deploy
+  or start them.
+- Retained `mn/god`, `mn/code`, `mn/fast`, `mn/ornith-397b`, and
+  `nuri/ornith-397b-abliterated` solely as backwards-compatible aliases.
+- Kept Ornith 397B visible in the catalog but changed it to
+  `deployment_enabled=false`; release preflight must reject it until a future
+  signed, budget-approved change explicitly enables the two-H200 profile.
+
+### Fixed
+
+- Changed `mn start MODEL` from an indefinite `min_containers=1` warm mode to a
+  fail-safe automatic route plus one explicit wake.
+- Reapply `min_containers=0`, `max_containers=1`, and the tracked idle window
+  whenever automatic mode is armed; failures leave the route hard-stopped.
+- Reduced backend and gateway cold-start timeouts from 90/45 minutes to
+  30 minutes.
+- Register public read-only WebMCP tools in the loaded landing page instead of
+  publishing only the static WebMCP manifest.
+
+### Security
+
+- Reduced the idle shutdown window from ten to five minutes and reject tracked
+  values above 300 seconds.
+- Require an explicit model for `start`, `auto`, and `wake`.
+- Leave every model hard-stopped after release smoke tests instead of restoring
+  all routes to wakeable automatic mode.
+- Added regression tests that forbid a normal warm-container floor.
+
+### Documentation
+
+- Added `mn/ornith-397b` to the source catalog, pinned to
+  `cebeuq/Ornith-1.0-397B-abliterated-W4A16` revision
+  `e5651d291be1c65ff1360eee47ab533ab13b3d97`, with MIT metadata,
+  conservative 32,768 context, 8,192 output, and a two-H200
+  `$9.0792/hour` estimate.
+- Prepared the retained 397B profile and then disabled deployment by default;
+  it remains documented without authorizing a two-H200 release.
+- Documented the potential four-model ceiling of `$20.1096/hour` and
+  `$1.6758` for five-minute idle tails, while preserving `$11.0304/hour` as
+  the current three-route deployment ceiling.
+- Added a full post-incident report for the 2026-07-16 Modal GPU cost event,
+  including the `$45.9634` pre-credit breakdown, verified timeline, root
+  causes, limitations, containment, and safe operating procedure.
+- Rewrote start/stop guidance around hard-stop by default, one explicit model,
+  five-minute idle scale-down, actual billing inspection, and the mandatory
+  Modal Workspace budget.
+- Expanded the README into a complete architecture and operations guide with
+  Mermaid diagrams for routing, cold starts, lifecycle state, token security,
+  cloud storage, capacity, and the future resale stack.
+- Documented the original 397B direction, the 35B/35B/9B catalog decision,
+  provider comparison, current official price calculations, multi-user
+  capacity, client-specific setup, troubleshooting, and commercial gaps.
+- Added curated historical release notes for every published version.
+- Replaced the stale release-command example with a neutral version example.
+
+### Changed
+
+- Replaced the loose hero point cloud with a closed lateral brain silhouette,
+  denser internal neural network and subtle depth motion so the visual reads
+  immediately as a brain rather than a globe.
+- Added pointer-reactive local brain regions whose connected points and lines
+  glow in cyan, magenta, lime, orange or violet, with a static interactive
+  response preserved for reduced-motion users.
+- Set the hero statement to “Intelligence, freed. Uncensored, abliterated AI.”
+  with responsive line sizing and no forced break inside the second line.
+- Unified the landing page around one Geist Mono-compatible local font stack
+  and raised every fixed UI font size to a minimum of 17 px, including
+  navigation, buttons, labels, repository identities, model facts and code.
+- Refined the bright landing page around a narrower, calmer product layout
+  inspired by Routstr's visual restraint while retaining an independently
+  implemented design and the complete ABLITERATED.cloud content.
+- Replaced the static hero artwork with a dependency-free point-cloud brain
+  that pauses offscreen, respects reduced-motion preferences, caps pixel
+  density, and falls back to the owner-supplied artwork without JavaScript.
+- Added a prominent GitHub star action and consolidated the hero into one
+  readable message, two direct actions, and one factual private-beta note.
+- Future GitHub releases now use the matching curated `CHANGELOG.md` section
+  instead of publishing only automatically generated commit links.
+- Website releases now publish an append-only signed `gh-pages` commit and
+  signed tag atomically, explicitly request the classic Pages build, verify the
+  deployed commit and HTTP response, and only then create the GitHub release.
+- Reworked the ABLITERATED.cloud catalog for non-technical visitors and SEO:
+  every card now leads with the complete real Hugging Face repository name,
+  upstream architecture and license metadata, reduced-refusal terminology,
+  the local API shortcut, base GPU cost, and an exact planned 20% markup.
+- Clarified that model weight downloads are free while managed cloud inference
+  is paid, and that customer billing, metering, balances, and invoicing are not
+  live yet.
+- Reframed the public landing page around the original line “Intelligence,
+  freed.” with owner-supplied brain-and-broken-chains hero artwork, a quieter
+  neutral visual system, and clearer background on artifact identity,
+  lifecycle control, pricing, and open-source inspectability.
+- Simplified public pricing to show only ABLITERATED.cloud model prices and
+  removed markup and margin explanations from the active landing page and
+  machine-readable product documents.
+- Replaced active WhatsApp access requests with the verified Signal phone link
+  `https://signal.me/#p/+13103408213`; historical release notes remain intact.
+- Rebuilt the public landing page with larger typography, more whitespace,
+  fewer decorative interface components, readable factual model headings,
+  and exact linked Hugging Face repositories as primary API model IDs.
+
+### Added
+
+- Added regression coverage for the animated brain's accessibility and
+  lifecycle safeguards, the GitHub CTA, local-only runtime, and preload budget.
+- Added the open-source `website/` landing page for ABLITERATED.cloud with a
+  dependency-free responsive design, signed branch-based GitHub Pages
+  deployment, WhatsApp access CTA, exact four-model catalog, cost
+  transparency, OpenAPI description, Markdown alternative, `llms.txt`, Agent
+  Skill discovery, sitemap, robots and Content Signals policy, and structured
+  SEO metadata.
+- Added a tested release-note extractor that fails if the requested version is
+  missing or empty.
+- Added the exact `cebeuq/Ornith-1.0-397B-abliterated-W4A16` identity with the
+  compatibility aliases `mn/ornith-397b` and
+  `nuri/ornith-397b-abliterated` as a disabled fourth source profile.
+- Added `--allow-expensive` acknowledgement for 397B start, auto, wake, and
+  launch operations.
+- Added a release-wide `MN_RELEASE_ORNITH397=I_ACCEPT_2XH200` gate that must be
+  present before deploying and smoke-testing all four routes.
+- Added a Cloudflare Worker edge layer with Markdown negotiation, discovery
+  headers, exact machine-readable media types, OAuth protected-resource
+  discovery, A2A, MCP, Agent Skills, WebMCP, HTTP-signature discovery, and a
+  local agent-readiness verification command.
+
+## [0.3.1] - 2026-07-16
+
+### Fixed
+
+- Replaced five-second cold-start polling with exponential backoff so long
+  Modal starts do not accumulate redundant pending GPU invocations.
+
+## [0.3.0] - 2026-07-16
+
+### Added
+
+- Three independently autoscaling catalog models: `mn/god`, `mn/code`, and
+  `mn/fast`.
+- Strict model routing, per-model lifecycle records, and isolated wake/status
+  endpoints.
+- Model selection for Hermes, Pi, OpenCode, CLI controls, and endpoint tests.
+- Pinned model/license record with the documented Qwen3.6 compatibility
+  fallback.
+- Apache-2.0 project license.
+- Request-side 16,384-token output enforcement.
+
+### Changed
+
+- Replaced the single 397B backend with two 35B H200 profiles and one 9B L40S
+  profile.
+- Increased the advertised and served context from 65,536 to 131,072 tokens.
+- Made hard stop and automatic mode operate per backend without affecting the
+  other catalog models.
+- Updated the release workflow to deploy all three backends and the shared
+  gateway under one signed release.
+- Persisted and shared FlashInfer CUDA kernels across scale-to-zero cold
+  starts.
+- Disabled Qwen thinking by default for clients that consume only the standard
+  OpenAI `content` field; requests can explicitly opt back in.
+- Aligned every catalog model with the XML tool-call format declared by its
+  pinned Hugging Face chat template.
+- Persisted the selected catalog profile inside each Modal image so runtime
+  imports cannot fall back to the default model.
+- Retry a transient Modal recreate-rollover timeout once while keeping the
+  affected route fail-closed.
+
+### Security
+
+- Backend destinations and model aliases are resolved only from the tracked
+  catalog.
+- Unknown or malformed model IDs and excessive output requests fail before an
+  upstream client is created.
+- Expanded Docker-context exclusions for environment files and local agent
+  credentials.
+
+## [0.2.0] - 2026-07-16
+
+### Added
+
+- API-triggered cold starts with gateway-side waiting through Modal 503s.
+- Ten-minute idle GPU shutdown through `mn auto`.
+- Authenticated `/wake` endpoint used automatically by agent launchers.
+- Named Hermes custom provider with remote-endpoint timeout hardening.
+- 65,536-token backend context required by Hermes Agent.
+- Immediate termination of running or pending model containers on hard stop.
+
+### Changed
+
+- Automatic mode is now the recommended default; manual warm and hard-stop
+  modes remain available.
+- vLLM opens the pinned local Hugging Face snapshot directly in offline mode.
+- Entering auto mode from a stopped state no longer creates a Pending server.
+- Hard stop resets the immutable deployment with a recreate rollover.
+- Auto mode normally changes only control state; recovery deploys require a
+  clean, verified signed HEAD.
+- Gateway streaming decodes compressed upstream chunks before forwarding.
+
+### Security
+
+- Cold-start polling rechecks hard-stop state before every probe and retry.
+- Application-level 503 responses are no longer mistaken for Modal cold starts.
+
+## [0.1.0] - 2026-07-16
+
+### Added
+
+- Minimal `mn` menu and start, stop, status, API, token, and launch commands.
+- First-class Hermes Agent launcher using its custom OpenAI-compatible provider.
+- Launchers for Pi and OpenCode.
+- Lightweight Modal FastAPI gateway with standard Bearer authentication.
+- Multiple named API tokens with revocation and digest-only remote storage.
+- Clipboard-only retrieval for the Keychain-backed owner token.
+- Explicit gateway state that prevents stopped clients from waking the GPU.
+- OpenAI-compatible `/v1/models` and transparent `/v1/*` proxying.
+- Local gateway and token security tests.
+- Signed deployment and release workflow.
+
+### Changed
+
+- Pi now uses the shared MN gateway instead of Modal proxy headers.
+- The model server is controlled through dynamic Modal autoscaler settings.
+
+### Security
+
+- Agent credentials, sessions, environment files, and runtime state are ignored.
+- The owner token is stored in the macOS Keychain.
+- Modal backend credentials are isolated in a Modal Secret.
+- Gateway docs and permissive cross-origin access are disabled.

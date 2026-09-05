@@ -1,63 +1,33 @@
 ---
 name: abliterated-cloud
-description: Use ABLITERATED.cloud safely through its token-protected OpenAI-compatible Chat Completions API.
-license: Apache-2.0
+description: Read the project status and operate authorized private Vast.ai evaluation with llama.cpp.
+license: MIT
 metadata:
   homepage: https://abliterated.cloud/
-  repository: https://github.com/eminogrande/mn-uncensored
+  repository: https://github.com/eminogrande/ai-uncensored-abliterated-cloud
 ---
 
 # ABLITERATED.cloud
 
-Use this skill when a user wants to call an ABLITERATED.cloud model through an OpenAI-compatible client.
+Public documentation and an editorial archive for private on-demand evaluation on Vast.ai with llama.cpp. Not a hosted model catalog. No public inference or live MCP service is offered.
 
-## Safety boundary
+## Read first
 
-- Never invent or expose an API token.
-- Obtain the token only from the user's existing secret store or environment.
-- Never write a token into source code, logs, configuration committed to Git, or a public issue.
-- Do not assume an unavailable model will wake automatically.
-- Do not start, arm, wake, or launch `cebeuq/Ornith-1.0-397B-abliterated-W4A16` without explicit operator cost acknowledgement.
-- Do not claim that "abliterated" guarantees zero refusals or correctness.
+1. Read [the dated status snapshot](https://abliterated.cloud/.well-known/project-status.json) and its evidence limits. It is not live polling.
+2. Read the current Vast operating documentation in the [repository](https://github.com/eminogrande/ai-uncensored-abliterated-cloud). Modal is an archived approach, not the current operating path.
+3. Use [the access boundary](https://abliterated.cloud/auth.md). Public documentation grants no inference access.
 
-## Connection
+## Private operation
 
-Use the operator-provided base URL ending in `/v1`.
+- Confirm actual provider state, instance identity, retained disk and current price before operating. Obtain explicit authorization before incurring GPU costs or changing infrastructure.
+- Start manually. Use the operator-controlled SSH tunnel to private localhost:8080. Do not expose llama.cpp to the public internet.
+- Confirm the actual loaded artifact, quantization, runtime and configuration. Do not use blog entries as model IDs or claim they are available.
+- Run a small health and completion check before evaluating capability. A 262144 configured context is not long-context validation.
+- Stop manually after testing and read back state. No automatic idle shutdown is proven. Stopping retains disk and ongoing storage charges; it is not deletion.
+- Keep private account details, host addresses, credentials and keys out of public records. Never invent credentials.
 
-Authenticate with:
+## Evidence and licenses
 
-```http
-Authorization: Bearer sk-mn-...
-```
+Do not promise zero refusals, correctness, a best model or comparable speed based on old runs. Record exact artifact, settings, test scope and date for any new evaluation. Archived publisher metrics and historical price estimates are not present guarantees or offers.
 
-## Models
-
-- `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated` — Qwen3.6 35B A3B — Abliterated.
-- `YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated` — Ornith 1.0 35B — Abliterated.
-- `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated` — Qwythos 9B Claude Mythos 5 — Abliterated.
-- `cebeuq/Ornith-1.0-397B-abliterated-W4A16` — Ornith 1.0 397B W4A16 — Abliterated.
-
-The exact Hugging Face repository ID is also the primary API model ID. Compatibility aliases for existing clients are `mn/god`, `mn/code`, `mn/fast`, `mn/ornith-397b`, and `nuri/ornith-397b-abliterated`.
-
-## Supported contract
-
-Prefer:
-
-- `GET /v1/models`
-- `POST /v1/chat/completions`
-- streaming
-- OpenAI-style `tools` and `tool_choice`
-
-Do not assume full parity with every OpenAI API endpoint.
-
-## Before a call
-
-1. Confirm the desired public model ID.
-2. Confirm the route is armed or started.
-3. Confirm the user understands cold-start latency.
-4. For 397B, confirm the explicit two-H200 cost acknowledgement.
-5. Use a conservative `max_tokens` value for the first request.
-
-## After testing
-
-Tell the operator to hard-stop the model instead of relying only on the idle window.
+MIT covers project-owned code and website only. Upstream/model licenses and restrictions remain unchanged. Consult each exact artifact's license before use.

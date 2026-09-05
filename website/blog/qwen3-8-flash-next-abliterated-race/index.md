@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # The 180B abliteration race on the model nobody can serve yet
 
 Published 27 August 2026. Exact artifact: `dealignai/Qwen3.8-Flash-Next-ABLITERATED-FP8`, revision `8d5a44586872fe3a22cfd14398894bc0fd054e29`.

@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://abliterated.cloud/</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://abliterated.cloud/index.md</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/llms.txt</loc><lastmod>2026-08-31</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/openapi.json</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://abliterated.cloud/blog/</loc><lastmod>2026-08-31</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://abliterated.cloud/blog/feed.xml</loc><lastmod>2026-08-31</lastmod><changefreq>daily</changefreq><priority>0.5</priority></url>
-  <url><loc>https://abliterated.cloud/blog/page/2/</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://abliterated.cloud/blog/page/3/</loc><lastmod>2026-08-31</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/</loc><lastmod>2026-08-31</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/</loc><lastmod>2026-08-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/</loc><lastmod>2026-08-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/glm-5-3-flash-crack/</loc><lastmod>2026-08-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/</loc><lastmod>2026-08-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/</loc><lastmod>2026-08-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/</loc><lastmod>2026-08-19</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/</loc><lastmod>2026-08-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/</loc><lastmod>2026-08-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/kimi-k3-abliterated-modal/</loc><lastmod>2026-08-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/diffusiongemma-26b-e38-abliterated-nvfp4/</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/</loc><lastmod>2026-08-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/qwen3-8-27b-rvn-heretic-abliterated-uncensored/</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/huihui-deepseek-v4-flash-0731-abliterated/</loc><lastmod>2026-08-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/muse-glimmer-30b-abliterated/</loc><lastmod>2026-08-12</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/huihui-cyberstrike-offsec-35b-abliterated/</loc><lastmod>2026-08-10</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/qwythos-9b-claude-mythos-5-1m-abliterated/</loc><lastmod>2026-07-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/</loc><lastmod>2026-07-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/</loc><lastmod>2026-07-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/</loc><lastmod>2026-07-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/</loc><lastmod>2026-08-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/</loc><lastmod>2026-08-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/</loc><lastmod>2026-08-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://abliterated.cloud/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/index.md</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/llms.txt</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/llms-full.txt</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/auth.md</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/openapi.json</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/feed.xml</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/page/2/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/page/3/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/glm-5-3-flash-crack/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/kimi-k3-abliterated-modal/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/diffusiongemma-26b-e38-abliterated-nvfp4/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/qwen3-8-27b-rvn-heretic-abliterated-uncensored/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/huihui-deepseek-v4-flash-0731-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/muse-glimmer-30b-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/huihui-cyberstrike-offsec-35b-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/qwythos-9b-claude-mythos-5-1m-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
+<url><loc>https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/</loc><lastmod>2026-09-05</lastmod></url>
 </urlset>

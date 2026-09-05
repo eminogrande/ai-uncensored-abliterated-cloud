@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "status": "historical-archive-not-current-operations",
+  "source_commit": "2888dbfb99b81a87ceadb937d29ac2c61632619d",
+  "source_repository": "https://github.com/eminogrande/ai-uncensored-abliterated-cloud",
+  "source_path_basis": "Repository-relative paths at source_commit; archived paths are relative to current repository root.",
+  "files": [
+    {
+      "original_path": ".dockerignore",
+      "archived_path": "archive/modal/.dockerignore",
+      "method": "baseline-copy",
+      "source_sha256": "736801f039f9182cca879b044efbf805c9f57dde7d9c0f1cc0a157122d12b5b4",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "736801f039f9182cca879b044efbf805c9f57dde7d9c0f1cc0a157122d12b5b4",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": ".gitignore",
+      "archived_path": "archive/modal/.gitignore",
+      "method": "baseline-copy",
+      "source_sha256": "2c7696ef26885ac77957a6c38a639335eafcab254d6f6f8f9daa427fb770edc7",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "2c7696ef26885ac77957a6c38a639335eafcab254d6f6f8f9daa427fb770edc7",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "CHANGELOG.md",
+      "archived_path": "archive/modal/CHANGELOG.md",
+      "method": "baseline-copy",
+      "source_sha256": "4832f8158b1acb7bc37c2e382eaf00b24410ba699caf56c3465808b5385bec25",
+      "adjustments": [
+        "Prepend a historical archive banner; preserve the original document body unchanged."
+      ],
+      "source_git_mode": "100644",
+      "archived_sha256": "2b64f4416bad02997b172065d5d9ea0abf45db229f1d522669a55653ea1e5458",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "README.md",
+      "archived_path": "archive/modal/README.original.md",
+      "method": "baseline-copy",
+      "source_sha256": "ef4ffe77246dc5867c970a9f037856780a706ad9f18ab3fdd1bd786a906237f1",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "ef4ffe77246dc5867c970a9f037856780a706ad9f18ab3fdd1bd786a906237f1",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "SECURITY.md",
+      "archived_path": "archive/modal/SECURITY.md",
+      "method": "baseline-copy",
+      "source_sha256": "54fdf55b414bc81dd0c19e0ec00e6a9b8974ebfbcca040eb4045bf243d3c3db7",
+      "adjustments": [
+        "Prepend a historical archive banner; preserve the original document body unchanged."
+      ],
+      "source_git_mode": "100644",
+      "archived_sha256": "2d15e5ebcbf7cfca00ed96addd8d2f89b29eef10010c9242c4dad918509ed251",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "config/mn.json",
+      "archived_path": "archive/modal/config/mn.json",
+      "method": "git-move",
+      "source_sha256": "a26a11f6fec1cc83f855ae5c93a4e9bcd61d37164176346cdfeaa75177d3cbd6",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "a26a11f6fec1cc83f855ae5c93a4e9bcd61d37164176346cdfeaa75177d3cbd6",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "config/pi-agent/models.json",
+      "archived_path": "archive/modal/config/pi-agent/models.json",
+      "method": "git-move",
+      "source_sha256": "267ba2a6ceed141aef281b19b3543070a51b5d36b2a9d67e2671c79322b86e40",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "267ba2a6ceed141aef281b19b3543070a51b5d36b2a9d67e2671c79322b86e40",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "deployment.env.example",
+      "archived_path": "archive/modal/deployment.env.example",
+      "method": "git-move",
+      "source_sha256": "e6dcd4cadf1873b2131e250ed3883bb320c56d603eb50bcb3b4bee5e2f9f9c8e",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "e6dcd4cadf1873b2131e250ed3883bb320c56d603eb50bcb3b4bee5e2f9f9c8e",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "docs/INCIDENT-2026-07-16-MODAL-COST.md",
+      "archived_path": "archive/modal/docs/INCIDENT-2026-07-16-MODAL-COST.md",
+      "method": "git-move",
+      "source_sha256": "1626fcf97325dbe03ca096c3e451fd0d83b610716cce713821e36cc11fba2a12",
+      "adjustments": [
+        "Prepend a historical archive banner; preserve the original document body unchanged."
+      ],
+      "source_git_mode": "100644",
+      "archived_sha256": "b1e6c8680c9615407332e7cb8e31e4ff19662e2f1e64e546d5b74ab317977f5d",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "docs/MODELS.md",
+      "archived_path": "archive/modal/docs/MODELS.md",
+      "method": "git-move",
+      "source_sha256": "3243a9eddd1e48663c5b727fb4e2219722fa60fe31ffe9f36c4579076b3f2e90",
+      "adjustments": [
+        "Prepend a historical archive banner; preserve the original document body unchanged."
+      ],
+      "source_git_mode": "100644",
+      "archived_sha256": "f0d2ccf5dcecd67ce8e6e245ffb0d36face66829905c9da41ce21f84645fd9a0",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "docs/OPERATIONS.md",
+      "archived_path": "archive/modal/docs/OPERATIONS.md",
+      "method": "git-move",
+      "source_sha256": "80df632b6265d0e59e3b61c27eb9bd9a941b8c3b23e4cf0575d8ea2c157c8396",
+      "adjustments": [
+        "Prepend a historical archive banner; preserve the original document body unchanged."
+      ],
+      "source_git_mode": "100644",
+      "archived_sha256": "67154e173b8a877d94c9619b27a01f5a8098455cf36be598a352b63ea168e588",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "docs/RELEASE_NOTES.md",
+      "archived_path": "archive/modal/docs/RELEASE_NOTES.md",
+      "method": "git-move",
+      "source_sha256": "00a8f91d910f9c47b392b4c12a3309366e3348015059c4542bc3567ab603d5a9",
+      "adjustments": [
+        "Prepend a historical archive banner; preserve the original document body unchanged."
+      ],
+      "source_git_mode": "100644",
+      "archived_sha256": "1db58780780116c322dd7a4f534b7ce5e0f8c1ec419c2150c0a3d99355815b79",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "modal_gateway.py",
+      "archived_path": "archive/modal/modal_gateway.py",
+      "method": "git-move",
+      "source_sha256": "625d86791f40542b82d708972fa8468c89d1a2cc743f9a88b63b5e68a63c1ee7",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "625d86791f40542b82d708972fa8468c89d1a2cc743f9a88b63b5e68a63c1ee7",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "modal_vllm.py",
+      "archived_path": "archive/modal/modal_vllm.py",
+      "method": "git-move",
+      "source_sha256": "d5ca5448294bca1a12694919cd71a3e1ab8c3863dfa2ec044c8bb35cf947685c",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "d5ca5448294bca1a12694919cd71a3e1ab8c3863dfa2ec044c8bb35cf947685c",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "pyproject.toml",
+      "archived_path": "archive/modal/pyproject.toml",
+      "method": "git-move",
+      "source_sha256": "51c3cbba71f1baab826e85aa5ae80a257577f259fd05bcb81ca593c6b7407c9e",
+      "adjustments": [
+        "Label package description as historical; change current owner-code license metadata to MIT. Original Apache-2.0 provenance is retained in Git and archive/licenses/Apache-2.0.txt."
+      ],
+      "source_git_mode": "100644",
+      "archived_sha256": "16f4b2e2b7818f2dbdd964c68efb826fa7cb6625b56a82718df309940004dac0",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "run-pi.sh",
+      "archived_path": "archive/modal/run-pi.sh",
+      "method": "git-move",
+      "source_sha256": "c4a1d5323d7528f96c6d410a1579f5a88b11953f4d913a704aceac749c1eb968",
+      "adjustments": [],
+      "source_git_mode": "100755",
+      "archived_sha256": "c4a1d5323d7528f96c6d410a1579f5a88b11953f4d913a704aceac749c1eb968",
+      "archived_git_mode": "100755"
+    },
+    {
+      "original_path": "scripts/check-secrets.sh",
+      "archived_path": "archive/modal/scripts/check-secrets.sh",
+      "method": "baseline-copy",
+      "source_sha256": "2cf074892006a67b80345172b9b91c93933c938d34483099c5662e53880f24bd",
+      "adjustments": [
+        "Resolve the enclosing Git repository root before scanning repository-relative staged paths from the nested archive."
+      ],
+      "source_git_mode": "100755",
+      "archived_sha256": "f9c83175ff3a52f148597b1f78561d93607317518dd5c4fc6b616a47b199989d",
+      "archived_git_mode": "100755"
+    },
+    {
+      "original_path": "scripts/deploy-release.sh",
+      "archived_path": "archive/modal/scripts/deploy-release.sh",
+      "method": "git-move",
+      "source_sha256": "fa01639d398625e36138f2a96d6f058b701b76a6bd983fa7fbc81d35132b1400",
+      "adjustments": [],
+      "source_git_mode": "100755",
+      "archived_sha256": "fa01639d398625e36138f2a96d6f058b701b76a6bd983fa7fbc81d35132b1400",
+      "archived_git_mode": "100755"
+    },
+    {
+      "original_path": "scripts/extract-release-notes.py",
+      "archived_path": "archive/modal/scripts/extract-release-notes.py",
+      "method": "git-move",
+      "source_sha256": "769dde6609ceb1e1d97f3e88a7111ef4a38cde8744e8d0108c58ca1a7ea27954",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "769dde6609ceb1e1d97f3e88a7111ef4a38cde8744e8d0108c58ca1a7ea27954",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "scripts/install-macos.sh",
+      "archived_path": "archive/modal/scripts/install-macos.sh",
+      "method": "git-move",
+      "source_sha256": "af50d28c21cea85213ed254f6d351df87bb1904f7890bf7db048628918252940",
+      "adjustments": [],
+      "source_git_mode": "100755",
+      "archived_sha256": "af50d28c21cea85213ed254f6d351df87bb1904f7890bf7db048628918252940",
+      "archived_git_mode": "100755"
+    },
+    {
+      "original_path": "scripts/smoke-catalog.py",
+      "archived_path": "archive/modal/scripts/smoke-catalog.py",
+      "method": "git-move",
+      "source_sha256": "c57c78e68167ecc3e10c39691dba2ff399843d986bafa19718728691d9e18aae",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "c57c78e68167ecc3e10c39691dba2ff399843d986bafa19718728691d9e18aae",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "scripts/sync-modal-secret.sh",
+      "archived_path": "archive/modal/scripts/sync-modal-secret.sh",
+      "method": "git-move",
+      "source_sha256": "de4e6da6da78e20acc4cca2774da851b6026bde5f76dcc91639e9935235ddbc1",
+      "adjustments": [],
+      "source_git_mode": "100755",
+      "archived_sha256": "de4e6da6da78e20acc4cca2774da851b6026bde5f76dcc91639e9935235ddbc1",
+      "archived_git_mode": "100755"
+    },
+    {
+      "original_path": "src/mn_uncensored/__init__.py",
+      "archived_path": "archive/modal/src/mn_uncensored/__init__.py",
+      "method": "git-move",
+      "source_sha256": "778bb95eb43767eec1b1fadd737a5684c21d67af21f003f9458a6ee1bf3ed3c6",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "778bb95eb43767eec1b1fadd737a5684c21d67af21f003f9458a6ee1bf3ed3c6",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "src/mn_uncensored/cli.py",
+      "archived_path": "archive/modal/src/mn_uncensored/cli.py",
+      "method": "git-move",
+      "source_sha256": "bb9169801d0226cd17995c4a1cfaab47fe2a6f607076a2ccb62f126f9a125312",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "bb9169801d0226cd17995c4a1cfaab47fe2a6f607076a2ccb62f126f9a125312",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "src/mn_uncensored/gateway.py",
+      "archived_path": "archive/modal/src/mn_uncensored/gateway.py",
+      "method": "git-move",
+      "source_sha256": "0cc46009ad75094f0ced6f8eb59279c6d5a54d3bc37d653e9a11a59e18fddecc",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "0cc46009ad75094f0ced6f8eb59279c6d5a54d3bc37d653e9a11a59e18fddecc",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "src/mn_uncensored/security.py",
+      "archived_path": "archive/modal/src/mn_uncensored/security.py",
+      "method": "git-move",
+      "source_sha256": "03e7df26be501d0057f199223c4afca425bf0cd3df3bfb2238810d3ad320e47e",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "03e7df26be501d0057f199223c4afca425bf0cd3df3bfb2238810d3ad320e47e",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "src/mn_uncensored/settings.py",
+      "archived_path": "archive/modal/src/mn_uncensored/settings.py",
+      "method": "git-move",
+      "source_sha256": "3ebb30723aa9e72796e35433ac45c21ee4153283fa8ee52dc2c0df3a2074e0a8",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "3ebb30723aa9e72796e35433ac45c21ee4153283fa8ee52dc2c0df3a2074e0a8",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "src/mn_uncensored/vllm.py",
+      "archived_path": "archive/modal/src/mn_uncensored/vllm.py",
+      "method": "git-move",
+      "source_sha256": "f0660617f5e48f9b8981ba4a629f9d980da9fc51f49b4d43b199deb2e5d58cfb",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "f0660617f5e48f9b8981ba4a629f9d980da9fc51f49b4d43b199deb2e5d58cfb",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "test_endpoint.py",
+      "archived_path": "archive/modal/test_endpoint.py",
+      "method": "git-move",
+      "source_sha256": "3d8ecfe2194efcdeac28e6f6bb3210c76db9b8ef8fd7cf4f10f6f4c8c180ed27",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "3d8ecfe2194efcdeac28e6f6bb3210c76db9b8ef8fd7cf4f10f6f4c8c180ed27",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "tests/test_cli.py",
+      "archived_path": "archive/modal/tests/test_cli.py",
+      "method": "git-move",
+      "source_sha256": "391e3670bff6286da2a89a2c3f28a208d8f4804f43bf5e757098be09780d9dcf",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "391e3670bff6286da2a89a2c3f28a208d8f4804f43bf5e757098be09780d9dcf",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "tests/test_gateway.py",
+      "archived_path": "archive/modal/tests/test_gateway.py",
+      "method": "git-move",
+      "source_sha256": "0ad8d077eb64f7e8b250ccabc5e560a441c178aa51e3ccd00a19151fe98b0e09",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "0ad8d077eb64f7e8b250ccabc5e560a441c178aa51e3ccd00a19151fe98b0e09",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "tests/test_release_notes.py",
+      "archived_path": "archive/modal/tests/test_release_notes.py",
+      "method": "git-move",
+      "source_sha256": "c7aa934d6f2d950ee83f9dbc60dbc3172cf658c043e7ecc0105709717f42ac3c",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "c7aa934d6f2d950ee83f9dbc60dbc3172cf658c043e7ecc0105709717f42ac3c",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "tests/test_security.py",
+      "archived_path": "archive/modal/tests/test_security.py",
+      "method": "git-move",
+      "source_sha256": "22525a9fe5ecc90052f71a1ce807f6575415cd23f5d491148707101842c98606",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "22525a9fe5ecc90052f71a1ce807f6575415cd23f5d491148707101842c98606",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "tests/test_settings.py",
+      "archived_path": "archive/modal/tests/test_settings.py",
+      "method": "git-move",
+      "source_sha256": "536b69399d3edf3419c56a707259860af8c7462ad4e47cf8c78652929ceea74a",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "536b69399d3edf3419c56a707259860af8c7462ad4e47cf8c78652929ceea74a",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "tests/test_vllm.py",
+      "archived_path": "archive/modal/tests/test_vllm.py",
+      "method": "git-move",
+      "source_sha256": "b1b93cf66a863c43c7d33487208e8dbc6ae3dadffe400bd059d84dbab8b35873",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "b1b93cf66a863c43c7d33487208e8dbc6ae3dadffe400bd059d84dbab8b35873",
+      "archived_git_mode": "100644"
+    },
+    {
+      "original_path": "uv.lock",
+      "archived_path": "archive/modal/uv.lock",
+      "method": "git-move",
+      "source_sha256": "9afd286db8a870f4e4acabbf8ff699557e8c5a4b5640f4209fb7e61b6d0b77ed",
+      "adjustments": [],
+      "source_git_mode": "100644",
+      "archived_sha256": "9afd286db8a870f4e4acabbf8ff699557e8c5a4b5640f4209fb7e61b6d0b77ed",
+      "archived_git_mode": "100644"
+    }
+  ],
+  "summary": {
+    "retained_files": 36,
+    "git_moves": 30,
+    "baseline_copies": 6,
+    "byte_identical_files": 28,
+    "adjusted_files": 8
+  },
+  "license_provenance": {
+    "source_revision_license": "Apache-2.0",
+    "historical_license_text": "archive/licenses/Apache-2.0.txt",
+    "current_owner_code_license": "MIT",
+    "current_license_text": "LICENSE",
+    "scope": "Owner code only; historical versions remain available under Apache-2.0; no third-party or model relicensing."
+  },
+  "new_archive_files": [
+    {
+      "path": "archive/modal/README.md",
+      "purpose": "Archive overview and bounded local-test instructions",
+      "sha256": "cb5e0919752e429b8a30fec817f6b4fed1e08873ceef5b87d717adafb2909b41"
+    }
+  ]
+}

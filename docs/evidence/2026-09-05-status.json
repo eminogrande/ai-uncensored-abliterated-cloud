@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-09-05T19:39:44.322354+00:00",
+  "source": "Vast.ai authenticated GET /api/v1/instances/; owner-scoped inventory",
+  "scope": "This Vast.ai account; not a live monitor",
+  "total_instances": 1,
+  "running_instances": 0,
+  "instance": {
+    "id": 49433042,
+    "actual_status": "exited",
+    "cur_state": "stopped",
+    "intended_status": "stopped",
+    "gpu_name": "A100 PCIE",
+    "gpu_ram": 40960,
+    "num_gpus": 1,
+    "disk_space": 120.0,
+    "disk_usage": 22.0,
+    "onstart": null
+  },
+  "billing_usd_hour": {
+    "gpu": 0,
+    "disk": 0.033333333333333326,
+    "total_current": 0.033333333333333326,
+    "total_when_running_quote": 0.6333333333333333
+  },
+  "modal": {
+    "source": "modal app list --json",
+    "apps_deployed": 4,
+    "tasks_total": 0,
+    "decommissioned": false
+  },
+  "local_endpoint": {
+    "url": "http://127.0.0.1:8080/health",
+    "result": "connection_refused"
+  },
+  "inference_tested_this_audit": false,
+  "auto_stop_verified": false,
+  "separate_volume_provisioned": false
+}

@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # The MIT vision sleeper that resurfaced in August
 
 Published 9 December 2025, updated 17 August 2026. Exact artifact: `huihui-ai/Huihui-GLM-4.6V-Flash-abliterated`, revision `7d7926ee0a8d02e46bdab97ead8d5396bfc071df`.

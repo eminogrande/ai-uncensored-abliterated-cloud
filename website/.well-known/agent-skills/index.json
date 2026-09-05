@@ -4,9 +4,9 @@
     {
       "name": "abliterated-cloud",
       "type": "skill-md",
-      "description": "Use ABLITERATED.cloud safely through its token-protected OpenAI-compatible Chat Completions API.",
-      "url": "../../skills/abliterated-cloud/SKILL.md",
-      "digest": "sha256:d2d057d444a125be16aee3713f347a9e134776da7e044c1c89cb023850075e1e"
+      "description": "Read dated project status and authorized private Vast.ai + llama.cpp operating notes. No public inference.",
+      "url": "https://abliterated.cloud/skills/abliterated-cloud/SKILL.md",
+      "digest": "sha256:9c7349b95cbc3755c5e25b18d01c9a5ae49584423b5adab3b2d4103d04abc43e"
     }
   ]
 }

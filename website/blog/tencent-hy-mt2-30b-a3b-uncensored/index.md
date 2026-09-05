@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # Why would a translation model refuse? Tencent's Hy-MT2, decensored
 
 Published 30 August 2026. Exact artifact: `0xSojalSec/Tencent-Hy-30B-A3B-uncensored-heretic`, revision `abe0aae382c7abce58b4be4eda48953af034025b`.

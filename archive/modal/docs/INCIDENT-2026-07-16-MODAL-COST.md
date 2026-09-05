@@ -1,3 +1,8 @@
+> **Historical archive — not current operating instructions.** Original path:
+> `docs/INCIDENT-2026-07-16-MODAL-COST.md` at `2888dbfb99b81a87ceadb937d29ac2c61632619d`.
+> Statements below describe their original context, not current deployment status.
+> See the [archive overview](../README.md) for current-document links and provenance.
+
 # Modal GPU cost incident — 2026-07-16
 
 ## Summary

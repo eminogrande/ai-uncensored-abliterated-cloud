@@ -1,8 +1,45 @@
 # Changelog
 
-All notable changes to MN Uncensored are documented here.
+All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
+entries are historical, not current deployment instructions.
 
-## [Unreleased]
+## [website-v0.12.0] - 2026-09-05
+
+### Vast-only operating documentation
+
+- **Why:** the documentation still described a Modal-primary catalog while the
+  owner's actual experiment had moved to Vast.ai + llama.cpp. The front door now
+  describes one stopped private A100 instance, not a public inference product.
+- Replace the old root README with current status, architecture, costs, access and
+  operating instructions; preserve the original and the legacy Modal code, configs,
+  tests and deployment docs under `archive/modal/`.
+- Record an authenticated, non-secret provider snapshot dated 2026-09-05. One Vast
+  instance is stopped; four legacy Modal apps have zero tasks but still exist.
+- Correct lifecycle and billing: `stop` preserves container storage and ongoing disk
+  charges; `destroy` permanently deletes it. The retained 120-GB disk is about
+  $0.80/day ($24/30 days), not $0. Running quote is $0.633333/hour including disk:
+  $15.20/day or $456 per 30 days continuously; 2 running hours/day costs $60 per
+  30 days with disk retained. Bandwidth, applicable taxes and other services excluded.
+- Generate website and README cost sections from one rate source. Modal is retired
+  because its cost did not fit this experiment, not a second supported runtime.
+- Correct overclaims: no universal zero-refusal guarantee, no controlled fastest-model
+  benchmark, no proven automatic idle shutdown, and no validated full-length 262k
+  workload. Historical settings and smoke reports are not fresh inference proof.
+- Document actual Pi/OpenCode config locations and the SSH-only access boundary.
+  Aliases do not switch server weights. Hermes CLI/Pi/OpenCode are agents by default.
+- Remove decorative background artwork, related loading and unnecessary presentation
+  overhead. Make the site a lightweight static documentation front door; label model
+  field notes as editorial coverage, not hosted inventory.
+- License our own project code, documentation and website under **MIT**, as requested
+  by the owner. Preserve historical Apache-2.0 terms and all third-party/model licenses.
+- Add release notes and verification evidence. No inference start, paid replacement
+  rental, container destruction or remote Modal decommissioning accompanies this change.
+
+## Historical release entries
+
+The following entries are preserved from the original changelog, including model
+publisher claims and pricing estimates as understood at publication time. They are
+not the current service availability or billing ledger.
 
 ### Website 0.11.5
 

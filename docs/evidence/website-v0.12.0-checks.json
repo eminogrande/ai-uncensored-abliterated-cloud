@@ -1,0 +1,21 @@
+{
+  "scope": "Local Chrome 151 headless via Playwright; cold browser contexts, uncompressed local HTTP. Not an Internet speed or inference benchmark.",
+  "baseline_source": "2888dbfb99b81a87ceadb937d29ac2c61632619d",
+  "before_transfer_bytes": 97081,
+  "after_transfer_bytes": 21603,
+  "transfer_reduction_percent": 77.75,
+  "site_html_pages": 31,
+  "desktop_and_iphone13_renders": 62,
+  "page_horizontal_overflow": false,
+  "cost_table_overflow": false,
+  "runtime_javascript_files": 0,
+  "canvas_elements": 0,
+  "root_tests_passed": 13,
+  "archived_tests_passed": 66,
+  "critical_files_sha256": {
+    "index.html": "a361f6c612ea7e8a41409cadff3067eb603524e3cbe221262c60fb01118d8560",
+    "styles.css": "f7e24b1fecbe51702c55a1de1e5f57ffc45e32192d642bed016e6a54d78ea9fc",
+    "assets/logo.svg": "b7442635030ad2a774b9f5bf644b12467e25009294df234577db7d2632c12084",
+    "assets/favicon.svg": "ddafded44750179553b775e251bf584a6a5a4bf8e6d4d9da61dd0c22cad24c9e"
+  }
+}

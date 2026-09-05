@@ -1,3 +1,8 @@
+> **Historical archive — not current operating instructions.** Original path:
+> `docs/MODELS.md` at `2888dbfb99b81a87ceadb937d29ac2c61632619d`.
+> Statements below describe their original context, not current deployment status.
+> See the [archive overview](../README.md) for current-document links and provenance.
+
 # Model catalog, licenses, and deployment status
 
 This document records the exact model artifacts configured for MN Uncensored.

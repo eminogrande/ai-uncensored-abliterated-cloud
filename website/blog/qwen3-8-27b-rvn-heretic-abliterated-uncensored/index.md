@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # Three ARA passes: how RVN got Qwen3.8-27B down to 0–1/100 refusals
 
 Published 14 August 2026. Exact artifact: `0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF`, revision `d8a1b834aa6f08e7b60dd4fb7586b90fd5a44363`.

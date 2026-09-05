@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # One base, three uncensors: the Ornith-1.5 task-vector transplant
 
 Published 20 August 2026. Exact artifact: `0xKitkat/Ornith-1.5-35B-A3B-Uncensored`, revision `9ce64447864049ac16f7546265ae11d2a04fe9fb`.

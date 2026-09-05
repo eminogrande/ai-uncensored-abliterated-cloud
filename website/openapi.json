@@ -1,310 +1,84 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "ABLITERATED.cloud API",
-    "version": "0.3.1",
-    "description": "Token-protected OpenAI-compatible Chat Completions access to four exact pinned Hugging Face models. Each primary API model ID is the exact Hugging Face repository ID.",
+    "title": "ABLITERATED.cloud public documentation",
+    "version": "0.12.0",
+    "description": "Read-only website documents for private on-demand evaluation on Vast.ai with llama.cpp. No public inference, model catalog, wake route, live MCP or OAuth service. The status endpoint is a dated snapshot, not a health API.",
     "license": {
-      "name": "Apache-2.0",
-      "identifier": "Apache-2.0"
+      "name": "MIT \u2014 project-owned documentation/code only",
+      "identifier": "MIT"
     }
   },
-  "externalDocs": {
-    "description": "Source and complete operations documentation",
-    "url": "https://github.com/eminogrande/mn-uncensored"
-  },
-  "x-model-catalog": [
-    {
-      "api_id": "huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated",
-      "hugging_face_model": "huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated",
-      "hugging_face_url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated",
-      "license_metadata": "Apache-2.0",
-      "price_usd_per_hour": 5.45,
-      "compatibility_aliases": [
-        "mn/god"
-      ]
-    },
-    {
-      "api_id": "YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated",
-      "hugging_face_model": "YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated",
-      "hugging_face_url": "https://huggingface.co/YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated",
-      "license_metadata": "Apache-2.0",
-      "price_usd_per_hour": 5.45,
-      "compatibility_aliases": [
-        "mn/code"
-      ]
-    },
-    {
-      "api_id": "huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated",
-      "hugging_face_model": "huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated",
-      "hugging_face_url": "https://huggingface.co/huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated",
-      "license_metadata": "Apache-2.0",
-      "price_usd_per_hour": 2.34,
-      "compatibility_aliases": [
-        "mn/fast"
-      ]
-    },
-    {
-      "api_id": "cebeuq/Ornith-1.0-397B-abliterated-W4A16",
-      "hugging_face_model": "cebeuq/Ornith-1.0-397B-abliterated-W4A16",
-      "hugging_face_url": "https://huggingface.co/cebeuq/Ornith-1.0-397B-abliterated-W4A16",
-      "license_metadata": "MIT",
-      "price_usd_per_hour": 10.9,
-      "compatibility_aliases": [
-        "mn/ornith-397b",
-        "nuri/ornith-397b-abliterated"
-      ]
-    }
-  ],
   "servers": [
     {
-      "url": "https://eminhenri--abliterated-cloud-api-api.modal.run",
-      "description": "ABLITERATED.cloud private API gateway"
+      "url": "https://abliterated.cloud",
+      "description": "Public static documentation only; not an inference server"
     }
   ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
+  "security": [],
   "paths": {
-    "/v1/models": {
+    "/index.md": {
       "get": {
-        "operationId": "listModels",
-        "summary": "List accessible model routes",
+        "operationId": "readProjectOverview",
+        "summary": "Project overview in Markdown",
         "responses": {
           "200": {
-            "description": "OpenAI-compatible model list",
+            "description": "Project overview in Markdown",
             "content": {
-              "application/json": {
+              "text/markdown": {
                 "schema": {
-                  "$ref": "#/components/schemas/ModelList"
+                  "type": "string"
                 }
               }
             }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
     },
-    "/v1/chat/completions": {
-      "post": {
-        "operationId": "createChatCompletion",
-        "summary": "Create or stream a chat completion",
-        "description": "Routes an OpenAI-compatible Chat Completions request to one explicitly selected model. The request uses the exact Hugging Face repository ID documented in the catalog. Compatibility aliases are accepted for existing clients.",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ChatCompletionRequest"
+    "/.well-known/project-status.json": {
+      "get": {
+        "operationId": "readDatedStatusSnapshot",
+        "summary": "Dated operator audit; not live availability",
+        "responses": {
+          "200": {
+            "description": "Dated operator audit; not live availability",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
               }
             }
           }
-        },
-        "responses": {
-          "200": {
-            "description": "Completion response or text/event-stream when stream=true"
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "503": {
-            "description": "The selected model is unavailable"
-          },
-          "504": {
-            "description": "The selected model did not become ready before the cold-start deadline"
-          }
         }
       }
     },
-    "/wake": {
-      "post": {
-        "operationId": "wakeModel",
-        "summary": "Wake one already armed model",
-        "description": "Waits for an operator-enabled model to become ready.",
-        "parameters": [
-          {
-            "name": "model",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/ModelId"
-            }
-          }
-        ],
+    "/blog/posts.json": {
+      "get": {
+        "operationId": "readEditorialArchiveIndex",
+        "summary": "Historical editorial metadata; not available models or current prices",
         "responses": {
           "200": {
-            "description": "Model ready"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "503": {
-            "description": "The selected model is unavailable or failed to start"
+            "description": "Historical editorial metadata; not available models or current prices",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
   },
-  "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "sk-mn-*",
-        "description": "Revocable ABLITERATED.cloud access token supplied privately by the operator"
-      }
-    },
-    "schemas": {
-      "ModelId": {
-        "type": "string",
-        "enum": [
-          "huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated",
-          "YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated",
-          "huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated",
-          "cebeuq/Ornith-1.0-397B-abliterated-W4A16"
-        ]
-      },
-      "Message": {
-        "type": "object",
-        "required": [
-          "role",
-          "content"
-        ],
-        "properties": {
-          "role": {
-            "type": "string",
-            "enum": [
-              "system",
-              "user",
-              "assistant",
-              "tool"
-            ]
-          },
-          "content": {}
-        },
-        "additionalProperties": true
-      },
-      "ChatCompletionRequest": {
-        "type": "object",
-        "required": [
-          "model",
-          "messages"
-        ],
-        "properties": {
-          "model": {
-            "$ref": "#/components/schemas/ModelId"
-          },
-          "messages": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "$ref": "#/components/schemas/Message"
-            }
-          },
-          "max_tokens": {
-            "type": "integer",
-            "minimum": 1
-          },
-          "stream": {
-            "type": "boolean",
-            "default": false
-          },
-          "tools": {
-            "type": "array"
-          },
-          "tool_choice": {}
-        },
-        "additionalProperties": true
-      },
-      "Model": {
-        "type": "object",
-        "required": [
-          "id",
-          "object"
-        ],
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/ModelId"
-          },
-          "object": {
-            "type": "string",
-            "const": "model"
-          },
-          "context_length": {
-            "type": "integer"
-          },
-          "max_output_tokens": {
-            "type": "integer"
-          }
-        }
-      },
-      "ModelList": {
-        "type": "object",
-        "required": [
-          "object",
-          "data"
-        ],
-        "properties": {
-          "object": {
-            "type": "string",
-            "const": "list"
-          },
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Model"
-            }
-          }
-        }
-      },
-      "Error": {
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string"
-              },
-              "type": {
-                "type": "string"
-              },
-              "code": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
-    "responses": {
-      "BadRequest": {
-        "description": "Invalid model or request",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
-      },
-      "Unauthorized": {
-        "description": "Missing, invalid, or revoked Bearer token",
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
-      }
-    }
-  }
+  "externalDocs": {
+    "url": "https://github.com/eminogrande/ai-uncensored-abliterated-cloud",
+    "description": "Current Vast operating documentation; upstream/model licenses unchanged"
+  },
+  "x-public-inference": false,
+  "x-public-mcp": false
 }

@@ -3,9 +3,9 @@
   "skills": [
     {
       "name": "abliterated-cloud",
-      "description": "Use ABLITERATED.cloud safely through its token-protected OpenAI-compatible Chat Completions API.",
+      "description": "Read dated project status and authorized private Vast.ai + llama.cpp operating notes. No public inference.",
       "files": [
-        "../../skills/abliterated-cloud/SKILL.md"
+        "https://abliterated.cloud/skills/abliterated-cloud/SKILL.md"
       ]
     }
   ]

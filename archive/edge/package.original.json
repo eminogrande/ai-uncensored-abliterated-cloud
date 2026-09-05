@@ -1,0 +1,17 @@
+{
+  "name": "abliterated-cloud-website",
+  "private": true,
+  "type": "module",
+  "version": "0.11.5",
+  "scripts": {
+    "build:blog": "uv run python -I scripts/build-blog.py",
+    "dev:website": "wrangler dev --config wrangler.jsonc --port 8788",
+    "deploy:website:preview": "wrangler deploy --config wrangler.jsonc --env=",
+    "deploy:website:production": "wrangler deploy --config wrangler.jsonc --env production",
+    "verify:agent-ready": "node scripts/verify-agent-ready.mjs",
+    "verify:agent-ready:local": "node scripts/verify-agent-ready.mjs http://localhost:8788 --local-only"
+  },
+  "devDependencies": {
+    "wrangler": "^4.66.0"
+  }
+}

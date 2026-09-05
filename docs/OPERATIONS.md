@@ -1,362 +1,176 @@
-# Operations
+# Vast.ai operations
 
-## Cost-safety runbook
+The only current runtime path is **Vast.ai + llama.cpp over private SSH**.
+Modal was retired from this project's operating path for its cost budget;
+its gateway and `mn` commands are [archive only](../archive/modal/README.md).
 
-The default safe state is hard-stopped:
+## Before starting
 
-```sh
-mn stop
-mn status
-```
+The retained owner instance is `49433042`: A100 PCIe 40 GB, 120 GB container disk.
+It was **STOPPED** in the [2026-09-05 20:12 UTC recheck](evidence/2026-09-05-vast-recheck.json).
+No inference was tested. Do not start it to check billing or read docs.
+Other users need their own contract ID, credentials and approved hourly budget;
+review the [running and retained-disk costs](../README.md#cost).
 
-Before any GPU test:
+Use an authenticated Vast CLI compatible with your Python version. Check
+`vastai --help` and the [official CLI source](https://github.com/vast-ai/vast-python);
+the earlier `/tmp/vastai-venv/bin/vastai` installation no longer exists.
+Never commit the account API key or give it to inference clients.
 
-1. set a Modal Workspace hard budget at
-   <https://modal.com/settings/usage>;
-2. select exactly one model;
-3. prefer `qwythos9` for initial testing;
-4. stop it explicitly after the session;
-5. inspect the Modal billing report and running containers.
-
-`cebeuq/Ornith-1.0-397B-abliterated-W4A16` is the expensive retained fourth
-profile. It uses two H200s and is intentionally blocked with
-`deployment_enabled=false`. CLI start, auto, wake, and launch operations would
-also require `--allow-expensive`; the source record alone does not deploy or
-start it.
-
-The commands below document the intended operating interface after a reviewed
-deployment. Preparing or reading this runbook does not create a Modal app.
-
-Safe session:
+## 1. Inspect, then start deliberately
 
 ```sh
-mn start qwythos9
-# use the API or agent
-mn stop qwythos9
-mn status qwythos9
+vastai show instance 49433042 --raw
+# Only when you want paid compute:
+vastai start instance 49433042
+vastai show instance 49433042 --raw
 ```
 
-`mn start MODEL` no longer creates a permanent warm container. It enforces
-`min_containers=0`, wakes one explicit route, and leaves it with a five-minute
-idle shutdown.
+Inspect `actual_status`, `intended_status` and `cur_state`, not `status_msg` prose.
+A successful start request is not proof of a running model. `scheduling` can mean
+someone else rented the GPU; resume availability and boot time are not guaranteed.
+For account inventory, use the current CLI's v1 listing; API/pagination details
+are in [status evidence](STATUS.md#inventory-details).
 
-The five-minute timer is an idle tail, not a maximum charge. Startup,
-compilation, inference, queued requests, retries, and open streams are active
-and billable. See
-[the 2026-07-16 cost incident](INCIDENT-2026-07-16-MODAL-COST.md).
+## 2. Verify the remote server
 
-## Architecture
+Use fresh SSH connection details from Vast, including the actual SSH port mapping.
+Do not assume the old host/port still works. Keep host-key verification enabled;
+verify a changed host key before trusting it.
 
-```text
-Hermes / Pi / OpenCode / Cursor / friends
-                  |
-        Bearer sk-mn-* token
-                  |
-      abliterated-cloud-api (prepared gateway)
-          /                 |                 \
- huihui-qwen3-6-35b-a3b-abliterated | yuyu1015-ornith-1-0-35b-abliterated | huihui-qwythos-9b-claude-mythos-5-1m-abliterated
-          H200              |          H200             |          L40S
-```
-
-Each enabled backend definition is a separate Modal app with
-`min_containers=0`, `max_containers=1`, and a 300-second scale-down window.
-The names above are the prepared names; applying them to the Modal dashboard
-requires a separate deployment and is intentionally outside this source-only
-change.
-
-The source catalog also retains `cebeuq/Ornith-1.0-397B-abliterated-W4A16`, pinned to
-[`cebeuq/Ornith-1.0-397B-abliterated-W4A16`](https://huggingface.co/cebeuq/Ornith-1.0-397B-abliterated-W4A16)
-at revision `e5651d291be1c65ff1360eee47ab533ab13b3d97`. Its prepared Modal app
-name is `cebeuq-ornith-1-0-397b-abliterated-w4a16`, but
-`deployment_enabled=false` prevents it from entering the deployable model set.
-
-An authenticated request in `auto` mode triggers only the requested model,
-waits through Modal's empty cold-start 503, and retries the original request
-once the selected backend is healthy. Application-level 503 responses with a
-body are returned without retrying.
-
-After the initial Modal trigger, health checks use exponential backoff: 30,
-60, 120, and 240 seconds, capped at five minutes. This avoids creating a large
-queue of redundant GPU starts during long cold starts.
-
-## Initial setup
+On the remote instance:
 
 ```sh
-uv sync
-.venv/bin/modal setup
-./scripts/install-macos.sh
-./scripts/sync-modal-secret.sh
+pgrep -af llama-server
+curl --fail --show-error --max-time 10 http://127.0.0.1:8080/health
+curl --fail --show-error --max-time 10 http://127.0.0.1:8080/v1/models
 ```
 
-The macOS Keychain must contain:
+The last inspected `onstart` was null: **model autostart is not verified**.
+If the server is absent, inspect the retained startup script, `/root/server.log`,
+available VRAM and the installed binary's `--help` before launching it. Do not start
+a second copy or indiscriminately kill matching processes.
 
-```text
-mn-uncensored-owner-token
-uncensored-modal-key
-uncensored-modal-secret
-```
+The last artifact was `/root/models/Qwen3.8-27B-OBLITERATED-Q6_K.gguf`, with
+`--jinja`, context `262144`, full GPU offload and explicit sampling. Model
+revision/hash and llama.cpp build pins were not captured. At the next approved
+restart, record them and verify a version-compatible launch command; there is no
+reproducibly pinned launch recipe here. Use loopback binding, not the old
+`--host 0.0.0.0` on an unprotected public port. Template generation and reasoning
+parser/output controls vary by runtime: `--reasoning off` is not a universal
+thinking-disable switch. Validate output rather than assuming a flag or quant
+has fixed every failure.
 
-The gateway receives the Modal proxy credentials through the Modal Secret
-`nuri-backend-proxy`. Hugging Face and MN plaintext tokens must never be added
-to the tracked catalog.
+## 3. Connect and test locally
 
-## Catalog configuration
-
-`config/mn.json` is the tracked source catalog and contains all four pinned
-profiles, including the budget-gated `cebeuq/Ornith-1.0-397B-abliterated-W4A16` record. A catalog model
-contains:
-
-- short CLI key, exact API/Hugging Face ID, aliases, and display name;
-- explicit `deployment_enabled` policy;
-- exact Hugging Face repository and 40-character revision;
-- independent Modal app and backend URL;
-- GPU/count and cost estimate;
-- context/output limits;
-- vLLM reasoning and tool parsers;
-- lifecycle and cache behavior.
-
-`Settings.deployed_models` supplies only the three enabled profiles to gateway
-and release workflows. The disabled 397B profile remains visible in the source
-catalog but must not be deployed. The selected non-secret profile key is also
-baked into that model's Modal image so the container resolves the same profile
-when it imports the module at runtime.
-
-The fourth route is guarded consistently by source policy, CLI, and release
-workflow. A catalog release must fail while `deployment_enabled=false`.
-If a future signed budget-approved change enables it, `--allow-expensive`
-acknowledges individual lifecycle operations and a full release additionally
-requires `MN_RELEASE_ORNITH397=I_ACCEPT_2XH200`.
-Its retained serving profile uses `qwen3_xml`, `qwen3` reasoning with thinking
-disabled by default, `language_model_only=false`, and
-`prefix_caching=false`. These choices reflect the pinned chat template and
-conservative reintroduction policy; they still require budgeted text, vision,
-and tool-call validation before deployment.
-
-Model weights, vLLM compilation artifacts, and FlashInfer CUDA kernels remain
-in persistent Modal volumes. The first MoE cold start can spend several
-minutes compiling Hopper kernels; later starts and compatible catalog models
-reuse the shared `flashinfer-kernel-cache`.
-
-## Normal operation
-
-Hard-stop every route:
+Keep this SSH session open, replacing the destination and port with Vast's values:
 
 ```sh
-mn stop
+ssh -i ~/.ssh/id_ed25519 -p <SSH_PORT> \
+  -o IdentitiesOnly=yes -o ExitOnForwardFailure=yes \
+  -o ServerAliveInterval=15 -o ServerAliveCountMax=3 \
+  -N -L 127.0.0.1:8080:127.0.0.1:8080 root@<SSH_HOST>
 ```
 
-Operate one model:
+`<SSH_PORT>` and `<SSH_HOST>` are placeholders. Alternatively, inspect the existing
+Mac LaunchAgent `~/Library/LaunchAgents/com.emin.vast-tunnel.plist` and update only
+its verified destination. It maintains a tunnel, not a GPU or model server. Do not
+run both tunnels on the same local port.
 
 ```sh
-mn start ornith35
-mn status ornith35
-mn wake ornith35
-mn auto ornith35
-mn stop ornith35
+curl --fail --show-error --max-time 10 http://127.0.0.1:8080/health
+curl --fail --show-error --max-time 10 http://127.0.0.1:8080/v1/models
 ```
 
-`mn start ornith35` is equivalent to safely arming `ornith35` and waking it once. It
-does not set a warm-container floor.
+Use the ID returned by `/v1/models` for direct API tests; historically it was the
+full GGUF path, while clients used alias `qwen3.8-27b-obl`. Several picker aliases
+do not load several models or switch weights: Huihui/R1 are not simultaneous
+alternatives on this single-model server.
 
-Arm a route without starting a GPU:
+Test non-streaming and streaming with a bounded prompt such as "List three
+programming languages." Require non-empty `content` and normal completion;
+inspect `finish_reason`, errors and timings. HTTP 200 or health alone is not enough.
+Then test the intended client. **No inference smoke test was run in this audit:**
+the GPU stayed stopped.
 
-```sh
-mn auto ornith35
-```
+### Choose a client
 
-Operate or inspect the full catalog:
+**Plain chat:** open `http://127.0.0.1:8080/` when the server and tunnel are ready.
+This is the built-in llama-server UI, not Open WebUI or the public website.
 
-```sh
-mn status
-mn api
-mn stop
-```
-
-Every normal start and automatic route enforces:
-
-```text
-min_containers=0
-max_containers=1
-scaledown_window=300
-```
-
-There is no normal permanent-warm command. If one is ever introduced, it must
-be separately named, explicitly confirmed, time-limited, and covered by a hard
-budget.
-
-`mn stop <model>` marks that route fail-closed before its recreate rollover.
-Requests to other catalog models remain unaffected.
-If Modal updates the app but needs longer than its first container-termination
-window, MN retries the fail-closed recreate rollover once.
-
-If a backend app was stopped outside the normal flow, `mn auto MODEL` and
-`mn start MODEL` may perform a recovery deployment. Recovery requires a clean
-Git tree and a verified signed HEAD commit.
-
-## Agent launchers
-
-```sh
-mn start qwythos9
-mn launch --model qwythos9 hermes
-mn stop qwythos9
-
-mn start ornith35
-mn launch --model ornith35 hermes --yolo
-mn launch --model ornith35 opencode
-mn stop ornith35
-```
-
-The selected model ID, model-specific context/output limits, endpoint, and
-non-secret provider metadata are configured automatically. The owner token is
-read from the Keychain and passed in the child process environment.
-
-Launchers do not arm a hard-stopped route implicitly. The explicit preceding
-`mn start MODEL` is a cost acknowledgement; the explicit following
-`mn stop MODEL` is the normal end of a session.
-
-Qwen thinking is disabled by default so OpenAI-compatible clients receive
-normal `content` instead of silently dropping a model-specific reasoning field.
-Clients can opt in per request with:
+**Pi:** custom providers live in `~/.pi/agent/models.json`, not
+`~/.config/pi/config.json`. Merge into the existing file; do not replace unrelated
+providers. The inspected local definition is:
 
 ```json
-{"chat_template_kwargs": {"enable_thinking": true}}
+{
+  "providers": {
+    "uncensored": {
+      "baseUrl": "http://127.0.0.1:8080/v1",
+      "api": "openai-completions",
+      "apiKey": "none",
+      "models": [{"id": "qwen3.8-27b-obl", "contextWindow": 262144}]
+    }
+  }
+}
 ```
 
-## Deployments and releases
-
-Every deployment must start from a clean, signed commit:
+`none` is a client placeholder, not authentication; use a real key if required by
+the server. Verify the alias. `contextWindow` sets Pi's budget, not the server's
+capacity or proven long-context quality. [Pi's model documentation](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/models.md)
+says `/model` reloads definitions; restarting the app is not generally required.
 
 ```sh
-./scripts/deploy-release.sh catalog v1.2.3
+pi --provider uncensored --model qwen3.8-27b-obl
 ```
 
-The `catalog` target:
-
-1. verifies Git signing configuration;
-2. runs the full test suite and secret scan;
-3. extracts the matching curated section from `CHANGELOG.md`;
-4. verifies that `ornith397` was explicitly enabled by a signed,
-   budget-approved change, then deploys `qwen36`, `ornith35`, `qwythos9`, and
-   `ornith397` as separate Modal apps;
-5. deploys the shared gateway;
-6. arms, tests, and hard-stops each route individually;
-7. creates a signed annotated tag;
-8. pushes the branch and tag;
-9. creates the GitHub release with those notes.
-
-Before deploying `vX.Y.Z`, move the completed changes out of `Unreleased` into
-a non-empty `## [X.Y.Z] - YYYY-MM-DD` section. The release fails instead of
-publishing empty or generic notes when that section is missing.
-
-Do not reuse a version tag. If a deployment fails before tagging, correct the
-cause and rerun from the same clean signed commit. If it fails after a partial
-catalog deployment, the old gateway remains authoritative until the gateway
-target succeeds.
-
-Only a full catalog deployment creates a release. The script arms one route,
-validates `/v1/models`, runs a real streaming completion and forced tool call,
-and hard-stops that route before moving to the next. It finishes with all
-models hard-stopped. A failed smoke test triggers a best-effort hard stop and
-no tag or GitHub release is created.
-
-The `catalog` release deploys and smoke-tests all four routes only after a
-signed change sets `ornith397.deployment_enabled=true` and the operator also
-provides:
+To isolate a tool-loop issue, the installed Pi CLI supports this no-tools mode
+(flags checked with `pi --help`; generation not retested):
 
 ```sh
-MN_RELEASE_ORNITH397=I_ACCEPT_2XH200 \
-  ./scripts/deploy-release.sh catalog v1.2.3
+pi --provider uncensored --model qwen3.8-27b-obl \
+  --no-tools --no-extensions --no-skills --no-context-files \
+  --system-prompt "You are a helpful assistant."
 ```
 
-With the tracked policy still false, the release refuses to begin even if the
-environment value is present. The operator must confirm the Workspace hard
-budget before changing either gate.
-
-## Verification
-
-List models without waking a GPU:
+**OpenCode:** the inspected `~/.config/opencode/opencode.json` uses provider
+`uncensored`, adapter `@ai-sdk/openai-compatible`, `options.baseURL` =
+`http://127.0.0.1:8080/v1`, model key `qwen3.8-27b-obl`, `limit.context` = `262144`
+and `limit.output` = `8192`.
 
 ```sh
-curl "$MN_GATEWAY_URL/v1/models" \
-  -H "Authorization: Bearer $MN_API_TOKEN"
+opencode --model uncensored/qwen3.8-27b-obl
 ```
 
-Expected IDs for the three enabled prepared profiles:
+Pi, OpenCode and `hermes chat` are agent paths by default, not inherently raw chat.
+Config inspection does not establish tool/agent reliability; test the actual
+harness. Model size alone does not establish tool capability. On another computer,
+localhost means that computer: use an authorized tunnel or an explicitly secured
+shared endpoint. Do not distribute root SSH keys or the Vast account key.
+Public multi-user inference is not deployed.
 
-```text
-huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated
-YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated
-huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated
-```
-
-After a future reviewed 397B enablement and successful validation,
-`cebeuq/Ornith-1.0-397B-abliterated-W4A16` becomes the fourth exact API ID.
-Legacy `mn/*` values are compatibility aliases only.
-
-Test each selected model:
+## 4. Stop and verify
 
 ```sh
-.venv/bin/python test_endpoint.py qwen36
-.venv/bin/python test_endpoint.py ornith35
-.venv/bin/python test_endpoint.py qwythos9
-.venv/bin/python test_endpoint.py ornith397
+vastai stop instance 49433042
+vastai show instance 49433042 --raw
 ```
 
-Agent/tool smoke tests should include:
+Wait for actual `exited`/stopped and intended `stopped`; request acceptance is not
+confirmation. Stop the local tunnel if no longer needed.
 
-- ordinary completion;
-- streaming completion;
-- one tool call with arguments;
-- context metadata from `/v1/models`;
-- hard-stop isolation;
-- five-minute scale-to-zero observation.
+**GPU compute stops; storage billing continues.** The retained disk costs about
+$0.80/day. It persists while the instance/contract exists, but is not an off-host
+backup: host loss or contract expiry can threaten data. Keep unique work elsewhere.
 
-After testing:
+There is **no verified automatic idle shutdown**. The prior local timer was
+canceled. For unattended deadlines, configure and test a durable scheduler and
+read back the final cloud state; do not rely on a sleeping laptop.
 
-```sh
-mn stop
-```
+**Destruction is separate:** it permanently deletes the container disk and is not
+part of normal start/stop. Back up unique files, verify the backup and obtain
+explicit deletion approval first. A separate volume also costs money; none was
+provisioned or needed merely to stop/resume this instance.
 
-Then verify in Modal that every model app has zero tasks and the container list
-is empty.
-
-Billing audit:
-
-```sh
-.venv/bin/modal billing report \
-  --for today \
-  --resolution h \
-  --tz local \
-  --show-resources
-```
-
-The CLI report is before credits and may lag. Usage & Billing and the invoice
-remain authoritative.
-
-## Cost gate
-
-Base estimates:
-
-```text
-huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated          1 x H200  $4.5396/hour
-YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated          1 x H200  $4.5396/hour
-huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated
-                                                        1 x L40S  $1.9512/hour
-enabled source profiles                                           $11.0304/hour
-
-cebeuq/Ornith-1.0-397B-abliterated-W4A16   2 x H200  $9.0792/hour  disabled
-hypothetical all four                                      $20.1096/hour
-```
-
-Cold starts, inference, queued work, and each model's five-minute idle window
-are billable. Backend startup is capped at 30 minutes, but that cap is not a
-substitute for a Workspace budget.
-The one-container limit applies per model, not across the workspace. Configure
-a Modal Workspace hard budget before any further GPU testing.
-
-Five-minute base GPU tails are approximately `$0.3783` for either one-H200
-route, `$0.1626` for
-`huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`, `$0.7566` for
-the disabled two-H200 397B profile, `$0.9192` for the three enabled profiles,
-and `$1.6758` for a hypothetical all-four deployment. These are risk ceilings,
-not evidence of current usage.
+References: [Vast lifecycle](https://docs.vast.ai/documentation/instances/manage-instances.md) ·
+[Vast storage](https://docs.vast.ai/documentation/instances/storage/types.md)

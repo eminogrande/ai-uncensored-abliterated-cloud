@@ -1,7 +1,8 @@
 ABLITERATED.cloud
 
-Design and engineering: Emin Mahrt with Codex
-Source: https://github.com/eminogrande/mn-uncensored
-License: Apache-2.0
-Built as a dependency-free static website.
+Design and engineering: Emin Mahrt with coding agents
+Source: https://github.com/eminogrande/ai-uncensored-abliterated-cloud
+License: MIT for project-owned website/code; model and upstream licenses unchanged.
+Dependency-free static documentation and editorial archive.
+Private Vast.ai + llama.cpp evaluation. No public inference or live MCP service.
 No analytics. No advertising. No inference API polling.

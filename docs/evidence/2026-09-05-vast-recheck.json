@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-09-05T20:12:39.126574+00:00",
+  "source": "Vast.ai authenticated GET /api/v1/instances/?limit=100",
+  "total_instances": 1,
+  "next_token": null,
+  "instance": {
+    "id": 49433042,
+    "actual_status": "exited",
+    "cur_state": "stopped",
+    "intended_status": "stopped",
+    "gpu_name": "A100 PCIE",
+    "gpu_ram": 40960,
+    "disk_space": 120.0
+  },
+  "rates_usd": {
+    "gpu_hour": 0.6,
+    "disk_hour": 0.033333333333333326,
+    "running_hour": 0.6333333333333333,
+    "ingress_tb": 0.6666666666666666,
+    "egress_tb": 0.6666666666666666
+  },
+  "scope": "Read-only status and contract rates. No GPU start or inference request."
+}

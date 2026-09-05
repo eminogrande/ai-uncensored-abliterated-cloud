@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # The base of the wave: Muse-Glimmer-30B's measured de-refusal
 
 Published 12 August 2026. Exact artifact: `jorkle/Muse-Glimmer-30B-Abliterated`, revision `f98c6e1f6a268fa79d1e704c6b69fa89a61ddda6`.

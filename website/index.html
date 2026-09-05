@@ -3,298 +3,95 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ABLITERATED.cloud — Intelligence, freed.</title>
-  <meta name="description" content="The newest uncensored, abliterated Hugging Face releases with source-linked reviews and price estimates, plus managed access to the hosted catalog.">
-  <meta name="keywords" content="abliterated AI models, uncensored Hugging Face models, Qwen3.6 abliterated, Ornith 397B, Ornith 35B, Qwythos 9B, vLLM hosting, OpenAI-compatible API">
-  <meta name="author" content="ABLITERATED.cloud">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>ABLITERATED.cloud — Private model evaluation</title>
+  <meta name="description" content="Private, on-demand model evaluation on Vast.ai with llama.cpp. Dated operating status, clear limits, and a source-linked editorial archive. No public inference.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <meta name="content-signal" content="search=yes,ai-input=yes,ai-train=no">
-  <meta name="theme-color" content="#f3f0e9">
+  <meta name="theme-color" content="#f7f7f4">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://abliterated.cloud/">
-  <link rel="alternate" hreflang="en" href="https://abliterated.cloud/">
-  <link rel="alternate" hreflang="x-default" href="https://abliterated.cloud/">
-  <link rel="alternate" type="text/markdown" href="index.md" title="ABLITERATED.cloud in Markdown">
-  <link rel="alternate" type="text/plain" href="llms.txt" title="ABLITERATED.cloud LLM index">
-  <link rel="alternate" type="application/vnd.oai.openapi+json" href="openapi.json" title="ABLITERATED.cloud OpenAPI">
-  <link rel="api-catalog" type="application/linkset+json" href=".well-known/api-catalog">
-  <link rel="agent-skill" type="text/markdown" href="skills/abliterated-cloud/SKILL.md">
-  <link rel="help" type="text/markdown" href="auth.md" title="Authentication guide">
-  <link rel="alternate" type="application/rss+xml" title="ABLITERATED.cloud model field notes" href="blog/feed.xml">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" sizes="any">
-  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="assets/icon-192.png">
-  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="alternate" type="text/markdown" href="/index.md" title="Project in Markdown">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="Agent reading index">
+  <link rel="alternate" type="application/rss+xml" href="/blog/feed.xml" title="Editorial archive">
+  <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog">
+  <link rel="agent-skill" type="text/markdown" href="/skills/abliterated-cloud/SKILL.md">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
+
+  <link rel="manifest" href="/manifest.webmanifest">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ABLITERATED.cloud">
   <meta property="og:url" content="https://abliterated.cloud/">
-  <meta property="og:title" content="ABLITERATED.cloud — Intelligence, freed.">
-  <meta property="og:description" content="Private access to exact uncensored and abliterated models through one controlled API.">
-  <meta property="og:image" content="https://abliterated.cloud/assets/og-card.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="ABLITERATED.cloud — managed access to exact uncensored and abliterated Hugging Face models">
+  <meta property="og:title" content="ABLITERATED.cloud — Private model evaluation">
+  <meta property="og:description" content="Vast.ai + llama.cpp. Private on-demand evaluation, an honest status snapshot, and an editorial archive. No public inference.">
+  <meta property="og:image" content="https://abliterated.cloud/assets/icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="ABLITERATED.cloud — Private model evaluation. Vast.ai + llama.cpp. No public inference.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ABLITERATED.cloud — Intelligence, freed.">
-  <meta name="twitter:description" content="Exact open models. Fewer built-in refusals. Private API access.">
-  <meta name="twitter:image" content="https://abliterated.cloud/assets/og-card.png">
-  <link rel="stylesheet" href="styles.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://abliterated.cloud/#organization",
-        "name": "ABLITERATED.cloud",
-        "url": "https://abliterated.cloud/",
-        "logo": "https://abliterated.cloud/assets/logo.svg",
-        "sameAs": ["https://github.com/eminogrande/mn-uncensored"]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://abliterated.cloud/#website",
-        "url": "https://abliterated.cloud/",
-        "name": "ABLITERATED.cloud",
-        "description": "Private access to exact uncensored and abliterated Hugging Face models through one controlled OpenAI-compatible API.",
-        "publisher": {"@id": "https://abliterated.cloud/#organization"},
-        "inLanguage": "en"
-      },
-      {
-        "@type": "SoftwareApplication",
-        "@id": "https://abliterated.cloud/#software",
-        "name": "ABLITERATED.cloud API",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Cloud API",
-        "isAccessibleForFree": false,
-        "url": "https://abliterated.cloud/",
-        "downloadUrl": "https://github.com/eminogrande/mn-uncensored",
-        "softwareHelp": "https://github.com/eminogrande/mn-uncensored#readme",
-        "license": "https://www.apache.org/licenses/LICENSE-2.0",
-        "description": "A token-protected OpenAI-compatible gateway for free open-licensed Hugging Face models served with vLLM on scale-to-zero Modal GPUs."
-      },
-      {
-        "@type": "ItemList",
-        "name": "ABLITERATED.cloud model catalog",
-        "numberOfItems": 4,
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated"},
-          {"@type": "ListItem", "position": 2, "name": "YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated"},
-          {"@type": "ListItem", "position": 3, "name": "huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated"},
-          {"@type": "ListItem", "position": 4, "name": "cebeuq/Ornith-1.0-397B-abliterated-W4A16"}
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What does abliterated mean?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Abliterated describes models modified to reduce learned refusal behavior. Jailbroken and uncensored are broader informal terms. None guarantees zero refusals, correctness, safety or unlimited capability."}
-          },
-          {
-            "@type": "Question",
-            "name": "Are the AI models completely free?",
-            "acceptedAnswer": {"@type": "Answer", "text": "The model weight files are free to download from Hugging Face under the licenses shown there. Managed cloud GPU inference is not free because the hardware, storage and operations cost money."}
-          },
-          {
-            "@type": "Question",
-            "name": "Do model weights download to my computer?",
-            "acceptedAnswer": {"@type": "Answer", "text": "No. Model weights stay in Hugging Face and persistent cloud volumes. Your computer runs only the lightweight command-line client."}
-          },
-          {
-            "@type": "Question",
-            "name": "Which clients work with the API?",
-            "acceptedAnswer": {"@type": "Answer", "text": "The directly supported flow uses OpenAI Chat Completions with streaming and structured tools. Hermes, Pi, OpenCode, OpenAI SDKs, cURL, and compatible applications can use the gateway."}
-          },
-          {
-            "@type": "Question",
-            "name": "Is ABLITERATED.cloud open source?",
-            "acceptedAnswer": {"@type": "Answer", "text": "Yes. The control plane, website, model catalog, deployment code, tests, and documentation are public on GitHub under Apache-2.0. Model weights retain their own upstream licenses."}
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-  <script src="app.js" defer></script>
+  <meta name="twitter:title" content="ABLITERATED.cloud — Private model evaluation">
+  <meta name="twitter:description" content="Vast.ai + llama.cpp. Documentation and editorial archive, not a public hosted model catalog.">
+  <meta name="twitter:image" content="https://abliterated.cloud/assets/icon-512.png">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://abliterated.cloud/#organization","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/","logo":"https://abliterated.cloud/assets/logo.svg","sameAs":["https://github.com/eminogrande/ai-uncensored-abliterated-cloud"]},{"@type":"WebSite","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/","description":"Private on-demand model evaluation on Vast.ai with llama.cpp. Public documentation and editorial archive; no public inference.","publisher":{"@id":"https://abliterated.cloud/#organization"},"inLanguage":"en"},{"@type":"SoftwareSourceCode","name":"ABLITERATED.cloud project-owned code","codeRepository":"https://github.com/eminogrande/ai-uncensored-abliterated-cloud","license":"https://spdx.org/licenses/MIT.html","description":"MIT applies to project-owned code, not model weights or third-party code."}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="nav" aria-label="Primary navigation">
-    <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="ABLITERATED.cloud home">
-        <img src="assets/logo.svg" width="32" height="32" alt="">
-        <span>ABLITERATED.cloud</span>
-      </a>
-      <nav class="desktop-links" aria-label="Page sections">
-        <a href="#about">About</a>
-        <a href="#models">Models</a>
-        <a href="blog/">Blog</a>
-        <a href="#api">API</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <a class="github-button" href="https://github.com/eminogrande/mn-uncensored" rel="noopener noreferrer" aria-label="Star mn-uncensored on GitHub">
-        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m12 2.8 2.78 5.63 6.22.9-4.5 4.39 1.06 6.2L12 17l-5.56 2.92 1.06-6.2L3 9.33l6.22-.9L12 2.8Z"/></svg>
-        <span>Star on GitHub</span><span aria-hidden="true">↗</span>
-      </a>
-      <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <nav class="mobile-menu" id="mobile-menu" hidden aria-label="Mobile navigation">
-      <a href="#about">About</a>
-      <a href="#models">Models</a>
-      <a href="blog/">Blog</a>
-      <a href="#api">API</a>
-      <a href="#faq">FAQ</a>
-      <a href="https://github.com/eminogrande/mn-uncensored">Open source on GitHub</a>
-      <a href="https://signal.me/#p/+13103408213" rel="noopener noreferrer">Request access on Signal</a>
-    </nav>
-  </header>
-
+  <header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#status">Status</a><a href="/#cost">Cost</a><a href="/#workflow">Workflow</a><a href="/blog/">Archive</a><a href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud">GitHub ↗</a></nav></div></header>
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="announcement"><span aria-hidden="true"></span> Private beta · the newest abliterated releases, covered daily</p>
-        <h1 id="hero-title">Intelligence, freed.<span class="hero-subline">Uncensored, abliterated AI.</span></h1>
-        <p class="hero-lead">Private API access to exact uncensored and abliterated Hugging Face models—without downloading hundreds of gigabytes or managing GPU servers yourself.</p>
-        <div class="hero-actions">
-          <a class="button" href="https://signal.me/#p/+13103408213" rel="noopener noreferrer">Request access on Signal <span aria-hidden="true">↗</span></a>
-          <a class="button button-secondary" href="#models">Explore the models <span aria-hidden="true">↓</span></a>
-        </div>
-        <p class="hero-note">OpenAI-compatible · Revocable API tokens · Open-source infrastructure</p>
-      </div>
-      <div class="synapse-stage" role="img" aria-label="An interactive field of pastel synapses representing open intelligence">
-        <canvas id="synapse-canvas" aria-hidden="true"></canvas>
-      </div>
+    <section class="hero" aria-labelledby="hero-title">
+      <p class="kicker">VAST.AI + LLAMA.CPP</p>
+      <h1 id="hero-title">Private model evaluation.<br>On your terms.</h1>
+      <p class="hero-lead">A small, operator-run workspace for evaluating abliterated models on a rented GPU. Start it when needed. Connect privately. Stop it when finished.</p>
+      <p>No public inference. No hosted model catalog. No promise that a model will answer every prompt.</p>
+      <div class="hero-actions"><a class="button" href="#status">Read the status</a><a class="button button-secondary" href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md">Read the operating docs ↗</a></div>
     </section>
-
-    <section class="latest-releases section" id="models" aria-labelledby="latest-releases-title">
-      <div class="section-heading align-left">
-        <p class="kicker">LATEST UNCENSORED RELEASES</p>
-        <h2 id="latest-releases-title">The newest abliterated checkpoints, and what they cost.</h2>
-        <p>Fresh from Hugging Face: the most interesting recent uncensored releases — Qwen3.8, Muse-Glimmer, DeepSeek V4 Flash and more — each with a source-linked review and an approximate managed price estimate. <strong>ZERO REFUSALS</strong> marks checkpoints whose publisher measured no refusals at all; the rest say exactly how much refusal remains. Not hosted yet; say the word and we add them.</p>
-      </div>
-      <div class="blog-card-grid">
-        <!-- ABLITERATED-LATEST-RELEASES -->
-
-        <a class="blog-card" href="blog/deepseek-v4-flash-vision-exp-abliterated/"><span>285B-A13B · VISION MOE · FIRST MULTIMODAL V4 · 11-HOUR ABLITERATION · ≈ $10.90/h</span><h3>apetersson/<wbr>DeepSeek-V4-Flash-Vision-Exp-Abliterated</h3><p>DeepSeek&#x27;s first open multimodal model (285B total / 13B active MoE, 1M context, 32-layer vision tower, DSpark self-draft) landed 31 Aug 2026 at 06:16 UTC; apetersson&#x27;s rank-1 abliteration (33 attention-output tensors, layers 10-42, strength 3.5, L2-preserving) followed at 17:12 UTC. Text and image smoke tests pass, broader evaluation pending; ~202 GB FP8-native, ~$10.90/h managed on 2 x H200. Within a day s-zaizen grafted the edit onto NVFP4 (8/8 safe prompts, 0 refusals, GSM8K 99/100) and audreyt onto an IQ2_XXS ds4 GGUF; every derivative pins the donor revision.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/tencent-hy-mt2-30b-a3b-uncensored/"><span>ZERO REFUSALS · 30B-A3B · TRANSLATION MOE · HERETIC ARA · ≈ $5.45/h</span><h3>0xSojalSec/<wbr>Tencent-Hy-30B-A3B-uncensored-heretic</h3><p>The first decensor of a dedicated translation model: Tencent&#x27;s 33-language Hy-MT2-30B-A3B (30B total / ~3B active, 128 experts, hy_v3, 262K context, Apache-2.0) edited by 0xSojalSec/OS-Software with Heretic ARA (LoRA adapter, row-norm preservation, layers 18–28): refusal keywords 100/100 → 0/100 at KL 0.0276 (publisher measured), 60.14 GB BF16 across 13 shards, ~$5.45/h managed on 1×H200, GGUF quants down to Q4_K_M 18.2 GB.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/laguna-s-2-1-uncensored-heretic/"><span>118B-A8B · POOLSIDE · MOE · HERETIC · ≈ $10.90/h</span><h3>llmfan46/<wbr>Laguna-S-2.1-Uncensored-Heretic</h3><p>Poolside&#x27;s 118B-A8B agentic coding MoE (1M context, 256 routed experts, OpenMDW-1.1) uncensored by independent editor llmfan46 with Heretic: 6/100 refusals vs 97/100 at KL 0.0300 (publisher-measured), 219 GB BF16 across 48 shards, ~$10.90/h managed on 2×H200. A second independent build of the same base (Bizarrrr, on FriendliAI) measures EN refusals 92.71%→2.33%, DE 74.49%→4.23%, HumanEval 90.24%→85.37%.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/securelayer7-afm-4-5b-uncensored-abliterated/"><span>4.5B · ARCEE AFM · SECURITY VENDOR EDIT · ≈ $2.34/h</span><h3>Securelayer7/<wbr>AFM-4.5B-Uncensored-Abliterated</h3><p>The first Arcee Foundation Model abliteration, published by an offensive-security vendor: SecureLayer7&#x27;s Heretic/Optuna TPE edit cuts AFM-4.5B refusals from 92/100 to 3/100 at KL 0.0200, merged into the weights. Apache-2.0, 4.5B dense, ~8.6 GiB, fits one L40S.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/velum-unbound-1bit-uncensor/"><span>27B · 1-BIT · Q1_0 · HERETIC · ≈ $5.45/h</span><h3>guell00/<wbr>Velum-Unbound-Uncensored</h3><p>The Bonsai family, the most downloaded 1-bit experiment of the summer (1.95M downloads on the MLX pack alone), gained an uncensored branch this morning: a Heretic v1.4.0 decensor of Bonsai-27B (6/100 refusals vs 81/100, KL 0.0033, editor-measured at FP16) repacked to Q1_0 at 1.125 bits per weight. Velum-Unbound-Uncensored is two files: a ~4.35 GiB Q1_0 GGUF plus a ~1.81 GiB dspark speculative drafter, MIT-licensed, from Brazilian independent publisher guell00. The honest catch: every benchmark on the card is TBD, the refusal number belongs to the FP16 intermediate, and nobody has re-measured the 1-bit pack. Runs in ~3.9 GB on llama.cpp (PrismML fork); an H200 is overkill, a laptop suffices.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/qwen3-8-flash-next-abliterated-race/"><span>180B · QWEN4-EXP · ABLITERATION RACE · ≈ $10.90/h</span><h3>dealignai/<wbr>Qwen3.8-Flash-Next-ABLITERATED-FP8</h3><p>Qwen released Qwen3.8-Flash-Next on 24 August as the experimental preview of the Qwen4 architecture — 180B total parameters, ~6B active, hybrid Gated DeltaNet + micro-block sparse attention + 512-expert MoE + a 51B-parameter n-gram lookup table. Within 48 hours at least five editors raced to abliterate it. dealignai&#x27;s FP8 build is the served, measured one: 100%/99.6% HarmBench-320 real-harm compliance at greedy decoding, MMLU 86.36→83.86, ~81% MTP draft acceptance. Jiunsong&#x27;s BF16 edit is the architecture-aware method: 36 storage tensors → 6,168 logical output projections, 842-pair corpus. The catch: released vLLM/SGLang still don&#x27;t support qwen4_exp.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/glm-5-3-flash-crack/"><span>ZERO REFUSALS · 320B · 18B ACTIVE · GLM-5 · CRACK · ≈ $10.90/h</span><h3>dealignai/<wbr>GLM-5.3-Flash-ABLITERATED-FP8</h3><p>Zhipu&#x27;s first natively multimodal GLM-5 (320B total / 18B active, hybrid KDA linear + sparse attention, MIT) landed 25 August. dealignai&#x27;s CRACK edit removes refusals at the weight level in official FP8: 320/320 HarmBench-320 greedy compliance, 0 refusals, 30/30 at temp 1.0/top_p 0.95, MMLU 86.74→86.26 (−0.48pp), 163→211 tok/s with the cracked MTP head (75.9% acceptance) on 4×H200. NVFP4 twin (~165B) and an UNCENSORED-FP8 mirror with identical weights.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/"><span>ZERO REFUSALS · 30B-A3B · HYBRID MAMBA-MOE · NVIDIA · ≈ $5.45/h</span><h3>HangGlidersRule/<wbr>Darkstar-Nemotron-3.5-Lightning-30B-A3B-Abliterated-BF16</h3><p>NVIDIA&#x27;s newest open model is a hybrid — Mamba-2 state-space blocks interleaved with MoE and sparse attention, 30B total / ~3B active, built for agent execution. Two weeks after launch, Darkstar removed the refusal direction from 3,126 residual-writing tensors with a numbered edit contract: max residual leakage 0.000160, 200/200 harmful compliance / 0/83 safe over-refusals publisher-measured, plus a ~22 GB NVFP4 twin that keeps Mamba tensors in BF16 and scores GPQA 71.2% on one GPU.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/ornith-1-5-35b-a3b-uncensored-transplant/"><span>ZERO REFUSALS · 35.8B · TASK VECTOR · ORNITH 1.5 · ≈ $5.45/h</span><h3>0xKitkat/<wbr>Ornith-1.5-35B-A3B-Uncensored</h3><p>DeepReinforce&#x27;s self-improving Ornith-1.5-35B-A3B, uncensored three ways in 48 hours: a streamed task-vector transplant that adds Qwen3.6&#x27;s measured uncensoring delta to Ornith&#x27;s weights (102 tensors changed, vision and MTP intact, 0/16 heuristic refusals on Q4_K_M), plus two classic orthogonalization edits.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/qwen3-8-27b-uncensored-aggressive/"><span>27.8B · AGGRESSIVE · FP8 · ≈ $5.45/h</span><h3>orcarouter/<wbr>Qwen3.8-27B-Uncensored-FP8</h3><p>The most-liked Qwen3.8 uncensored on Hugging Face (553 likes): orcarouter&#x27;s lossless aggressive edit, block-FP8 with the vision tower at full precision, served gated on OrcaRouter at $0.40/$4.21 per 1M tokens.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/"><span>4.5B · HERETIC · DISTILL · ≈ $2.34/h</span><h3>insraq/<wbr>Qwen3.5-4B-EmperoAI-Qwen3.8-Distill-Heretic-Abliterated</h3><p>A source-linked field note on insraq&#x27;s Heretic v1.4.0 decensor of EmperoAI&#x27;s Qwen3.8-4B distill: what the 4.5B class is for, and what it trades away.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/muse-glimmer-30b-abliterated-aggressive/"><span>ZERO REFUSALS · 29.8B · AGGRESSIVE ABLITERATION · ≈ $5.45/h</span><h3>SHS-Lab/<wbr>Muse-Glimmer-30B-Abliterated-Aggressive</h3><p>A relaxed-KL LoRA de-abliteration of Meta&#x27;s 29.8B agentic model claiming 0/100 refusals at ~1.7x KL drift — a mirror upload with the benchmarks left unmeasured.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/kimi-k3-abliterated-modal/"><span>2.78T · ANY-TO-ANY · KIMI · ≈ $87.20/h</span><h3>Resggg/<wbr>Kimi-K3-Abliterated-modal</h3><p>An abliterated re-upload of Moonshot&#x27;s 2.78T-parameter Kimi K3 — any-to-any, MXFP4, 96 shards, ~1.56 TB — with zero downloads and no deployment: the scale math behind why nobody can run it.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/diffusiongemma-26b-e38-abliterated-nvfp4/"><span>ZERO REFUSALS · 25.2B · DIFFUSION LM · NVFP4 · BLACKWELL · ≈ $5.45/h</span><h3>Goodoldjam/<wbr>DiffusionGemma-26B-E38-Abliterated-NVFP4</h3><p>Abliterating a model that doesn&#x27;t generate autoregressively, then quantizing it to NVFP4: 0/402 target refusals and 1,053.64 tok/s aggregate on one RTX PRO 6000, 51.68 GB cut to 18.86 GB.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/huihui-qwen3-8-27b-abliterated/"><span>27.8B · MULTIMODAL · QWEN · ≈ $5.45/h</span><h3>huihui-ai/<wbr>Huihui-Qwen3.8-27B-abliterated</h3><p>Within 48 hours of Qwen3.8-27B&#x27;s community release, huihui-ai published a 27.8B-parameter abliterated edit that leaves the first 15 layers, MTP and the vision tower untouched, and its GGUF companion landed the same afternoon.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/qwen3-8-27b-rvn-heretic-abliterated-uncensored/"><span>27B · ARA · TRIPLE-PASS · QWEN3.8 · ≈ $5.45/h</span><h3>0bserverx/<wbr>Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF</h3><p>Abliteration as a matrix optimization problem, run three times: KL 0.0535 → 0.0085, refusals 3/100 → 0–1/100, 106K downloads in four days, one corrupted quant and a loud community pushback.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/huihui-deepseek-v4-flash-0731-abliterated/"><span>ZERO REFUSALS · 284B MOE · DEEPSEEK · FLASH · ≈ $10.90/h</span><h3>pocharlies/<wbr>deepseek-v4-flash-0731-uncensored-abliterated-refusal-directions</h3><p>A 757 KB refusal-directions file turns DeepSeek V4 Flash 0731 abliteration into a runtime λ dial, with measured proof that the baked λ=2.5 checkpoint overshoots and inverts the direction.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/muse-glimmer-30b-abliterated/"><span>29.8B · DENSE · MUSE · ≈ $5.45/h</span><h3>jorkle/<wbr>Muse-Glimmer-30B-Abliterated</h3><p>jorkle&#x27;s KL-measured LoRA-SFT de-refusal of Meta&#x27;s dense 29.8B agentic model — the Normal twin of a three-repo family with its own GGUF ladder and base-reference quants.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/huihui-cyberstrike-offsec-35b-abliterated/"><span>35.9B · SECURITY · QWEN · ≈ $5.45/h</span><h3>huihui-ai/<wbr>Huihui-CyberStrike-OffSec-35B-abliterated</h3><p>An abliterated fine-tune of the CyberStrike-OffSec-35B offensive-security model: a Qwen3.6-35B-A3B tool-calling base, refusal weights edited out, no post-edit evaluations published.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/qwythos-9b-claude-mythos-5-1m-abliterated/"><span>9B class · Long context · ≈ $2.34/h</span><h3>huihui-ai/<wbr>Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated</h3><p>Qwen architecture, Empero post-training and huihui-ai&#x27;s final refusal-reduction pass, with a 1M label that deserves a closer look.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/qwen3-6-35b-a3b-abliterated/"><span>36B MoE · Qwen · ≈ $5.45/h</span><h3>huihui-ai/<wbr>Huihui-Qwen3.6-35B-A3B-abliterated</h3><p>The multimodal proof of concept: how huihui-ai applied abliteration to a 36-billion-parameter mixture-of-experts checkpoint, and why uncensored still needs caveats.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/ornith-1-0-397b-abliterated-w4a16/"><span>397B total · W4A16 · ≈ $10.90/h</span><h3>cebeuq/<wbr>Ornith-1.0-397B-abliterated-W4A16</h3><p>A shard-by-shard abliteration and W4A16 conversion of a 396.8-billion-parameter sparse model that still produces nearly 196 GiB of weights.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/ornith-1-0-35b-abliterated/"><span>35B MoE · Agentic coding · ≈ $5.45/h</span><h3>YuYu1015/<wbr>YuYu1015-Ornith-1.0-35B-abliterated</h3><p>DeepReinforce&#x27;s coding scaffold, YuYu1015&#x27;s corrected weights and the boundary between upstream and derivative benchmarks.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/huihui-qwen3-6-27b-abliterated/"><span>27.8B · MULTIMODAL · PROVEN · ≈ $5.45/h</span><h3>huihui-ai/<wbr>Huihui-Qwen3.6-27B-abliterated</h3><p>18,760 downloads in four months: what the community actually runs a dense 27B Qwen abliteration for, from red-teaming to quantization, and what its users report back.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/huihui-qwen3-5-9b-abliterated/"><span>9.7B · QWEN · CLASSIC · ≈ $2.34/h</span><h3>huihui-ai/<wbr>Huihui-Qwen3.5-9B-abliterated</h3><p>Abliterated Qwen3.5-9B (9,653,104,368 params, Apache-2.0) published 9 March 2026: 9,195 downloads and 125 likes on the base, with 58 downstream repos — GGUF/AWQ/MLX conversions and a preference-tuned Grimoire family — holding 64,688 combined downloads.</p><strong>Read the review →</strong></a>
-        <a class="blog-card" href="blog/huihui-glm-4-6v-flash-abliterated/"><span>10.3B · VISION · MIT · ≈ $2.34/h</span><h3>huihui-ai/<wbr>Huihui-GLM-4.6V-Flash-abliterated</h3><p>MIT-licensed text-side abliteration of Zhipu&#x27;s GLM-4.6V-Flash vision model (10,292,777,472 params), published 9 December 2025, dormant for eight months, freshly re-quantized with vision-projector files on 17 August 2026.</p><strong>Read the review →</strong></a>
-
+    <section class="section" id="status" aria-labelledby="status-title">
+      <p class="kicker">DATED SNAPSHOT · NOT LIVE TELEMETRY</p>
+      <h2 id="status-title">What exists right now.</h2>
+      <!-- PROJECT-STATUS -->
+<div class="status-panel"><p>Stopped. Provider snapshot: 2026-09-05 20:12 UTC, not live polling. 1 Vast.ai instance: 49433042, A100 PCIE 40960 MB, 120 GB disk. actual_status=exited; intended_status=stopped.</p><p>Last local health check (2026-09-05T19:39 UTC): localhost:8080 connection refused. No current inference test. Stopped storage remains billed.</p><p>Last serving configuration: Qwen3.8-27B OBLITERATED, Q6_K, llama.cpp, 262144 tokens configured. Not serving now; long-context quality is unvalidated.</p><p>Modal: Retired and not used by this project because of its cost budget. Four old apps still existed with zero tasks at the 2026-09-05 19:39 UTC audit; they were not decommissioned. Possible legacy storage charges remain unaudited.</p></div>
+<!-- /PROJECT-STATUS -->
+      <p><a href="/.well-known/project-status.json">Read the snapshot as JSON</a></p>
+    </section>
+    <section class="section" id="cost" aria-labelledby="cost-title">
+      <p class="kicker">VAST.AI RUNNING COST</p>
+      <h2 id="cost-title">Pay for time, not requests.</h2>
+      <!-- RUNNING-COSTS -->
+<table><caption>Vast.ai A100 40 GB + 120 GB disk</caption><thead><tr><th scope="col">Usage</th><th scope="col">Cost</th></tr></thead><tbody><tr><th scope="row">Running: GPU + disk / hour</th><td>$0.63333</td></tr><tr><th scope="row">Running continuously / 24 hours</th><td>$15.20</td></tr><tr><th scope="row">Running continuously / 30 days</th><td>$456.00</td></tr><tr><th scope="row">Stopped: retained disk / 30 days</th><td>$24.00</td></tr><tr><th scope="row">2 hours running per day / 30 days, disk retained throughout</th><td>$60.00</td></tr></tbody></table><p>USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.</p>
+<!-- /RUNNING-COSTS -->
+    </section>
+    <section class="section" id="workflow" aria-labelledby="workflow-title">
+      <p class="kicker">THE CURRENT WORKFLOW</p>
+      <h2 id="workflow-title">Manual. Private. Deliberate.</h2>
+      <ol class="step-grid"><li><h3>Start on Vast.ai</h3><p>The operator checks the instance, disk, current quote and spending scope, then starts it explicitly. This website cannot start a GPU.</p></li><li><h3>Connect over SSH</h3><p>llama.cpp stays on <code>localhost:8080</code>. Use an operator-controlled SSH tunnel and inspect the actual loaded model before evaluating it.</p></li><li><h3>Stop and verify</h3><p>Stop manually and read back the instance state. No automatic idle shutdown is proven. Stopping retains disk and ongoing storage charges; it is not deletion.</p></li></ol>
+      <p><a href="/auth.md">Access boundary</a> · <a href="/skills/abliterated-cloud/SKILL.md">Agent operating notes</a></p>
+    </section>
+    <section class="section" id="limits" aria-labelledby="limits-title">
+      <p class="kicker">EVIDENCE, NOT A LEADERBOARD</p>
+      <h2 id="limits-title">What is not established.</h2>
+      <ul><li><strong>Long-context quality:</strong> 262144 is a configured context limit, not validation that long inputs work reliably.</li><li><strong>A best model or a speed promise:</strong> old runs used different artifacts, settings and tests. They do not establish a current winner or comparable performance.</li><li><strong>Zero refusals:</strong> abliteration aims to reduce refusal behavior. A publisher’s result on one test set is not a general guarantee of behavior, capability or correctness.</li><li><strong>A public service:</strong> no public inference, billing, customer accounts, inference OAuth or live MCP service is offered here.</li></ul>
+      <p>Modal is retired and not used: its cost did not fit this experiment. Vast.ai is the only current operating path. Archived documentation and release notes describe history, not available products.</p>
+    </section>
+    <section class="section" id="archive" aria-labelledby="archive-title">
+      <p class="kicker">EDITORIAL ARCHIVE</p>
+      <h2 id="archive-title">Field notes, not live models.</h2>
+      <p>Source-linked reporting on model releases, edits and published evaluations. These articles preserve their dates, per-model license facts and historical estimates. Inclusion is not a hosting offer, current price, or proof that we evaluated that model.</p>
+      <ul class="archive-list">
+      <!-- ABLITERATED-LATEST-RELEASES -->
+<li><time datetime="2026-08-31">2026-08-31</time><a href="/blog/deepseek-v4-flash-vision-exp-abliterated/">Eleven hours from DeepSeek drop to uncensor.</a></li>
+<li><time datetime="2026-08-30">2026-08-30</time><a href="/blog/tencent-hy-mt2-30b-a3b-uncensored/">Why would a translation model refuse? Tencent&#x27;s Hy-MT2, decensored</a></li>
+<li><time datetime="2026-08-30">2026-08-30</time><a href="/blog/laguna-s-2-1-uncensored-heretic/">The 118B coding MoE nobody has refused</a></li>
 <!-- /ABLITERATED-LATEST-RELEASES -->
-      </div>
-      <p class="catalog-note"><strong>Free means the model weight files have no purchase price.</strong> Managed cloud inference is paid because the GPUs, storage and operation cost money. Model licenses belong to their upstream repositories and should be reviewed before commercial use. Exact pinned revisions and technical caveats are listed in <a href="https://github.com/eminogrande/mn-uncensored/blob/main/docs/MODELS.md">our public model record</a>. Every model above links to its source-linked review; request access and we host it for you.</p>
-      <a class="text-link blog-all-link" href="blog/">Open all field notes</a>
+      </ul>
+      <p><a href="/blog/">Browse the full archive →</a> · <a href="/blog/feed.xml">RSS</a></p>
     </section>
-
-    <section class="intro section" id="about" aria-labelledby="about-title">
-      <div class="section-heading align-left">
-        <p class="kicker">WHAT THIS IS</p>
-        <h2 id="about-title">Abliterated open models. One simple API.</h2>
-      </div>
-      <div class="intro-copy">
-        <p>ABLITERATED.cloud is a small, transparent hosting service for open model checkpoints with reduced refusal behavior. We run the models on cloud GPUs and expose the familiar OpenAI Chat Completions interface.</p>
-        <p>You choose the exact Hugging Face repository. We publish the model revision, hardware, context limit, route status and hourly price. No hidden model substitutions and no unprotected public endpoint.</p>
-      </div>
-    </section>
-
-    <section class="steps section" id="how" aria-labelledby="steps-title">
-      <div class="section-heading align-left">
-        <p class="kicker">HOW IT WORKS</p>
-        <h2 id="steps-title">Three steps. Nothing proprietary.</h2>
-      </div>
-      <div class="step-grid">
-        <article><span>01</span><h3>Get a token</h3><p>Request private-beta access on Signal. Every tester receives a separate, revocable Bearer token.</p></article>
-        <article><span>02</span><h3>Choose a model</h3><p>Select one of the exact Hugging Face checkpoints listed below. Internal API shortcuts are only routing identifiers.</p></article>
-        <article><span>03</span><h3>Use your client</h3><p>Connect Hermes, Pi, OpenCode, cURL or an OpenAI-compatible SDK to the same API base URL.</p></article>
-      </div>
-    </section>
-
-    <section class="api-section section" id="api" aria-labelledby="api-title">
-      <div class="api-copy">
-        <p class="kicker">THE API</p>
-        <h2 id="api-title">Works with the tools you already use.</h2>
-        <p>The gateway follows the OpenAI Chat Completions format. Change the base URL, add your Bearer token and send the exact API model ID. Streaming and structured tool calls are supported.</p>
-        <p>Hermes · Pi · OpenCode · OpenAI SDKs · cURL · compatible applications</p>
-        <a class="text-link" href="https://github.com/eminogrande/mn-uncensored#api-and-client-configuration">Read the complete integration guide</a>
-      </div>
-      <pre aria-label="OpenAI-compatible API example"><code>POST /v1/chat/completions
-
-{
-  "model": "YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated",
-  "messages": [
-    { "role": "user", "content": "Build it." }
-  ],
-  "stream": true
-}</code></pre>
-    </section>
-
-    <section class="principles section" aria-labelledby="principles-title">
-      <div class="section-heading align-left">
-        <p class="kicker">TRANSPARENT BY DEFAULT</p>
-        <h2 id="principles-title">You can inspect what you are using.</h2>
-      </div>
-      <div class="principle-grid">
-        <article><h3>Exact revisions</h3><p>Every route is pinned to a specific public Hugging Face commit.</p></article>
-        <article><h3>Protected access</h3><p>Every user gets a revocable token. The model servers remain private.</p></article>
-        <article><h3>Scale to zero</h3><p>When an endpoint is armed, its GPU container stops after the configured idle period.</p></article>
-        <article><h3>Open source</h3><p>The deployment code, gateway, CLI, tests and documentation are public on GitHub.</p></article>
-      </div>
-      <p class="status-note">Billing and checkout are not live yet. Published prices · access by invitation.</p>
-    </section>
-
-    <section class="faq-section section" id="faq" aria-labelledby="faq-title">
-      <div class="section-heading align-left">
-        <p class="kicker">PLAIN ANSWERS</p>
-        <h2 id="faq-title">Frequently asked questions.</h2>
-      </div>
-      <div class="faq-list">
-        <details><summary>What do “abliterated”, “uncensored” and “jailbroken” mean?<span aria-hidden="true">+</span></summary><p><strong>Abliterated</strong> means model weights were modified to reduce learned refusal behavior. <strong>Jailbroken</strong> is a broader informal term for bypassing original restrictions. <strong>Uncensored</strong> generally means fewer built-in content refusals. None of these terms guarantees zero refusals, truth, correctness, legality or safety.</p></details>
-        <details><summary>Are the models completely free?<span aria-hidden="true">+</span></summary><p>The model weights are free to download from Hugging Face under the license shown on each repository. You can self-host them. Our managed cloud inference is paid because H200 and L40S GPU time, storage and operations cost money.</p></details>
-        <details><summary>Do the models download to my computer?<span aria-hidden="true">+</span></summary><p>No. Hugging Face stores the source files and cloud volumes cache them near the GPU servers. Your computer only runs the client or lightweight CLI.</p></details>
-        <details><summary>Why does the 397B profile use 32K context?<span aria-hidden="true">+</span></summary><p>The upstream model advertises up to 262K tokens. Our initial 397B profile uses 32K to control GPU memory and cost. This is a hosting limit, not a renamed model or a claim about the upstream checkpoint.</p></details>
-        <details><summary>Does another user change the hourly price?<span aria-hidden="true">+</span></summary><p>Not automatically. Multiple users can share one running model container. More traffic can keep it active longer, and separate model routes may run at the same time.</p></details>
-        <details><summary>Is this already a public paid platform?<span aria-hidden="true">+</span></summary><p>No. It is currently a private evaluation service. Customer accounts, quotas, metering, billing and invoicing are still roadmap work.</p></details>
-      </div>
-    </section>
-
-    <section class="closing section">
-      <p class="kicker">PRIVATE BETA</p>
-      <h2>Try an exact model.<br>Know what is running.</h2>
-      <p>Tell us which Hugging Face repository you want to use and what you want to test.</p>
-      <a class="button" href="https://signal.me/#p/+13103408213" rel="noopener noreferrer">Request access on Signal</a>
+    <section class="section" id="license" aria-labelledby="license-title">
+      <h2 id="license-title">Open code. Separate model licenses.</h2>
+      <p>Our own website and code use MIT. Upstream code, model weights and derivatives retain their own licenses and restrictions. Public availability is not blanket permission for commercial use.</p>
+      <p><a href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud">Source repository ↗</a> · <a href="/NOTICE.md">Website notice</a></p>
     </section>
   </main>
-
-  <footer class="footer">
-    <div><a class="brand" href="#top"><img src="assets/logo.svg" width="28" height="28" alt=""><span>ABLITERATED.cloud</span></a><p>Intelligence, freed.<br>© 2026 ABLITERATED.cloud</p></div>
-    <nav aria-label="Footer navigation"><a href="#models">Exact models</a><a href="blog/">Blog</a><a href="#api">API</a><a href="https://github.com/eminogrande/mn-uncensored">Open-source code</a><a href="openapi.json">OpenAPI specification</a><a href="https://signal.me/#p/+13103408213" rel="noopener noreferrer">Request access on Signal</a></nav>
-  </footer>
+  <footer class="footer"><p>ABLITERATED.cloud<br>Private evaluation. Public notes.</p><nav aria-label="Footer navigation"><a href="/index.md">Markdown</a><a href="/llms.txt">Agent index</a><a href="/openapi.json">Documentation schema</a><a href="/blog/">Archive</a><a href="/RELEASE_NOTES.md">Updates</a></nav></footer>
 </body>
 </html>
