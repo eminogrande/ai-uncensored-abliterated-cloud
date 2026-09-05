@@ -1,7 +1,7 @@
 {
   "linkset": [
     {
-      "anchor": "https://eminhenri--mn-uncensored-api-api.modal.run",
+      "anchor": "https://abliterated.cloud",
       "service-desc": [
         {
           "href": "https://abliterated.cloud/openapi.json",
@@ -10,8 +10,8 @@
       ],
       "service-doc": [
         {
-          "href": "https://github.com/eminogrande/mn-uncensored#api-and-client-configuration",
-          "type": "text/html"
+          "href": "https://abliterated.cloud/index.md",
+          "type": "text/markdown"
         },
         {
           "href": "https://abliterated.cloud/auth.md",

@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # Qwythos has three lives: Qwen bones, 500M reasoning tokens and an abliterated refusal circuit
 
 Published 18 July 2026. Exact artifact: `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`, revision `efcc73cac15ff8fc5d46b8d41b53c22d571cf97d`.

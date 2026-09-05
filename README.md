@@ -1,237 +1,51 @@
 # ABLITERATED.cloud website
 
-This directory contains the dependency-free static landing page. GitHub Pages
-publishes it at the production custom domain `abliterated.cloud`. The
-repository also retains a prepared Cloudflare Worker as an optional future
-edge layer; Cloudflare is not required for the current deployment.
+A dependency-free, static website for private on-demand evaluation on Vast.ai with llama.cpp. No public inference service or hosted model catalog. No JavaScript, graphics background, animation, analytics, external fonts or health polling is needed to read or navigate it.
 
-## Goals
+## Source of truth
 
-- high PageSpeed performance without a build framework;
-- complete semantic content in the initial HTML response;
-- responsive and accessible design;
-- exact model, API ID, price, and licensing transparency;
-- agent-readable Markdown, `llms.txt`, OpenAPI, authentication, skill, robots,
-  sitemap, and security resources;
-- no analytics, advertising, external fonts, cookies, secrets, inference API
-  calls, health polling, or Modal wake requests.
+- `.well-known/project-status.json`: dated operator snapshot, not live telemetry. Update only from evidence, without private keys, host addresses or account credits.
+- `index.html`, `index.md`, `llms.txt`, `llms-full.txt`: the build synchronizes marked status and cost sections from that snapshot. The root README cost section is generated from the same rates.
+- `blog/posts.json`: historical editorial metadata, not deployment inventory. Price estimates are explicitly historical; publisher refusal measurements are not a general guarantee.
+- Article HTML/Markdown: original reporting, licenses and source links remain. The build adds consistent archive framing and navigation without rewriting article bodies.
+- `openapi.json`: read-only public documentation resources only. No inference contract, model catalog, wake endpoint or credentials.
+- Obsolete MCP, A2A, OAuth and WebMCP discovery cards are removed rather than advertising services that are not offered. The old optional Worker is preserved under `archive/edge/` and is not the current runtime.
 
-## Typography
+## Local preview and verification
 
-The page uses one mono type system throughout. Its local stack begins with
-Geist Mono, matching the type direction that inspired the layout, and falls
-back to the operating system's native monospace fonts without downloading a
-webfont. No fixed interface text is smaller than 17 px.
-
-## Local preview
-
-Use the real edge behavior locally:
+From the repository root:
 
 ```sh
-npm install
-npm run dev:website
-```
-
-Open:
-
-```text
-http://127.0.0.1:8788/
-```
-
-Then verify the complete local agent surface:
-
-```sh
-npm run verify:agent-ready:local
-```
-
-## Hero visual
-
-The live hero uses a small, dependency-free Canvas point cloud. It generates a
-deterministic lateral brain silhouette locally, fills it with a connected
-neural network, and activates local neon-colored regions as the pointer moves
-over it. It pauses outside the viewport and when the tab is hidden, caps
-rendering density, and becomes motionless while retaining pointer feedback
-when the visitor prefers reduced motion. It does not load Three.js or contact
-a third party.
-
-The owner-supplied brain-and-broken-chains artwork remains stored in optimized
-formats for social sharing and the no-JavaScript fallback:
-
-- `assets/hero-brain.avif` is the preferred 142 KB hero image;
-- `assets/hero-brain.webp` is the compatibility fallback.
-
-The normal page does not preload either raster image, keeping the critical
-render path small.
-
-## Model field notes
-
-`blog/` contains one long-form article for each exact catalog artifact. The
-articles explain architecture, model lineage, training or post-training,
-abliteration, quantization, publisher history, deployment implications and
-published evaluation numbers. Claims from a model publisher remain labeled as
-publisher claims, and upstream benchmark results are never presented as if the
-abliterated derivative had been rerun.
-
-Each article ships as semantic HTML and Markdown, uses `TechArticle` structured
-data, pins the model revision, and closes with primary sources. The blog index,
-RSS feed, sitemap, `llms.txt` and `llms-full.txt` expose all four articles to
-readers, search engines and agents.
-
-The exact articles are:
-
-- `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`;
-- `YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`;
-- `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`;
-- `cebeuq/Ornith-1.0-397B-abliterated-W4A16`.
-
-### Publishing a new post
-
-Use the current article HTML and Markdown pair as the visual template. Add the
-post metadata to `blog/posts.json`, newest first, then run:
-
-```sh
-npm run build:blog
+python3 -I scripts/build-blog.py
+python3 -I scripts/build-blog.py --check
 uv run pytest tests/test_website.py -q
+python3 -m http.server 8788 --bind 127.0.0.1 --directory website
 ```
 
-The build script validates the article pair and primary-source section, then
-regenerates the blog index, RSS, sitemap, `llms.txt`, and `llms-full.txt`.
+With that server running:
 
-For a transcript post, keep a private quote ledger and copy displayed quotes
-character-for-character. For a researched model post, label each number as an
-exact derivative measurement, an upstream benchmark, a third-party test, or a
-publisher claim. Reddit and X can identify questions and community response;
-they never replace the model card, revision, official benchmark table, paper,
-or creator's own profile as the factual source.
-
-The site identity uses a brain mark in SVG, PNG and ICO formats. The generated
-PNG/ICO files are committed so browsers and devices do not need to rasterize
-the SVG at runtime.
-
-## Access request
-
-Active private-beta access links use Signal:
-
-```text
-https://signal.me/#p/+13103408213
+```sh
+node scripts/verify-agent-ready.mjs http://127.0.0.1:8788 --local-only
 ```
 
-Signal does not support the previous WhatsApp-style prefilled message on this
-phone link. Visitors are asked in nearby copy to mention ABLITERATED.cloud.
+The verifier checks the real static-site contract, article routes, the snapshot, archive labels and reading indexes. Unit tests check generated pagination, local links, metadata, assets and discovery digests. Static Pages does not provide dynamic Link headers, Markdown content negotiation, MCP or OAuth; the retired Worker/scanner are archival only.
 
-## GitHub Pages
-
-GitHub Pages publishes the root of the `gh-pages` branch. The signed deployment
-command is:
+From a clean, signed `main` matching `origin/main`, publish with:
 
 ```sh
 ./scripts/deploy-website.sh website-vX.Y.Z
 ```
 
-The command requires a clean, SSH-signed `main`, runs the complete test suite
-and secret scan, creates a signed commit on `gh-pages`, pushes it, and requests
-a classic GitHub Pages build. It then creates a signed tag and GitHub release
-from `website/releases/website-vX.Y.Z.md`. It never imports the Modal
-application, deploys a model, wakes an endpoint, or starts a GPU.
+Use an unused version with curated notes under `website/releases/`. The script verifies tests, signatures, Pages configuration and the deployed build before creating the GitHub release. Read back public content as a final check; a local test or a Git push alone is not deployment.
 
-The repository originally included a GitHub Actions Pages workflow. GitHub
-refused to start that job because the account was locked for a billing issue,
-so Pages now deliberately uses the branch-based deployment that has been
-verified to work. This also prevents future `main` pushes from creating a
-known-failing Actions run.
+## Editorial archive
 
-Production URL:
+Add an HTML/Markdown article pair and a dated `posts.json` entry with `content_status: editorial_archive`, then run the build and tests. Keep exact artifact identity, pinned revisions, per-model license facts and primary sources. Use `historical_estimated_usd_per_hour`, not a current-looking price field. Keep refusal claims scoped to their publisher, test and settings; never add a global zero-refusal badge.
 
-```text
-https://abliterated.cloud/
-```
+The build generates paginated archive indexes, the RSS feed, sitemap and agent reading lists. The homepage shows only three article links, not the entire archive. `--check` fails if generated outputs are stale.
 
-The former project URL, `https://eminogrande.github.io/mn-uncensored/`, is no
-longer the canonical address and redirects through the configured Pages custom
-domain.
+## Design and budgets
 
-## Custom domain and DNS
+System fonts, semantic HTML, visible wrapping navigation at mobile widths, native links and keyboard focus styles. No JavaScript required. Critical homepage HTML, CSS and SVG identity assets must total less than 25 KB uncompressed. No hero asset request/preload, canvas, blur or decorative animation. Article tables scroll locally and long IDs wrap.
 
-The configured domain is:
-
-```text
-https://abliterated.cloud/
-```
-
-The cutover was completed on 2026-07-18 without changing nameservers. Porkbun
-remains authoritative and the previous parking records were removed. The live
-zone contains GitHub's four apex A records, four apex AAAA records, and a
-`www` CNAME to `eminogrande.github.io`. `website/CNAME` and the GitHub Pages
-repository setting both contain exactly `abliterated.cloud`.
-
-GitHub provisions and renews the TLS certificate. Immediately after a new
-custom-domain cutover, HTTPS availability and the **Enforce HTTPS** setting can
-remain pending while GitHub validates DNS and issues the certificate. This can
-take up to 24 hours and does not require a GPU or create Modal costs.
-
-After certificate provisioning, verify:
-
-```sh
-dig +short A abliterated.cloud
-dig +short AAAA abliterated.cloud
-dig +short CNAME www.abliterated.cloud
-curl -fsSI https://abliterated.cloud/
-curl -fsSI https://www.abliterated.cloud/
-npm run verify:agent-ready -- https://abliterated.cloud
-```
-
-## Agent-ready edge layer
-
-Static GitHub Pages can publish discoverability files but cannot vary the
-homepage response on `Accept: text/markdown` or add arbitrary HTTP response
-headers. `website-worker.mjs` now provides:
-
-- real Markdown content negotiation at `/` and every article route;
-- `Link` and `Content-Signal` headers on every response;
-- the correct `application/linkset+json` media type;
-- OAuth and protected-resource discovery for public agent metadata;
-- A2A, MCP, Agent Skills and WebMCP discovery;
-- a real read-only MCP endpoint with `get_site_summary` and `list_models`;
-- a public HTTP-signature directory tied to the owner's existing Ed25519
-  public signing key.
-
-The live GitHub Pages site exposes all static discovery files. Dynamic
-content negotiation, arbitrary response headers, DNS-AID, and a live POST MCP
-endpoint still require an edge runtime and DNS features beyond static Pages.
-The local gate tests the prepared Worker behavior, so its score must not be
-reported as the current public GitHub Pages score.
-
-The repository already publishes explicit Markdown alternatives so agents do
-not need to scrape the visual page.
-
-The site publishes truthful discovery resources at the paths used by current
-agent tooling:
-
-- `/.well-known/api-catalog`
-- `/.well-known/agent-card.json`
-- `/.well-known/agent-skills/index.json`
-- `/.well-known/mcp/server-card.json`
-- `/.well-known/oauth-authorization-server`
-- `/.well-known/oauth-protected-resource`
-- `/.well-known/webmcp.json`
-- `/.well-known/skills/index.json` for legacy clients
-- `/auth.md`
-- `/openapi.json`
-
-These resources now resolve at the `abliterated.cloud` origin root through the
-Pages custom domain.
-
-The extensionless API catalog follows RFC 9727's Linkset JSON structure. The
-Worker explicitly serves it as `application/linkset+json`.
-
-## Performance budget
-
-- no third-party runtime requests;
-- no framework or package install;
-- no render-blocking JavaScript;
-- one small deferred script;
-- total uncompressed static payload target below 250 KB, excluding the OpenAPI
-  and long-form agent text files that are not loaded by the homepage;
-- zero layout shift from the logo;
-- reduced-motion support;
-- mobile-first responsive checks at 390, 768, and 1440 CSS pixels.
+MIT covers project-owned website/code only. Upstream/model licenses are unchanged. Release notes remain historical and are labeled as such.

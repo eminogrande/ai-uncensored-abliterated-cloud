@@ -1,19 +1,9 @@
 # Website implementation notice
 
-The ABLITERATED.cloud landing page is an original, dependency-free static
-implementation created for this repository.
+This dependency-free website is original project-owned code under MIT. Upstream code, model weights, derivatives, quoted sources and third-party materials retain their own licenses; MIT does not relicense them.
 
-Its calm single-page product rhythm was visually inspired by
-[receive.link](https://receive.link/), whose public repository is licensed
-GPL-3.0. No receive.link source code, font file, icon asset, text, logo, or
-runtime component is included here.
+Previous designs took high-level visual inspiration from receive.link and private-AI product pages. No receive.link or Venice source code, fonts, logos or proprietary page copy is included.
 
-The ABLITERATED.cloud website code remains part of this repository's
-Apache-2.0-licensed source.
+The old decorative hero artwork and animated canvas have been removed. The small site identity icons remain. The social preview is a plain text card with no background illustration.
 
-The v0.3 hero artwork was supplied directly by the repository owner. Optimized
-AVIF and WebP derivatives are stored in `assets/hero-brain.*`.
-
-The revised information hierarchy takes high-level inspiration from modern
-private-AI product pages, including Venice.ai. No Venice source code, visual
-asset, logo, or proprietary landing-page text is included.
+The blog and release notes are historical editorial records. Their per-model license facts and older operating claims describe their publication dates, not the current service. See the dated project status and current Vast documentation.

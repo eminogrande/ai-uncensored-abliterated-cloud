@@ -1,66 +1,21 @@
-# Auth.md — ABLITERATED.cloud authentication
+# Access boundary — ABLITERATED.cloud
 
-ABLITERATED.cloud uses revocable Bearer access tokens for the OpenAI-compatible inference API.
+## Public website
 
-## Request header
+HTML, Markdown, the editorial archive and status snapshot are public read-only documents. They need no authentication. This site offers no public inference, live MCP service, agent registration, OAuth token issuance, customer accounts or billing.
 
-```http
-Authorization: Bearer sk-mn-...
-```
+## Private evaluation
 
-The public website never contains or retrieves a token.
+The current operating path is Vast.ai with llama.cpp. Inference stays on localhost:8080 and is reached through an operator-controlled SSH tunnel. The operator provides any required SSH access through a private channel; this website does not issue credentials. Never publish account keys, SSH keys or private host details in public documents.
 
-## Token behavior
+Use the repository's current Vast operating instructions. Verify the instance is running and inspect the actual loaded model before a test. A dated status snapshot is not proof of present availability. Archived Modal bearer tokens and wake routes are not this runtime's access contract.
 
-- A missing token returns an OpenAI-style `401` error.
-- An invalid or revoked token returns an OpenAI-style `401` error.
-- Tokens are created and revoked by the operator.
-- The shared gateway stores token digests, not recoverable plaintext tokens.
-- User tokens are separate from Modal account credentials.
-- Gateway-to-backend proxy credentials are separate from user tokens.
+## Cost and lifecycle
 
-## Lifecycle requirement
+Start and stop manually with explicit operator authorization. Verify the stopped state after testing. No automatic idle shutdown is proven. Stopping retains disk and ongoing storage charges; it is not deletion.
 
-A valid token cannot wake a hard-stopped route. The operator must explicitly arm or start one model first.
+## References
 
-The 397B route additionally requires explicit operator cost acknowledgement for start, automatic mode, wake, or agent launch.
-
-## Public agent registration
-
-Agents can register anonymously for a read-only website credential. This does not authorize model inference.
-
-### Step 1 — discover
-
-```http
-GET https://abliterated.cloud/.well-known/oauth-protected-resource
-Accept: application/json
-```
-
-```http
-GET https://abliterated.cloud/.well-known/oauth-authorization-server
-Accept: application/json
-```
-
-The authorization metadata publishes:
-
-- `agent_auth.skill`: `https://abliterated.cloud/auth.md`
-- `agent_auth.register_uri`: `https://abliterated.cloud/agent/auth`
-- `agent_auth.identity_types_supported`: `anonymous`
-- `agent_auth.anonymous.credential_types_supported`: `access_token`
-
-### Step 2 — register
-
-```http
-POST https://abliterated.cloud/agent/auth
-Content-Type: application/json
-Accept: application/json
-
-{"type":"anonymous","requested_credential_type":"access_token"}
-```
-
-The response contains an `access_token` credential with the single scope `public:read`. Public HTML, Markdown, model metadata and MCP tools remain readable without it. The model API itself uses operator-issued Bearer tokens; inference OAuth is not implemented.
-
-## Request access
-
-Contact through Signal and mention ABLITERATED.cloud:
-https://signal.me/#p/+13103408213
+- [Dated status snapshot](https://abliterated.cloud/.well-known/project-status.json)
+- [Project overview](https://abliterated.cloud/index.md)
+- [Source and operator documentation](https://github.com/eminogrande/ai-uncensored-abliterated-cloud)

@@ -1,11 +1,11 @@
 {
   "name": "ABLITERATED.cloud",
   "short_name": "ABLITERATED",
-  "description": "Open models. Private access. One OpenAI-compatible API.",
+  "description": "Private Vast.ai + llama.cpp evaluation. Public documentation and editorial archive; no public inference.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f3f0e9",
-  "theme_color": "#f3f0e9",
+  "background_color": "#f7f7f4",
+  "theme_color": "#f7f7f4",
   "icons": [
     {
       "src": "assets/favicon.svg",

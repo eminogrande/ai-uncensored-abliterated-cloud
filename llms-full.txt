@@ -1,179 +1,87 @@
-# ABLITERATED.cloud full agent context
+# ABLITERATED.cloud — full project reading guide
 
-ABLITERATED.cloud provides private, token-protected access to exact pinned Hugging Face model artifacts through an OpenAI-compatible Chat Completions gateway. The model weight files are publicly downloadable without a purchase price; managed cloud GPU runtime is not free.
+Public documentation for private on-demand evaluation on Vast.ai with llama.cpp. This is not a public hosted model catalog. No public inference or live MCP service is offered.
 
-## Infrastructure
+## Dated operating snapshot
 
-- Hugging Face stores the public model artifacts.
-- Modal supplies GPU containers, secrets, lifecycle state, and persistent volumes.
-- vLLM serves one model per private backend.
-- The MN gateway validates Bearer tokens, resolves model IDs, forwards requests, waits through cold starts, and exposes a shared `/v1` base URL.
-- The website is static and never calls the inference API.
+<!-- PROJECT-STATUS -->
+Stopped. Provider snapshot: 2026-09-05 20:12 UTC, not live polling. 1 Vast.ai instance: 49433042, A100 PCIE 40960 MB, 120 GB disk. actual_status=exited; intended_status=stopped.
 
-## Model catalog
+Last local health check (2026-09-05T19:39 UTC): localhost:8080 connection refused. No current inference test. Stopped storage remains billed.
 
-1. Qwen3.6 35B A3B — API model ID `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`
-2. Ornith 1.0 35B — API model ID `YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`
-3. Qwythos 9B Claude Mythos 5 — API model ID `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`
-4. Ornith 1.0 397B W4A16 — API model ID `cebeuq/Ornith-1.0-397B-abliterated-W4A16`
+Last serving configuration: Qwen3.8-27B OBLITERATED, Q6_K, llama.cpp, 262144 tokens configured. Not serving now; long-context quality is unvalidated.
 
-Existing clients may continue to send the compatibility aliases `mn/god`, `mn/code`, `mn/fast`, `mn/ornith-397b`, and `nuri/ornith-397b-abliterated`. New integrations should send the exact Hugging Face repository ID.
+Modal: Retired and not used by this project because of its cost budget. Four old apps still existed with zero tasks at the 2026-09-05 19:39 UTC audit; they were not decommissioned. Possible legacy storage charges remain unaudited.
+<!-- /PROJECT-STATUS -->
 
-The 397B hardware profile requires a confirmed Modal hard budget, explicit two-H200 acknowledgement, streaming validation, text-plus-image validation, forced structured tool validation, scale-to-zero observation, and hard-stop verification before production use.
+## Running cost
 
-## Exact models
+<!-- RUNNING-COSTS -->
+| Usage | Cost |
+| --- | ---: |
+| Running: GPU + disk / hour | **$0.63333** |
+| Running continuously / 24 hours | **$15.20** |
+| Running continuously / 30 days | **$456.00** |
+| Stopped: retained disk / 30 days | **$24.00** |
+| 2 hours running per day / 30 days, disk retained throughout | **$60.00** |
 
-### Qwen3.6 35B A3B — Abliterated
+USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.
+<!-- /RUNNING-COSTS -->
 
-Hugging Face repository: `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`
-API model ID: `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`
-Compatibility alias: `mn/god`
-Revision: `8f0ee727aff5e771ea72466d64d13ecd851d2cc7`
-HF metadata: Apache-2.0; 35,951,822,704 parameters, displayed as 36B; BF16; multimodal MoE; uncensored and abliterated
-Hardware: 1 x H200
-Context: 131072
-Maximum output: 16384
-ABLITERATED.cloud price: $5.45/hour
+## Access and lifecycle
 
-### Ornith 1.0 35B — Abliterated
+The runtime is private localhost:8080, reached through an operator-controlled SSH tunnel. Confirm actual instance state and the loaded model before any evaluation. The website neither calls inference nor starts GPUs. Public documents require no authentication and cannot grant inference access.
 
-Hugging Face repository: `YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`
-API model ID: `YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`
-Compatibility alias: `mn/code`
-Revision: `86065d1a9008773086a177637d54ec6dc2a56cbf`
-HF metadata: Apache-2.0; 35B Qwen3.5 MoE; reasoning/thinking; English and Chinese; uncensored and abliterated
-Hardware: 1 x H200
-Context: 131072
-Maximum output: 16384
-ABLITERATED.cloud price: $5.45/hour
+Start and stop manually. Confirm costs and authorization before starting. After testing, stop and read back instance state. Stopping retains disk and ongoing storage charges; it is not deletion. No automatic idle shutdown is proven. Never infer that a stopped instance is free, or that an archived approach has been fully decommissioned.
 
-### Qwythos 9B Claude Mythos 5 — Abliterated
+The old Modal approach is archived; the current operating path is Vast.ai with llama.cpp. Old catalog identifiers, bearer tokens, wake routes and benchmark comparisons are not the current contract.
 
-Hugging Face repository: `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`
-API model ID: `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`
-Compatibility alias: `mn/fast`
-Revision: `efcc73cac15ff8fc5d46b8d41b53c22d571cf97d`
-HF metadata: Apache-2.0; 9,653,104,368 parameters, displayed as 10B; BF16; dense Qwen3.5; long-context and tool-use tags; uncensored and abliterated
-Hardware: 1 x L40S
-Context: 131072
-Maximum output: 16384
-ABLITERATED.cloud price: $2.34/hour
+## What has not been validated
 
-### Ornith 1.0 397B W4A16 — Abliterated
+Historical 262144 configured context is not long-context validation. No current best-model, performance or capability guarantee follows from old noncomparable runs. Abliteration aims to reduce refusal behavior, but neither it nor a publisher's zero-result on one test set guarantees zero refusals or correctness.
 
-Hugging Face repository: `cebeuq/Ornith-1.0-397B-abliterated-W4A16`
-API model ID: `cebeuq/Ornith-1.0-397B-abliterated-W4A16`
-Compatibility aliases: `mn/ornith-397b`, `nuri/ornith-397b-abliterated`
-Revision: `e5651d291be1c65ff1360eee47ab533ab13b3d97`
-HF metadata: MIT; 397B total / about 17B active; multimodal Qwen3.5 MoE; W4A16; about 196 GB; decensored, uncensored and abliterated
-Hardware: 2 x H200
-Context: 32768 configured
-Maximum output: 8192
-ABLITERATED.cloud price: $10.90/hour
-Upstream native context claim: 262144
+## Licenses
 
-The words "abliterated", "decensored" and "uncensored" are upstream labels and publisher claims, not service guarantees. "Jailbroken" is a broader informal search term; none of the exact four repositories uses it as its technical method. Do not claim zero refusals.
+MIT applies to project-owned code and the website. Upstream libraries, base models, derivatives and weights retain their own licenses. Each archived article's license facts remain model-specific and historical, not a relicensing of its subject.
 
-## Source-linked model field notes
+## Public documents
 
-- [Eleven hours from DeepSeek drop to uncensor.](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/index.md)
-- [Why would a translation model refuse? Tencent's Hy-MT2, decensored](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/index.md)
-- [The 118B coding MoE nobody has refused](https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/index.md)
-- [The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100](https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/index.md)
-- [The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?](https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/index.md)
-- [The 180B abliteration race on the model nobody can serve yet](https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/index.md)
-- [GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320](https://abliterated.cloud/blog/glm-5-3-flash-crack/index.md)
-- [The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage](https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/index.md)
-- [One base, three uncensors: the Ornith-1.5 task-vector transplant](https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/index.md)
-- [The lossless aggressive: Qwen3.8 27B Uncensored FP8](https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/index.md)
-- [Small uncensored agents: what a 4.5B Heretic distill is for](https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/index.md)
-- [What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/index.md)
-- [The 2.78-trillion-parameter abliteration nobody can run](https://abliterated.cloud/blog/kimi-k3-abliterated-modal/index.md)
-- [The first abliterated diffusion LLM: 1,000+ tokens a second on one GPU](https://abliterated.cloud/blog/diffusiongemma-26b-e38-abliterated-nvfp4/index.md)
-- [The 48-hour abliteration race](https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/index.md)
-- [Three ARA passes: how RVN got Qwen3.8-27B down to 0–1/100 refusals](https://abliterated.cloud/blog/qwen3-8-27b-rvn-heretic-abliterated-uncensored/index.md)
-- [DeepSeek V4 Flash, uncensored by dial: 757 KB against 284B](https://abliterated.cloud/blog/huihui-deepseek-v4-flash-0731-abliterated/index.md)
-- [The base of the wave: Muse-Glimmer-30B's measured de-refusal](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated/index.md)
-- [A pentesting model, with the refusals taken out](https://abliterated.cloud/blog/huihui-cyberstrike-offsec-35b-abliterated/index.md)
-- [Qwythos 9B: a model with three lives](https://abliterated.cloud/blog/qwythos-9b-claude-mythos-5-1m-abliterated/index.md)
-- [Inside Huihui-Qwen3.6: 256 experts and one refusal direction](https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/index.md)
-- [Ornith 397B: surgery on a model too large to hold at once](https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/index.md)
-- [Ornith 35B: can self-scaffolding survive abliteration?](https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/index.md)
-- [The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in](https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/index.md)
-- [The quiet classic: how Huihui-Qwen3.5-9B-abliterated became the small-model default](https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/index.md)
-- [The MIT vision sleeper that resurfaced in August](https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/index.md)
+- [Overview](https://abliterated.cloud/index.md)
+- [Status JSON](https://abliterated.cloud/.well-known/project-status.json)
+- [Access boundary](https://abliterated.cloud/auth.md)
+- [Documentation-only OpenAPI](https://abliterated.cloud/openapi.json)
+- [Agent operating notes](https://abliterated.cloud/skills/abliterated-cloud/SKILL.md)
+- [Source repository](https://github.com/eminogrande/ai-uncensored-abliterated-cloud)
 
-Each article labels exact derivative facts, upstream benchmark claims, third-party measurements and community reports separately. Creator biographies require a primary profile, company page or direct statement.
+## Editorial archive — not live models
 
-## Safe lifecycle
+Source-linked reporting at each article's publication date, preserving per-model licenses, publisher measurements, community reports and historical estimates. None is a current hosting offer or current ranking. Compare evaluations only when artifact, runtime, prompts and decoding settings match.
 
-- `mn start MODEL` arms and wakes one selected model.
-- `mn auto MODEL` arms wake-on-request without immediately waking the GPU.
-- `mn wake MODEL` waits for one already armed model to become ready.
-- `mn stop MODEL` hard-stops one route.
-- `mn stop` hard-stops every route.
-- Normal lifecycle policy uses `min_containers=0`, `max_containers=1`, and a 300-second idle window.
-- Expensive 397B lifecycle commands require `--allow-expensive`.
-
-Never infer that a five-minute idle window is a five-minute maximum charge. Startup, compilation, model loading, inference, health checks, retries, and open streams are active work.
-
-## API contract
-
-Authentication:
-
-`Authorization: Bearer sk-mn-...`
-
-Directly tested endpoints:
-
-- `GET /v1/models`
-- `POST /v1/chat/completions`
-
-Directly tested behavior:
-
-- model routing
-- streaming
-- structured tool calls
-- lifecycle-aware cold-start waiting
-
-Do not assume support for every OpenAI endpoint or proprietary client feature.
-
-## Supported clients
-
-- Hermes Agent
-- Pi
-- OpenCode
-- OpenAI Python and JavaScript SDKs using a custom base URL
-- cURL
-- server-side OpenAI-compatible applications
-
-Cursor is a compatibility target and may keep proprietary features on its own providers.
-
-## Security
-
-- The API address is not treated as a secret.
-- Model requests require valid Bearer tokens.
-- The gateway stores token digests instead of recoverable plaintext tokens.
-- Private Modal backend proxy credentials are separate from user tokens.
-- Modal account credentials and all secret values stay out of Git.
-- Public website code contains no API token, Modal credential, backend proxy secret, or inference polling.
-
-## Model prices
-
-- Qwen3.6 35B A3B (`huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`): $5.45/hour
-- Ornith 1.0 35B (`YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`): $5.45/hour
-- Qwythos 9B Claude Mythos 5 (`huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`): $2.34/hour
-- Ornith 1.0 397B W4A16 (`cebeuq/Ornith-1.0-397B-abliterated-W4A16`): $10.90/hour
-
-Model weight downloads are free. These prices cover managed cloud inference.
-Automated customer metering, balances, payments and invoicing are not live yet.
-
-## Open source and licenses
-
-Repository: https://github.com/eminogrande/mn-uncensored
-
-The MN control plane and website use Apache-2.0, an open-source license. Hugging Face currently displays Apache-2.0 metadata for the first three exact repositories and MIT for the 397B repository. The exact derivative repositories do not each include a standalone license file, and publisher warnings remain relevant. Public weights do not automatically clear commercial resale.
-
-## Access
-
-Private access request:
-https://signal.me/#p/+13103408213
+<!-- ARCHIVE-LINKS -->
+- [Eleven hours from DeepSeek drop to uncensor.](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/index.md): archived field note, 2026-08-31.
+- [Why would a translation model refuse? Tencent's Hy-MT2, decensored](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/index.md): archived field note, 2026-08-30.
+- [The 118B coding MoE nobody has refused](https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/index.md): archived field note, 2026-08-30.
+- [The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100](https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/index.md): archived field note, 2026-08-28.
+- [The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?](https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/index.md): archived field note, 2026-08-28.
+- [The 180B abliteration race on the model nobody can serve yet](https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/index.md): archived field note, 2026-08-27.
+- [GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320](https://abliterated.cloud/blog/glm-5-3-flash-crack/index.md): archived field note, 2026-08-26.
+- [The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage](https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/index.md): archived field note, 2026-08-25.
+- [One base, three uncensors: the Ornith-1.5 task-vector transplant](https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/index.md): archived field note, 2026-08-20.
+- [The lossless aggressive: Qwen3.8 27B Uncensored FP8](https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/index.md): archived field note, 2026-08-19.
+- [Small uncensored agents: what a 4.5B Heretic distill is for](https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/index.md): archived field note, 2026-08-17.
+- [What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/index.md): archived field note, 2026-08-17.
+- [The 2.78-trillion-parameter abliteration nobody can run](https://abliterated.cloud/blog/kimi-k3-abliterated-modal/index.md): archived field note, 2026-08-17.
+- [The first abliterated diffusion LLM: 1,000+ tokens a second on one GPU](https://abliterated.cloud/blog/diffusiongemma-26b-e38-abliterated-nvfp4/index.md): archived field note, 2026-08-16.
+- [The 48-hour abliteration race](https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/index.md): archived field note, 2026-08-16.
+- [Three ARA passes: how RVN got Qwen3.8-27B down to 0–1/100 refusals](https://abliterated.cloud/blog/qwen3-8-27b-rvn-heretic-abliterated-uncensored/index.md): archived field note, 2026-08-14.
+- [DeepSeek V4 Flash, uncensored by dial: 757 KB against 284B](https://abliterated.cloud/blog/huihui-deepseek-v4-flash-0731-abliterated/index.md): archived field note, 2026-08-13.
+- [The base of the wave: Muse-Glimmer-30B's measured de-refusal](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated/index.md): archived field note, 2026-08-12.
+- [A pentesting model, with the refusals taken out](https://abliterated.cloud/blog/huihui-cyberstrike-offsec-35b-abliterated/index.md): archived field note, 2026-08-10.
+- [Qwythos 9B: a model with three lives](https://abliterated.cloud/blog/qwythos-9b-claude-mythos-5-1m-abliterated/index.md): archived field note, 2026-07-18.
+- [Inside Huihui-Qwen3.6: 256 experts and one refusal direction](https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/index.md): archived field note, 2026-07-18.
+- [Ornith 397B: surgery on a model too large to hold at once](https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/index.md): archived field note, 2026-07-18.
+- [Ornith 35B: can self-scaffolding survive abliteration?](https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/index.md): archived field note, 2026-07-18.
+- [The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in](https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/index.md): archived field note, 2026-04-23.
+- [The quiet classic: how Huihui-Qwen3.5-9B-abliterated became the small-model default](https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/index.md): archived field note, 2026-03-09.
+- [The MIT vision sleeper that resurfaced in August](https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/index.md): archived field note, 2025-12-09.
+<!-- /ARCHIVE-LINKS -->

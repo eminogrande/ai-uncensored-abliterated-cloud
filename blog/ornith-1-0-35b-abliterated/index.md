@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # Ornith 35B: can self-scaffolding survive abliteration?
 
 Published 18 July 2026. Exact artifact: `YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`, revision `86065d1a9008773086a177637d54ec6dc2a56cbf`.

@@ -1,0 +1,52 @@
+{
+  "project": "ABLITERATED.cloud",
+  "purpose": "Private on-demand evaluation on Vast.ai with llama.cpp; public documentation and editorial archive only.",
+  "snapshot_at": "2026-09-05T20:12:39.126574+00:00",
+  "snapshot_precision": "provider snapshot timestamp",
+  "live_polling": false,
+  "public_inference": false,
+  "public_mcp": false,
+  "current": {
+    "provider": "Vast.ai",
+    "instance_count": 1,
+    "instance_id": 49433042,
+    "actual_status": "exited",
+    "cur_state": "stopped",
+    "intended_status": "stopped",
+    "gpu": "A100 PCIE",
+    "gpu_memory_mb": 40960,
+    "disk_gb": 120,
+    "local_health": "localhost:8080 connection refused",
+    "cost_usd_per_hour": {
+      "gpu": 0,
+      "disk": 0.033333333333333326,
+      "total": 0.033333333333333326
+    },
+    "retained_storage_usd_per_day": 0.8,
+    "retained_storage_usd_per_30_days": 24,
+    "running_quote_usd_per_hour": {
+      "gpu": 0.6,
+      "disk": 0.033333333333333326,
+      "total": 0.6333333333333333
+    }
+  },
+  "historical_configuration": {
+    "model": "Qwen3.8-27B OBLITERATED",
+    "quantization": "Q6_K",
+    "runtime": "llama.cpp",
+    "context_tokens_configured": 262144,
+    "long_context_validated": false,
+    "current_model_loaded": false
+  },
+  "access": "Private localhost:8080 through an operator-controlled SSH tunnel. No public inference endpoint.",
+  "lifecycle": "Manual start/stop. No proven automatic idle shutdown. Stopping retains disk and ongoing storage charges; it is not deletion.",
+  "legacy": {
+    "v100_instance_id": 49365403,
+    "v100_lookup": null,
+    "modal": "Retired and not used by this project because of its cost budget. Four old apps still existed with zero tasks at the 2026-09-05 19:39 UTC audit; they were not decommissioned. Possible legacy storage charges remain unaudited."
+  },
+  "evidence_limits": "Dated operator audit, not a health monitor. No current best-model, performance, long-context or zero-refusal guarantee.",
+  "license": "MIT for project-owned code and website only; model and upstream licenses are unchanged.",
+  "evidence_source": "https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/evidence/2026-09-05-vast-recheck.json",
+  "local_health_checked_at": "2026-09-05T19:39:44.322354+00:00"
+}

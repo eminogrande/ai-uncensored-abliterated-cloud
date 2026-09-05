@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?
 
 Published 28 August 2026. Exact artifact: `guell00/Velum-Unbound-Uncensored`, revision `97e4ecf9dd6dc2f2e263c60e8de8e17aafedddb9`.

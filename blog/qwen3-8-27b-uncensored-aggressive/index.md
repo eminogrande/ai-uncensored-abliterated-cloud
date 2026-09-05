@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # The lossless aggressive: Qwen3.8 27B Uncensored FP8
 
 Published 19 August 2026. Exact artifact: `orcarouter/Qwen3.8-27B-Uncensored-FP8`, revision `9228df5c6c9c509e1019f83b4e085cf643118bac`.

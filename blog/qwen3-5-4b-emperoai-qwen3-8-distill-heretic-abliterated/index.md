@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # Small uncensored agents: what a 4.5B Heretic distill is for
 
 Published 17 August 2026. Exact artifact: `insraq/Qwen3.5-4B-EmperoAI-Qwen3.8-Distill-Heretic-Abliterated`, revision `ef859957528c1fceda193c54a7630c2ac9aad423`.

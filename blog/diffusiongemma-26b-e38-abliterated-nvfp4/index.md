@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # The first abliterated diffusion LLM: DiffusionGemma-26B E38 NVFP4
 
 Published 16 August 2026. Exact artifact: `Goodoldjam/DiffusionGemma-26B-E38-Abliterated-NVFP4`, revision `2430478f0cc94c27623d3684ad03c7f05e858a7d`.

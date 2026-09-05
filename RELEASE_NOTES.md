@@ -1,5 +1,16 @@
 # ABLITERATED.cloud website releases
 
+## website-v0.12.0
+
+[Vast-only documentation, MIT and lightweight website](releases/website-v0.12.0.md).
+See the repository changelog for operating-status corrections and the archive map.
+Publication is recorded by the signed GitHub Pages release.
+
+## Historical website releases
+
+The entries below describe past releases, not current graphics, service availability,
+prices or licensing of this release.
+
 ## website-v0.8.2
 
 Pastel synapses now span the complete hero instead of forming a brain.

@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # Abliterating the model powering this blog: DeepSeek V4 Flash by refusal directions
 
 Published 13 August 2026. Exact artifact: `pocharlies/deepseek-v4-flash-0731-uncensored-abliterated-refusal-directions`, revision `d5d42ace94686374d97956698f89d7884aad5f84`.

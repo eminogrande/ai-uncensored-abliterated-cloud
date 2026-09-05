@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in
 
 Published 23 April 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.6-27B-abliterated`, revision `27502c8717fd5a2f8c0c77188c10c243fd4f672e`.

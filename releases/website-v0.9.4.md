@@ -1,5 +1,8 @@
 # ABLITERATED.cloud website v0.9.4
 
+> Historical release record, not current operating status or a hosting offer. See [the current project](https://abliterated.cloud/). Model/upstream licenses are unchanged.
+
+
 - Removed the boilerplate warning paragraphs from the Qwen3.8 field note.
   The refusal-reduced nature is now one short line phrased as the point of
   the model, not a safety sermon.

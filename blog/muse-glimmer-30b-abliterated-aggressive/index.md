@@ -1,3 +1,7 @@
+<!-- ARCHIVE-NOTICE -->
+> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
+<!-- /ARCHIVE-NOTICE -->
+
 # What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals
 
 Published 17 August 2026. Exact artifact: `SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive`, revision `0e74fc7c36d24c58b22cc213c14d7f0512d9f7f1`.
