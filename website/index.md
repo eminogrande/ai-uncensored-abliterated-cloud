@@ -55,9 +55,9 @@ The old Modal approach is archived, not the current operating path. Archived not
 These are source-linked articles at their publication dates, not live models, a current price list, or proof we evaluated each model. Per-model licenses, historical estimates and publisher claims remain in the articles. Noncomparable benchmarks do not establish a current ranking; results on one refusal test do not guarantee general behavior.
 
 <!-- ABLITERATED-LATEST-RELEASES-MD -->
+- 2026-09-06: [Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/)
 - 2026-08-31: [Eleven hours from DeepSeek drop to uncensor.](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/)
 - 2026-08-30: [Why would a translation model refuse? Tencent's Hy-MT2, decensored](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/)
-- 2026-08-30: [The 118B coding MoE nobody has refused](https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/)
 <!-- /ABLITERATED-LATEST-RELEASES-MD -->
 
 [All field notes](https://abliterated.cloud/blog/) · [RSS](https://abliterated.cloud/blog/feed.xml)

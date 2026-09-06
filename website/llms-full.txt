@@ -58,6 +58,7 @@ MIT applies to project-owned code and the website. Upstream libraries, base mode
 Source-linked reporting at each article's publication date, preserving per-model licenses, publisher measurements, community reports and historical estimates. None is a current hosting offer or current ranking. Compare evaluations only when artifact, runtime, prompts and decoding settings match.
 
 <!-- ARCHIVE-LINKS -->
+- [Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/index.md): archived field note, 2026-09-06.
 - [Eleven hours from DeepSeek drop to uncensor.](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/index.md): archived field note, 2026-08-31.
 - [Why would a translation model refuse? Tencent's Hy-MT2, decensored](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/index.md): archived field note, 2026-08-30.
 - [The 118B coding MoE nobody has refused](https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/index.md): archived field note, 2026-08-30.

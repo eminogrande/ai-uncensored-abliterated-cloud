@@ -3,6 +3,28 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## [website-v0.12.1] - 2026-09-06
+
+### Editorial archive: Spark-X2.5 day-ten uncensors
+
+- **Why:** the archive covers new uncensored releases with primary sources;
+  this week's freshest complete story was the first uncensor wave on
+  XHToken (SparkLLM)'s Spark-X2.5-4B/1.7B (Apache-2.0, 24 Aug 2026).
+- Add field note `spark-x2-5-uncensor-wave` anchored on
+  soyaakinohara/Spark-X2.5-4B-Heretic (BF16, 58 → 3/100 refusals at KL 0.0118,
+  editor-measured, pinned base revision 1e4c2477) with the sibling
+  darioooooo0o 1.7B ablation (0 real refusals on 337 eye-audited generations,
+  sealed sets) and the editors' bucket-ruler methodology argument for thinking
+  models. Refusal claims labeled editor-measured; no zero-refusal badge.
+- Runtime honesty: upstream llama.cpp does not yet support `spark2_5`; the
+  vendor's own fork serves it, and the vendor's 1M-context claim carries an
+  open GitHub reproduction request. Both noted in the article.
+- Historical hosting estimate $2.34/h (BF16 class, 1 × L40S) recorded as
+  editorial history with the GGUF rungs noted as the cheaper local path.
+- Regenerate homepage latest list, blog index and pagination, RSS, sitemap,
+  `llms.txt`/`llms-full.txt`. Archive now has 27 field notes. No runtime,
+  instance or cost-snapshot change.
+
 ## [website-v0.12.0] - 2026-09-05
 
 ### Vast-only operating documentation

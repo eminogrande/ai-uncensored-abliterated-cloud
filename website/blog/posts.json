@@ -1,5 +1,35 @@
 [
   {
+    "slug": "spark-x2-5-uncensor-wave",
+    "type": "model",
+    "kicker": "4.1B/1.7B · HYBRID SWA · 1M CTX · APACHE-2.0 · DAY-TEN UNCENSORS",
+    "title": "Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B",
+    "card_title": "soyaakinohara/Spark-X2.5-4B-Heretic",
+    "summary": "XHToken's SparkLLM shipped Spark-X2.5-4B (4,112,079,360 params) and -1.7B on 24 Aug 2026: Apache-2.0, hybrid attention (one full-attention layer per three sliding-window layers), up to 1M-token native context claimed, 200+ languages, trained on Huawei Ascend, and vendor agent benchmarks (τ³-bench 30.4 vs Qwen3.5-9B 9.3, AIME 2026 90.7) that outrank 9B/12B rivals. Stock, the small models refuse hard: 2,014/3,911 (51.5%) marker refusals on the 1.7B, 186/300 sealed, 100/100 sealed adversarial. Ten days after the drop the uncensors landed measured: soyaakinohara's BF16 Heretic of the 4B (58→3/100 refusals, KL 0.0118, base revision pinned, JP-adapted twin and a GGUF ladder to Q4_K_M 2.5 GiB) and darioooooo0o's 1.7B ablation (0 real refusals on 337 eye-audited generations vs 186/300 base, sealed sets, bucket ruler), plus a methodology argument about how to count refusals on thinking models. Runtime reality check: upstream llama.cpp lacks spark2_5; the vendor's own fork serves it, and an open GitHub issue asks for an official 1M-context reproduction config.",
+    "published_at": "2026-09-06",
+    "modified_at": "2026-09-06",
+    "model_id": "soyaakinohara/Spark-X2.5-4B-Heretic",
+    "refusal_claim": "4B Heretic (soyaakinohara): 3/100 refusals vs 58/100 base at KL 0.0118, editor-measured. 1.7B ablation (darioooooo0o): 0 real refusals on 337 eye-audited generations (300 sealed + 37 answer-level) vs 186/300 base on the same prompts, editor-measured bucket ruler; marker matrix 51.5%→6.7% printed for comparability, not as a claim.",
+    "content_status": "editorial_archive",
+    "historical_zero_refusal_badge": false,
+    "historical_estimated_usd_per_hour": 2.34,
+    "source_urls": [
+      "https://huggingface.co/XHToken/Spark-X2.5-4B",
+      "https://huggingface.co/soyaakinohara/Spark-X2.5-4B-Heretic",
+      "https://huggingface.co/soyaakinohara/Spark-x2.5-4B-Heretic-jp",
+      "https://huggingface.co/soyaakinohara/Spark-X2.5-4B-Heretic-jp-gguf",
+      "https://huggingface.co/darioooooo0o/Spark-X2.5-1.7B-Abliterated-GGUF",
+      "https://huggingface.co/darioooooo0o/Spark-X2.5-1.7B-GGUF",
+      "https://huggingface.co/api/models/soyaakinohara/Spark-X2.5-4B-Heretic",
+      "https://huggingface.co/api/models/XHToken/Spark-X2.5-4B",
+      "https://github.com/XHToken/Spark-X2.5",
+      "https://github.com/XHToken/llama.cpp",
+      "https://huggingface.co/XHToken",
+      "https://huggingface.co/soyaakinohara",
+      "https://huggingface.co/darioooooo0o"
+    ]
+  },
+  {
     "slug": "deepseek-v4-flash-vision-exp-abliterated",
     "type": "model",
     "kicker": "285B-A13B · VISION MOE · FIRST MULTIMODAL V4 · 11-HOUR ABLITERATION",
