@@ -10,7 +10,7 @@
 
 **A translator that refuses is a broken translator**
 
-Basically, Tencent claims Hy-MT2's two sizes beat larger rival models at quick, direct translation.
+Basically, Tencent claims Hy-MT2's two sizes beat larger rivals in fast-thinking translation mode.
 
 **What the edit actually does**
 

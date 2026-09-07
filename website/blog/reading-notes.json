@@ -77,7 +77,7 @@
    },
    {
     "heading": "The creator: Andreas Petersson",
-    "statement": "Andreas Petersson shipped Vision-Exp in 16-bit, compressed and ultra-compact file formats.",
+    "statement": "Andreas Petersson shipped Vision-Exp in 8-bit, compressed and ultra-compact file formats.",
     "evidence": "He shipped the reference-native FP8, a reference GGUF, a routed IQ2 profile"
    },
    {
@@ -96,7 +96,7 @@
   "sections": [
    {
     "heading": "A translator that refuses is a broken translator",
-    "statement": "Tencent claims Hy-MT2's two sizes beat larger rival models at quick, direct translation.",
+    "statement": "Tencent claims Hy-MT2's two sizes beat larger rivals in fast-thinking translation mode.",
     "evidence": "claim the 7B and 30B-A3B sizes beat DeepSeek-V4-Pro and Kimi K2.6 in fast-thinking translation mode"
    },
    {
