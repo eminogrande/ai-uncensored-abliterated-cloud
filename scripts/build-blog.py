@@ -435,9 +435,23 @@ def build_outputs(posts: list[dict]) -> dict[Path, str]:
     return outputs
 
 
+def inline_css(html: str, css: str) -> str:
+    """Ship the small stylesheet inline so first paint needs no second request; the file stays for reference."""
+    tag = '<style id="site-css">' + css.strip() + '</style>'
+    html, count = re.subn(r'<style id="site-css">.*?</style>|<link rel="stylesheet" href="(?:/|\.\./\.\./)styles\.css">', lambda m: tag, html, count=1, flags=re.S)
+    if count != 1:
+        raise ValueError('page has no stylesheet link to inline')
+    return html
+
+
 def main() -> None:
     posts = load_posts()
     outputs = build_outputs(posts)
+    css = (WEBSITE / "styles.css").read_text()
+    outputs[WEBSITE / "404.html"] = (WEBSITE / "404.html").read_text()
+    for path in list(outputs):
+        if path.suffix == ".html":
+            outputs[path] = inline_css(outputs[path], css)
     page_count = (len(posts) + PAGE_SIZE - 1) // PAGE_SIZE
     stale = [p for p in (BLOG / "page").glob("*") if p.is_dir() and p.name.isdigit() and int(p.name) > page_count]
     if "--check" in sys.argv:

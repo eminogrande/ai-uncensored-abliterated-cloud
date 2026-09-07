@@ -117,8 +117,12 @@ def test_shared_article_rendering_is_idempotent():
 
 
 def test_homepage_payload_budget():
-    critical = ["index.html", "styles.css", "assets/logo.svg", "assets/favicon.svg"]
+    # The stylesheet is inlined at build time, so the first paint needs only these requests.
+    critical = ["index.html", "assets/logo.svg", "assets/favicon.svg"]
     assert sum((SITE / path).stat().st_size for path in critical) < 25000
+    for file in SITE.rglob("*.html"):
+        text = file.read_text()
+        assert text.count('<style id="site-css">') == 1 and 'styles.css"' not in text, file
     assert not (SITE / "app.js").exists()
     css = (SITE / "styles.css").read_text()
     assert "hero-brain" not in css and "@import" not in css
