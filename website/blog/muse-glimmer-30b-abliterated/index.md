@@ -2,31 +2,31 @@
 
 ## TL;DR
 
-- jorkle's Muse-Glimmer edit uses LoRA fine-tuning, not weight ablation.
-- jorkle reported 13/100 refusals for its normal Muse-Glimmer edit, versus 100/100 for the base.
-- jorkle skipped Muse-Glimmer capability benchmarks; its published KL table measures drift instead.
+- jorkle's Muse-Glimmer edit uses lightweight retraining, not weight stripping.
+- jorkle reported 13 of 100 refusals, versus 100 of 100 for the original.
+- jorkle skipped ability benchmarks; its published drift table measures how much answers changed instead.
 
 ## Basically, the facts
 
 **The model at the base**
 
-Basically, Muse-Glimmer-30B is a dense model, not a mixture-of-experts model.
+Basically, Muse-Glimmer-30B is a non-sparse model, not a many-specialists model.
 
 **Three days, four methods**
 
-Basically, jorkle's Muse-Glimmer build followed earlier de-refusal releases from other publishers.
+Basically, jorkle's Muse-Glimmer build followed earlier uncensoring releases from other publishers.
 
 **What jorkle actually did**
 
-Basically, jorkle's card describes a LoRA fine-tune of Muse-Glimmer, not a weight ablation.
+Basically, jorkle's card describes lightweight retraining of Muse-Glimmer, not weight stripping.
 
 **The table where benchmarks should be**
 
-Basically, jorkle's Muse-Glimmer card reports drift measurements but skips capability benchmarks.
+Basically, jorkle's card reports how much its answers changed but skips ability benchmarks.
 
 **What the wave reveals**
 
-Basically, Muse-Glimmer's de-refusal releases split between direction ablation and KL-bounded fine-tuning.
+Basically, Muse-Glimmer's uncensoring releases split between stripping a refusal pattern and guarded retraining.
 
 **How we treat it**
 
@@ -34,8 +34,11 @@ Basically, jorkle's Muse-Glimmer card still reports refusals, so the model is no
 
 **The idea, in plain words**
 
-Basically, KL divergence measures how far an edited model's answer distribution moved from the original.
+Basically, the drift metric measures how far an edited model's answers moved from the original.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 12 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/muse-glimmer-30b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 12 August 2026. Exact artifact: `jorkle/Muse-Glimmer-30B-Abliterated`, revision `f98c6e1f6a268fa79d1e704c6b69fa89a61ddda6`.
 

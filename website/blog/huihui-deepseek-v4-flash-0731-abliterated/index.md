@@ -2,40 +2,43 @@
 
 ## TL;DR
 
-- pocharlies published a 757,712-byte directions file for DeepSeek V4 Flash, not a full checkpoint.
-- pocharlies reported 0/10 DeepSeek V4 Flash refusals at lambda 1.5 on its ten-trigger set.
-- pocharlies’ DeepSeek runtime-dial tests did not benchmark general capability or measure 256K context.
+- pocharlies published a small edits file for DeepSeek V4 Flash, not a full model.
+- pocharlies reported 0 of 10 DeepSeek V4 Flash refusals at its chosen dial setting on its ten-trigger set.
+- pocharlies' dial-setting tests did not benchmark general ability or measure the long context claimed.
 
 ## Basically, the facts
 
 **The model this blog runs on**
 
-Basically, vLLM's recipe describes DeepSeek V4 Flash as 284B total parameters with 13B active.
+Basically, the serving tool's guide describes DeepSeek V4 Flash as 284 billion parameters with 13 billion active.
 
 **Flash-class models get abliterated fast**
 
-Basically, Huihui's DeepSeek card says its baked edit leaves every routed expert untouched.
+Basically, Huihui's DeepSeek card calls its own bake a rough proof of concept that leaves every specialist part untouched.
 
 **A dial, not a download**
 
-Basically, pocharlies' DeepSeek release contains 46 refusal vectors rather than another checkpoint.
+Basically, pocharlies' DeepSeek release contains 46 refusal patterns rather than another full model.
 
 **Baked abliteration overshoots**
 
-Basically, pocharlies and cebeuq disagree on how FP8 quantization affects baked refusal removal.
+Basically, pocharlies and cebeuq disagree on whether the compressed format caps the baked removal at about 68%.
 
 **The cost math**
 
-Basically, The DeepSeek article estimated $10.90 per hour for two H200s, not a live hosting quote.
+Basically, the DeepSeek article estimated $10.90 per hour for two H200s, not a live hosting quote.
 
 **What this does not establish**
 
-Basically, The DeepSeek runtime-dial tests did not benchmark general capability or measure 256K context.
+Basically, the DeepSeek dial-setting tests did not benchmark general ability or test the full long context claimed.
 
 **The idea, in plain words**
 
-Basically, pocharlies reports that setting DeepSeek's runtime lambda to zero restores stock outputs.
+Basically, pocharlies reports that setting DeepSeek's dial to zero restores the unedited model exactly.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 13 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/huihui-deepseek-v4-flash-0731-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 13 August 2026. Exact artifact: `pocharlies/deepseek-v4-flash-0731-uncensored-abliterated-refusal-directions`, revision `d5d42ace94686374d97956698f89d7884aad5f84`.
 

@@ -2,23 +2,23 @@
 
 ## TL;DR
 
-- SecureLayer7 published both prompt-injection guardrails and refusal-reduced models.
-- SecureLayer7 reported AFM refusals falling from 92/100 to 3/100 at KL divergence 0.0200.
-- The AFM edit was merged into BF16 weights; independent capability and refusal retests were absent.
+- SecureLayer7 published both safeguards against hijacked prompts and models that refuse less.
+- SecureLayer7 reported AFM refusals falling from 92 of 100 to 3 of 100, with small measured answer drift.
+- The AFM edit was merged into 16-bit data; independent retests of ability and refusals were missing.
 
 ## Basically, the facts
 
 **A security vendor walks into Hugging Face**
 
-Basically, SecureLayer7 published guardrail models and refusal-reduced models under the same account.
+Basically, SecureLayer7 published both safety-guard models and models that refuse less under one account.
 
 **The base: an enterprise 4.5B with ReLU² instead of SwiGLU**
 
-Basically, Arcee's AFM card says ReLU² replaced SwiGLU to enable sparsification.
+Basically, Arcee's AFM card says it swapped its activation function to make the model easier to compress.
 
 **What the edit actually changed**
 
-Basically, SecureLayer7's AFM card reports refusal-direction edits across all 36 layers.
+Basically, SecureLayer7's AFM card reports edits aimed at refusal across all 36 internal layers.
 
 **3/100 is not 0/100**
 
@@ -26,7 +26,7 @@ Basically, SecureLayer7's 3/100 AFM result applies to its own probes, not every 
 
 **How to run it**
 
-Basically, The AFM uncensor shipped safetensors for transformers or vLLM, with no GGUF at publication.
+Basically, the AFM uncensor shipped in a standard data format runnable by two tools, with no easy local file at publication.
 
 **The creator: SecureLayer7**
 
@@ -34,8 +34,11 @@ Basically, SecureLayer7's AFM NOTICE explicitly disclaims endorsement by Arcee.
 
 **The idea, in plain words**
 
-Basically, AFM's ReLU² activation turns negative values into zeros; abliteration is a separate edit.
+Basically, AFM's activation turns negative values into exactly zero; stripping refusals is a separate edit on top.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 28 August 2026 · Updated 6 September 2026 · 7 min read · Canonical: https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 28 August 2026. Exact artifact: `Securelayer7/AFM-4.5B-Uncensored-Abliterated`, revision `38236c07c1fda2334dbc8e109ff746f0af9a3ff4`.
 

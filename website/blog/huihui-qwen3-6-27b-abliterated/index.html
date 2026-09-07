@@ -8,15 +8,136 @@
   <link rel="canonical" href="https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/">
   <link rel="alternate" type="text/markdown" href="index.md">
   <meta property="og:type" content="article"><meta property="og:url" content="https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/"><meta property="og:title" content="The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in"><meta property="og:description" content="18.7k downloads, a support-forum discussion thread, and a refusal direction that mostly works."><meta property="og:image" content="https://abliterated.cloud/assets/icon-512.png">
-  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" sizes="any"><link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32"><link rel="stylesheet" href="../../styles.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in","datePublished":"2026-04-23","dateModified":"2026-09-06","author":{"@type":"Organization","name":"ABLITERATED.cloud"},"publisher":{"@type":"Organization","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/"},"mainEntityOfPage":"https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/","about":{"@type":"SoftwareApplication","name":"huihui-ai/Huihui-Qwen3.6-27B-abliterated"}}</script>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" sizes="any"><link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32"><style id="site-css">:root {
+  --background: #f7f7f4;
+  --surface: #fff;
+  --ink: #17191d;
+  --muted: #565c63;
+  --line: #d9dad6;
+  --accent: #1746aa;
+  --max: 1040px;
+  --mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--background); color: var(--ink); font: 18px/1.65 system-ui, -apple-system, sans-serif; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, summary:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+img, svg { max-width: 100%; }
+code, pre { font-family: var(--mono); font-size: .9em; }
+code { overflow-wrap: anywhere; }
+pre { max-width: 100%; overflow-x: auto; padding: 20px; background: var(--surface); border: 1px solid var(--line); white-space: pre-wrap; overflow-wrap: anywhere; }
+h1, h2, h3 { line-height: 1.16; letter-spacing: -.035em; overflow-wrap: anywhere; }
+h1 { font-size: clamp(36px, 5.5vw, 62px); margin: 0 0 24px; }
+h2 { font-size: clamp(28px, 3.5vw, 40px); margin: 0 0 24px; }
+h3 { font-size: 23px; }
+p { margin: 0 0 22px; }
+ul, ol { padding-left: 24px; }
+li { margin-bottom: 12px; }
+.skip-link { position: absolute; top: -100px; left: 20px; padding: 12px; z-index: 10; background: var(--ink); color: white; }
+.skip-link:focus { top: 12px; }
+.nav { border-bottom: 1px solid var(--line); background: var(--background); }
+.nav-inner, .hero, .section, .blog-page-main, .article-main, .footer, .closing { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; padding-block: 20px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font: 700 17px/1.4 var(--mono); text-decoration: none; }
+.brand img { flex: none; }
+.desktop-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.desktop-links a { min-height: 44px; display: inline-flex; align-items: center; color: var(--ink); font-size: 17px; }
+.hero { padding-block: 72px 64px; }
+.hero-lead { max-width: 730px; font-size: 23px; line-height: 1.5; }
+.hero > p:not(.kicker) { max-width: 760px; }
+.kicker { color: var(--accent); font: 700 17px/1.5 var(--mono); margin-bottom: 18px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 18px; border: 1px solid var(--ink); border-radius: 3px; background: var(--ink); color: white; text-decoration: none; font-weight: 650; }
+.button-secondary { color: var(--ink); background: transparent; }
+.section { padding-block: 52px; border-top: 1px solid var(--line); }
+.section > p, .section > ul { max-width: 820px; }
+.status-panel, .archive-notice { border: 1px solid var(--line); border-left: 4px solid var(--accent); background: var(--surface); padding: 22px; margin: 24px 0; }
+.status-panel p:last-child, .archive-notice p:last-child { margin-bottom: 0; }
+.status-heading { font-size: 23px; }
+.status-facts { margin: 20px 0; }
+.status-facts div { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 20px; border-top: 1px solid var(--line); padding-block: 12px; }
+dt { font-weight: 650; }
+dd { margin: 0; overflow-wrap: anywhere; }
+.step-grid { list-style-position: inside; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; padding: 0; margin: 30px 0; }
+.step-grid h3 { margin: 12px 0; }
+.step-grid p { font-size: 17px; }
+.archive-list { list-style: none; padding: 0; }
+.archive-list li { display: grid; grid-template-columns: 115px minmax(0, 1fr); gap: 16px; border-top: 1px solid var(--line); padding: 16px 0; margin: 0; }
+time, .article-meta { color: var(--muted); font-size: 17px; }
+.blog-index-hero { padding-block: 60px 32px; max-width: 820px; }
+.blog-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.blog-card { display: block; min-width: 0; border-top: 1px solid var(--line); padding: 26px 0; text-decoration: none; }
+.blog-card h2, .blog-card h3 { font-size: 27px; color: var(--ink); margin: 10px 0 16px; }
+.blog-card p { color: var(--muted); font-size: 17px; }
+.blog-card > span { font-size: 15px; color: var(--muted); font-family: var(--mono); }
+.latest-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.blog-card strong { text-decoration: underline; }
+.article-shell { max-width: 860px; margin: 0 auto; padding-block: 36px 64px; }
+.article-header { margin-bottom: 28px; }
+.article-lead { font-size: 22px; line-height: 1.5; }
+.article-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.article-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 28px 0; border-top: 1px solid var(--line); }
+.article-facts div { padding: 16px 20px 16px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.article-facts dt, .article-facts dd { font-size: 17px; }
+.article-facts dd { margin-top: 6px; }
+.article-body { max-width: 780px; }
+.article-body h2 { margin: 48px 0 20px; }
+.article-body h3 { margin-top: 32px; }
+.article-body a, .article-repository { overflow-wrap: anywhere; }
+.article-callout, .article-learn { padding: 22px; border-left: 3px solid var(--accent); background: var(--surface); margin: 28px 0; }
+.article-toc { margin: 0 0 28px; font-size: 17px; }
+.article-toc strong { display: block; margin-bottom: 6px; }
+.article-toc ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 32px; }
+.article-toc li { margin-bottom: 6px; break-inside: avoid; }
+.article-body h2[id] { scroll-margin-top: 24px; }
+.article-callout strong, .article-learn strong { display: block; margin-bottom: 8px; }
+.article-callout p, .article-learn p { margin: 0; }
+.article-source-list { border-top: 1px solid var(--line); padding-top: 24px; }
+.article-next { display: flex; flex-wrap: wrap; gap: 16px 24px; padding-block: 28px; border-top: 1px solid var(--line); }
+.article-next a { min-height: 44px; display: flex; align-items: center; }
+table { border-collapse: collapse; display: block; max-width: 100%; overflow-x: auto; font-size: 17px; margin-block: 28px; }
+th, td { text-align: left; border: 1px solid var(--line); padding: 10px; }
+#pricing table { display: table; width: 100%; table-layout: fixed; }
+#pricing th:first-child { width: 65%; }
+#pricing td { white-space: nowrap; font-weight: 700; }
+#pricing caption { text-align: left; margin-bottom: 10px; }
+.footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); padding-block: 36px; font-size: 17px; }
+.footer nav { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: start; }
+.footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
+.closing { padding-block: 64px; }
+.hero h1 { font-size: clamp(44px, 7.8vw, 88px); letter-spacing: -.055em; }
+.hero-note, .section-note { color: var(--muted); font-size: 17px; }
+.hero-note { margin-top: 20px; }
+.service-grid article { border-top: 2px solid var(--ink); padding-top: 12px; min-width: 0; }
+.service-grid a { font-size: 17px; }
+.faq-list details { border-top: 1px solid var(--line); }
+.faq-list summary, .status-disclosure summary { cursor: pointer; padding-block: 16px; font-weight: 650; }
+.faq-list details p { max-width: 820px; padding-bottom: 12px; }
+@media (max-width: 700px) {
+  .nav-inner, .hero, .section, .blog-page-main, .article-main, .footer, .closing { width: calc(100% - 32px); }
+  .nav-inner { display: block; }
+  .desktop-links { margin-top: 12px; gap: 4px 12px; }
+  .hero { padding-block: 32px; }
+  .hero-lead, .article-lead { font-size: 21px; }
+  .section { padding-block: 36px; }
+  .step-grid, .blog-card-grid, .latest-grid, .article-facts { grid-template-columns: 1fr; }
+  .step-grid { gap: 8px; }
+  .archive-list li { grid-template-columns: 1fr; gap: 4px; }
+  .status-facts div { grid-template-columns: 1fr; gap: 4px; }
+  .status-panel, .archive-notice { padding: 16px; }
+  .article-shell { padding-top: 20px; }
+  .article-toc ol { columns: 1; }
+}</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in","datePublished":"2026-04-23","dateModified":"2026-09-06","author":{"@type":"Organization","name":"ABLITERATED.cloud"},"publisher":{"@type":"Organization","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/"},"mainEntityOfPage":"https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/","about":{"@type":"SoftwareApplication","name":"huihui-ai/Huihui-Qwen3.6-27B-abliterated"},"description":"Four months and 18,760 downloads later: what the community actually runs an abliterated 27B Qwen for, and what its users report back.","image":"https://abliterated.cloud/assets/icon-512.png","url":"https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/","inLanguage":"en","wordCount":1119,"timeRequired":"PT5M","keywords":["27.8B","MULTIMODAL","PROVEN"],"articleSection":"Uncensored AI model research","isAccessibleForFree":true}</script>
 <link rel="ai-catalog" href="/.well-known/ai-catalog.json">
+<!-- ARTICLE-META --><meta property="article:published_time" content="2026-04-23"><meta property="article:modified_time" content="2026-09-06"><meta property="article:section" content="Uncensored AI model research"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in"><meta name="twitter:description" content="Four months and 18,760 downloads later: what the community actually runs an abliterated 27B Qwen for, and what its users report back."><meta name="twitter:image" content="https://abliterated.cloud/assets/icon-512.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ABLITERATED.cloud","item":"https://abliterated.cloud/"},{"@type":"ListItem","position":2,"name":"Models & guides","item":"https://abliterated.cloud/blog/"},{"@type":"ListItem","position":3,"name":"The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in","item":"https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/"}]}</script><!-- /ARTICLE-META -->
 </head>
 <body>
   <a class="skip-link" href="#article">Skip to article</a>
   <header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#models">Models</a><a href="/#how">How it works</a><a href="/blog/">Blog</a><a href="/#faq">FAQ</a><a href="https://signal.me/#p/+13103408213">Request access ↗</a></nav></div></header>
   <main class="article-main"><article class="article-shell" id="article">
-    <header class="article-header"><p class="kicker">27.8B · MULTIMODAL · PROVEN</p><h1>The workhorse: four months, 18,760 downloads, and a refusal direction that mostly works.</h1><!-- READING-TLDR --><aside class="article-callout" aria-label="TL;DR"><strong>TL;DR</strong><ul><li>Huihui-Qwen3.6-27B is a dense multimodal model with about 55.6 GB of BF16 weights.</li><li>The Huihui-Qwen3.6-27B article recorded 18,760 repository downloads on 16 August 2026.</li><li>Reports on Huihui-Qwen3.6-27B were mixed, and Huihui had not published a post-edit benchmark rerun.</li></ul></aside><!-- /READING-TLDR --><p class="article-lead">Qwen released the dense Qwen3.6-27B on 21 April 2026. Two days later huihui-ai published a weights-edited version. Four months on, it is the most-used abliterated Qwen we track, and its discussion thread reads like a support forum.</p><div class="article-meta"><span>Published 23 April 2026</span><span>Revision-pinned</span><span>Primary sources only</span></div></header>
+    <header class="article-header"><p class="kicker">27.8B · MULTIMODAL · PROVEN</p><h1>The workhorse: four months, 18,760 downloads, and a refusal direction that mostly works.</h1><!-- READING-TLDR --><aside class="article-callout" aria-label="TL;DR"><strong>TL;DR</strong><ul><li>Huihui-Qwen3.6-27B is a non-sparse text-and-image model with about 55.6 GB of 16-bit data.</li><li>The article recorded 18,760 repository downloads on 16 August 2026.</li><li>Reports were mixed, and Huihui had not published a post-edit benchmark rerun.</li></ul></aside><!-- /READING-TLDR --><!-- ARTICLE-TOC --><nav class="article-toc" aria-label="In this article"><strong>In this article</strong><ol><li><a href="#four-months-18-760-downloads">Four months, 18,760 downloads</a></li><li><a href="#what-is-under-the-hood">What is under the hood</a></li><li><a href="#what-the-card-promised-what-users-report">What the card promised, what users report</a></li><li><a href="#the-upstream-numbers-clearly-labeled">The upstream numbers, clearly labeled</a></li><li><a href="#the-successor-arrived-the-3-6-stayed">The successor arrived; the 3.6 stayed</a></li><li><a href="#how-we-treat-it">How we treat it</a></li><li><a href="#the-idea-in-plain-words">The idea, in plain words</a></li><li><a href="#primary-sources">Primary sources</a></li></ol></nav><!-- /ARTICLE-TOC --><p class="article-lead">Qwen released the dense Qwen3.6-27B on 21 April 2026. Two days later huihui-ai published a weights-edited version. Four months on, it is the most-used abliterated Qwen we track, and its discussion thread reads like a support forum.</p><div class="article-meta"><time datetime="2026-04-23">Published 23 April 2026</time><span>Updated 6 September 2026</span><span>5 min read</span><span>Sources linked below</span></div></header>
     <dl class="article-facts">
       <div><dt>Exact artifact</dt><dd class="article-repository">huihui-ai/Huihui-Qwen3.6-27B-abliterated</dd></div><div><dt>Pinned revision</dt><dd>27502c87…d4f672e</dd></div>
       <div><dt>Parameters</dt><dd>27,781,427,952</dd></div><div><dt>Architecture</dt><dd>Dense · 64 layers</dd></div>
@@ -25,14 +146,14 @@
       <div><dt>Downloads</dt><dd>18,760 (16 August 2026)</dd></div><div><dt>Estimated cost</dt><dd>$5.45/hour (approximate managed price estimate)</dd></div>
     </dl>
     <div class="article-body">
-      <h2>Four months, 18,760 downloads</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Huihui-Qwen3.6-27B had 18,760 repository downloads in the article&#x27;s August 2026 snapshot.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="four-months-18-760-downloads">Four months, 18,760 downloads</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Huihui-Qwen3.6-27B had 18,760 repository downloads in the article&#x27;s August 2026 snapshot.</p></aside><!-- /READING-BASICALLY -->
       <p>Qwen3.6-27B is the dense checkpoint that, per <a href="https://qwen.ai/blog?id=qwen3.6-27b">Qwen's release article</a>, beat the company's own 397-billion-parameter MoE flagship on every major coding benchmark — released on 21 April 2026. On 23 April, huihui-ai published a weights-edited derivative. Four months on, that derivative is the closest thing the abliterated corner of the model zoo has to a fixture: 18,760 downloads and 72 likes on the exact repository per the <a href="https://huggingface.co/api/models/huihui-ai/Huihui-Qwen3.6-27B-abliterated">Hugging Face model API</a>, an <a href="https://ollama.com/huihui_ai/Qwen3.6-abliterated:27b">Ollama tag</a>, a <a href="https://modelscope.cn/models/JyWang6/Huihui-Qwen3.6-27B-abliterated">ModelScope mirror</a>, and a <a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated-MTP-GGUF">GGUF sibling with MTP speculative decoding</a> that has 66,484 downloads — more than the parent repo. The quantized variant out-downloading the parent says something about how this model is actually run.</p>
 
-      <h2>What is under the hood</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Huihui-Qwen3.6-27B is dense, with 64 layers and roughly 55.6 GB of BF16 weights.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="what-is-under-the-hood">What is under the hood</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Huihui-Qwen3.6-27B is non-sparse, with 64 layers and roughly 55.6 GB of 16-bit data.</p></aside><!-- /READING-BASICALLY -->
       <p>The checkpoint is dense, not sparse: 27,781,427,952 BF16 parameters across 64 layers with a 5,120-wide hidden dimension, laid out as sixteen repetitions of three Gated DeltaNet blocks followed by one Gated Attention block, per the <a href="https://huggingface.co/Qwen/Qwen3.6-27B">upstream card</a>. It is natively multimodal — vision encoder, image and video tokens, thinking and non-thinking modes — and carries a 262,144-token native context, extensible to around a million tokens with YaRN. Transformers reports it as <code>Qwen3_5ForConditionalGeneration</code>; the BF16 repository is about 55.6 GB across fifteen shards.</p>
       <p>The edit follows the recipe from <a href="https://arxiv.org/abs/2406.11717">Arditi and colleagues' refusal-direction research</a> via <a href="https://github.com/Sumandora/remove-refusals-with-transformers">Sumandora's pure-Transformers implementation</a>: compare activations on harmful and harmless prompts, estimate a refusal direction, and project it out of selected weights. The <a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated">model card</a> is candid about the method's status — “a crude, proof-of-concept implementation” — which is worth taking seriously. This is a weight edit, not a prompt jailbreak and not a fine-tune.</p>
 
-      <h2>What the card promised, what users report</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>User reports on Huihui-Qwen3.6-27B include remaining refusals and a setup-specific vision failure.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="what-the-card-promised-what-users-report">What the card promised, what users report</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>User reports on Huihui-Qwen3.6-27B include remaining refusals and a setup-specific vision failure.</p></aside><!-- /READING-BASICALLY -->
       <p>The card promises an “uncensored version” with significantly reduced safety filtering, then spends most of its length warning you to run it only in controlled environments. That combination is honest. The discussion thread is where the nuance lands:</p>
       <ul>
         <li><a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated/discussions/4">“Still seems censored”</a>, opened 13 June: “Anyone else tried this? seems censored to me”, edited hours later to “It's a bit better than the base, but not perfect.” A follow-up commenter, gamel_lz, agreed: “Still censored to me. A LOT censored and heavily biased. It's a very good model, but this make it seem really bad.” Community opinions, linked.</li>
@@ -42,20 +163,20 @@
       </ul>
       <p>The serious use cases show up in the same thread. A researcher asked in April how to <a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated/discussions/2">cite the abliterated models in a paper</a>; huihui.ai answered with a BibTeX entry. Another user runs it for red-teaming.</p>
 
-      <h2>The upstream numbers, clearly labeled</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Qwen3.6-27B&#x27;s reported benchmark scores belong to the unedited model, not Huihui&#x27;s derivative.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="the-upstream-numbers-clearly-labeled">The upstream numbers, clearly labeled</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Qwen3.6-27B&#x27;s reported benchmark scores belong to the unedited model, not Huihui&#x27;s derivative.</p></aside><!-- /READING-BASICALLY -->
       <p>Qwen's blog claims the dense 27B surpasses Qwen3.5-397B-A17B across all major coding benchmarks: 77.2 on SWE-bench Verified, 59.3 on Terminal-Bench 2.0, 48.2 on SkillsBench, plus 87.8 on GPQA Diamond and 94.1 on AIME 2026. Those numbers belong to the unedited checkpoint. Huihui publishes no post-edit rerun for this repository. The capability-retention evidence is the community comparison above, not a publisher measurement. If you want to know what the abliteration cost, the honest answer is “upstream claims are upstream claims, and the community says the deltas are small”.</p>
       <div class="article-callout"><strong>What is proven here?</strong><p>The exact artifact and architecture are inspectable and pinned. The upstream Qwen benchmark suite is published. Refusal reduction is a publisher claim supported by community reports and one community benchmark comparison; there is no published post-edit evaluation from huihui-ai for this checkpoint.</p></div>
 
-      <h2>The successor arrived; the 3.6 stayed</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>The August 2026 Huihui-Qwen3.8-27B release kept its first 15 layers free of ablation.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="the-successor-arrived-the-3-6-stayed">The successor arrived; the 3.6 stayed</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>the August 2026 Huihui-Qwen3.8-27B release kept its first 15 layers untouched by the edit.</p></aside><!-- /READING-BASICALLY -->
       <p>Qwen3.8-27B shipped in August 2026 on the same 64-layer dense architecture with better numbers in Qwen's own tables — SWE-bench Pro 61.7 vs 53.5, Terminal Bench 2.1 73.0 vs 63.4 — and huihui-ai abliterated it within days, with a visibly different recipe: <a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-abliterated">“The first 15 layers were retained without ablation. MTP and visual has not been modified.”</a> The newer artifact may be stronger on paper. The 3.6 one has four months of real-world mileage: settled quantization paths, a working Ollama tag, FP8 conversion guidance in the thread, and a body of user reports. Newer is not the same as proven.</p>
 
-      <h2>How we treat it</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>The Qwen3.6-27B article&#x27;s one-H200 budget was an estimate, not a live price offer.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="how-we-treat-it">How we treat it</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>the Qwen3.6-27B article&#x27;s one-H200 budget was an estimate, not a live price offer.</p></aside><!-- /READING-BASICALLY -->
       <p>We pin revision 27502c87…d4f672e, serve a conservative context, budget one H200 at roughly $5.45/hour (approximate managed price estimate), and do not transfer Qwen's benchmarks to our endpoint until the exact artifact is measured. “Abliterated” means refusal-reduced — not zero-refusal, not correct, not harmless. The card's own usage warnings still apply.</p>
 
-            <h2>The idea, in plain words</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>A vision encoder turns image patches into tokens that a language model can read.</p></aside><!-- /READING-BASICALLY -->
+            <h2 id="the-idea-in-plain-words">The idea, in plain words</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>a vision encoder turns image patches into tokens that a language model can read.</p></aside><!-- /READING-BASICALLY -->
       <div class="article-learn"><strong>How a language model sees images</strong><p>An LLM only reads tokens, so multimodal models bolt on a vision encoder that cuts an image into patches and turns them into tokens the language model can read. 'Image-text-to-text' means the model takes pictures and words in, and answers with words — the vision half is a separate organ that the abliteration usually leaves alone.</p></div>
 
-      <h2>Primary sources</h2>
+      <h2 id="primary-sources">Primary sources</h2>
       <ul class="article-source-list"><li><a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated">Exact Huihui model card</a> and <a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated/tree/27502c8717fd5a2f8c0c77188c10c243fd4f672e">pinned files</a></li><li><a href="https://huggingface.co/api/models/huihui-ai/Huihui-Qwen3.6-27B-abliterated">Hugging Face model API</a> (downloads, likes, parameters, storage)</li><li><a href="https://huggingface.co/Qwen/Qwen3.6-27B">Official Qwen model card</a> and <a href="https://qwen.ai/blog?id=qwen3.6-27b">release article</a></li><li><a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated/discussions/4">Discussion: Still seems censored</a> · <a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated/discussions/3">no vision support</a> · <a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated/discussions/2">citation</a> · <a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated/discussions/1">FP8 request</a></li><li><a href="https://www.reddit.com/r/LocalLLaMA/comments/1tfmocw/85_gpuhours_comparing_5_abliteration_methods_on/">Community comparison: 85 GPU-hours, 5 abliteration methods</a> (r/LocalLLaMA; fetched via search index — direct access blocked)</li><li><a href="https://ollama.com/huihui_ai/Qwen3.6-abliterated:27b">Ollama model page</a> and <a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.6-27B-abliterated-MTP-GGUF">MTP-GGUF sibling repository</a></li><li><a href="https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-abliterated">Newer Huihui-Qwen3.8-27B-abliterated card</a> and <a href="https://huggingface.co/Qwen/Qwen3.8-27B">upstream Qwen3.8-27B card</a></li><li><a href="https://arxiv.org/abs/2406.11717">Refusal in Language Models Is Mediated by a Single Direction</a> and <a href="https://github.com/Sumandora/remove-refusals-with-transformers">implementation linked by huihui-ai</a></li></ul>
     </div>
     <nav class="article-next" aria-label="More model field notes"><a href="../qwen3-6-35b-a3b-abliterated/">Next: Qwen3.6 35B A3B →</a><a href="../">All field notes</a></nav>

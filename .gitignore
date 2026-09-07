@@ -24,3 +24,4 @@ config/pi-agent/bin/
 
 # Local runtime state.
 .mn/
+.worktrees/

@@ -2,8 +2,8 @@
 
 ## TL;DR
 
-- Resggg's Kimi K3 upload stored about 1.56 TB across 96 shards at review.
-- The article estimated roughly eleven H200s just to hold the packed weights.
+- Resggg's Kimi K3 upload stored about 1.56 TB across 96 files at review.
+- The article estimated roughly eleven H200 chips just to hold the compressed data.
 - The copied SHS-Lab refusal-removal and video claims were not verified for this upload.
 
 ## Basically, the facts
@@ -14,7 +14,7 @@ Basically, Resggg's Kimi K3 upload had zero downloads, likes or discussions at r
 
 **What 2.78 trillion parameters means in memory**
 
-Basically, The article's Kimi K3 estimate put packed weights at roughly 1.35 TiB before runtime memory.
+Basically, the article's Kimi K3 estimate put the data at roughly 1.35 TiB before the memory needed to run it.
 
 **Why "modal"?**
 
@@ -22,7 +22,7 @@ Basically, Kimi K3's video claim came from copied SHS-Lab text, not a verified r
 
 **Moonshot's Kimi K3, briefly**
 
-Basically, Moonshot's Kimi K3 card describes a mixture-of-experts model with a million-token context.
+Basically, Moonshot's Kimi K3 card describes a many-specialists model with a million-token context.
 
 **Who actually attempts a K3 abliteration**
 
@@ -30,16 +30,19 @@ Basically, Resggg's copied Kimi K3 refusal-removal claim was unverified in the a
 
 **The honest gap between uploaded and runnable**
 
-Basically, The article found no inference provider listing Resggg's Kimi K3 upload.
+Basically, the article found no hosting service offering Resggg's Kimi K3 upload.
 
 **How we treat it**
 
-Basically, The Kimi K3 article treated Resggg's upload as unverified, not as a zero-refusal model.
+Basically, the Kimi K3 article treated Resggg's upload as unverified, not as a zero-refusal model.
 
 **The idea, in plain words**
 
-Basically, Holding Kimi K3's packed weights was estimated to need roughly eleven H200s before running.
+Basically, Just holding Kimi K3's compressed data was estimated to need about eleven top-end chips before running.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 17 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/kimi-k3-abliterated-modal/_
+<!-- /ARTICLE-META-MD -->
 
 Published 17 August 2026. Exact artifact: `Resggg/Kimi-K3-Abliterated-modal`, revision `b3a52d265b56551c0011b24d299ba3f8f1393e42`.
 

@@ -8,15 +8,136 @@
   <link rel="canonical" href="https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/">
   <link rel="alternate" type="text/markdown" href="index.md">
   <meta property="og:type" content="article"><meta property="og:url" content="https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/"><meta property="og:title" content="What 'Aggressive' means in an abliterated Muse Glimmer"><meta property="og:description" content="A relaxed-KL LoRA de-abliteration, a mirror upload, and the capability gap the card left unmeasured."><meta property="og:image" content="https://abliterated.cloud/assets/icon-512.png">
-  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" sizes="any"><link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32"><link rel="stylesheet" href="../../styles.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals","datePublished":"2026-08-17","dateModified":"2026-09-06","author":{"@type":"Organization","name":"ABLITERATED.cloud"},"publisher":{"@type":"Organization","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/"},"mainEntityOfPage":"https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/","about":{"@type":"SoftwareApplication","name":"SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive"}}</script>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" sizes="any"><link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32"><style id="site-css">:root {
+  --background: #f7f7f4;
+  --surface: #fff;
+  --ink: #17191d;
+  --muted: #565c63;
+  --line: #d9dad6;
+  --accent: #1746aa;
+  --max: 1040px;
+  --mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--background); color: var(--ink); font: 18px/1.65 system-ui, -apple-system, sans-serif; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, summary:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+img, svg { max-width: 100%; }
+code, pre { font-family: var(--mono); font-size: .9em; }
+code { overflow-wrap: anywhere; }
+pre { max-width: 100%; overflow-x: auto; padding: 20px; background: var(--surface); border: 1px solid var(--line); white-space: pre-wrap; overflow-wrap: anywhere; }
+h1, h2, h3 { line-height: 1.16; letter-spacing: -.035em; overflow-wrap: anywhere; }
+h1 { font-size: clamp(36px, 5.5vw, 62px); margin: 0 0 24px; }
+h2 { font-size: clamp(28px, 3.5vw, 40px); margin: 0 0 24px; }
+h3 { font-size: 23px; }
+p { margin: 0 0 22px; }
+ul, ol { padding-left: 24px; }
+li { margin-bottom: 12px; }
+.skip-link { position: absolute; top: -100px; left: 20px; padding: 12px; z-index: 10; background: var(--ink); color: white; }
+.skip-link:focus { top: 12px; }
+.nav { border-bottom: 1px solid var(--line); background: var(--background); }
+.nav-inner, .hero, .section, .blog-page-main, .article-main, .footer, .closing { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; padding-block: 20px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font: 700 17px/1.4 var(--mono); text-decoration: none; }
+.brand img { flex: none; }
+.desktop-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.desktop-links a { min-height: 44px; display: inline-flex; align-items: center; color: var(--ink); font-size: 17px; }
+.hero { padding-block: 72px 64px; }
+.hero-lead { max-width: 730px; font-size: 23px; line-height: 1.5; }
+.hero > p:not(.kicker) { max-width: 760px; }
+.kicker { color: var(--accent); font: 700 17px/1.5 var(--mono); margin-bottom: 18px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 18px; border: 1px solid var(--ink); border-radius: 3px; background: var(--ink); color: white; text-decoration: none; font-weight: 650; }
+.button-secondary { color: var(--ink); background: transparent; }
+.section { padding-block: 52px; border-top: 1px solid var(--line); }
+.section > p, .section > ul { max-width: 820px; }
+.status-panel, .archive-notice { border: 1px solid var(--line); border-left: 4px solid var(--accent); background: var(--surface); padding: 22px; margin: 24px 0; }
+.status-panel p:last-child, .archive-notice p:last-child { margin-bottom: 0; }
+.status-heading { font-size: 23px; }
+.status-facts { margin: 20px 0; }
+.status-facts div { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 20px; border-top: 1px solid var(--line); padding-block: 12px; }
+dt { font-weight: 650; }
+dd { margin: 0; overflow-wrap: anywhere; }
+.step-grid { list-style-position: inside; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; padding: 0; margin: 30px 0; }
+.step-grid h3 { margin: 12px 0; }
+.step-grid p { font-size: 17px; }
+.archive-list { list-style: none; padding: 0; }
+.archive-list li { display: grid; grid-template-columns: 115px minmax(0, 1fr); gap: 16px; border-top: 1px solid var(--line); padding: 16px 0; margin: 0; }
+time, .article-meta { color: var(--muted); font-size: 17px; }
+.blog-index-hero { padding-block: 60px 32px; max-width: 820px; }
+.blog-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.blog-card { display: block; min-width: 0; border-top: 1px solid var(--line); padding: 26px 0; text-decoration: none; }
+.blog-card h2, .blog-card h3 { font-size: 27px; color: var(--ink); margin: 10px 0 16px; }
+.blog-card p { color: var(--muted); font-size: 17px; }
+.blog-card > span { font-size: 15px; color: var(--muted); font-family: var(--mono); }
+.latest-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.blog-card strong { text-decoration: underline; }
+.article-shell { max-width: 860px; margin: 0 auto; padding-block: 36px 64px; }
+.article-header { margin-bottom: 28px; }
+.article-lead { font-size: 22px; line-height: 1.5; }
+.article-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.article-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 28px 0; border-top: 1px solid var(--line); }
+.article-facts div { padding: 16px 20px 16px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.article-facts dt, .article-facts dd { font-size: 17px; }
+.article-facts dd { margin-top: 6px; }
+.article-body { max-width: 780px; }
+.article-body h2 { margin: 48px 0 20px; }
+.article-body h3 { margin-top: 32px; }
+.article-body a, .article-repository { overflow-wrap: anywhere; }
+.article-callout, .article-learn { padding: 22px; border-left: 3px solid var(--accent); background: var(--surface); margin: 28px 0; }
+.article-toc { margin: 0 0 28px; font-size: 17px; }
+.article-toc strong { display: block; margin-bottom: 6px; }
+.article-toc ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 32px; }
+.article-toc li { margin-bottom: 6px; break-inside: avoid; }
+.article-body h2[id] { scroll-margin-top: 24px; }
+.article-callout strong, .article-learn strong { display: block; margin-bottom: 8px; }
+.article-callout p, .article-learn p { margin: 0; }
+.article-source-list { border-top: 1px solid var(--line); padding-top: 24px; }
+.article-next { display: flex; flex-wrap: wrap; gap: 16px 24px; padding-block: 28px; border-top: 1px solid var(--line); }
+.article-next a { min-height: 44px; display: flex; align-items: center; }
+table { border-collapse: collapse; display: block; max-width: 100%; overflow-x: auto; font-size: 17px; margin-block: 28px; }
+th, td { text-align: left; border: 1px solid var(--line); padding: 10px; }
+#pricing table { display: table; width: 100%; table-layout: fixed; }
+#pricing th:first-child { width: 65%; }
+#pricing td { white-space: nowrap; font-weight: 700; }
+#pricing caption { text-align: left; margin-bottom: 10px; }
+.footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); padding-block: 36px; font-size: 17px; }
+.footer nav { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: start; }
+.footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
+.closing { padding-block: 64px; }
+.hero h1 { font-size: clamp(44px, 7.8vw, 88px); letter-spacing: -.055em; }
+.hero-note, .section-note { color: var(--muted); font-size: 17px; }
+.hero-note { margin-top: 20px; }
+.service-grid article { border-top: 2px solid var(--ink); padding-top: 12px; min-width: 0; }
+.service-grid a { font-size: 17px; }
+.faq-list details { border-top: 1px solid var(--line); }
+.faq-list summary, .status-disclosure summary { cursor: pointer; padding-block: 16px; font-weight: 650; }
+.faq-list details p { max-width: 820px; padding-bottom: 12px; }
+@media (max-width: 700px) {
+  .nav-inner, .hero, .section, .blog-page-main, .article-main, .footer, .closing { width: calc(100% - 32px); }
+  .nav-inner { display: block; }
+  .desktop-links { margin-top: 12px; gap: 4px 12px; }
+  .hero { padding-block: 32px; }
+  .hero-lead, .article-lead { font-size: 21px; }
+  .section { padding-block: 36px; }
+  .step-grid, .blog-card-grid, .latest-grid, .article-facts { grid-template-columns: 1fr; }
+  .step-grid { gap: 8px; }
+  .archive-list li { grid-template-columns: 1fr; gap: 4px; }
+  .status-facts div { grid-template-columns: 1fr; gap: 4px; }
+  .status-panel, .archive-notice { padding: 16px; }
+  .article-shell { padding-top: 20px; }
+  .article-toc ol { columns: 1; }
+}</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals","datePublished":"2026-08-17","dateModified":"2026-09-06","author":{"@type":"Organization","name":"ABLITERATED.cloud"},"publisher":{"@type":"Organization","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/"},"mainEntityOfPage":"https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/","about":{"@type":"SoftwareApplication","name":"SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive"},"description":"SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive claims 0/100 refusals: what 'Aggressive' means, the 1.7x KL drift, and the benchmarks the card skipped.","image":"https://abliterated.cloud/assets/icon-512.png","url":"https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/","inLanguage":"en","wordCount":1118,"timeRequired":"PT5M","keywords":["29.8B","AGGRESSIVE ABLITERATION"],"articleSection":"Uncensored AI model research","isAccessibleForFree":true}</script>
 <link rel="ai-catalog" href="/.well-known/ai-catalog.json">
+<!-- ARTICLE-META --><meta property="article:published_time" content="2026-08-17"><meta property="article:modified_time" content="2026-09-06"><meta property="article:section" content="Uncensored AI model research"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="What &#x27;Aggressive&#x27; means: Muse-Glimmer-30B abliterated to 0/100 refusals"><meta name="twitter:description" content="SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive claims 0/100 refusals: what &#x27;Aggressive&#x27; means, the 1.7x KL drift, and the benchmarks the card skipped."><meta name="twitter:image" content="https://abliterated.cloud/assets/icon-512.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ABLITERATED.cloud","item":"https://abliterated.cloud/"},{"@type":"ListItem","position":2,"name":"Models & guides","item":"https://abliterated.cloud/blog/"},{"@type":"ListItem","position":3,"name":"What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals","item":"https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/"}]}</script><!-- /ARTICLE-META -->
 </head>
 <body>
   <a class="skip-link" href="#article">Skip to article</a>
   <header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#models">Models</a><a href="/#how">How it works</a><a href="/blog/">Blog</a><a href="/#faq">FAQ</a><a href="https://signal.me/#p/+13103408213">Request access ↗</a></nav></div></header>
   <main class="article-main"><article class="article-shell" id="article">
-    <header class="article-header"><p class="kicker">MODEL FIELD NOTE · AGGRESSIVE</p><h1>What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals.</h1><!-- READING-TLDR --><aside class="article-callout" aria-label="TL;DR"><strong>TL;DR</strong><ul><li>Muse-Glimmer Aggressive lowers the LoRA training KL penalty from 1.0 to 0.5.</li><li>The publisher reported 0/100 refusals, versus 13/100 for the normal variant.</li><li>The card skipped capability benchmarks; Meta&#x27;s base-model scores do not apply to the edit.</li></ul></aside><!-- /READING-TLDR --><p class="article-lead">SHS-Lab published a weights edit of Meta's 29.8B agentic model on 17 August 2026 claiming 0/100 refusals on its own harness. The word "Aggressive" is doing specific work — and not the work most abliteration write-ups would guess.</p><div class="article-meta"><span>Published 17 August 2026</span><span>Revision-pinned</span><span>Primary sources only</span></div></header>
+    <header class="article-header"><p class="kicker">MODEL FIELD NOTE · AGGRESSIVE</p><h1>What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals.</h1><!-- READING-TLDR --><aside class="article-callout" aria-label="TL;DR"><strong>TL;DR</strong><ul><li>Muse-Glimmer Aggressive loosens the training drift guard from 1.0 to 0.5.</li><li>The publisher reported 0 of 100 refusals, versus 13 of 100 for the normal variant.</li><li>The card skipped ability benchmarks; Meta&#x27;s base-model scores do not apply to the edit.</li></ul></aside><!-- /READING-TLDR --><!-- ARTICLE-TOC --><nav class="article-toc" aria-label="In this article"><strong>In this article</strong><ol><li><a href="#aggressive-is-a-knob-and-the-label-doesn-t-tell-you-which-one">&quot;Aggressive&quot; is a knob, and the label doesn&#x27;t tell you which one</a></li><li><a href="#what-the-card-actually-measured">What the card actually measured</a></li><li><a href="#the-honest-gap-kl-is-a-drift-meter-not-a-benchmark">The honest gap: KL is a drift meter, not a benchmark</a></li><li><a href="#a-mirror-upload-with-the-quants-living-elsewhere">A mirror upload, with the quants living elsewhere</a></li><li><a href="#how-we-treat-it">How we treat it</a></li><li><a href="#the-idea-in-plain-words">The idea, in plain words</a></li><li><a href="#primary-sources">Primary sources</a></li></ol></nav><!-- /ARTICLE-TOC --><p class="article-lead">SHS-Lab published a weights edit of Meta's 29.8B agentic model on 17 August 2026 claiming 0/100 refusals on its own harness. The word "Aggressive" is doing specific work — and not the work most abliteration write-ups would guess.</p><div class="article-meta"><time datetime="2026-08-17">Published 17 August 2026</time><span>Updated 6 September 2026</span><span>5 min read</span><span>Sources linked below</span></div></header>
     <dl class="article-facts">
       <div><dt>Exact artifact</dt><dd class="article-repository">SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive</dd></div><div><dt>Pinned revision</dt><dd>0e74fc7c…12d9f7f</dd></div>
       <div><dt>Parameters</dt><dd>29,776,626,688</dd></div><div><dt>LoRA footprint</dt><dd>31.1M trained (0.10%)</dd></div>
@@ -25,31 +146,31 @@
       <div><dt>Managed estimate</dt><dd>$5.45/hour · 1× H200 (approximate managed price estimate)</dd></div>
     </dl>
     <div class="article-body">
-      <h2>"Aggressive" is a knob, and the label doesn't tell you which one</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Muse-Glimmer&#x27;s aggressive recipe lowers the KL penalty rather than editing more layers.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="aggressive-is-a-knob-and-the-label-doesn-t-tell-you-which-one">"Aggressive" is a knob, and the label doesn't tell you which one</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Muse-Glimmer&#x27;s aggressive recipe loosens the drift guard rather than touching more layers.</p></aside><!-- /READING-BASICALLY -->
       <p>Meta Superintelligence Lab released <a href="https://huggingface.co/meta-models/Muse-Glimmer-30B">Muse-Glimmer-30B</a> in August 2026: a dense ~29.6B causal transformer plus a frozen ~1.8B ViT-G/14 perception encoder, distilled from Muse Spark for local agentic workloads. Apache-2.0, 52 layers, hidden size 6656, a 202,048-token vocabulary, 131,072+ context and a DFlash drafter. By Meta's own card it is also trained with Safety SFT, Safety RL and "appropriate information flows" data — the behavior this family of derivatives removes.</p>
       <p>At least three toolchains ship "abliterated" Muse Glimmers, and the word names a different operation in each. <a href="https://github.com/TrevorS/muse-glimmer-abliteration">TrevorS's pipeline</a> is classic norm-preserving biprojected abliteration: a refusal direction estimated from harmful/harmless activation pairs is projected out of <code>o_proj</code> and <code>down_proj</code> in all 52 layers (104 tensors), columns rescaled to original norm. <a href="https://huggingface.co/cvgro/Muse-Glimmer-30B-Abliterated-GGUF">Blackfrost's GGUF card</a> describes an in-place residual-write edit at α=1.5 over three iterative passes. In those families, "aggressive" would mean a bigger scale or more passes.</p>
       <p>The SHS-Lab and jorkle variants are a third family, where "Aggressive" means something else entirely: this is a KL-conserving LoRA SFT with loss <code>CE(compliance) + λ·KL(tuned‖base)</code>, and the aggressive twin simply lowers λ_KL from 1.0 to 0.5. Everything else is identical to the <a href="https://huggingface.co/jorkle/Muse-Glimmer-30B-Abliterated">"normal" variant</a>: r=16, alpha=16, lr 5e-5, two epochs, LoRA targets <code>o_proj</code> and <code>down_proj</code>, 31.1M trained parameters (0.10%), a 119 MB adapter folded in. The layers touched are identical. The edit is not stronger — the guardrail is weaker. When a label says "Aggressive," read the training recipe, not the name.</p>
 
-      <h2>What the card actually measured</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Muse-Glimmer&#x27;s publisher reported 0/100 refusals for aggressive and 13/100 for normal.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="what-the-card-actually-measured">What the card actually measured</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Muse-Glimmer&#x27;s publisher reported 0/100 refusals for aggressive and 13/100 for normal.</p></aside><!-- /READING-BASICALLY -->
       <p>Both twins publish the same meters. Refusal rate on harmful_behaviors (base=100): 13/100 for normal, <strong>0/100 for aggressive</strong> — both publisher claims from its own harness. KL to base over the 48-pair boN_holdout set (teacher-forced, response-token naive): normal mean 0.0988 versus aggressive 0.1697 — "~1.7× above normal," per the card, "expected from the relaxed guardrail." Percentiles for the aggressive BF16: p50 0.1560, p90 0.2367, p99 0.2912; Q8_0: 0.1625 mean, Q4_K_M: 0.2023.</p>
       <p>The domain eval is where "aggressive" shows its edge — and its cost. Over-refusal (or-bench, 100): 5/100, identical to the normal variant. Correct refusal on cyber-policy-refuse: 1/2 for normal, <strong>0/2 for aggressive</strong>, because the card says it "scrubs even genuinely-harmful refusals." Cyber/hacking-domain refusals: 1 (rootkit_linux) for aggressive versus 2 for normal. The only measured difference between the twins is that the aggressive one refuses less — including refusals that were arguably correct.</p>
       <div class="article-callout"><strong>What is proven here?</strong><p>The artifact, revision, license and parameter count are verifiable. The 0/100 refusal figure and the KL rows are publisher-measured claims on the publisher's own harness. Capability preservation was explicitly not re-measured, and at zero downloads no independent evaluation exists yet.</p></div>
 
-      <h2>The honest gap: KL is a drift meter, not a benchmark</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Muse-Glimmer&#x27;s aggressive card did not remeasure capability preservation.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="the-honest-gap-kl-is-a-drift-meter-not-a-benchmark">The honest gap: KL is a drift meter, not a benchmark</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Muse-Glimmer&#x27;s aggressive card did not recheck whether the model stayed as capable.</p></aside><!-- /READING-BASICALLY -->
       <p>Both cards state it plainly: <strong>"Not evaluated — benchmarks skipped (by request)."</strong> The aggressive card adds that capability preservation "is expected to be lower than the normal variant (higher KL = more drift), but was not re-measured here." KL to base tells you how far the distribution moved, not which abilities moved — and the card's own meters disagree: entropy-weighted KL reads 0.0000 (under the 0.02 PASS bar) while naive mean KL is up 1.7×. One figure says fine; the other says further from base. That is why single-figure summaries mislead.</p>
       <p>The upstream value of Muse Glimmer is agentic, and Meta's own card claims SWE-Bench Verified 76.0, MCP Atlas 75.5, DeepSearch QA 74.6 and AIME 2026 94.7 against Gemma4-31B and Qwen3.6-27B. Those are claims about the unmodified base — none transfer to this artifact, and this is the variant where you'd most want the coding rerun.</p>
       <p>Community opinion on the base's refusal behavior is split. In the <a href="https://huggingface.co/meta-models/Muse-Glimmer-30B/discussions/47">base model's discussion thread</a>, one user rated it "overly cencored … F tier" (testing via OpenRouter), another answered "It's definitely not censored," and a third noted it "is not trained for creative writing." The only third-party measurement we found is TrevorS's: 128/150 (85.3%) refusals on the base across harmful_tune prompts, dropping to 3/150 (2.0%) after projection — plus a 30-probe agentic axis where prompt-injection (0/12) and scope adherence (0/8) were unchanged and irreversible-action confirmation went 7/10 → 8/10. Single-turn, one recipe, N=30: a data point, not a verdict.</p>
 
-      <h2>A mirror upload, with the quants living elsewhere</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>SHS-Lab&#x27;s Muse-Glimmer mirror shipped BF16 shards; the GGUF files were in jorkle&#x27;s repo.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="a-mirror-upload-with-the-quants-living-elsewhere">A mirror upload, with the quants living elsewhere</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>SHS-Lab&#x27;s Muse-Glimmer mirror shipped 16-bit files; the compressed files were in jorkle&#x27;s repo.</p></aside><!-- /READING-BASICALLY -->
       <p>The SHS-Lab upload was created on 17 August 2026 — five days after <a href="https://huggingface.co/jorkle/Muse-Glimmer-30B-Abliterated-Aggressive">jorkle's identically named release</a> (12 August, 365 downloads, 1 like). Card text, metrics tables and parameter count (29,776,626,688 BF16) match to the letter. It is a mirror under a different handle, at 0 downloads and 0 likes — hence no community evaluation exists yet. One gotcha: the card promises GGUF quants "symlinked from output/release," but this repo ships only the BF16 shards (~56 GB). The actual quants (<code>abliterated-aggressive-Q8_0.gguf</code> ~28 GB, Q4_K_M ~16 GB) live in <a href="https://huggingface.co/jorkle/Muse-Glimmer-30B-Abliterated-GGUF">jorkle/Muse-Glimmer-30B-Abliterated-GGUF</a> alongside the normal and base quants.</p>
 
-      <h2>How we treat it</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Muse-Glimmer&#x27;s reported 0/100 refusals applies to the publisher&#x27;s own 100-prompt test.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="how-we-treat-it">How we treat it</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Muse-Glimmer&#x27;s reported 0/100 refusals applies to the publisher&#x27;s own 100-prompt test.</p></aside><!-- /READING-BASICALLY -->
       <p>We pin revision 0e74fc7c36d24c58b22cc213c14d7f0512d9f7f1 and budget one H200 at an approximate managed price estimate of $5.45/hour. We do not transfer Meta's base benchmarks to this artifact, nor do we repeat "0/100 refusals" as a general property — it is a claim from the publisher's harness on 100 prompts. Since the aggressive variant demonstrably refuses fewer genuinely-harmful requests (0/2 correct refusals in its own domain eval), read it as de-refusal-first, capability-second, and verify against your own workload — the card's "Intended use" says the same.</p>
 
-            <h2>The idea, in plain words</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>LoRA de-refusal trains a small adapter to change how a model responds.</p></aside><!-- /READING-BASICALLY -->
+            <h2 id="the-idea-in-plain-words">The idea, in plain words</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Lightweight retraining adds a small extra layer that changes how the model answers.</p></aside><!-- /READING-BASICALLY -->
       <div class="article-learn"><strong>Two schools of removing refusals</strong><p>School one is weight projection (classic abliteration): find the refusal direction and carve it out of the weights. School two is a LoRA de-refusal: train a tiny adapter that nudges behavior without retraining the model. 'Aggressive' in this family means the scrub was turned up — 0/100 refusals measured — which also means more drift from the original model's behavior. Nothing is free.</p></div>
 
-      <h2>Primary sources</h2>
+      <h2 id="primary-sources">Primary sources</h2>
       <ul class="article-source-list"><li><a href="https://huggingface.co/SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive">Exact SHS-Lab model card</a> and <a href="https://huggingface.co/SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive/tree/0e74fc7c36d24c58b22cc213c14d7f0512d9f7f1">pinned files</a></li><li><a href="https://huggingface.co/jorkle/Muse-Glimmer-30B-Abliterated">jorkle "normal" variant card</a> (comparison numbers)</li><li><a href="https://huggingface.co/jorkle/Muse-Glimmer-30B-Abliterated-Aggressive">jorkle aggressive twin</a> and <a href="https://huggingface.co/jorkle/Muse-Glimmer-30B-Abliterated-GGUF">GGUF quant repo</a></li><li><a href="https://huggingface.co/meta-models/Muse-Glimmer-30B">Official Meta base model card</a></li><li><a href="https://github.com/TrevorS/muse-glimmer-abliteration">TrevorS: Muse Glimmer abliteration, method and measurements</a></li><li><a href="https://huggingface.co/cvgro/Muse-Glimmer-30B-Abliterated-GGUF">Blackfrost GGUF abliteration card</a></li><li><a href="https://huggingface.co/meta-models/Muse-Glimmer-30B/discussions/47">Base model discussion: "overly cencored?" (community opinions)</a></li><li><a href="https://arxiv.org/abs/2406.11717">Refusal in Language Models Is Mediated by a Single Direction</a></li></ul>
     </div>
     <nav class="article-next" aria-label="More model field notes"><a href="../ornith-1-0-397b-abliterated-w4a16/">← Ornith 397B</a><a href="../">All field notes</a></nav>

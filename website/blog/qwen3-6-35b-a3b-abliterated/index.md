@@ -2,15 +2,15 @@
 
 ## TL;DR
 
-- Huihui-Qwen3.6 stores nearly 36B parameters while activating about 3B per token.
-- Huihui describes the refusal-direction edit as an uncensored proof of concept.
-- Qwen's upstream scores were not rerun on the abliterated checkpoint.
+- Huihui-Qwen3.6 stores nearly 36 billion parameters while activating about 3 billion at a time.
+- Huihui describes the edit as an uncensored proof of concept.
+- Qwen's upstream scores were not rerun on the refusal-stripped build.
 
 ## Basically, the facts
 
 **Sparse computation is not a small model**
 
-Basically, Qwen3.6 35B A3B activates about 3B parameters per token but stores nearly 36B.
+Basically, Qwen3.6 35B A3B activates about 3 billion parameters at a time but stores nearly 36 billion.
 
 **Three days from release to abliteration**
 
@@ -18,11 +18,11 @@ Basically, Huihui published its Qwen3.6 derivative three days after Qwen's April
 
 **What abliteration actually edits**
 
-Basically, Huihui's Qwen3.6 abliteration edits selected weights rather than using a jailbreak prompt.
+Basically, Huihui's Qwen3.6 edit changes selected numbers in the model rather than using a trick prompt.
 
 **The upstream numbers—and the honest boundary**
 
-Basically, Qwen's benchmark scores do not establish how Huihui's edited Qwen3.6 checkpoint performs.
+Basically, Qwen's benchmark scores do not establish how Huihui's edited Qwen3.6 performs.
 
 **Who made it?**
 
@@ -34,8 +34,11 @@ Basically, Huihui's Qwen3.6 publisher recommends controlled research use because
 
 **The idea, in plain words**
 
-Basically, Qwen3.6 routes each token through eight selected experts plus one shared expert.
+Basically, Qwen3.6 wakes eight of its specialized parts plus one shared part for each token.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 18 July 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 18 July 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`, revision `8f0ee727aff5e771ea72466d64d13ecd851d2cc7`.
 

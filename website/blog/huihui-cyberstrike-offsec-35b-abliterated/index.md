@@ -2,19 +2,19 @@
 
 ## TL;DR
 
-- CyberStrike's base card describes tool-call alignment with 300 examples.
-- Huihui applied a refusal-direction weight edit to the CyberStrike fine-tune.
-- Huihui’s CyberStrike derivative card reports neither refusal measurements nor a post-edit tool-call rerun.
+- CyberStrike's base card describes training for tool use with 300 examples.
+- Huihui applied an edit that strips a refusal-linked pattern from the fine-tuned model.
+- Huihui's CyberStrike derivative card reports neither refusal measurements nor a post-edit tool-use rerun.
 
 ## Basically, the facts
 
 **A fine-tune that admits it didn’t add knowledge**
 
-Basically, CyberStrike's base card describes targeted tool-call training, not a capability upgrade.
+Basically, CyberStrike's base card describes targeted training for tool use, not a capability upgrade.
 
 **Then huihui-ai took the refusals out**
 
-Basically, Huihui's CyberStrike release applies a refusal-direction weight edit to the fine-tune.
+Basically, Huihui's CyberStrike release applies an edit that strips a refusal-linked pattern from the fine-tuned model.
 
 **What abliterating a security model changes**
 
@@ -26,7 +26,7 @@ Basically, Huihui's CyberStrike card has no measured refusal rate or post-edit t
 
 **The paper trail so far**
 
-Basically, The CyberStrike article recorded a GGUF release after a user asked for the format.
+Basically, the CyberStrike article recorded an easy-to-run file after a user asked for that format.
 
 **How we treat it**
 
@@ -36,6 +36,9 @@ Basically, Huihui's CyberStrike publisher warns that the model has significantly
 
 Basically, CyberStrike's base card reports 18 correct tool calls out of 24 after targeted training.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 10 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/huihui-cyberstrike-offsec-35b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 10 August 2026. Exact artifact: `huihui-ai/Huihui-CyberStrike-OffSec-35B-abliterated`, revision `01521758ee85df1ed4edaf494c48e20704b80204`.
 

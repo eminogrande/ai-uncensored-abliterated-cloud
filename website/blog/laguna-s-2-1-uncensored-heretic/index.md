@@ -2,19 +2,19 @@
 
 ## TL;DR
 
-- Laguna S 2.1 stores 118B parameters while activating about 8B per token.
-- llmfan46 reported 6/100 refusals, but the card's mislabeled baseline prevents a clean comparison.
-- The uncensored checkpoint shipped as 218.99 GiB of BF16 weights across 48 shards.
+- Laguna S 2.1 holds 118 billion parameters but only uses about 8 billion at a time.
+- llmfan46 reported 6 refusals in 100, but a mislabeled comparison model clouds the result.
+- The uncensored model shipped as 218.99 GiB of 16-bit numbers across 48 files.
 
 ## Basically, the facts
 
 **Why this one matters**
 
-Basically, poolside reported 70.2% on Terminal-Bench 2.1 for Laguna S 2.1.
+Basically, poolside reported a 70.2% score on a coding benchmark for Laguna S 2.1.
 
 **What the card gets right — and the copy-paste bug**
 
-Basically, Laguna's uncensor card mislabeled its baseline as Qwen3-Coder-Next.
+Basically, Laguna's uncensor card mislabeled the original model as Qwen3-Coder-Next.
 
 **The cost of 118 billion stored parameters**
 
@@ -22,7 +22,7 @@ Basically, Laguna's 8B active parameters still require storing a 118B-parameter 
 
 **How to run it**
 
-Basically, llmfan46's Laguna uncensor shipped 48 BF16 shards, not a working GGUF release.
+Basically, llmfan46's Laguna uncensor shipped 48 16-bit files, not a working easy-to-run release.
 
 **The creator: llmfan46**
 
@@ -30,12 +30,15 @@ Basically, llmfan46's model cards reported hitting Hugging Face's free storage l
 
 **The agentic dimension**
 
-Basically, poolside trained Laguna S 2.1 for coding agents, where refusals can stop tool-call loops.
+Basically, poolside trained Laguna S 2.1 for coding assistants, where a refusal can stop the work mid-task.
 
 **The idea, in plain words**
 
-Basically, Laguna's router selects ten experts per token while keeping the full model stored.
+Basically, Laguna keeps the whole model stored but wakes only ten of its many specialized parts for each task.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 30 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/_
+<!-- /ARTICLE-META-MD -->
 
 Published 30 August 2026. Exact artifact: `llmfan46/Laguna-S-2.1-Uncensored-Heretic`, revision `c8a210847c1092c2c89ce814dc6a623b8afb0320`.
 

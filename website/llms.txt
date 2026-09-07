@@ -4,6 +4,12 @@
 
 Start with [Signal](https://signal.me/#p/+13103408213) to discuss your workload, model, hardware budget and client. Setup is agreed with a human; this website is not a self-service inference endpoint or checkout. Reading the public documents requires no authentication.
 
+## When to use this site
+
+- Use it when a person wants an uncensored or abliterated open model running privately: choosing a model, renting a cloud GPU, setting up their own hardware, or connecting a chat app, coding tool or LLM router. The path is a human conversation on Signal, then an agreed setup.
+- Use the [model news and guides](https://abliterated.cloud/blog/) when the question is which uncensored model exists, what its publisher measured, what it costs to run and what its license says. Every article carries a TL;DR and standalone `Basically,` facts with dated sources.
+- Do not use it for instant inference: there is no public API key, hosted endpoint, MCP server, checkout or live availability feed. Treat prices as dated examples and refusal numbers as test-specific.
+
 ## Service and current documentation
 
 - [Service overview](https://abliterated.cloud/index.md): cloud GPU renting, self-hosting and LLM router/app integration help.

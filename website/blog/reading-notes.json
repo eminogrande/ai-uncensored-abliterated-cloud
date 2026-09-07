@@ -1,1223 +1,1223 @@
 {
-  "spark-x2-5-uncensor-wave": {
-    "tldr": [
-      "Spark X2.5's vendor claims up to 1M tokens of native context; community reproduction was unresolved.",
-      "soyaakinohara reported 3/100 refusals for the 4B edit, down from 58/100 on the base.",
-      "darioooooo0o reported no real refusals in 337 Spark 1.7B generations; flagged outputs were manually audited."
-    ],
-    "sections": [
-      {
-        "heading": "Day ten",
-        "statement": "Spark X2.5's first 1.7B uncensor appeared on 3 September 2026, ten days after the base.",
-        "evidence": "went up 3 September at 10:44 UTC, ten days and four hours after the base appeared."
-      },
-      {
-        "heading": "What Spark X2.5 is",
-        "statement": "Spark X2.5's vendor claims 1M-token context, but community tests had not reproduced it.",
-        "evidence": "NeedleBench-style 1M-token tests did not reproduce"
-      },
-      {
-        "heading": "The wall of no",
-        "statement": "soyaakinohara measured 58 refusals in 100 prompts on the stock Spark X2.5 4B.",
-        "evidence": "soyaakinohara's separate measurement of the 4B counted 58 refusals out of 100 on his own suite."
-      },
-      {
-        "heading": "Two edits, one argument about rulers",
-        "statement": "darioooooo0o argues that short keyword tests misread Spark X2.5's thinking traces.",
-        "evidence": "on a thinking model, darioooooo0o argues, that ruler fails in two opposite directions at once"
-      },
-      {
-        "heading": "How to run it",
-        "statement": "Spark X2.5 GGUF builds used the vendor's llama.cpp fork at publication.",
-        "evidence": "Serve with the vendor's llama.cpp fork"
-      },
-      {
-        "heading": "The creator: XHToken (SparkLLM)",
-        "statement": "XHToken publishes Spark's runtime tools as well as the model weights.",
-        "evidence": "XHToken publishes the runtime stack itself, a llama.cpp fork, an MLX build, a Spark-plugin"
-      },
-      {
-        "heading": "The editors: soyaakinohara and darioooooo0o",
-        "statement": "soyaakinohara's Spark release paired an uncensored base with a Japanese-tuned version.",
-        "evidence": "an uncensored base weight plus a Japanese-tuned twin plus a full GGUF ladder"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Spark X2.5 mixes full-attention layers with roughly three times as many sliding-window layers.",
-        "evidence": "Spark-X2.5 interleaves the two, roughly one full-attention layer for every three window layers"
-      }
-    ]
-  },
-  "deepseek-v4-flash-vision-exp-abliterated": {
-    "tldr": [
-      "Andreas Petersson published the Vision-Exp uncensor on 31 August 2026, under eleven hours after the base.",
-      "The model card describes edits to 33 attention-output tensors, leaving the vision encoder unchanged.",
-      "The reference card reported smoke tests, not a refusal-rate benchmark or production validation."
-    ],
-    "sections": [
-      {
-        "heading": "Eleven hours",
-        "statement": "apetersson's DeepSeek Vision-Exp uncensor appeared under eleven hours after the base on 31 August 2026.",
-        "evidence": "ten hours and fifty-six minutes after the base appeared."
-      },
-      {
-        "heading": "What the edit actually is",
-        "statement": "apetersson's Vision-Exp card describes a 33-tensor edit, not gradient fine-tuning.",
-        "evidence": "The target set: the 33 attention output writer tensors in layers 10 through 42, plus their scales."
-      },
-      {
-        "heading": "The descendant pipeline",
-        "statement": "s-zaizen's Vision-Exp card reports 99/100 on GSM8K for its NVFP4 derivative.",
-        "evidence": "and GSM8K at 99/100, three points above its own unedited NVFP4 base."
-      },
-      {
-        "heading": "How to run it",
-        "statement": "The Vision-Exp Basic128 card reports about 23.4 tokens per second on an M1 Ultra.",
-        "evidence": "the card lists ~23.4 tok/s text on an M1 Ultra at 32K context"
-      },
-      {
-        "heading": "The creator: Andreas Petersson",
-        "statement": "Andreas Petersson shipped Vision-Exp in FP8, GGUF and routed IQ2 formats.",
-        "evidence": "He shipped the reference-native FP8, a reference GGUF, a routed IQ2 profile"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Vision-Exp's rank-1 edit removes a refusal direction from just 33 attention-output tensors.",
-        "evidence": "one direction, one rank, projected out of just 33 attention-output tensors spread across layers 10 to 42"
-      }
-    ]
-  },
-  "tencent-hy-mt2-30b-a3b-uncensored": {
-    "tldr": [
-      "Tencent's Hy-MT2-30B-A3B is a 33-language translation specialist, not a general chatbot.",
-      "The editor reported 0/100 refusal-keyword hits versus 100/100 on the base, with KL divergence 0.0276.",
-      "The BF16 checkpoint was 60.14 GB; the article listed a roughly 18.2 GB Q4_K_M alternative."
-    ],
-    "sections": [
-      {
-        "heading": "A translator that refuses is a broken translator",
-        "statement": "Tencent claims Hy-MT2's 7B and 30B-A3B models beat larger rivals on fast-thinking translation.",
-        "evidence": "claim the 7B and 30B-A3B sizes beat DeepSeek-V4-Pro and Kimi K2.6 in fast-thinking translation mode"
-      },
-      {
-        "heading": "What the edit actually does",
-        "statement": "Hy-MT2's editor reported low behavioral drift, but the evaluation prompts were not published.",
-        "evidence": "no third party has re-run it and the exact prompt set is not published."
-      },
-      {
-        "heading": "How to run it",
-        "statement": "The Hy-MT2 uncensored BF16 checkpoint was 60.14 GB across 13 files.",
-        "evidence": "60.14 GB across 13 safetensors shards"
-      },
-      {
-        "heading": "The creator: Md Ismail Sojal, and the OS-Software label",
-        "statement": "Identical Hy-MT2 model-card text appeared under 0xSojalSec and OS-Software; shared ownership was not verified.",
-        "evidence": "The identical card content also ships under the org handle"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "ARA trains a small adapter to counter a refusal direction while preserving weight-row norms.",
-        "evidence": "ARA instead trains a small LoRA adapter that cancels that direction across a chosen range of layers while keeping every weight row's norm intact."
-      }
-    ]
-  },
-  "laguna-s-2-1-uncensored-heretic": {
-    "tldr": [
-      "Laguna S 2.1 stores 118B parameters while activating about 8B per token.",
-      "llmfan46 reported 6/100 refusals, but the card's mislabeled baseline prevents a clean comparison.",
-      "The uncensored checkpoint shipped as 218.99 GiB of BF16 weights across 48 shards."
-    ],
-    "sections": [
-      {
-        "heading": "Why this one matters",
-        "statement": "poolside reported 70.2% on Terminal-Bench 2.1 for Laguna S 2.1.",
-        "evidence": "reports Terminal-Bench 2.1 70.2% and DeepSWE 40.4%"
-      },
-      {
-        "heading": "What the card gets right — and the copy-paste bug",
-        "statement": "Laguna's uncensor card mislabeled its baseline as Qwen3-Coder-Next.",
-        "evidence": "The card's performance table mislabels the \"Original model\" as Qwen3-Coder-Next"
-      },
-      {
-        "heading": "The cost of 118 billion stored parameters",
-        "statement": "Laguna's 8B active parameters still require storing a 118B-parameter model.",
-        "evidence": "118B total parameters, ~8B active per token"
-      },
-      {
-        "heading": "How to run it",
-        "statement": "llmfan46's Laguna uncensor shipped 48 BF16 shards, not a working GGUF release.",
-        "evidence": "ships as BF16: 218.99 GiB across 48 safetensors shards"
-      },
-      {
-        "heading": "The creator: llmfan46",
-        "statement": "llmfan46's model cards reported hitting Hugging Face's free storage limit.",
-        "evidence": "Cards carry a banner that Hugging Face's free storage limit has been reached"
-      },
-      {
-        "heading": "The agentic dimension",
-        "statement": "poolside trained Laguna S 2.1 for coding agents, where refusals can stop tool-call loops.",
-        "evidence": "a coding agent that refuses loses its loop, stops calling tools, and returns nothing.",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Laguna's router selects ten experts per token while keeping the full model stored.",
-        "evidence": "256 specialized 'expert' modules plus one always-on shared expert, and for each token the model wakes up just ten of them."
-      }
-    ]
-  },
-  "securelayer7-afm-4-5b-uncensored-abliterated": {
-    "tldr": [
-      "SecureLayer7 published both prompt-injection guardrails and refusal-reduced models.",
-      "SecureLayer7 reported AFM refusals falling from 92/100 to 3/100 at KL divergence 0.0200.",
-      "The AFM edit was merged into BF16 weights; independent capability and refusal retests were absent."
-    ],
-    "sections": [
-      {
-        "heading": "A security vendor walks into Hugging Face",
-        "statement": "SecureLayer7 published guardrail models and refusal-reduced models under the same account.",
-        "evidence": "the same vendor publishes guardrail models and refusal-reduced models under one account."
-      },
-      {
-        "heading": "The base: an enterprise 4.5B with ReLU² instead of SwiGLU",
-        "statement": "Arcee's AFM card says ReLU² replaced SwiGLU to enable sparsification.",
-        "evidence": "The base card says ReLU² replaces SwiGLU \"to enable sparsification\"."
-      },
-      {
-        "heading": "What the edit actually changed",
-        "statement": "SecureLayer7's AFM card reports refusal-direction edits across all 36 layers.",
-        "evidence": "applied to the attention output projections (`o_proj`) and MLP down-projections (`down_proj`) across all 36 layers"
-      },
-      {
-        "heading": "3/100 is not 0/100",
-        "statement": "SecureLayer7's 3/100 AFM result applies to its own probes, not every possible prompt.",
-        "evidence": "Treat 3/100 as a claim about their probe set, not a guarantee about yours."
-      },
-      {
-        "heading": "How to run it",
-        "statement": "The AFM uncensor shipped safetensors for transformers or vLLM, with no GGUF at publication.",
-        "evidence": "the tree is safetensors-only, so there is no GGUF ladder to grab; the supported path is transformers or vLLM."
-      },
-      {
-        "heading": "The creator: SecureLayer7",
-        "statement": "SecureLayer7's AFM NOTICE explicitly disclaims endorsement by Arcee.",
-        "evidence": "The derivative's NOTICE explicitly disclaims any Arcee trademark endorsement."
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "AFM's ReLU² activation turns negative values into zeros; abliteration is a separate edit.",
-        "evidence": "This model uses ReLU² instead: a plain activation that turns every negative value into exactly zero."
-      }
-    ]
-  },
-  "velum-unbound-1bit-uncensor": {
-    "tldr": [
-      "Velum repackages a Bonsai-family 27B uncensor as Q1_0 weights with a DSpark drafter.",
-      "s3nh reported 6/100 refusals on the FP16 intermediate, not on the final 1-bit pack.",
-      "Velum's card left benchmarks pending, with no published refusal retest of the Q1_0 artifact."
-    ],
-    "sections": [
-      {
-        "heading": "Four hops down a family tree in one morning",
-        "statement": "Velum repackaged tommytracx's Q1_0 uncensor with a DSpark drafter in August 2026.",
-        "evidence": "**guell00 repackaged it** on 28 August as Velum-Unbound-Uncensored: the Q1_0 weights plus a dspark drafter"
-      },
-      {
-        "heading": "Why a 1-bit model is the right vehicle for this",
-        "statement": "Prism ML claimed 1.125 bits per weight for Bonsai; Velum inherited the low-bit format.",
-        "evidence": "Prism ML's published case: true 1.125 bits per weight"
-      },
-      {
-        "heading": "The edit happened in FP16. The squeeze came after.",
-        "statement": "Velum's Q1_0 pack had no published refusal retest; the 6/100 result belongs to FP16.",
-        "evidence": "Nobody has published a refusal re-test on the Q1_0 pack; the Velum card lists every benchmark as TBD. The 6/100 belongs to the FP16 edit, not to this artifact."
-      },
-      {
-        "heading": "How to run it",
-        "statement": "Velum's Q1_0 format required the PrismML llama.cpp fork's low-bit kernels.",
-        "evidence": "The Q1_0 format needs the [PrismML llama.cpp fork](https://github.com/PrismML-Eng/llama.cpp) with the low-bit kernels."
-      },
-      {
-        "heading": "The creator: guell00 (and the chain behind the edit)",
-        "statement": "s3nh made Velum's underlying refusal edit; guell00 packaged the final release.",
-        "evidence": "The edit itself is s3nh's work"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Bonsai's 1-bit format stores a sign per weight and shares a scale across 128 weights.",
-        "evidence": "each weight becomes just a sign, + or −, and one shared scale value covers each group of 128 weights."
-      }
-    ]
-  },
-  "qwen3-8-flash-next-abliterated-race": {
-    "tldr": [
-      "Qwen described Qwen3.8-Flash-Next as an experimental preview of its planned Qwen4 architecture.",
-      "dealignai reported strong refusal reduction, alongside an MMLU drop from 86.36% to 83.86%.",
-      "At publication, serving qwen4_exp required patched branches or custom recipes, not stable releases."
-    ],
-    "sections": [
-      {
-        "heading": "The base is a Qwen4 preview, not a Qwen3.8",
-        "statement": "Qwen described Qwen3.8-Flash-Next as a preview of the architecture planned for Qwen4.",
-        "evidence": "Qwen published Qwen3.8-Flash-Next as \"the experimental preview of the architecture that will underpin Qwen4\""
-      },
-      {
-        "heading": "Five editors, one new architecture",
-        "statement": "Jiunsong's Qwen edit card reports changing 36 storage tensors while leaving vision untouched.",
-        "evidence": "The whole edit changes just 36 storage tensors, which expand to 6,168 logical output projections once fused routed experts are counted. Vision, the n-gram table, routers, gates, normalization and MTP are deliberately untouched"
-      },
-      {
-        "heading": "The catch: released runtimes don't support qwen4_exp",
-        "statement": "Qwen3.8-Flash-Next needed patched or custom serving software at publication.",
-        "evidence": "you are on a patched branch or a custom recipe, not a stable release."
-      },
-      {
-        "heading": "The n-gram table is the weird part of the size math",
-        "statement": "The Qwen NVFP4 builder kept the n-gram table in BF16, accounting for 95.4 GiB.",
-        "evidence": "the editor chose to keep the table in BF16 (95.4 GiB) rather than quantize it"
-      },
-      {
-        "heading": "How to run it",
-        "statement": "dealignai's Qwen serving recipe offloaded the n-gram table to the CPU.",
-        "evidence": "Set `VLLM_PLE_CPU_OFFLOAD=1` for the n-gram table"
-      },
-      {
-        "heading": "The creator: dealignai",
-        "statement": "dealignai describes its CRACK releases as weight-level uncensoring, not template tricks.",
-        "evidence": "dealignai runs the CRACK brand — permanent, weight-level uncensoring with \"no cheap template tricks, no fine tuning\", as their profile tagline puts it."
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Qwen's n-gram table looks up token pairs and triples rather than doing a matrix multiply.",
-        "evidence": "it is a giant dictionary keyed by short token pairs and triples at layer 2"
-      }
-    ]
-  },
-  "glm-5-3-flash-crack": {
-    "tldr": [
-      "Zhipu's card describes GLM-5.3-Flash as a multimodal model with 320B total and 18B active parameters.",
-      "dealignai reported 320/320 HarmBench compliance and a 0.48-point MMLU-logit drop on its tests.",
-      "The editor's 211-token-per-second MTP result used four H200 GPUs, not the two-GPU hosting estimate."
-    ],
-    "sections": [
-      {
-        "heading": "The base: Zhipu's first natively multimodal GLM-5",
-        "statement": "Zhipu's card describes GLM-5.3-Flash as the first natively multimodal GLM-5 model.",
-        "evidence": "introduces it as the first natively multimodal model in the GLM-5 series"
-      },
-      {
-        "heading": "The crack: a permanent edit with receipts",
-        "statement": "dealignai reported 320/320 HarmBench compliance for GLM-5.3-Flash, not a universal guarantee.",
-        "evidence": "**HarmBench-320, greedy:** Standard 159/159, Contextual 81/81, Copyright 80/80 → 320/320 complied, 0 refusals."
-      },
-      {
-        "heading": "The hosting math: what the refusals were costing",
-        "statement": "dealignai's GLM speed measurements used four H200 GPUs, not the two-GPU price estimate.",
-        "evidence": "dealignai measured at TP4 on H200 — four GPUs."
-      },
-      {
-        "heading": "How to run it",
-        "statement": "The GLM-5.3-Flash card says DeepGEMM compiles an FP8 kernel at startup and needs nvcc.",
-        "evidence": "The card notes DeepGEMM JIT-compiles a block-FP8 kernel at startup, so keep `nvcc` on `PATH`."
-      },
-      {
-        "heading": "The creator: Zhipu AI, and the editor dealignai",
-        "statement": "dealignai credited @jordanschenck for compute used on the GLM-5.3-Flash release.",
-        "evidence": "compute on this release credited to X user @jordanschenck."
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "GLM's MTP head proposes a next token for the main model to verify.",
-        "evidence": "A small extra \"draft head\" proposes the token that comes after, so on the next step the main model mostly verifies instead of generating from scratch."
-      }
-    ]
-  },
-  "darkstar-nemotron-3-5-lightning-30b-a3b-abliterated": {
-    "tldr": [
-      "Nemotron 3.5 Lightning combines Mamba-2, mixture-of-experts layers and sparse attention.",
-      "Darkstar reported 200/200 harmful-prompt compliance and 0/83 safe over-refusals on both builds.",
-      "The roughly 22 GB NVFP4 twin kept Mamba tensors and the MTP head in BF16."
-    ],
-    "sections": [
-      {
-        "heading": "The base: 3B active, built for agents",
-        "statement": "NVIDIA positioned Nemotron 3.5 Lightning for agent tool calls, validation and delegation.",
-        "evidence": "aimed at the high-volume execution work an always-on agent spends most of its budget on: tool calls, output validation, subagent delegation.",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "What a hybrid means for abliteration",
-        "statement": "Darkstar's edit contract reports refusal-direction removal from 3,126 Nemotron tensors.",
-        "evidence": "The contract reports 3,126/3,126 edited"
-      },
-      {
-        "heading": "The NVFP4 twin: what stays protected",
-        "statement": "Darkstar's NVFP4 twin quantized expert projections while keeping Mamba tensors in BF16.",
-        "evidence": "quantizes only the 5,934 expert up/down projections to W4A16-NVFP4 while keeping Mamba/SSM tensors, norms, embeddings, lm_head and MTP head in BF16."
-      },
-      {
-        "heading": "How to run it",
-        "statement": "The Darkstar Nemotron article lists a roughly 22 GB NVFP4 build for single-GPU use.",
-        "evidence": "Single consumer GPU: the NVFP4 twin (~22 GB) with the same flags at 10 speculative tokens."
-      },
-      {
-        "heading": "The creator: HangGlidersRule",
-        "statement": "HangGlidersRule's model-forge documents pinned recipes and validators for Darkstar releases.",
-        "evidence": "with pinned recipes, fail-closed validators, sha256 manifests"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Mamba-2 compresses history into a fixed-size state that updates as new tokens arrive.",
-        "evidence": "a Mamba-2 state-space block compresses history into a fixed-size internal state and updates it as it goes"
-      }
-    ]
-  },
-  "ornith-1-5-35b-a3b-uncensored-transplant": {
-    "tldr": [
-      "0xKitkat's Ornith edit adds an abliterated Qwen weight difference to the Ornith base.",
-      "The publisher reported 0/16 heuristic refusals and 4/4 capability passes on a Q4_K_M build.",
-      "The article had no edited-model benchmark showing that Ornith's coding ability survived."
-    ],
-    "sections": [
-      {
-        "heading": "The base: a model that writes its own homework",
-        "statement": "Ornith's release post describes a model that creates its own training tasks.",
-        "evidence": "the model proposes new training tasks, generates task-specific scaffolds, and produces solution rollouts"
-      },
-      {
-        "heading": "Method one: transplant a task vector",
-        "statement": "0xKitkat's card describes adding Qwen's uncensoring weight changes to Ornith.",
-        "evidence": "0xKitkat's formula subtracts the unedited Qwen base from its abliterated sibling"
-      },
-      {
-        "heading": "Method two and three: the classic projections",
-        "statement": "The alztrk and pottokao Ornith edits remove refusal directions rather than transplant weights.",
-        "evidence": "two conventional orthogonalization edits"
-      },
-      {
-        "heading": "What the transplant numbers do and don't say",
-        "statement": "Ornith's reported 0/16 refusals came from regex screening, not an LLM judge.",
-        "evidence": "used regex screening rather than an LLM judge"
-      },
-      {
-        "heading": "How to run it",
-        "statement": "The pinned 0xKitkat Ornith checkpoint includes the vision tower and MTP head.",
-        "evidence": "16 BF16 shards, vision tower and MTP head included"
-      },
-      {
-        "heading": "The creator: 0xKitkat",
-        "statement": "0xKitkat's model card linked to @procrastiness but gave no biography or team details.",
-        "evidence": "the card carries no biography, funding links or team details"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "A task vector is the weight difference between an edited model and its original.",
-        "evidence": "If you take an abliterated model's weights and subtract the original model's weights, what's left is a direction describing what the edit changed."
-      }
-    ]
-  },
-  "qwen3-8-27b-uncensored-aggressive": {
-    "tldr": [
-      "OrcaRouter's Qwen3.8 edit uses block-FP8 weights and keeps the vision tower at full precision.",
-      "The article cites Artificial Analysis scores evaluated on 14 August 2026.",
-      "The article had no measured refusal rate or capability-retention comparison with the base."
-    ],
-    "sections": [
-      {
-        "heading": "The same weights, a different promise",
-        "statement": "OrcaRouter's card says its Qwen3.8 FP8 edit keeps the vision tower at full precision.",
-        "evidence": "quantized to block-FP8 with the vision tower at full precision"
-      },
-      {
-        "heading": "What \"Aggressive\" means here",
-        "statement": "OrcaRouter's aggressive label is a publisher claim, not a measured refusal rate.",
-        "evidence": "That is a publisher claim; no measured refusal-rate table is published"
-      },
-      {
-        "heading": "The numbers, third-party",
-        "statement": "Artificial Analysis gave the served Qwen3.8 build an AA Coding score of 68.1 in August 2026.",
-        "evidence": "Third-party numbers (Artificial Analysis, evaluated 14 August 2026): AA Coding 68.1"
-      },
-      {
-        "heading": "Who made it",
-        "statement": "OrcaRouter made the Qwen3.8 edit and serving build as well as the gateway.",
-        "evidence": "The edit and serving build come from [orcarouter]"
-      },
-      {
-        "heading": "How to run it",
-        "statement": "The article described gated access to OrcaRouter's OpenAI-compatible API.",
-        "evidence": "The API is OpenAI-compatible and gated"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Block-FP8 stores model weights in 8 bits with a separate scale for each block.",
-        "evidence": "Block-FP8 packs them into 8 bits with per-block scaling"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "The article had no refusal-rate measurement to back OrcaRouter's fully unlocked claim.",
-        "evidence": "\"Lossless\" and \"fully unlocked\" are the publisher's claims; the third-party benchmarks are the only independent measurement, and no refusal-rate measurement exists."
-      }
-    ]
-  },
-  "qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated": {
-    "tldr": [
-      "insraq's Heretic edit builds on Empero's Qwen3.8 distill in a Qwen3.5-4B architecture.",
-      "The publisher reported 6/100 refusals versus 99/100, with KL divergence of 0.0167.",
-      "Empero's benchmark scores describe the upstream distill, not the decensored checkpoint."
-    ],
-    "sections": [
-      {
-        "heading": "Small is the point",
-        "statement": "The insraq 4.5B checkpoint contains about 9.1 GB of BF16 weights.",
-        "evidence": "4,539,265,536 parameters, about 9.1 GB of BF16 weights"
-      },
-      {
-        "heading": "A 2.4-trillion-parameter teacher, squeezed into 4.5B",
-        "statement": "Empero says its Qwen3.8 distill trained on roughly 45,000 curated teacher traces.",
-        "evidence": "trained on ~45,000 curated teacher traces of dense chain-of-thought"
-      },
-      {
-        "heading": "Heretic: abliteration by search, not by hand",
-        "statement": "Heretic uses an optimizer to search for fewer refusals with less drift from the base.",
-        "evidence": "a TPE-based optimizer powered by Optuna co-minimizes refusals and KL divergence from the base"
-      },
-      {
-        "heading": "The exact run",
-        "statement": "insraq reported 6/100 refusals for selected trial 128, compared with 99/100 for the base.",
-        "evidence": "Selected trial 128: the publisher reports 6/100 refusals (vs 99/100)"
-      },
-      {
-        "heading": "What tiny uncensored trades away",
-        "statement": "Empero's distill benchmark scores do not measure the decensored insraq checkpoint.",
-        "evidence": "Those belong to the distill, not the decensored artifact"
-      },
-      {
-        "heading": "Who made it",
-        "statement": "insraq's Qwen distill edit was made with Heretic v1.4.0 on top of Empero's model.",
-        "evidence": "A decensored version of `empero-ai/Qwen3.8-4B` made with Heretic v1.4.0"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "The article's L40S serving estimate was about $2.34 per hour, not a live price.",
-        "evidence": "Our serving estimate is approximately $2.34/hour on one L40S (approximate managed price estimate)."
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Knowledge distillation trains a smaller model using a larger model's answers.",
-        "evidence": "Knowledge distillation trains a small model on the outputs of a huge one."
-      }
-    ]
-  },
-  "muse-glimmer-30b-abliterated-aggressive": {
-    "tldr": [
-      "Muse-Glimmer Aggressive lowers the LoRA training KL penalty from 1.0 to 0.5.",
-      "The publisher reported 0/100 refusals, versus 13/100 for the normal variant.",
-      "The card skipped capability benchmarks; Meta's base-model scores do not apply to the edit."
-    ],
-    "sections": [
-      {
-        "heading": "\"Aggressive\" is a knob, and the label doesn't tell you which one",
-        "statement": "Muse-Glimmer's aggressive recipe lowers the KL penalty rather than editing more layers.",
-        "evidence": "\"Aggressive\" here means a relaxed KL guardrail, not a stronger projection or more layers touched"
-      },
-      {
-        "heading": "What the card actually measured",
-        "statement": "Muse-Glimmer's publisher reported 0/100 refusals for aggressive and 13/100 for normal.",
-        "evidence": "refusal rate on harmful_behaviors is 0/100 for this variant versus 13/100 for the normal twin"
-      },
-      {
-        "heading": "The honest gap: KL is a drift meter, not a benchmark",
-        "statement": "Muse-Glimmer's aggressive card did not remeasure capability preservation.",
-        "evidence": "Benchmarks were explicitly skipped: the card says capability preservation is expected to be lower than the normal variant \"but was not re-measured here.\""
-      },
-      {
-        "heading": "A mirror upload, with the quants living elsewhere",
-        "statement": "SHS-Lab's Muse-Glimmer mirror shipped BF16 shards; the GGUF files were in jorkle's repo.",
-        "evidence": "The SHS-Lab repo ships only the two BF16 shards (~56 GB); the GGUF quants"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "Muse-Glimmer's reported 0/100 refusals applies to the publisher's own 100-prompt test.",
-        "evidence": "The 0/100 refusal figure is a publisher claim on its own 100-prompt harness"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "LoRA de-refusal trains a small adapter to change how a model responds.",
-        "evidence": "School two is a LoRA de-refusal: train a tiny adapter that nudges behavior without retraining the model."
-      }
-    ]
-  },
-  "kimi-k3-abliterated-modal": {
-    "tldr": [
-      "Resggg's Kimi K3 upload stored about 1.56 TB across 96 shards at review.",
-      "The article estimated roughly eleven H200s just to hold the packed weights.",
-      "The copied SHS-Lab refusal-removal and video claims were not verified for this upload."
-    ],
-    "sections": [
-      {
-        "heading": "Two point seven eight trillion, zero downloads",
-        "statement": "Resggg's Kimi K3 upload had zero downloads, likes or discussions at review.",
-        "evidence": "zero downloads, likes or discussions at review"
-      },
-      {
-        "heading": "What 2.78 trillion parameters means in memory",
-        "statement": "The article's Kimi K3 estimate put packed weights at roughly 1.35 TiB before runtime memory.",
-        "evidence": "landing at roughly 1.35 TiB of weights"
-      },
-      {
-        "heading": "Why \"modal\"?",
-        "statement": "Kimi K3's video claim came from copied SHS-Lab text, not a verified run of Resggg's upload.",
-        "evidence": "video-modality claims are SHS-Lab publisher claims copied into this repo"
-      },
-      {
-        "heading": "Moonshot's Kimi K3, briefly",
-        "statement": "Moonshot's Kimi K3 card describes a mixture-of-experts model with a million-token context.",
-        "evidence": "93 layers, 896 experts with 16 routed plus 2 shared, 1M-token context"
-      },
-      {
-        "heading": "Who actually attempts a K3 abliteration",
-        "statement": "Resggg's copied Kimi K3 refusal-removal claim was unverified in the article.",
-        "evidence": "The derivative's \"98%+ refusal signal removed\" and video-modality claims are SHS-Lab publisher claims copied into this repo — unverified"
-      },
-      {
-        "heading": "The honest gap between uploaded and runnable",
-        "statement": "The article found no inference provider listing Resggg's Kimi K3 upload.",
-        "evidence": "No inference provider lists the model."
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "The Kimi K3 article treated Resggg's upload as unverified, not as a zero-refusal model.",
-        "evidence": "\"Abliterated\" here means refusal-reduced per publisher claim: not verified, not zero-refusal"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Holding Kimi K3's packed weights was estimated to need roughly eleven H200s before running.",
-        "evidence": "just holding the weights needs roughly eleven H200s, and running it needs more"
-      }
-    ]
-  },
-  "diffusiongemma-26b-e38-abliterated-nvfp4": {
-    "tldr": [
-      "Goodoldjam's NVFP4 DiffusionGemma checkpoint is 18.86 GB, down from 51.68 GB in BF16.",
-      "Goodoldjam reported 0/402 target refusals and 0/249 benign false refusals for E38 on its own prompt sets.",
-      "Goodoldjam reported 1,053.64 tok/s aggregate on Blackwell; E38 throughput on RTX 5090 was unverified."
-    ],
-    "sections": [
-      {
-        "heading": "Why abliterating a diffusion model is a different problem",
-        "statement": "Goodoldjam's E38 card reports measurements but does not fully explain the diffusion abliteration recipe.",
-        "evidence": "the card gives measurements, not a full recipe"
-      },
-      {
-        "heading": "The NVFP4 quant is the actual story",
-        "statement": "Goodoldjam reported 1,053.64 tok/s aggregate at concurrency 8 on an RTX PRO 6000 Blackwell.",
-        "evidence": "1,053.64 tok/s aggregate at concurrency 8"
-      },
-      {
-        "heading": "The measurements on refusal",
-        "statement": "Goodoldjam reported zero refusals on 402 target prompts, not a universal refusal-free model.",
-        "evidence": "The publisher's aligned evaluation reports 0/402 target refusals and 0/249 benign false refusals"
-      },
-      {
-        "heading": "The creator: Goodoldjam (Atom)",
-        "statement": "Goodoldjam's card says project funding supports GPU compute and larger validation runs.",
-        "evidence": "the card is explicit about what the money buys: GPU compute, throughput optimization, larger validation runs"
-      },
-      {
-        "heading": "The RTX 5090 question",
-        "statement": "Goodoldjam's 1,000+ tok/s RTX 5090 target had not been validated for this checkpoint.",
-        "evidence": "\"1,000+ tok/s on a 5090\" is described as a plausible experimental target, explicitly not yet validated on this checkpoint"
-      },
-      {
-        "heading": "How to run it",
-        "statement": "The DiffusionGemma run instructions target vLLM with compiled NVFP4 kernels on Blackwell.",
-        "evidence": "the path is vLLM with the compiled NVFP4 kernels the card targets, on a Blackwell GPU"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "DiffusionGemma's NVFP4 quant keeps the 20 abliteration-modified tensors in exact BF16.",
-        "evidence": "20 abliteration-modified tensors preserved in exact BF16"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "DiffusionGemma refines a noisy block of text over several steps instead of adding one token at a time.",
-        "evidence": "DiffusionGemma instead starts with a block of noisy tokens and refines the whole block toward coherent text over many denoising steps"
-      }
-    ]
-  },
-  "huihui-qwen3-8-27b-abliterated": {
-    "tldr": [
-      "Huihui's card says the Qwen3.8 edit left the first 15 layers, vision encoder and MTP untouched.",
-      "Huihui published the edit and its GGUF companion on 16 August 2026.",
-      "Huihui published no refusal-rate benchmark or post-edit capability rerun for its Qwen3.8-27B release."
-    ],
-    "sections": [
-      {
-        "heading": "What is genuinely new in 3.8",
-        "statement": "Qwen3.8-27B is a dense model with 64 hybrid layers and a 27-layer vision encoder.",
-        "evidence": "64 hybrid layers (three Gated DeltaNet blocks per full-attention block), a 27-layer vision encoder"
-      },
-      {
-        "heading": "The 48-hour race, with timestamps",
-        "statement": "Huihui published the Qwen3.8 edit and the GGUF companion on the same day in August 2026.",
-        "evidence": "Huihui-ai published this abliterated edit at 08:22 UTC on 16 August"
-      },
-      {
-        "heading": "What the edit actually touched",
-        "statement": "Huihui's card says the Qwen3.8 edit left the first 15 layers and vision encoder untouched.",
-        "evidence": "the first 15 of 64 layers were retained without ablation, and MTP and the visual encoder were not modified"
-      },
-      {
-        "heading": "Upstream numbers, upstream only",
-        "statement": "Qwen's base-model benchmark scores do not establish the performance of Huihui's edit.",
-        "evidence": "Those belong to Qwen's checkpoint, not to the abliterated derivative"
-      },
-      {
-        "heading": "The variant wave: what is actually useful",
-        "statement": "Most other abliterated Qwen3.8-27B repos were separate base-model edits, not Huihui forks.",
-        "evidence": "most of the other “abliterated” 27B repositories are independent edits of the base model, not forks of huihui-ai’s",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "How to run it",
-        "statement": "Huihui's Qwen3.8 GGUF companion included twelve quantizations and a vision projector.",
-        "evidence": "The GGUF companion ships twelve quantizations plus BF16 and an mmproj vision projector"
-      },
-      {
-        "heading": "Community temperature",
-        "statement": "The Huihui article could not assess the Reddit thread because access returned HTTP 403.",
-        "evidence": "Reddit’s API returned 403 to our tooling, so we flag it as a coverage gap rather than paraphrase it.",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "The creator: huihui.ai",
-        "statement": "Huihui's profile describes model-ablation work with the open-source NLP community.",
-        "evidence": "whose profile describes work on model ablations with the open-source NLP community"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "Huihui's reduced-filtering claim was not backed by a published refusal-rate benchmark.",
-        "evidence": "No refusal-rate benchmark and no post-edit rerun are published."
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Qwen3.8's multi-token prediction guesses several tokens ahead in a single step.",
-        "evidence": "Qwen3.8 adds multi-token prediction (MTP): it guesses several tokens ahead in one step"
-      }
-    ]
-  },
-  "qwen3-8-27b-rvn-heretic-abliterated-uncensored": {
-    "tldr": [
-      "RVN adds two ARA passes to trohrbaugh's Qwen3.8 edit and ships only as GGUF.",
-      "0bserverx reported 0–1/100 refusals on a prefix-forced test; some users still reported refusals.",
-      "RVN’s corrupted IQ3_M quant was rebuilt and re-uploaded in August 2026."
-    ],
-    "sections": [
-      {
-        "heading": "Why three passes instead of one",
-        "statement": "0bserverx reported lower KL drift after two extra ARA passes on the Qwen3.8 edit.",
-        "evidence": "KL damage against the base dropping from 0.0535 to 0.0085"
-      },
-      {
-        "heading": "ARA is a different animal from directional abliteration",
-        "statement": "ARA optimizes weight matrices directly instead of removing just one activation direction.",
-        "evidence": "Because the weight matrix is optimized directly rather than reduced to a single direction"
-      },
-      {
-        "heading": "The GGUF-only release, and the KV math behind it",
-        "statement": "RVN's GGUF files exclude the MTP draft tensors, and the recommended Q4_K_M is 16.55 GB.",
-        "evidence": "all converted with `--no-nextn` so the MTP/NextN draft tensors are excluded. The recommended file is Q4_K_M at 16.55 GB"
-      },
-      {
-        "heading": "A corrupted quant, caught by the community",
-        "statement": "0bserverx traced RVN's broken IQ3_M quant to NaN/Inf scales and zeroed tensors.",
-        "evidence": "0bserverx's tensor-level audit found the cause: NaN/Inf block scales and fully zeroed tensors"
-      },
-      {
-        "heading": "The creator: 0bserverx (Efe Buken)",
-        "statement": "RVN publisher Efe Buken credits Tim Rohrbaugh for the Qwen3.8 model he refined.",
-        "evidence": "He credits the foundation to Tim Rohrbaugh"
-      },
-      {
-        "heading": "How to run it",
-        "statement": "The RVN article gives GGUF runtime commands that select one quant file explicitly.",
-        "evidence": "# vLLM loads a single GGUF file explicitly (the repo holds 25 quants):"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "RVN's reported 0–1/100 refusals came from a prefix-forced test, not every possible prompt.",
-        "evidence": "0–1/100 on a prefix-forced 100-prompt set, published by the publisher"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "ARA adjusts model weights to reduce refusals while aiming to preserve harmless answers.",
-        "evidence": "uses a numeric optimizer to adjust the weight matrices so harmless requests barely change while harmful requests stop triggering the refusal circuitry"
-      }
-    ]
-  },
-  "huihui-deepseek-v4-flash-0731-abliterated": {
-    "tldr": [
-      "pocharlies published a 757,712-byte directions file for DeepSeek V4 Flash, not a full checkpoint.",
-      "pocharlies reported 0/10 DeepSeek V4 Flash refusals at lambda 1.5 on its ten-trigger set.",
-      "pocharlies’ DeepSeek runtime-dial tests did not benchmark general capability or measure 256K context."
-    ],
-    "sections": [
-      {
-        "heading": "The model this blog runs on",
-        "statement": "vLLM's recipe describes DeepSeek V4 Flash as 284B total parameters with 13B active.",
-        "evidence": "describes a 284B-total / 13B-active sparse MoE",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "Flash-class models get abliterated fast",
-        "statement": "Huihui's DeepSeek card says its baked edit leaves every routed expert untouched.",
-        "evidence": "Huihui’s card calls its own bake a crude proof of concept that leaves every routed expert untouched",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "A dial, not a download",
-        "statement": "pocharlies' DeepSeek release contains 46 refusal vectors rather than another checkpoint.",
-        "evidence": "a 757,712-byte file of 46 unit-norm float32 vectors"
-      },
-      {
-        "heading": "Baked abliteration overshoots",
-        "statement": "pocharlies and cebeuq disagree on how FP8 quantization affects baked refusal removal.",
-        "evidence": "Two primary sources disagree on whether the FP8 round-trip caps baked removal at ~68%"
-      },
-      {
-        "heading": "The cost math",
-        "statement": "The DeepSeek article estimated $10.90 per hour for two H200s, not a live hosting quote.",
-        "evidence": "a 2× H200 deployment prices at roughly $10.90 per hour — an approximate managed price estimate"
-      },
-      {
-        "heading": "What this does not establish",
-        "statement": "The DeepSeek runtime-dial tests did not benchmark general capability or measure 256K context.",
-        "evidence": "general capability was not benchmarked, 256k context was not measured"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "pocharlies reports that setting DeepSeek's runtime lambda to zero restores stock outputs.",
-        "evidence": "λ=0 is bit-exact to stock"
-      }
-    ]
-  },
-  "muse-glimmer-30b-abliterated": {
-    "tldr": [
-      "jorkle's Muse-Glimmer edit uses LoRA fine-tuning, not weight ablation.",
-      "jorkle reported 13/100 refusals for its normal Muse-Glimmer edit, versus 100/100 for the base.",
-      "jorkle skipped Muse-Glimmer capability benchmarks; its published KL table measures drift instead."
-    ],
-    "sections": [
-      {
-        "heading": "The model at the base",
-        "statement": "Muse-Glimmer-30B is a dense model, not a mixture-of-experts model.",
-        "evidence": "It is not an MoE"
-      },
-      {
-        "heading": "Three days, four methods",
-        "statement": "jorkle's Muse-Glimmer build followed earlier de-refusal releases from other publishers.",
-        "evidence": "It is not the first abliterated Muse-Glimmer"
-      },
-      {
-        "heading": "What jorkle actually did",
-        "statement": "jorkle's card describes a LoRA fine-tune of Muse-Glimmer, not a weight ablation.",
-        "evidence": "The method is a KL-conserving, best-of-N steered LoRA SFT"
-      },
-      {
-        "heading": "The table where benchmarks should be",
-        "statement": "jorkle's Muse-Glimmer card reports drift measurements but skips capability benchmarks.",
-        "evidence": "Benchmarks were skipped by request — the card publishes a KL table instead of a benchmark table"
-      },
-      {
-        "heading": "What the wave reveals",
-        "statement": "Muse-Glimmer's de-refusal releases split between direction ablation and KL-bounded fine-tuning.",
-        "evidence": "the de-refusal fork splits on method — direction ablation versus KL-bounded SFT"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "jorkle's Muse-Glimmer card still reports refusals, so the model is not zero-refusal.",
-        "evidence": "The card retains 13% refusals on its own eval"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "KL divergence measures how far an edited model's answer distribution moved from the original.",
-        "evidence": "it measures how far a model's answer distribution drifted from the original"
-      }
-    ]
-  },
-  "huihui-cyberstrike-offsec-35b-abliterated": {
-    "tldr": [
-      "CyberStrike's base card describes tool-call alignment with 300 examples.",
-      "Huihui applied a refusal-direction weight edit to the CyberStrike fine-tune.",
-      "Huihui’s CyberStrike derivative card reports neither refusal measurements nor a post-edit tool-call rerun."
-    ],
-    "sections": [
-      {
-        "heading": "A fine-tune that admits it didn’t add knowledge",
-        "statement": "CyberStrike's base card describes targeted tool-call training, not a capability upgrade.",
-        "evidence": "Its card calls the work “a small, targeted alignment, not a capability upgrade”"
-      },
-      {
-        "heading": "Then huihui-ai took the refusals out",
-        "statement": "Huihui's CyberStrike release applies a refusal-direction weight edit to the fine-tune.",
-        "evidence": "huihui-ai abliterated the fine-tune — a refusal-direction weight edit"
-      },
-      {
-        "heading": "What abliterating a security model changes",
-        "statement": "Resecurity's July 2026 analysis described CyberStrike-OffSec as a dual-use model.",
-        "evidence": "Third-party coverage (Resecurity, 30 July 2026) treats the OffSec model as dual-use"
-      },
-      {
-        "heading": "What the card does and doesn’t claim",
-        "statement": "Huihui's CyberStrike card has no measured refusal rate or post-edit tool-call evaluation.",
-        "evidence": "the abliterated card publishes no refusal-rate measurement and no post-edit rerun"
-      },
-      {
-        "heading": "The paper trail so far",
-        "statement": "The CyberStrike article recorded a GGUF release after a user asked for the format.",
-        "evidence": "was followed by the GGUF repository",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "Huihui's CyberStrike publisher warns that the model has significantly reduced safety filtering.",
-        "evidence": "The publisher warns that safety filtering is significantly reduced."
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "CyberStrike's base card reports 18 correct tool calls out of 24 after targeted training.",
-        "evidence": "the base card measured the difference — 18 of 24 correct tool calls after, 0 of 24 before"
-      }
-    ]
-  },
-  "qwythos-9b-claude-mythos-5-1m-abliterated": {
-    "tldr": [
-      "Qwythos combines Qwen3.5-9B architecture, Empero reasoning training and Huihui abliteration.",
-      "Empero reports smoke testing near 137K tokens, not across the configured million-token window.",
-      "Huihui published no post-edit refusal test or benchmark rerun."
-    ],
-    "sections": [
-      {
-        "heading": "Life one: Qwen builds the skeleton",
-        "statement": "Qwythos starts with dense Qwen3.5-9B architecture and occupies roughly 19.3 GB in BF16.",
-        "evidence": "Qwythos begins as dense Qwen3.5-9B architecture, then receives a full-parameter reasoning fine-tune from Empero, then goes through huihui-ai’s refusal-reduction process. The exact child has 9,653,104,368 BF16 parameters and occupies roughly 19.3 GB."
-      },
-      {
-        "heading": "Life two: Empero changes the behavior",
-        "statement": "Empero says Qwythos learned from more than 500 million tokens of reasoning traces.",
-        "evidence": "Empero says it trained the text backbone on more than 500 million tokens of Claude Mythos, Claude Fable and in-house reasoning traces."
-      },
-      {
-        "heading": "The “1M” in the name",
-        "statement": "Qwythos has a million-token setting, but Empero reports smoke testing only around 137K.",
-        "evidence": "The model is configured for 1,048,576 tokens through static YaRN, but Empero reports smoke testing at roughly 137K."
-      },
-      {
-        "heading": "Life three: huihui edits refusal again",
-        "statement": "Huihui's Qwythos derivative has no published post-abliteration refusal test or benchmark rerun.",
-        "evidence": "Huihui publishes no post-abliteration refusal test or benchmark rerun."
-      },
-      {
-        "heading": "A tiny tool-use demo, not a giant benchmark",
-        "statement": "Empero reported seven successful tool-use prompts for upstream Qwythos, not Huihui’s later abliterated derivative.",
-        "evidence": "Empero reports seven successful prompts out of seven in a small function-calling harness",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "The people behind the lineage",
-        "statement": "Qwythos combines Qwen architecture, Empero's reasoning fine-tune and Huihui's refusal edit.",
-        "evidence": "Qwythos begins as dense Qwen3.5-9B architecture, then receives a full-parameter reasoning fine-tune from Empero, then goes through huihui-ai’s refusal-reduction process."
-      },
-      {
-        "heading": "Why this is our inexpensive route",
-        "statement": "The Qwythos article paired the small BF16 model with one L40S for experimentation.",
-        "evidence": "Our prepared profile pairs it with one L40S and a 131K context, making it the sensible route for experimentation.",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Qwythos's million-token label is a configured limit, not proof of reasoning quality at that length.",
-        "evidence": "The million-token label is configuration, not proof of million-token reasoning quality."
-      }
-    ]
-  },
-  "qwen3-6-35b-a3b-abliterated": {
-    "tldr": [
-      "Huihui-Qwen3.6 stores nearly 36B parameters while activating about 3B per token.",
-      "Huihui describes the refusal-direction edit as an uncensored proof of concept.",
-      "Qwen's upstream scores were not rerun on the abliterated checkpoint."
-    ],
-    "sections": [
-      {
-        "heading": "Sparse computation is not a small model",
-        "statement": "Qwen3.6 35B A3B activates about 3B parameters per token but stores nearly 36B.",
-        "evidence": "Qwen3.6 35B A3B is a sparse multimodal mixture-of-experts model with 35,951,822,704 stored BF16 parameters and about 3B active for each token."
-      },
-      {
-        "heading": "Three days from release to abliteration",
-        "statement": "Huihui published its Qwen3.6 derivative three days after Qwen's April 2026 release.",
-        "evidence": "Qwen released the upstream checkpoint on 15 April 2026. Huihui published this abliterated derivative three days later"
-      },
-      {
-        "heading": "What abliteration actually edits",
-        "statement": "Huihui's Qwen3.6 abliteration edits selected weights rather than using a jailbreak prompt.",
-        "evidence": "It is a weight edit, not a prompt jailbreak or conventional fine-tune."
-      },
-      {
-        "heading": "The upstream numbers—and the honest boundary",
-        "statement": "Qwen's benchmark scores do not establish how Huihui's edited Qwen3.6 checkpoint performs.",
-        "evidence": "Those results do **not** belong to the abliterated derivative: Huihui publishes no post-edit benchmark or refusal-rate evaluation for this checkpoint."
-      },
-      {
-        "heading": "Who made it?",
-        "statement": "Qwen supplied the original Qwen3.6 model; huihui-ai published the edited derivative.",
-        "evidence": "Qwen released the upstream checkpoint on 15 April 2026. Huihui published this abliterated derivative three days later"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "Huihui's Qwen3.6 publisher recommends controlled research use because safety filtering is reduced.",
-        "evidence": "The publisher warns that safety filtering is reduced and recommends controlled research use."
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Qwen3.6 routes each token through eight selected experts plus one shared expert.",
-        "evidence": "for every token the model wakes up just eight of them plus one shared expert"
-      }
-    ]
-  },
-  "ornith-1-0-397b-abliterated-w4a16": {
-    "tldr": [
-      "The Ornith 397B W4A16 artifact still occupies about 195.7 GiB across 47 shards.",
-      "cebeuq reported Ornith 397B refusals fell from 30.0% for the reference W4A16 quant to 7.5% after editing on 40 harmful prompts.",
-      "The Ornith 397B article’s two-H200 profile was deployment-disabled, not a live model offer."
-    ],
-    "sections": [
-      {
-        "heading": "A 397B model that activates about 17B",
-        "statement": "Ornith 397B activates roughly 17B parameters per token, but the quantized artifact still exceeds 195 GiB.",
-        "evidence": "Upstream Ornith contains 396,802,360,816 BF16 parameters, with roughly 17B active per token. The W4A16 derivative still occupies 210.1 GB decimal, or about 195.7 GiB, in 47 shards."
-      },
-      {
-        "heading": "Why upstream Ornith attracted attention",
-        "statement": "Ornith's upstream 82.4 SWE-bench Verified score was not rerun on the W4A16 derivative.",
-        "evidence": "Upstream Ornith’s 82.4 SWE-bench Verified score was not rerun on this derivative."
-      },
-      {
-        "heading": "W4A16, translated",
-        "statement": "Ornith W4A16 stores selected weights at four bits while keeping activations at 16 bits.",
-        "evidence": "Most selected language weights are symmetric four-bit integers while activations, embeddings, routers, gates, norms and the vision tower remain 16-bit."
-      },
-      {
-        "heading": "The shard-by-shard operation",
-        "statement": "Ornith's publisher describes editing and requantizing tensors while streaming the source shards.",
-        "evidence": "streams 122 source shards, projects the direction out of selected residual-writing matrices and immediately requantizes each edited tensor"
-      },
-      {
-        "heading": "What the publisher actually tested",
-        "statement": "Ornith W4A16's reported checks are publisher smoke tests, not independent benchmarks.",
-        "evidence": "Other reported checks include coding, structured tools, image and video smoke tests, and needle retrieval at about 127K and 252K. These are publisher tests, not independent benchmarks."
-      },
-      {
-        "heading": "Who built the derivative?",
-        "statement": "The Ornith W4A16 release explicitly disclaims affiliation with DeepReinforce.",
-        "evidence": "The release explicitly says it is not affiliated with or endorsed by DeepReinforce.",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "Why our route remains disabled",
-        "statement": "The Ornith 397B article described a disabled two-H200 deployment profile with a 32K context.",
-        "evidence": "Our two-H200 profile remains explicitly deployment-disabled and uses a conservative 32K context."
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Ornith's four-bit weight storage reduces memory needs without making every tensor four-bit.",
-        "evidence": "Most selected language weights are symmetric four-bit integers while activations, embeddings, routers, gates, norms and the vision tower remain 16-bit."
-      }
-    ]
-  },
-  "ornith-1-0-35b-abliterated": {
-    "tldr": [
-      "DeepReinforce trained Ornith to propose a problem-solving scaffold and work inside it.",
-      "YuYu1015 replaced the first edited weights after reporting reasoning damage.",
-      "YuYu1015 reported roughly 5% hard refusals for its corrected Ornith 35B derivative on its own tests."
-    ],
-    "sections": [
-      {
-        "heading": "Ornith’s unusual idea: learn the harness too",
-        "statement": "DeepReinforce trained Ornith to propose a problem-solving scaffold and then solve inside it.",
-        "evidence": "DeepReinforce trained upstream Ornith around “self-scaffolding”: the model proposes a problem-solving scaffold, then solves inside it, with reinforcement-learning reward applied to both stages."
-      },
-      {
-        "heading": "A middleweight MoE with a large address book",
-        "statement": "Ornith 35B stores over 35 billion BF16 parameters and selects eight routed experts per token.",
-        "evidence": "The model contains 35,107,181,936 BF16 parameters, 40 layers, 256 routed experts, eight selected experts per token and a shared expert."
-      },
-      {
-        "heading": "The first edit was not good enough",
-        "statement": "YuYu1015 replaced Ornith's edited weights in June 2026 after reporting reasoning damage.",
-        "evidence": "The first version reportedly damaged reasoning, so the publisher replaced the weights on 30 June 2026."
-      },
-      {
-        "heading": "Sampling is part of the model",
-        "statement": "YuYu1015 warns that a 1.05 repetition penalty can truncate Ornith's output.",
-        "evidence": "YuYu1015 strongly recommends repetition penalty 1.0 and warns that 1.05 can truncate output."
-      },
-      {
-        "heading": "Who stands behind the two stages?",
-        "statement": "DeepReinforce created upstream Ornith; YuYu1015 published the refusal-reduced derivative.",
-        "evidence": "DeepReinforce created the upstream Ornith family and published its self-scaffolding story, benchmarks and harness settings. The refusal-reduced derivative comes from the individual Hugging Face publisher YuYu1015",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "What we can and cannot conclude",
-        "statement": "YuYu1015's corrected Ornith still had roughly 5% hard refusals in the publisher's tests.",
-        "evidence": "For the corrected version, YuYu1015 reports hard refusals falling from roughly 99% to 5%"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Abliteration projects a refusal-linked direction out of selected model weights.",
-        "evidence": "you find one direction in its internal math that correlates with refusal and project it out of the weights"
-      }
-    ]
-  },
-  "huihui-qwen3-6-27b-abliterated": {
-    "tldr": [
-      "Huihui-Qwen3.6-27B is a dense multimodal model with about 55.6 GB of BF16 weights.",
-      "The Huihui-Qwen3.6-27B article recorded 18,760 repository downloads on 16 August 2026.",
-      "Reports on Huihui-Qwen3.6-27B were mixed, and Huihui had not published a post-edit benchmark rerun."
-    ],
-    "sections": [
-      {
-        "heading": "Four months, 18,760 downloads",
-        "statement": "Huihui-Qwen3.6-27B had 18,760 repository downloads in the article's August 2026 snapshot.",
-        "evidence": "Downloads 18,760 (16 August 2026)",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "What is under the hood",
-        "statement": "Huihui-Qwen3.6-27B is dense, with 64 layers and roughly 55.6 GB of BF16 weights.",
-        "evidence": "The checkpoint is dense: 27,781,427,952 BF16 parameters, 64 layers, 5,120-wide hidden dimension, laid out as sixteen repetitions of three Gated DeltaNet blocks followed by one Gated Attention block. It is natively multimodal (vision encoder, image and video tokens, thinking and non-thinking modes), carries a 262,144-token native context, and occupies about 55.6 GB in BF16."
-      },
-      {
-        "heading": "What the card promised, what users report",
-        "statement": "User reports on Huihui-Qwen3.6-27B include remaining refusals and a setup-specific vision failure.",
-        "evidence": "What users report is mixed and specific: Concedo's thread \"Still seems censored\" (\"It's a bit better than the base, but not perfect\"), a single-stack report of vision not detecting images"
-      },
-      {
-        "heading": "The upstream numbers, clearly labeled",
-        "statement": "Qwen3.6-27B's reported benchmark scores belong to the unedited model, not Huihui's derivative.",
-        "evidence": "those belong to the unedited checkpoint; huihui publishes no post-edit rerun."
-      },
-      {
-        "heading": "The successor arrived; the 3.6 stayed",
-        "statement": "The August 2026 Huihui-Qwen3.8-27B release kept its first 15 layers free of ablation.",
-        "evidence": "The newer Huihui-Qwen3.8-27B-abliterated (August 2026) uses a different recipe — first 15 layers retained, MTP and vision untouched"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "The Qwen3.6-27B article's one-H200 budget was an estimate, not a live price offer.",
-        "evidence": "budget one H200 at roughly $5.45/hour (approximate managed price estimate)"
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "A vision encoder turns image patches into tokens that a language model can read.",
-        "evidence": "a vision encoder that cuts an image into patches and turns them into tokens the language model can read"
-      }
-    ]
-  },
-  "huihui-qwen3-5-9b-abliterated": {
-    "tldr": [
-      "Huihui-Qwen3.5-9B has roughly 19.3 GB of BF16 weights and a vision encoder.",
-      "The Huihui-Qwen3.5-9B article counted 58 downstream repos, including conversions and further fine-tunes.",
-      "Huihui's proof-of-concept card included no post-edit benchmark results."
-    ],
-    "sections": [
-      {
-        "heading": "Released quietly, reused constantly",
-        "statement": "The Qwen3.5-9B article counted 58 derivative repositories with 64,688 combined downloads.",
-        "evidence": "58 derivative repositories built on it hold 64,688 combined downloads"
-      },
-      {
-        "heading": "A dense 9B with a hybrid spine",
-        "statement": "Huihui-Qwen3.5-9B has a dense 32-layer architecture with a vision encoder.",
-        "evidence": "A dense, multimodal Qwen3.5-9B abliteration: 9,653,104,368 BF16 parameters, about 19.3 GB, 32 layers in a hybrid Gated DeltaNet / Gated Attention layout, vision encoder"
-      },
-      {
-        "heading": "A proof of concept, published on purpose",
-        "statement": "Huihui's Qwen3.5-9B card calls the edit a crude proof of concept and supplies no post-edit benchmarks.",
-        "evidence": "The model card calls the work a crude proof of concept and ships no post-edit benchmarks."
-      },
-      {
-        "heading": "The derivative economy",
-        "statement": "Huihui-Qwen3.5-9B derivatives include format conversions and Grimoire preference fine-tunes.",
-        "evidence": "Derivatives include GGUF/AWQ/GPTQ/exl3/NVFP4/MLX conversions and nbeerbower's Grimoire preference-tuning family"
-      },
-      {
-        "heading": "Word of mouth, not benchmarks",
-        "statement": "A user said Huihui-Qwen3.5-9B fit an RTX 3060; the article did not specify the quantization.",
-        "evidence": "Community evidence is word of mouth: the first discussion reports it fits an RTX 3060"
-      },
-      {
-        "heading": "The numbers that don't exist",
-        "statement": "Qwen3.5-9B's upstream benchmark results were not rerun on Huihui's abliterated artifact.",
-        "evidence": "Those numbers are not rerun for the abliterated artifact."
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "The Huihui-Qwen3.5-9B article's $2.34 hourly L40S figure was an estimate, not a live offer.",
-        "evidence": "Approximate managed price estimate: $2.34/hour (1× L40S)."
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "Quantized model formats package weights for different hardware and runtimes.",
-        "evidence": "these are compression formats tuned for different hardware: llama.cpp, Apple Silicon, NVIDIA, AMD"
-      }
-    ]
-  },
-  "huihui-glm-4-6v-flash-abliterated": {
-    "tldr": [
-      "Huihui's GLM-4.6V-Flash card says only the text part was edited.",
-      "Huihui’s GLM-4.6V-Flash derivative had no published refusal-rate or capability-retention evaluation.",
-      "The article recorded new GGUF repositories with vision-projector files in August 2026."
-    ],
-    "sections": [
-      {
-        "heading": "An abliteration that kept pace with the release",
-        "statement": "Huihui published its GLM-4.6V-Flash edit in December 2025, shortly after the upstream release.",
-        "evidence": "the upstream repo appeared 7 December, Z.ai's blog followed 8 December, and huihui-ai's repository went up 9 December"
-      },
-      {
-        "heading": "Text-only abliteration, and what that really means",
-        "statement": "Huihui's GLM-4.6V-Flash text-only edit has no published test of image-conditioned refusals.",
-        "evidence": "whether image-conditioned refusals survive is unmeasured"
-      },
-      {
-        "heading": "Why the MIT part is the rare part",
-        "statement": "Huihui's GLM-4.6V-Flash derivative retains the upstream model's MIT license.",
-        "evidence": "MIT for a genuinely usable open vision model is the exception — Zhipu chose it for Flash, huihui kept it",
-        "evidence_format": "html-text"
-      },
-      {
-        "heading": "The first quant wave stalled at the runtime",
-        "statement": "Huihui reported Ollama crashes during image recognition in the early GLM-4.6V-Flash discussion.",
-        "evidence": "huihui-ai replied that Ollama \"crashes when trying to recognize images.\""
-      },
-      {
-        "heading": "What actually changed in August",
-        "statement": "The August 2026 GLM-4.6V-Flash GGUF release included vision-projector files.",
-        "evidence": "On 17 August 2026, mradermacher published two fresh GGUF repos — a standard ladder and an i1-imatrix ladder — and the standard one ships `.mmproj` vision-projector files"
-      },
-      {
-        "heading": "How we treat it",
-        "statement": "The GLM-4.6V-Flash article treated the edit as text-only and its L40S price as an estimate.",
-        "evidence": "serves one L40S at an approximate managed price estimate of $2.34/hour, and treats the edit as text-only."
-      },
-      {
-        "heading": "The idea, in plain words",
-        "statement": "The MIT license permits commercial use, modification and redistribution of a model.",
-        "evidence": "commercial use, modification, redistribution"
-      }
-    ]
-  }
+ "spark-x2-5-uncensor-wave": {
+  "tldr": [
+   "Spark X2.5's maker claims it can read up to a million tokens at once, but testers have not confirmed that.",
+   "soyaakinohara found the small edit refused 3 of 100 prompts, down from 58 of 100 on the original model.",
+   "darioooooo0o reported no real refusals in 337 Spark generations, and flagged outputs were checked by hand."
+  ],
+  "sections": [
+   {
+    "heading": "Day ten",
+    "statement": "the first Spark X2.5 uncensored release appeared on 3 September 2026, ten days after the original model.",
+    "evidence": "went up 3 September at 10:44 UTC, ten days and four hours after the base appeared."
+   },
+   {
+    "heading": "What Spark X2.5 is",
+    "statement": "Spark X2.5's maker claims it can read up to a million tokens at once, but testers have not reproduced that.",
+    "evidence": "NeedleBench-style 1M-token tests did not reproduce"
+   },
+   {
+    "heading": "The wall of no",
+    "statement": "soyaakinohara measured 58 refusals in 100 prompts on the stock Spark X2.5 4B.",
+    "evidence": "soyaakinohara's separate measurement of the 4B counted 58 refusals out of 100 on his own suite."
+   },
+   {
+    "heading": "Two edits, one argument about rulers",
+    "statement": "darioooooo0o argues that short keyword checks misread how a thinking model answers.",
+    "evidence": "on a thinking model, darioooooo0o argues, that ruler fails in two opposite directions at once"
+   },
+   {
+    "heading": "How to run it",
+    "statement": "Spark X2.5 ran on a modified copy of the maker's own serving software.",
+    "evidence": "Serve with the vendor's llama.cpp fork"
+   },
+   {
+    "heading": "The creator: XHToken (SparkLLM)",
+    "statement": "XHToken ships the software used to run Spark as well as the model's data.",
+    "evidence": "XHToken publishes the runtime stack itself, a llama.cpp fork, an MLX build, a Spark-plugin"
+   },
+   {
+    "heading": "The editors: soyaakinohara and darioooooo0o",
+    "statement": "soyaakinohara's Spark release paired an uncensored base model with a version tuned for Japanese.",
+    "evidence": "an uncensored base weight plus a Japanese-tuned twin plus a full GGUF ladder"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Spark X2.5 pairs layers that read the whole text with roughly three times as many layers that scan a moving window.",
+    "evidence": "Spark-X2.5 interleaves the two, roughly one full-attention layer for every three window layers"
+   }
+  ]
+ },
+ "deepseek-v4-flash-vision-exp-abliterated": {
+  "tldr": [
+   "Andreas Petersson published the Vision-Exp uncensored model on 31 August 2026, under eleven hours after the original.",
+   "The model card describes edits to 33 internal number sets, leaving the image-reading part unchanged.",
+   "The reference card reported quick spot checks, not a measured refusal rate or real-world validation."
+  ],
+  "sections": [
+   {
+    "heading": "Eleven hours",
+    "statement": "apetersson's DeepSeek Vision-Exp uncensored model appeared under eleven hours after the original, on 31 August 2026.",
+    "evidence": "ten hours and fifty-six minutes after the base appeared."
+   },
+   {
+    "heading": "What the edit actually is",
+    "statement": "apetersson's Vision-Exp card describes direct edits to 33 internal number sets, not full retraining.",
+    "evidence": "The target set: the 33 attention output writer tensors in layers 10 through 42, plus their scales."
+   },
+   {
+    "heading": "The descendant pipeline",
+    "statement": "s-zaizen's Vision-Exp card reports 99 of 100 on a math test, three points above its own unedited compressed build.",
+    "evidence": "and GSM8K at 99/100, three points above its own unedited NVFP4 base."
+   },
+   {
+    "heading": "How to run it",
+    "statement": "the Vision-Exp Basic128 card reports about 23.4 tokens per second on an M1 Ultra.",
+    "evidence": "the card lists ~23.4 tok/s text on an M1 Ultra at 32K context"
+   },
+   {
+    "heading": "The creator: Andreas Petersson",
+    "statement": "Andreas Petersson shipped Vision-Exp in 8-bit, compressed and ultra-compact file formats.",
+    "evidence": "He shipped the reference-native FP8, a reference GGUF, a routed IQ2 profile"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Vision-Exp's edit removes a single refusal-linked pattern from just 33 internal parts.",
+    "evidence": "one direction, one rank, projected out of just 33 attention-output tensors spread across layers 10 to 42"
+   }
+  ]
+ },
+ "tencent-hy-mt2-30b-a3b-uncensored": {
+  "tldr": [
+   "Tencent's Hy-MT2-30B-A3B is a 33-language translation specialist, not a general chatbot.",
+   "The editor reported 0 of 100 refusal-keyword hits versus 100 of 100 on the original, with small measured answer drift.",
+   "The full model was 60.14 GB; the article listed a roughly 18.2 GB compressed alternative."
+  ],
+  "sections": [
+   {
+    "heading": "A translator that refuses is a broken translator",
+    "statement": "Tencent claims Hy-MT2's two sizes beat larger rivals in fast-thinking translation mode.",
+    "evidence": "claim the 7B and 30B-A3B sizes beat DeepSeek-V4-Pro and Kimi K2.6 in fast-thinking translation mode"
+   },
+   {
+    "heading": "What the edit actually does",
+    "statement": "Hy-MT2's editor reported the edit barely changed its answers, but the test questions were not published.",
+    "evidence": "no third party has re-run it and the exact prompt set is not published."
+   },
+   {
+    "heading": "How to run it",
+    "statement": "the Hy-MT2 uncensored model shipped as 60.14 GB of data across 13 files.",
+    "evidence": "60.14 GB across 13 safetensors shards"
+   },
+   {
+    "heading": "The creator: Md Ismail Sojal, and the OS-Software label",
+    "statement": "Identical Hy-MT2 model-card text appeared under 0xSojalSec and OS-Software; shared ownership was not verified.",
+    "evidence": "The identical card content also ships under the org handle"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "ARA trains a small extra layer that cancels a refusal pattern while keeping the model's numbers close to where they started.",
+    "evidence": "ARA instead trains a small LoRA adapter that cancels that direction across a chosen range of layers while keeping every weight row's norm intact."
+   }
+  ]
+ },
+ "laguna-s-2-1-uncensored-heretic": {
+  "tldr": [
+   "Laguna S 2.1 holds 118 billion parameters but only uses about 8 billion at a time.",
+   "llmfan46 reported 6 refusals in 100, but a mislabeled comparison model clouds the result.",
+   "The uncensored model shipped as 218.99 GiB of 16-bit numbers across 48 files."
+  ],
+  "sections": [
+   {
+    "heading": "Why this one matters",
+    "statement": "poolside reported a 70.2% score on a coding benchmark for Laguna S 2.1.",
+    "evidence": "reports Terminal-Bench 2.1 70.2% and DeepSWE 40.4%"
+   },
+   {
+    "heading": "What the card gets right — and the copy-paste bug",
+    "statement": "Laguna's uncensor card mislabeled the original model as Qwen3-Coder-Next.",
+    "evidence": "The card's performance table mislabels the \"Original model\" as Qwen3-Coder-Next"
+   },
+   {
+    "heading": "The cost of 118 billion stored parameters",
+    "statement": "Laguna's 8B active parameters still require storing a 118B-parameter model.",
+    "evidence": "118B total parameters, ~8B active per token"
+   },
+   {
+    "heading": "How to run it",
+    "statement": "llmfan46's Laguna uncensor shipped 48 16-bit files, not a working easy-to-run release.",
+    "evidence": "ships as BF16: 218.99 GiB across 48 safetensors shards"
+   },
+   {
+    "heading": "The creator: llmfan46",
+    "statement": "llmfan46's model cards reported hitting Hugging Face's free storage limit.",
+    "evidence": "Cards carry a banner that Hugging Face's free storage limit has been reached"
+   },
+   {
+    "heading": "The agentic dimension",
+    "statement": "poolside trained Laguna S 2.1 for coding assistants, where a refusal can stop the work mid-task.",
+    "evidence": "a coding agent that refuses loses its loop, stops calling tools, and returns nothing.",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Laguna keeps the whole model stored but wakes only ten of its many specialized parts for each task.",
+    "evidence": "256 specialized 'expert' modules plus one always-on shared expert, and for each token the model wakes up just ten of them."
+   }
+  ]
+ },
+ "securelayer7-afm-4-5b-uncensored-abliterated": {
+  "tldr": [
+   "SecureLayer7 published both safeguards against hijacked prompts and models that refuse less.",
+   "SecureLayer7 reported AFM refusals falling from 92 of 100 to 3 of 100, with small measured answer drift.",
+   "The AFM edit was merged into 16-bit data; independent retests of ability and refusals were missing."
+  ],
+  "sections": [
+   {
+    "heading": "A security vendor walks into Hugging Face",
+    "statement": "SecureLayer7 published both safety-guard models and models that refuse less under one account.",
+    "evidence": "the same vendor publishes guardrail models and refusal-reduced models under one account."
+   },
+   {
+    "heading": "The base: an enterprise 4.5B with ReLU² instead of SwiGLU",
+    "statement": "Arcee's AFM card says it swapped its activation function to make the model easier to compress.",
+    "evidence": "The base card says ReLU² replaces SwiGLU \"to enable sparsification\"."
+   },
+   {
+    "heading": "What the edit actually changed",
+    "statement": "SecureLayer7's AFM card reports edits aimed at refusal across all 36 internal layers.",
+    "evidence": "applied to the attention output projections (`o_proj`) and MLP down-projections (`down_proj`) across all 36 layers"
+   },
+   {
+    "heading": "3/100 is not 0/100",
+    "statement": "SecureLayer7's 3/100 AFM result applies to its own probes, not every possible prompt.",
+    "evidence": "Treat 3/100 as a claim about their probe set, not a guarantee about yours."
+   },
+   {
+    "heading": "How to run it",
+    "statement": "the AFM uncensor shipped in a standard data format runnable by two tools, with no easy local file at publication.",
+    "evidence": "the tree is safetensors-only, so there is no GGUF ladder to grab; the supported path is transformers or vLLM."
+   },
+   {
+    "heading": "The creator: SecureLayer7",
+    "statement": "SecureLayer7's AFM NOTICE explicitly disclaims endorsement by Arcee.",
+    "evidence": "The derivative's NOTICE explicitly disclaims any Arcee trademark endorsement."
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "AFM's activation turns negative values into exactly zero; stripping refusals is a separate edit on top.",
+    "evidence": "This model uses ReLU² instead: a plain activation that turns every negative value into exactly zero."
+   }
+  ]
+ },
+ "velum-unbound-1bit-uncensor": {
+  "tldr": [
+   "Velum repackages a Bonsai-family uncensor as tiny 1-bit numbers with an extra speedup helper.",
+   "s3nh reported 6 of 100 refusals on the 16-bit middle step, not on the final 1-bit pack.",
+   "Velum's card left benchmarks pending, with no published refusal retest of the final 1-bit build."
+  ],
+  "sections": [
+   {
+    "heading": "Four hops down a family tree in one morning",
+    "statement": "Velum repackaged tommytracx's 1-bit uncensor with a speedup helper in August 2026.",
+    "evidence": "**guell00 repackaged it** on 28 August as Velum-Unbound-Uncensored: the Q1_0 weights plus a dspark drafter"
+   },
+   {
+    "heading": "Why a 1-bit model is the right vehicle for this",
+    "statement": "Prism ML claimed about 1.1 bits stored per value for Bonsai; Velum inherited that tiny format.",
+    "evidence": "Prism ML's published case: true 1.125 bits per weight"
+   },
+   {
+    "heading": "The edit happened in FP16. The squeeze came after.",
+    "statement": "Velum's 1-bit pack had no published refusal retest; the 6-of-100 result belongs to the 16-bit step.",
+    "evidence": "Nobody has published a refusal re-test on the Q1_0 pack; the Velum card lists every benchmark as TBD. The 6/100 belongs to the FP16 edit, not to this artifact."
+   },
+   {
+    "heading": "How to run it",
+    "statement": "Velum's 1-bit format needed a specific forked version of the serving software.",
+    "evidence": "The Q1_0 format needs the [PrismML llama.cpp fork](https://github.com/PrismML-Eng/llama.cpp) with the low-bit kernels."
+   },
+   {
+    "heading": "The creator: guell00 (and the chain behind the edit)",
+    "statement": "s3nh made Velum's underlying refusal edit; guell00 packaged the final release.",
+    "evidence": "The edit itself is s3nh's work"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Bonsai's 1-bit format stores just a plus or minus per value and shares one scale across every 128 values.",
+    "evidence": "each weight becomes just a sign, + or −, and one shared scale value covers each group of 128 weights."
+   }
+  ]
+ },
+ "qwen3-8-flash-next-abliterated-race": {
+  "tldr": [
+   "Qwen described Qwen3.8-Flash-Next as an experimental preview of its planned Qwen4 architecture.",
+   "dealignai reported strong refusal reduction, alongside a small drop on a general-knowledge benchmark.",
+   "At publication, running qwen4_exp required modified, not-yet-standard software rather than a stable release."
+  ],
+  "sections": [
+   {
+    "heading": "The base is a Qwen4 preview, not a Qwen3.8",
+    "statement": "Qwen described Qwen3.8-Flash-Next as a preview of the architecture planned for Qwen4.",
+    "evidence": "Qwen published Qwen3.8-Flash-Next as \"the experimental preview of the architecture that will underpin Qwen4\""
+   },
+   {
+    "heading": "Five editors, one new architecture",
+    "statement": "Jiunsong's Qwen edit card reports changing 36 internal number sets while leaving the vision part untouched.",
+    "evidence": "The whole edit changes just 36 storage tensors, which expand to 6,168 logical output projections once fused routed experts are counted. Vision, the n-gram table, routers, gates, normalization and MTP are deliberately untouched"
+   },
+   {
+    "heading": "The catch: released runtimes don't support qwen4_exp",
+    "statement": "Qwen3.8-Flash-Next needed modified, not-yet-standard software to run at publication.",
+    "evidence": "you are on a patched branch or a custom recipe, not a stable release."
+   },
+   {
+    "heading": "The n-gram table is the weird part of the size math",
+    "statement": "the Qwen compressed build kept its large token-lookup table in 16-bit, taking up 95.4 GiB.",
+    "evidence": "the editor chose to keep the table in BF16 (95.4 GiB) rather than quantize it"
+   },
+   {
+    "heading": "How to run it",
+    "statement": "dealignai's Qwen serving recipe moved the large token-lookup table off the graphics cards to the main processor.",
+    "evidence": "Set `VLLM_PLE_CPU_OFFLOAD=1` for the n-gram table"
+   },
+   {
+    "heading": "The creator: dealignai",
+    "statement": "dealignai describes its CRACK releases as permanent uncensoring, not quick prompt tricks.",
+    "evidence": "dealignai runs the CRACK brand — permanent, weight-level uncensoring with \"no cheap template tricks, no fine tuning\", as their profile tagline puts it."
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Qwen's token-lookup table looks up short token pairs and triples rather than doing a standard multiply.",
+    "evidence": "it is a giant dictionary keyed by short token pairs and triples at layer 2"
+   }
+  ]
+ },
+ "glm-5-3-flash-crack": {
+  "tldr": [
+   "Zhipu's card describes GLM-5.3-Flash as a text-and-image model with 320 billion parameters, 18 billion active.",
+   "dealignai reported full compliance on a harmful-prompt test and a small drop on its own scoring.",
+   "The editor's 211-tokens-per-second speed test used four H200 chips, not the two-chip hosting estimate."
+  ],
+  "sections": [
+   {
+    "heading": "The base: Zhipu's first natively multimodal GLM-5",
+    "statement": "Zhipu's card describes GLM-5.3-Flash as the first GLM-5 model built to handle images and text from the start.",
+    "evidence": "introduces it as the first natively multimodal model in the GLM-5 series"
+   },
+   {
+    "heading": "The crack: a permanent edit with receipts",
+    "statement": "dealignai reported full compliance on one harmful-prompt benchmark, not a universal guarantee.",
+    "evidence": "**HarmBench-320, greedy:** Standard 159/159, Contextual 81/81, Copyright 80/80 → 320/320 complied, 0 refusals."
+   },
+   {
+    "heading": "The hosting math: what the refusals were costing",
+    "statement": "dealignai's GLM speed measurements used four H200 GPUs, not the two-GPU price estimate.",
+    "evidence": "dealignai measured at TP4 on H200 — four GPUs."
+   },
+   {
+    "heading": "How to run it",
+    "statement": "the GLM-5.3-Flash card says a helper library compiles a compressed math routine at startup and needs a compiler installed.",
+    "evidence": "The card notes DeepGEMM JIT-compiles a block-FP8 kernel at startup, so keep `nvcc` on `PATH`."
+   },
+   {
+    "heading": "The creator: Zhipu AI, and the editor dealignai",
+    "statement": "dealignai credited @jordanschenck for compute used on the GLM-5.3-Flash release.",
+    "evidence": "compute on this release credited to X user @jordanschenck."
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "GLM's shortcut guesses the next token, so the main model only has to check it.",
+    "evidence": "A small extra \"draft head\" proposes the token that comes after, so on the next step the main model mostly verifies instead of generating from scratch."
+   }
+  ]
+ },
+ "darkstar-nemotron-3-5-lightning-30b-a3b-abliterated": {
+  "tldr": [
+   "Nemotron 3.5 Lightning combines a memory-efficient reader, a many-specialists design and selective attention.",
+   "Darkstar reported 200 of 200 harmful-prompt answers and 0 of 83 safe over-refusals on both builds.",
+   "The roughly 22 GB compressed twin kept the memory-reader parts and the shortcut head in 16-bit."
+  ],
+  "sections": [
+   {
+    "heading": "The base: 3B active, built for agents",
+    "statement": "NVIDIA positioned Nemotron 3.5 Lightning for agent tool calls, validation and delegation.",
+    "evidence": "aimed at the high-volume execution work an always-on agent spends most of its budget on: tool calls, output validation, subagent delegation.",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "What a hybrid means for abliteration",
+    "statement": "Darkstar's edit reports removing a refusal pattern from 3,126 of the model's internal parts.",
+    "evidence": "The contract reports 3,126/3,126 edited"
+   },
+   {
+    "heading": "The NVFP4 twin: what stays protected",
+    "statement": "Darkstar's compressed twin squeezed the specialist parts while keeping the memory-reader parts in 16-bit.",
+    "evidence": "quantizes only the 5,934 expert up/down projections to W4A16-NVFP4 while keeping Mamba/SSM tensors, norms, embeddings, lm_head and MTP head in BF16."
+   },
+   {
+    "heading": "How to run it",
+    "statement": "the Darkstar Nemotron article lists a roughly 22 GB compressed build for use on one graphics card.",
+    "evidence": "Single consumer GPU: the NVFP4 twin (~22 GB) with the same flags at 10 speculative tokens."
+   },
+   {
+    "heading": "The creator: HangGlidersRule",
+    "statement": "HangGlidersRule's build documents fixed steps and fail-safe checks for Darkstar releases.",
+    "evidence": "with pinned recipes, fail-closed validators, sha256 manifests"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Mamba-2 compresses the conversation history into a fixed-size note that updates as new tokens arrive.",
+    "evidence": "a Mamba-2 state-space block compresses history into a fixed-size internal state and updates it as it goes"
+   }
+  ]
+ },
+ "ornith-1-5-35b-a3b-uncensored-transplant": {
+  "tldr": [
+   "0xKitkat's Ornith edit adds the changes that make Qwen refuse less onto the Ornith original.",
+   "The publisher reported 0 of 16 refusals and 4 of 4 ability passes on a compressed build.",
+   "The article had no edited-model benchmark showing that Ornith's coding ability survived."
+  ],
+  "sections": [
+   {
+    "heading": "The base: a model that writes its own homework",
+    "statement": "Ornith's release post describes a model that creates its own training tasks.",
+    "evidence": "the model proposes new training tasks, generates task-specific scaffolds, and produces solution rollouts"
+   },
+   {
+    "heading": "Method one: transplant a task vector",
+    "statement": "0xKitkat's card describes adding the changes that make Qwen refuse less onto Ornith.",
+    "evidence": "0xKitkat's formula subtracts the unedited Qwen base from its abliterated sibling"
+   },
+   {
+    "heading": "Method two and three: the classic projections",
+    "statement": "the alztrk and pottokao Ornith edits remove refusal patterns rather than borrow weight changes.",
+    "evidence": "two conventional orthogonalization edits"
+   },
+   {
+    "heading": "What the transplant numbers do and don't say",
+    "statement": "Ornith's reported 0 of 16 refusals came from keyword screening, not a separate judging model.",
+    "evidence": "used regex screening rather than an LLM judge"
+   },
+   {
+    "heading": "How to run it",
+    "statement": "the pinned 0xKitkat Ornith build includes the image-reading part and the shortcut head.",
+    "evidence": "16 BF16 shards, vision tower and MTP head included"
+   },
+   {
+    "heading": "The creator: 0xKitkat",
+    "statement": "0xKitkat's model card linked to @procrastiness but gave no biography or team details.",
+    "evidence": "the card carries no biography, funding links or team details"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "a task vector is the difference between a model's numbers before and after an edit.",
+    "evidence": "If you take an abliterated model's weights and subtract the original model's weights, what's left is a direction describing what the edit changed."
+   }
+  ]
+ },
+ "qwen3-8-27b-uncensored-aggressive": {
+  "tldr": [
+   "OrcaRouter's Qwen3.8 edit uses compressed numbers and keeps the image-reading part at full precision.",
+   "The article cites Artificial Analysis scores evaluated on 14 August 2026.",
+   "The article had no measured refusal rate or ability comparison with the original model."
+  ],
+  "sections": [
+   {
+    "heading": "The same weights, a different promise",
+    "statement": "OrcaRouter's card says its Qwen3.8 edit is compressed while the image-reading part stays at full precision.",
+    "evidence": "quantized to block-FP8 with the vision tower at full precision"
+   },
+   {
+    "heading": "What \"Aggressive\" means here",
+    "statement": "OrcaRouter's aggressive label is a publisher claim, not a measured refusal rate.",
+    "evidence": "That is a publisher claim; no measured refusal-rate table is published"
+   },
+   {
+    "heading": "The numbers, third-party",
+    "statement": "Artificial Analysis gave the served Qwen3.8 build a coding score of 68.1 in August 2026.",
+    "evidence": "Third-party numbers (Artificial Analysis, evaluated 14 August 2026): AA Coding 68.1"
+   },
+   {
+    "heading": "Who made it",
+    "statement": "OrcaRouter made the Qwen3.8 edit and the running build as well as the access gateway.",
+    "evidence": "The edit and serving build come from [orcarouter]"
+   },
+   {
+    "heading": "How to run it",
+    "statement": "the article described gated access to OrcaRouter's OpenAI-compatible API.",
+    "evidence": "The API is OpenAI-compatible and gated"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "OrcaRouter's compressed format stores the model's numbers in 8 bits with a separate scale for each chunk.",
+    "evidence": "Block-FP8 packs them into 8 bits with per-block scaling"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "the article had no refusal-rate measurement to back OrcaRouter's fully unlocked claim.",
+    "evidence": "\"Lossless\" and \"fully unlocked\" are the publisher's claims; the third-party benchmarks are the only independent measurement, and no refusal-rate measurement exists."
+   }
+  ]
+ },
+ "qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated": {
+  "tldr": [
+   "insraq's Heretic edit builds on Empero's condensed Qwen3.8 in a Qwen3.5-4B design.",
+   "The publisher reported 6 of 100 refusals versus 99 of 100, with small measured answer drift.",
+   "Empero's benchmark scores describe the condensed teacher model, not the modified checkpoint."
+  ],
+  "sections": [
+   {
+    "heading": "Small is the point",
+    "statement": "the insraq 4.5B build contains about 9.1 GB of 16-bit numbers.",
+    "evidence": "4,539,265,536 parameters, about 9.1 GB of BF16 weights"
+   },
+   {
+    "heading": "A 2.4-trillion-parameter teacher, squeezed into 4.5B",
+    "statement": "Empero says its Qwen3.8 distill learned from roughly 45,000 example answers from a larger model.",
+    "evidence": "trained on ~45,000 curated teacher traces of dense chain-of-thought"
+   },
+   {
+    "heading": "Heretic: abliteration by search, not by hand",
+    "statement": "Heretic uses a search program to cut refusals while changing the original model as little as possible.",
+    "evidence": "a TPE-based optimizer powered by Optuna co-minimizes refusals and KL divergence from the base"
+   },
+   {
+    "heading": "The exact run",
+    "statement": "insraq reported 6 of 100 refusals for its chosen trial, compared with 99 of 100 for the original.",
+    "evidence": "Selected trial 128: the publisher reports 6/100 refusals (vs 99/100)"
+   },
+   {
+    "heading": "What tiny uncensored trades away",
+    "statement": "Empero's distill benchmark scores do not measure the modified insraq model.",
+    "evidence": "Those belong to the distill, not the decensored artifact"
+   },
+   {
+    "heading": "Who made it",
+    "statement": "insraq's Qwen distill edit was made with Heretic v1.4.0 on top of Empero's model.",
+    "evidence": "A decensored version of `empero-ai/Qwen3.8-4B` made with Heretic v1.4.0"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "the article's L40S serving estimate was about $2.34 per hour, not a live price.",
+    "evidence": "Our serving estimate is approximately $2.34/hour on one L40S (approximate managed price estimate)."
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Knowledge distillation trains a smaller model using a larger model's answers.",
+    "evidence": "Knowledge distillation trains a small model on the outputs of a huge one."
+   }
+  ]
+ },
+ "muse-glimmer-30b-abliterated-aggressive": {
+  "tldr": [
+   "Muse-Glimmer Aggressive loosens the training drift guard from 1.0 to 0.5.",
+   "The publisher reported 0 of 100 refusals, versus 13 of 100 for the normal variant.",
+   "The card skipped ability benchmarks; Meta's base-model scores do not apply to the edit."
+  ],
+  "sections": [
+   {
+    "heading": "\"Aggressive\" is a knob, and the label doesn't tell you which one",
+    "statement": "Muse-Glimmer's aggressive recipe loosens the drift guard rather than touching more layers.",
+    "evidence": "\"Aggressive\" here means a relaxed KL guardrail, not a stronger projection or more layers touched"
+   },
+   {
+    "heading": "What the card actually measured",
+    "statement": "Muse-Glimmer's publisher reported 0/100 refusals for aggressive and 13/100 for normal.",
+    "evidence": "refusal rate on harmful_behaviors is 0/100 for this variant versus 13/100 for the normal twin"
+   },
+   {
+    "heading": "The honest gap: KL is a drift meter, not a benchmark",
+    "statement": "Muse-Glimmer's aggressive card did not recheck whether the model stayed as capable.",
+    "evidence": "Benchmarks were explicitly skipped: the card says capability preservation is expected to be lower than the normal variant \"but was not re-measured here.\""
+   },
+   {
+    "heading": "A mirror upload, with the quants living elsewhere",
+    "statement": "SHS-Lab's Muse-Glimmer mirror shipped 16-bit files; the compressed files were in jorkle's repo.",
+    "evidence": "The SHS-Lab repo ships only the two BF16 shards (~56 GB); the GGUF quants"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "Muse-Glimmer's reported 0/100 refusals applies to the publisher's own 100-prompt test.",
+    "evidence": "The 0/100 refusal figure is a publisher claim on its own 100-prompt harness"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Lightweight retraining adds a small extra layer that changes how the model answers.",
+    "evidence": "School two is a LoRA de-refusal: train a tiny adapter that nudges behavior without retraining the model."
+   }
+  ]
+ },
+ "kimi-k3-abliterated-modal": {
+  "tldr": [
+   "Resggg's Kimi K3 upload stored about 1.56 TB across 96 files at review.",
+   "The article estimated roughly eleven H200 chips just to hold the compressed data.",
+   "The copied SHS-Lab refusal-removal and video claims were not verified for this upload."
+  ],
+  "sections": [
+   {
+    "heading": "Two point seven eight trillion, zero downloads",
+    "statement": "Resggg's Kimi K3 upload had zero downloads, likes or discussions at review.",
+    "evidence": "zero downloads, likes or discussions at review"
+   },
+   {
+    "heading": "What 2.78 trillion parameters means in memory",
+    "statement": "the article's Kimi K3 estimate put the data at roughly 1.35 TiB before the memory needed to run it.",
+    "evidence": "landing at roughly 1.35 TiB of weights"
+   },
+   {
+    "heading": "Why \"modal\"?",
+    "statement": "Kimi K3's video claim came from copied SHS-Lab text, not a verified run of Resggg's upload.",
+    "evidence": "video-modality claims are SHS-Lab publisher claims copied into this repo"
+   },
+   {
+    "heading": "Moonshot's Kimi K3, briefly",
+    "statement": "Moonshot's Kimi K3 card describes a many-specialists model with a million-token context.",
+    "evidence": "93 layers, 896 experts with 16 routed plus 2 shared, 1M-token context"
+   },
+   {
+    "heading": "Who actually attempts a K3 abliteration",
+    "statement": "Resggg's copied Kimi K3 refusal-removal claim was unverified in the article.",
+    "evidence": "The derivative's \"98%+ refusal signal removed\" and video-modality claims are SHS-Lab publisher claims copied into this repo — unverified"
+   },
+   {
+    "heading": "The honest gap between uploaded and runnable",
+    "statement": "the article found no hosting service offering Resggg's Kimi K3 upload.",
+    "evidence": "No inference provider lists the model."
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "the Kimi K3 article treated Resggg's upload as unverified, not as a zero-refusal model.",
+    "evidence": "\"Abliterated\" here means refusal-reduced per publisher claim: not verified, not zero-refusal"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Just holding Kimi K3's compressed data was estimated to need about eleven top-end chips before running.",
+    "evidence": "just holding the weights needs roughly eleven H200s, and running it needs more"
+   }
+  ]
+ },
+ "diffusiongemma-26b-e38-abliterated-nvfp4": {
+  "tldr": [
+   "Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in 16-bit.",
+   "Goodoldjam reported 0 of 402 target refusals and 0 of 249 harmless false refusals on its own prompt sets.",
+   "Goodoldjam reported about 1,053 tokens per second on a top-end chip; the smaller chip's speed was unverified."
+  ],
+  "sections": [
+   {
+    "heading": "Why abliterating a diffusion model is a different problem",
+    "statement": "Goodoldjam's E38 card reports measurements but does not fully explain how the refusal-stripping edit was done.",
+    "evidence": "the card gives measurements, not a full recipe"
+   },
+   {
+    "heading": "The NVFP4 quant is the actual story",
+    "statement": "Goodoldjam reported about 1,053 tokens per second total on a top-end workstation chip.",
+    "evidence": "1,053.64 tok/s aggregate at concurrency 8"
+   },
+   {
+    "heading": "The measurements on refusal",
+    "statement": "Goodoldjam reported zero refusals on 402 target prompts, not a universal refusal-free model.",
+    "evidence": "The publisher's aligned evaluation reports 0/402 target refusals and 0/249 benign false refusals"
+   },
+   {
+    "heading": "The creator: Goodoldjam (Atom)",
+    "statement": "Goodoldjam's card says project funding supports GPU compute and larger validation runs.",
+    "evidence": "the card is explicit about what the money buys: GPU compute, throughput optimization, larger validation runs"
+   },
+   {
+    "heading": "The RTX 5090 question",
+    "statement": "Goodoldjam's 1,000-plus tokens-per-second target on the smaller chip had not been validated for this build.",
+    "evidence": "\"1,000+ tok/s on a 5090\" is described as a plausible experimental target, explicitly not yet validated on this checkpoint"
+   },
+   {
+    "heading": "How to run it",
+    "statement": "the DiffusionGemma run instructions target one serving tool with custom compressed math on a top-end chip.",
+    "evidence": "the path is vLLM with the compiled NVFP4 kernels the card targets, on a Blackwell GPU"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "DiffusionGemma's compressed build keeps the 20 edited internal parts in their exact 16-bit form.",
+    "evidence": "20 abliteration-modified tensors preserved in exact BF16"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "DiffusionGemma refines a noisy block of text over several steps instead of adding one token at a time.",
+    "evidence": "DiffusionGemma instead starts with a block of noisy tokens and refines the whole block toward coherent text over many denoising steps"
+   }
+  ]
+ },
+ "huihui-qwen3-8-27b-abliterated": {
+  "tldr": [
+   "Huihui's card says the Qwen3.8 edit left the first 15 layers, image-reading part and shortcut untouched.",
+   "Huihui published the edit and its easy-to-run file on 16 August 2026.",
+   "Huihui published no refusal-rate benchmark or post-edit ability rerun for its Qwen3.8-27B release."
+  ],
+  "sections": [
+   {
+    "heading": "What is genuinely new in 3.8",
+    "statement": "Qwen3.8-27B is a non-sparse model with 64 alternating layers and a 27-layer image reader.",
+    "evidence": "64 hybrid layers (three Gated DeltaNet blocks per full-attention block), a 27-layer vision encoder"
+   },
+   {
+    "heading": "The 48-hour race, with timestamps",
+    "statement": "Huihui published the Qwen3.8 edit and the easy-to-run file on the same day in August 2026.",
+    "evidence": "Huihui-ai published this abliterated edit at 08:22 UTC on 16 August"
+   },
+   {
+    "heading": "What the edit actually touched",
+    "statement": "Huihui's card says the Qwen3.8 edit left the first 15 layers and the image-reading part untouched.",
+    "evidence": "the first 15 of 64 layers were retained without ablation, and MTP and the visual encoder were not modified"
+   },
+   {
+    "heading": "Upstream numbers, upstream only",
+    "statement": "Qwen's original-model benchmark scores do not establish how Huihui's edit performs.",
+    "evidence": "Those belong to Qwen's checkpoint, not to the abliterated derivative"
+   },
+   {
+    "heading": "The variant wave: what is actually useful",
+    "statement": "Most other refusal-stripped Qwen3.8-27B releases were separate edits, not copies of Huihui's.",
+    "evidence": "most of the other “abliterated” 27B repositories are independent edits of the base model, not forks of huihui-ai’s",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "How to run it",
+    "statement": "Huihui's Qwen3.8 easy-to-run file included twelve compression levels and an image-reading add-on.",
+    "evidence": "The GGUF companion ships twelve quantizations plus BF16 and an mmproj vision projector"
+   },
+   {
+    "heading": "Community temperature",
+    "statement": "the Huihui article could not assess the Reddit thread because access returned HTTP 403.",
+    "evidence": "Reddit’s API returned 403 to our tooling, so we flag it as a coverage gap rather than paraphrase it.",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "The creator: huihui.ai",
+    "statement": "Huihui's profile describes model-editing work with the open-source language-model community.",
+    "evidence": "whose profile describes work on model ablations with the open-source NLP community"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "Huihui's reduced-filtering claim was not backed by a published refusal-rate benchmark.",
+    "evidence": "No refusal-rate benchmark and no post-edit rerun are published."
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Qwen3.8's multi-token prediction guesses several tokens ahead in a single step.",
+    "evidence": "Qwen3.8 adds multi-token prediction (MTP): it guesses several tokens ahead in one step"
+   }
+  ]
+ },
+ "qwen3-8-27b-rvn-heretic-abliterated-uncensored": {
+  "tldr": [
+   "RVN adds two extra weight-tweaking passes to trohrbaugh's Qwen3.8 edit and ships only as an easy-to-run file.",
+   "0bserverx reported 0 to 1 of 100 refusals on a forced-start test; some users still reported refusals.",
+   "RVN's corrupted compressed file was rebuilt and re-uploaded in August 2026."
+  ],
+  "sections": [
+   {
+    "heading": "Why three passes instead of one",
+    "statement": "0bserverx reported less answer drift after two extra weight-tweaking passes on the Qwen3.8 edit.",
+    "evidence": "KL damage against the base dropping from 0.0535 to 0.0085"
+   },
+   {
+    "heading": "ARA is a different animal from directional abliteration",
+    "statement": "ARA tweaks the model's numbers directly instead of removing just one refusal pattern.",
+    "evidence": "Because the weight matrix is optimized directly rather than reduced to a single direction"
+   },
+   {
+    "heading": "The GGUF-only release, and the KV math behind it",
+    "statement": "RVN's easy-to-run files drop the shortcut parts, and the recommended one is 16.55 GB.",
+    "evidence": "all converted with `--no-nextn` so the MTP/NextN draft tensors are excluded. The recommended file is Q4_K_M at 16.55 GB"
+   },
+   {
+    "heading": "A corrupted quant, caught by the community",
+    "statement": "0bserverx traced RVN's broken file to bad scaling values and blanked-out internal parts.",
+    "evidence": "0bserverx's tensor-level audit found the cause: NaN/Inf block scales and fully zeroed tensors"
+   },
+   {
+    "heading": "The creator: 0bserverx (Efe Buken)",
+    "statement": "RVN publisher Efe Buken credits Tim Rohrbaugh for the Qwen3.8 model he refined.",
+    "evidence": "He credits the foundation to Tim Rohrbaugh"
+   },
+   {
+    "heading": "How to run it",
+    "statement": "the RVN article gives run commands that pick one compressed file explicitly.",
+    "evidence": "# vLLM loads a single GGUF file explicitly (the repo holds 25 quants):"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "RVN's reported 0 to 1 of 100 refusals came from a forced-start test, not every possible prompt.",
+    "evidence": "0–1/100 on a prefix-forced 100-prompt set, published by the publisher"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "ARA tweaks a model's internal numbers to cut refusals while keeping harmless answers mostly intact.",
+    "evidence": "uses a numeric optimizer to adjust the weight matrices so harmless requests barely change while harmful requests stop triggering the refusal circuitry"
+   }
+  ]
+ },
+ "huihui-deepseek-v4-flash-0731-abliterated": {
+  "tldr": [
+   "pocharlies published a small edits file for DeepSeek V4 Flash, not a full model.",
+   "pocharlies reported 0 of 10 DeepSeek V4 Flash refusals at its chosen dial setting on its ten-trigger set.",
+   "pocharlies' dial-setting tests did not benchmark general ability or measure the long context claimed."
+  ],
+  "sections": [
+   {
+    "heading": "The model this blog runs on",
+    "statement": "the serving tool's guide describes DeepSeek V4 Flash as 284 billion parameters with 13 billion active.",
+    "evidence": "describes a 284B-total / 13B-active sparse MoE",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "Flash-class models get abliterated fast",
+    "statement": "Huihui's DeepSeek card calls its own bake a rough proof of concept that leaves every specialist part untouched.",
+    "evidence": "Huihui’s card calls its own bake a crude proof of concept that leaves every routed expert untouched",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "A dial, not a download",
+    "statement": "pocharlies' DeepSeek release contains 46 refusal patterns rather than another full model.",
+    "evidence": "a 757,712-byte file of 46 unit-norm float32 vectors"
+   },
+   {
+    "heading": "Baked abliteration overshoots",
+    "statement": "pocharlies and cebeuq disagree on whether the compressed format caps the baked removal at about 68%.",
+    "evidence": "Two primary sources disagree on whether the FP8 round-trip caps baked removal at ~68%"
+   },
+   {
+    "heading": "The cost math",
+    "statement": "the DeepSeek article estimated $10.90 per hour for two H200s, not a live hosting quote.",
+    "evidence": "a 2× H200 deployment prices at roughly $10.90 per hour — an approximate managed price estimate"
+   },
+   {
+    "heading": "What this does not establish",
+    "statement": "the DeepSeek dial-setting tests did not benchmark general ability or test the full long context claimed.",
+    "evidence": "general capability was not benchmarked, 256k context was not measured"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "pocharlies reports that setting DeepSeek's dial to zero restores the unedited model exactly.",
+    "evidence": "λ=0 is bit-exact to stock"
+   }
+  ]
+ },
+ "muse-glimmer-30b-abliterated": {
+  "tldr": [
+   "jorkle's Muse-Glimmer edit uses lightweight retraining, not weight stripping.",
+   "jorkle reported 13 of 100 refusals, versus 100 of 100 for the original.",
+   "jorkle skipped ability benchmarks; its published drift table measures how much answers changed instead."
+  ],
+  "sections": [
+   {
+    "heading": "The model at the base",
+    "statement": "Muse-Glimmer-30B is a non-sparse model, not a many-specialists model.",
+    "evidence": "It is not an MoE"
+   },
+   {
+    "heading": "Three days, four methods",
+    "statement": "jorkle's Muse-Glimmer build followed earlier uncensoring releases from other publishers.",
+    "evidence": "It is not the first abliterated Muse-Glimmer"
+   },
+   {
+    "heading": "What jorkle actually did",
+    "statement": "jorkle's card describes lightweight retraining of Muse-Glimmer, not weight stripping.",
+    "evidence": "The method is a KL-conserving, best-of-N steered LoRA SFT"
+   },
+   {
+    "heading": "The table where benchmarks should be",
+    "statement": "jorkle's card reports how much its answers changed but skips ability benchmarks.",
+    "evidence": "Benchmarks were skipped by request — the card publishes a KL table instead of a benchmark table"
+   },
+   {
+    "heading": "What the wave reveals",
+    "statement": "Muse-Glimmer's uncensoring releases split between stripping a refusal pattern and guarded retraining.",
+    "evidence": "the de-refusal fork splits on method — direction ablation versus KL-bounded SFT"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "jorkle's Muse-Glimmer card still reports refusals, so the model is not zero-refusal.",
+    "evidence": "The card retains 13% refusals on its own eval"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "the drift metric measures how far an edited model's answers moved from the original.",
+    "evidence": "it measures how far a model's answer distribution drifted from the original"
+   }
+  ]
+ },
+ "huihui-cyberstrike-offsec-35b-abliterated": {
+  "tldr": [
+   "CyberStrike's base card describes training for tool use with 300 examples.",
+   "Huihui applied an edit that strips a refusal-linked pattern from the fine-tuned model.",
+   "Huihui's CyberStrike derivative card reports neither refusal measurements nor a post-edit tool-use rerun."
+  ],
+  "sections": [
+   {
+    "heading": "A fine-tune that admits it didn’t add knowledge",
+    "statement": "CyberStrike's base card describes targeted training for tool use, not a capability upgrade.",
+    "evidence": "Its card calls the work “a small, targeted alignment, not a capability upgrade”"
+   },
+   {
+    "heading": "Then huihui-ai took the refusals out",
+    "statement": "Huihui's CyberStrike release applies an edit that strips a refusal-linked pattern from the fine-tuned model.",
+    "evidence": "huihui-ai abliterated the fine-tune — a refusal-direction weight edit"
+   },
+   {
+    "heading": "What abliterating a security model changes",
+    "statement": "Resecurity's July 2026 analysis described CyberStrike-OffSec as a dual-use model.",
+    "evidence": "Third-party coverage (Resecurity, 30 July 2026) treats the OffSec model as dual-use"
+   },
+   {
+    "heading": "What the card does and doesn’t claim",
+    "statement": "Huihui's CyberStrike card has no measured refusal rate or post-edit tool-call evaluation.",
+    "evidence": "the abliterated card publishes no refusal-rate measurement and no post-edit rerun"
+   },
+   {
+    "heading": "The paper trail so far",
+    "statement": "the CyberStrike article recorded an easy-to-run file after a user asked for that format.",
+    "evidence": "was followed by the GGUF repository",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "Huihui's CyberStrike publisher warns that the model has significantly reduced safety filtering.",
+    "evidence": "The publisher warns that safety filtering is significantly reduced."
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "CyberStrike's base card reports 18 correct tool calls out of 24 after targeted training.",
+    "evidence": "the base card measured the difference — 18 of 24 correct tool calls after, 0 of 24 before"
+   }
+  ]
+ },
+ "qwythos-9b-claude-mythos-5-1m-abliterated": {
+  "tldr": [
+   "Qwythos combines Qwen3.5-9B design, Empero reasoning training and Huihui's refusal-stripping edit.",
+   "Empero reports quick checks near 137K tokens, not across the full million-token window.",
+   "Huihui published no post-edit refusal test or benchmark rerun."
+  ],
+  "sections": [
+   {
+    "heading": "Life one: Qwen builds the skeleton",
+    "statement": "Qwythos starts with a non-sparse Qwen3.5-9B design and takes roughly 19.3 GB of 16-bit data.",
+    "evidence": "Qwythos begins as dense Qwen3.5-9B architecture, then receives a full-parameter reasoning fine-tune from Empero, then goes through huihui-ai’s refusal-reduction process. The exact child has 9,653,104,368 BF16 parameters and occupies roughly 19.3 GB."
+   },
+   {
+    "heading": "Life two: Empero changes the behavior",
+    "statement": "Empero says Qwythos learned from more than 500 million tokens of step-by-step example answers.",
+    "evidence": "Empero says it trained the text backbone on more than 500 million tokens of Claude Mythos, Claude Fable and in-house reasoning traces."
+   },
+   {
+    "heading": "The “1M” in the name",
+    "statement": "Qwythos has a million-token setting, but Empero reports quick checks only around 137K.",
+    "evidence": "The model is configured for 1,048,576 tokens through static YaRN, but Empero reports smoke testing at roughly 137K."
+   },
+   {
+    "heading": "Life three: huihui edits refusal again",
+    "statement": "Huihui's Qwythos derivative has no published refusal test or benchmark rerun after its edit.",
+    "evidence": "Huihui publishes no post-abliteration refusal test or benchmark rerun."
+   },
+   {
+    "heading": "A tiny tool-use demo, not a giant benchmark",
+    "statement": "Empero reported seven successful tool-use prompts for the earlier Qwythos, not Huihui's later refusal-stripped version.",
+    "evidence": "Empero reports seven successful prompts out of seven in a small function-calling harness",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "The people behind the lineage",
+    "statement": "Qwythos combines Qwen architecture, Empero's reasoning fine-tune and Huihui's refusal edit.",
+    "evidence": "Qwythos begins as dense Qwen3.5-9B architecture, then receives a full-parameter reasoning fine-tune from Empero, then goes through huihui-ai’s refusal-reduction process."
+   },
+   {
+    "heading": "Why this is our inexpensive route",
+    "statement": "the Qwythos article paired the 16-bit model with one L40S chip for experimentation.",
+    "evidence": "Our prepared profile pairs it with one L40S and a 131K context, making it the sensible route for experimentation.",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Qwythos's million-token label is a configured limit, not proof of reasoning quality at that length.",
+    "evidence": "The million-token label is configuration, not proof of million-token reasoning quality."
+   }
+  ]
+ },
+ "qwen3-6-35b-a3b-abliterated": {
+  "tldr": [
+   "Huihui-Qwen3.6 stores nearly 36 billion parameters while activating about 3 billion at a time.",
+   "Huihui describes the edit as an uncensored proof of concept.",
+   "Qwen's upstream scores were not rerun on the refusal-stripped build."
+  ],
+  "sections": [
+   {
+    "heading": "Sparse computation is not a small model",
+    "statement": "Qwen3.6 35B A3B activates about 3 billion parameters at a time but stores nearly 36 billion.",
+    "evidence": "Qwen3.6 35B A3B is a sparse multimodal mixture-of-experts model with 35,951,822,704 stored BF16 parameters and about 3B active for each token."
+   },
+   {
+    "heading": "Three days from release to abliteration",
+    "statement": "Huihui published its Qwen3.6 derivative three days after Qwen's April 2026 release.",
+    "evidence": "Qwen released the upstream checkpoint on 15 April 2026. Huihui published this abliterated derivative three days later"
+   },
+   {
+    "heading": "What abliteration actually edits",
+    "statement": "Huihui's Qwen3.6 edit changes selected numbers in the model rather than using a trick prompt.",
+    "evidence": "It is a weight edit, not a prompt jailbreak or conventional fine-tune."
+   },
+   {
+    "heading": "The upstream numbers—and the honest boundary",
+    "statement": "Qwen's benchmark scores do not establish how Huihui's edited Qwen3.6 performs.",
+    "evidence": "Those results do **not** belong to the abliterated derivative: Huihui publishes no post-edit benchmark or refusal-rate evaluation for this checkpoint."
+   },
+   {
+    "heading": "Who made it?",
+    "statement": "Qwen supplied the original Qwen3.6 model; huihui-ai published the edited derivative.",
+    "evidence": "Qwen released the upstream checkpoint on 15 April 2026. Huihui published this abliterated derivative three days later"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "Huihui's Qwen3.6 publisher recommends controlled research use because safety filtering is reduced.",
+    "evidence": "The publisher warns that safety filtering is reduced and recommends controlled research use."
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Qwen3.6 wakes eight of its specialized parts plus one shared part for each token.",
+    "evidence": "for every token the model wakes up just eight of them plus one shared expert"
+   }
+  ]
+ },
+ "ornith-1-0-397b-abliterated-w4a16": {
+  "tldr": [
+   "The Ornith 397B compressed build still occupies about 195.7 GiB across 47 files.",
+   "cebeuq reported Ornith 397B refusals fell from 30.0% to 7.5% after editing on 40 harmful prompts.",
+   "The Ornith 397B article's two-H200 setup was disabled, not a live model offer."
+  ],
+  "sections": [
+   {
+    "heading": "A 397B model that activates about 17B",
+    "statement": "Ornith 397B activates roughly 17 billion parameters per token, but the compressed build still exceeds 195 GiB.",
+    "evidence": "Upstream Ornith contains 396,802,360,816 BF16 parameters, with roughly 17B active per token. The W4A16 derivative still occupies 210.1 GB decimal, or about 195.7 GiB, in 47 shards."
+   },
+   {
+    "heading": "Why upstream Ornith attracted attention",
+    "statement": "Ornith's earlier 82.4 coding-benchmark score was not rerun on the compressed build.",
+    "evidence": "Upstream Ornith’s 82.4 SWE-bench Verified score was not rerun on this derivative."
+   },
+   {
+    "heading": "W4A16, translated",
+    "statement": "Ornith's four-bit compression stores selected numbers in 4 bits while keeping live calculations in 16 bits.",
+    "evidence": "Most selected language weights are symmetric four-bit integers while activations, embeddings, routers, gates, norms and the vision tower remain 16-bit."
+   },
+   {
+    "heading": "The shard-by-shard operation",
+    "statement": "Ornith's publisher describes editing and recompressing the model's parts while streaming the source files.",
+    "evidence": "streams 122 source shards, projects the direction out of selected residual-writing matrices and immediately requantizes each edited tensor"
+   },
+   {
+    "heading": "What the publisher actually tested",
+    "statement": "Ornith's reported checks are publisher spot checks, not independent benchmarks.",
+    "evidence": "Other reported checks include coding, structured tools, image and video smoke tests, and needle retrieval at about 127K and 252K. These are publisher tests, not independent benchmarks."
+   },
+   {
+    "heading": "Who built the derivative?",
+    "statement": "the Ornith compressed release explicitly disclaims affiliation with DeepReinforce.",
+    "evidence": "The release explicitly says it is not affiliated with or endorsed by DeepReinforce.",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "Why our route remains disabled",
+    "statement": "the Ornith 397B article described a disabled two-H200 setup with a conservative 32K context.",
+    "evidence": "Our two-H200 profile remains explicitly deployment-disabled and uses a conservative 32K context."
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Storing the model's numbers in four bits cuts memory use without shrinking every part to four bits.",
+    "evidence": "Most selected language weights are symmetric four-bit integers while activations, embeddings, routers, gates, norms and the vision tower remain 16-bit."
+   }
+  ]
+ },
+ "ornith-1-0-35b-abliterated": {
+  "tldr": [
+   "DeepReinforce trained Ornith to propose a problem-solving scaffold and work inside it.",
+   "YuYu1015 replaced the first version after reporting it damaged Ornith's reasoning.",
+   "YuYu1015 reported roughly 5% hard refusals for its corrected Ornith 35B on its own tests."
+  ],
+  "sections": [
+   {
+    "heading": "Ornith’s unusual idea: learn the harness too",
+    "statement": "DeepReinforce trained Ornith to propose a problem-solving scaffold and then solve inside it.",
+    "evidence": "DeepReinforce trained upstream Ornith around “self-scaffolding”: the model proposes a problem-solving scaffold, then solves inside it, with reinforcement-learning reward applied to both stages."
+   },
+   {
+    "heading": "A middleweight MoE with a large address book",
+    "statement": "Ornith 35B stores over 35 billion 16-bit parameters and wakes eight specialists per token.",
+    "evidence": "The model contains 35,107,181,936 BF16 parameters, 40 layers, 256 routed experts, eight selected experts per token and a shared expert."
+   },
+   {
+    "heading": "The first edit was not good enough",
+    "statement": "YuYu1015 replaced Ornith's first edit in June 2026 after reporting it damaged reasoning.",
+    "evidence": "The first version reportedly damaged reasoning, so the publisher replaced the weights on 30 June 2026."
+   },
+   {
+    "heading": "Sampling is part of the model",
+    "statement": "YuYu1015 warns that a slight anti-repeat setting can cut off Ornith's answers.",
+    "evidence": "YuYu1015 strongly recommends repetition penalty 1.0 and warns that 1.05 can truncate output."
+   },
+   {
+    "heading": "Who stands behind the two stages?",
+    "statement": "DeepReinforce created the original Ornith; YuYu1015 published the refusal-reduced version.",
+    "evidence": "DeepReinforce created the upstream Ornith family and published its self-scaffolding story, benchmarks and harness settings. The refusal-reduced derivative comes from the individual Hugging Face publisher YuYu1015",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "What we can and cannot conclude",
+    "statement": "YuYu1015's corrected Ornith still had roughly 5% hard refusals in the publisher's tests.",
+    "evidence": "For the corrected version, YuYu1015 reports hard refusals falling from roughly 99% to 5%"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Stripping refusals projects a refusal-linked pattern out of selected numbers in the model.",
+    "evidence": "you find one direction in its internal math that correlates with refusal and project it out of the weights"
+   }
+  ]
+ },
+ "huihui-qwen3-6-27b-abliterated": {
+  "tldr": [
+   "Huihui-Qwen3.6-27B is a non-sparse text-and-image model with about 55.6 GB of 16-bit data.",
+   "The article recorded 18,760 repository downloads on 16 August 2026.",
+   "Reports were mixed, and Huihui had not published a post-edit benchmark rerun."
+  ],
+  "sections": [
+   {
+    "heading": "Four months, 18,760 downloads",
+    "statement": "Huihui-Qwen3.6-27B had 18,760 repository downloads in the article's August 2026 snapshot.",
+    "evidence": "Downloads 18,760 (16 August 2026)",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "What is under the hood",
+    "statement": "Huihui-Qwen3.6-27B is non-sparse, with 64 layers and roughly 55.6 GB of 16-bit data.",
+    "evidence": "The checkpoint is dense: 27,781,427,952 BF16 parameters, 64 layers, 5,120-wide hidden dimension, laid out as sixteen repetitions of three Gated DeltaNet blocks followed by one Gated Attention block. It is natively multimodal (vision encoder, image and video tokens, thinking and non-thinking modes), carries a 262,144-token native context, and occupies about 55.6 GB in BF16."
+   },
+   {
+    "heading": "What the card promised, what users report",
+    "statement": "User reports on Huihui-Qwen3.6-27B include remaining refusals and a setup-specific vision failure.",
+    "evidence": "What users report is mixed and specific: Concedo's thread \"Still seems censored\" (\"It's a bit better than the base, but not perfect\"), a single-stack report of vision not detecting images"
+   },
+   {
+    "heading": "The upstream numbers, clearly labeled",
+    "statement": "Qwen3.6-27B's reported benchmark scores belong to the unedited model, not Huihui's derivative.",
+    "evidence": "those belong to the unedited checkpoint; huihui publishes no post-edit rerun."
+   },
+   {
+    "heading": "The successor arrived; the 3.6 stayed",
+    "statement": "the August 2026 Huihui-Qwen3.8-27B release kept its first 15 layers untouched by the edit.",
+    "evidence": "The newer Huihui-Qwen3.8-27B-abliterated (August 2026) uses a different recipe — first 15 layers retained, MTP and vision untouched"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "the Qwen3.6-27B article's one-H200 budget was an estimate, not a live price offer.",
+    "evidence": "budget one H200 at roughly $5.45/hour (approximate managed price estimate)"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "a vision encoder turns image patches into tokens that a language model can read.",
+    "evidence": "a vision encoder that cuts an image into patches and turns them into tokens the language model can read"
+   }
+  ]
+ },
+ "huihui-qwen3-5-9b-abliterated": {
+  "tldr": [
+   "Huihui-Qwen3.5-9B has roughly 19.3 GB of 16-bit data and an image reader.",
+   "The article counted 58 downstream repos, including format conversions and further retraining.",
+   "Huihui's proof-of-concept card included no post-edit benchmark results."
+  ],
+  "sections": [
+   {
+    "heading": "Released quietly, reused constantly",
+    "statement": "the Qwen3.5-9B article counted 58 derivative repositories with 64,688 combined downloads.",
+    "evidence": "58 derivative repositories built on it hold 64,688 combined downloads"
+   },
+   {
+    "heading": "A dense 9B with a hybrid spine",
+    "statement": "Huihui-Qwen3.5-9B has a non-sparse 32-layer design with an image reader.",
+    "evidence": "A dense, multimodal Qwen3.5-9B abliteration: 9,653,104,368 BF16 parameters, about 19.3 GB, 32 layers in a hybrid Gated DeltaNet / Gated Attention layout, vision encoder"
+   },
+   {
+    "heading": "A proof of concept, published on purpose",
+    "statement": "Huihui's Qwen3.5-9B card calls the edit a crude proof of concept and supplies no post-edit benchmarks.",
+    "evidence": "The model card calls the work a crude proof of concept and ships no post-edit benchmarks."
+   },
+   {
+    "heading": "The derivative economy",
+    "statement": "Huihui-Qwen3.5-9B derivatives include format conversions and preference-tuning retrains.",
+    "evidence": "Derivatives include GGUF/AWQ/GPTQ/exl3/NVFP4/MLX conversions and nbeerbower's Grimoire preference-tuning family"
+   },
+   {
+    "heading": "Word of mouth, not benchmarks",
+    "statement": "a user said Huihui-Qwen3.5-9B fit an RTX 3060; the article did not name the compression level.",
+    "evidence": "Community evidence is word of mouth: the first discussion reports it fits an RTX 3060"
+   },
+   {
+    "heading": "The numbers that don't exist",
+    "statement": "Qwen3.5-9B's upstream benchmark results were not rerun on Huihui's refusal-stripped build.",
+    "evidence": "Those numbers are not rerun for the abliterated artifact."
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "the Huihui-Qwen3.5-9B article's $2.34 hourly L40S figure was an estimate, not a live offer.",
+    "evidence": "Approximate managed price estimate: $2.34/hour (1× L40S)."
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Compressed model formats repackage the model's numbers for different hardware.",
+    "evidence": "these are compression formats tuned for different hardware: llama.cpp, Apple Silicon, NVIDIA, AMD"
+   }
+  ]
+ },
+ "huihui-glm-4-6v-flash-abliterated": {
+  "tldr": [
+   "Huihui's GLM-4.6V-Flash card says only the text part was edited.",
+   "Huihui's GLM-4.6V-Flash derivative had no published refusal-rate or ability-check evaluation.",
+   "The article recorded new easy-to-run files with image-reading add-ons in August 2026."
+  ],
+  "sections": [
+   {
+    "heading": "An abliteration that kept pace with the release",
+    "statement": "Huihui published its GLM-4.6V-Flash edit in December 2025, shortly after the original release.",
+    "evidence": "the upstream repo appeared 7 December, Z.ai's blog followed 8 December, and huihui-ai's repository went up 9 December"
+   },
+   {
+    "heading": "Text-only abliteration, and what that really means",
+    "statement": "Huihui's text-only edit has no published test of whether it still refuses on image-based requests.",
+    "evidence": "whether image-conditioned refusals survive is unmeasured"
+   },
+   {
+    "heading": "Why the MIT part is the rare part",
+    "statement": "Huihui's GLM-4.6V-Flash derivative keeps the original model's MIT license.",
+    "evidence": "MIT for a genuinely usable open vision model is the exception — Zhipu chose it for Flash, huihui kept it",
+    "evidence_format": "html-text"
+   },
+   {
+    "heading": "The first quant wave stalled at the runtime",
+    "statement": "Huihui reported Ollama crashes during image recognition in the early GLM-4.6V-Flash discussion.",
+    "evidence": "huihui-ai replied that Ollama \"crashes when trying to recognize images.\""
+   },
+   {
+    "heading": "What actually changed in August",
+    "statement": "the August 2026 GLM-4.6V-Flash easy-to-run release included image-reading add-ons.",
+    "evidence": "On 17 August 2026, mradermacher published two fresh GGUF repos — a standard ladder and an i1-imatrix ladder — and the standard one ships `.mmproj` vision-projector files"
+   },
+   {
+    "heading": "How we treat it",
+    "statement": "the GLM-4.6V-Flash article treated the edit as text-only and its L40S price as an estimate.",
+    "evidence": "serves one L40S at an approximate managed price estimate of $2.34/hour, and treats the edit as text-only."
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "the MIT license permits commercial use, modification and redistribution of a model.",
+    "evidence": "commercial use, modification, redistribution"
+   }
+  ]
+ }
 }

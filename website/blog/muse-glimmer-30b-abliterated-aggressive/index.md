@@ -2,15 +2,15 @@
 
 ## TL;DR
 
-- Muse-Glimmer Aggressive lowers the LoRA training KL penalty from 1.0 to 0.5.
-- The publisher reported 0/100 refusals, versus 13/100 for the normal variant.
-- The card skipped capability benchmarks; Meta's base-model scores do not apply to the edit.
+- Muse-Glimmer Aggressive loosens the training drift guard from 1.0 to 0.5.
+- The publisher reported 0 of 100 refusals, versus 13 of 100 for the normal variant.
+- The card skipped ability benchmarks; Meta's base-model scores do not apply to the edit.
 
 ## Basically, the facts
 
 **"Aggressive" is a knob, and the label doesn't tell you which one**
 
-Basically, Muse-Glimmer's aggressive recipe lowers the KL penalty rather than editing more layers.
+Basically, Muse-Glimmer's aggressive recipe loosens the drift guard rather than touching more layers.
 
 **What the card actually measured**
 
@@ -18,11 +18,11 @@ Basically, Muse-Glimmer's publisher reported 0/100 refusals for aggressive and 1
 
 **The honest gap: KL is a drift meter, not a benchmark**
 
-Basically, Muse-Glimmer's aggressive card did not remeasure capability preservation.
+Basically, Muse-Glimmer's aggressive card did not recheck whether the model stayed as capable.
 
 **A mirror upload, with the quants living elsewhere**
 
-Basically, SHS-Lab's Muse-Glimmer mirror shipped BF16 shards; the GGUF files were in jorkle's repo.
+Basically, SHS-Lab's Muse-Glimmer mirror shipped 16-bit files; the compressed files were in jorkle's repo.
 
 **How we treat it**
 
@@ -30,8 +30,11 @@ Basically, Muse-Glimmer's reported 0/100 refusals applies to the publisher's own
 
 **The idea, in plain words**
 
-Basically, LoRA de-refusal trains a small adapter to change how a model responds.
+Basically, Lightweight retraining adds a small extra layer that changes how the model answers.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 17 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/_
+<!-- /ARTICLE-META-MD -->
 
 Published 17 August 2026. Exact artifact: `SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive`, revision `0e74fc7c36d24c58b22cc213c14d7f0512d9f7f1`.
 

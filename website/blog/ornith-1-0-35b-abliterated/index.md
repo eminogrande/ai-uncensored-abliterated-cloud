@@ -3,8 +3,8 @@
 ## TL;DR
 
 - DeepReinforce trained Ornith to propose a problem-solving scaffold and work inside it.
-- YuYu1015 replaced the first edited weights after reporting reasoning damage.
-- YuYu1015 reported roughly 5% hard refusals for its corrected Ornith 35B derivative on its own tests.
+- YuYu1015 replaced the first version after reporting it damaged Ornith's reasoning.
+- YuYu1015 reported roughly 5% hard refusals for its corrected Ornith 35B on its own tests.
 
 ## Basically, the facts
 
@@ -14,19 +14,19 @@ Basically, DeepReinforce trained Ornith to propose a problem-solving scaffold an
 
 **A middleweight MoE with a large address book**
 
-Basically, Ornith 35B stores over 35 billion BF16 parameters and selects eight routed experts per token.
+Basically, Ornith 35B stores over 35 billion 16-bit parameters and wakes eight specialists per token.
 
 **The first edit was not good enough**
 
-Basically, YuYu1015 replaced Ornith's edited weights in June 2026 after reporting reasoning damage.
+Basically, YuYu1015 replaced Ornith's first edit in June 2026 after reporting it damaged reasoning.
 
 **Sampling is part of the model**
 
-Basically, YuYu1015 warns that a 1.05 repetition penalty can truncate Ornith's output.
+Basically, YuYu1015 warns that a slight anti-repeat setting can cut off Ornith's answers.
 
 **Who stands behind the two stages?**
 
-Basically, DeepReinforce created upstream Ornith; YuYu1015 published the refusal-reduced derivative.
+Basically, DeepReinforce created the original Ornith; YuYu1015 published the refusal-reduced version.
 
 **What we can and cannot conclude**
 
@@ -34,8 +34,11 @@ Basically, YuYu1015's corrected Ornith still had roughly 5% hard refusals in the
 
 **The idea, in plain words**
 
-Basically, Abliteration projects a refusal-linked direction out of selected model weights.
+Basically, Stripping refusals projects a refusal-linked pattern out of selected numbers in the model.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 18 July 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 18 July 2026. Exact artifact: `YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`, revision `86065d1a9008773086a177637d54ec6dc2a56cbf`.
 
