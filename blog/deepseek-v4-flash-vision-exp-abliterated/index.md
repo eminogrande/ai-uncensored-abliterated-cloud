@@ -1,8 +1,37 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# Eleven hours from DeepSeek drop to uncensor.<!-- READING-TLDR -->
 
-# Eleven hours from DeepSeek drop to uncensor.
+## TL;DR
+
+- Andreas Petersson published the Vision-Exp uncensor on 31 August 2026, under eleven hours after the base.
+- The model card describes edits to 33 attention-output tensors, leaving the vision encoder unchanged.
+- The reference card reported smoke tests, not a refusal-rate benchmark or production validation.
+
+## Basically, the facts
+
+**Eleven hours**
+
+Basically, apetersson's DeepSeek Vision-Exp uncensor appeared under eleven hours after the base on 31 August 2026.
+
+**What the edit actually is**
+
+Basically, apetersson's Vision-Exp card describes a 33-tensor edit, not gradient fine-tuning.
+
+**The descendant pipeline**
+
+Basically, s-zaizen's Vision-Exp card reports 99/100 on GSM8K for its NVFP4 derivative.
+
+**How to run it**
+
+Basically, The Vision-Exp Basic128 card reports about 23.4 tokens per second on an M1 Ultra.
+
+**The creator: Andreas Petersson**
+
+Basically, Andreas Petersson shipped Vision-Exp in FP8, GGUF and routed IQ2 formats.
+
+**The idea, in plain words**
+
+Basically, Vision-Exp's rank-1 edit removes a refusal direction from just 33 attention-output tensors.
+<!-- /READING-TLDR -->
 
 *Published 31 August 2026 · Revision-pinned · Primary sources only*
 
@@ -89,3 +118,11 @@ Safety filtering is significantly reduced here, which is the whole point: this i
 - [HF discussions on the base repo](https://huggingface.co/api/models/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp/discussions?limit=20)
 - Creator profiles: [apetersson](https://huggingface.co/apetersson) · [s-zaizen](https://huggingface.co/s-zaizen) · [audreyt](https://huggingface.co/audreyt)
 - [antirez/ds4 runtime (referenced by all derivative cards)](https://github.com/antirez/ds4)
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

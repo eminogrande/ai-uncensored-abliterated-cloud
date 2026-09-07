@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The lossless aggressive: Qwen3.8 27B Uncensored FP8<!-- READING-TLDR -->
 
-# The lossless aggressive: Qwen3.8 27B Uncensored FP8
+## TL;DR
+
+- OrcaRouter's Qwen3.8 edit uses block-FP8 weights and keeps the vision tower at full precision.
+- The article cites Artificial Analysis scores evaluated on 14 August 2026.
+- The article had no measured refusal rate or capability-retention comparison with the base.
+
+## Basically, the facts
+
+**The same weights, a different promise**
+
+Basically, OrcaRouter's card says its Qwen3.8 FP8 edit keeps the vision tower at full precision.
+
+**What "Aggressive" means here**
+
+Basically, OrcaRouter's aggressive label is a publisher claim, not a measured refusal rate.
+
+**The numbers, third-party**
+
+Basically, Artificial Analysis gave the served Qwen3.8 build an AA Coding score of 68.1 in August 2026.
+
+**Who made it**
+
+Basically, OrcaRouter made the Qwen3.8 edit and serving build as well as the gateway.
+
+**How to run it**
+
+Basically, The article described gated access to OrcaRouter's OpenAI-compatible API.
+
+**The idea, in plain words**
+
+Basically, Block-FP8 stores model weights in 8 bits with a separate scale for each block.
+
+**How we treat it**
+
+Basically, The article had no refusal-rate measurement to back OrcaRouter's fully unlocked claim.
+<!-- /READING-TLDR -->
 
 Published 19 August 2026. Exact artifact: `orcarouter/Qwen3.8-27B-Uncensored-FP8`, revision `9228df5c6c9c509e1019f83b4e085cf643118bac`.
 
@@ -40,3 +73,11 @@ Primary sources:
 - [Artificial Analysis benchmark source](https://artificialanalysis.ai/)
 
 "Lossless" and "fully unlocked" are the publisher's claims; the third-party benchmarks are the only independent measurement, and no refusal-rate measurement exists. Unlock comes with the usual trade — you verify what comes back.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

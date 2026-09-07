@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# A pentesting model, with the refusals taken out<!-- READING-TLDR -->
 
-# A pentesting model, with the refusals taken out
+## TL;DR
+
+- CyberStrike's base card describes tool-call alignment with 300 examples.
+- Huihui applied a refusal-direction weight edit to the CyberStrike fine-tune.
+- Huihui’s CyberStrike derivative card reports neither refusal measurements nor a post-edit tool-call rerun.
+
+## Basically, the facts
+
+**A fine-tune that admits it didn’t add knowledge**
+
+Basically, CyberStrike's base card describes targeted tool-call training, not a capability upgrade.
+
+**Then huihui-ai took the refusals out**
+
+Basically, Huihui's CyberStrike release applies a refusal-direction weight edit to the fine-tune.
+
+**What abliterating a security model changes**
+
+Basically, Resecurity's July 2026 analysis described CyberStrike-OffSec as a dual-use model.
+
+**What the card does and doesn’t claim**
+
+Basically, Huihui's CyberStrike card has no measured refusal rate or post-edit tool-call evaluation.
+
+**The paper trail so far**
+
+Basically, The CyberStrike article recorded a GGUF release after a user asked for the format.
+
+**How we treat it**
+
+Basically, Huihui's CyberStrike publisher warns that the model has significantly reduced safety filtering.
+
+**The idea, in plain words**
+
+Basically, CyberStrike's base card reports 18 correct tool calls out of 24 after targeted training.
+<!-- /READING-TLDR -->
 
 Published 10 August 2026. Exact artifact: `huihui-ai/Huihui-CyberStrike-OffSec-35B-abliterated`, revision `01521758ee85df1ed4edaf494c48e20704b80204`.
 
@@ -27,3 +60,11 @@ Primary sources:
 - [r/AgenticCybersecurity thread](https://www.reddit.com/r/AgenticCybersecurity/comments/1vi8hji/oyildirimcyberstrikeoffsec35b_hugging_face_i_dont/) and [r/Pentesting thread](https://www.reddit.com/r/Pentesting/comments/1qu4zbq/i_built_a_pentesting_platform_that_lets_al/) — linked, not quoted; Reddit blocked access at research time
 
 The publisher warns that safety filtering is significantly reduced. “Abliterated” means refusal-reduced — not authorized, not legal, and not harmless.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

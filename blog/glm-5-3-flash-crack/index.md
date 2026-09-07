@@ -1,8 +1,37 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320<!-- READING-TLDR -->
 
-# GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320
+## TL;DR
+
+- Zhipu's card describes GLM-5.3-Flash as a multimodal model with 320B total and 18B active parameters.
+- dealignai reported 320/320 HarmBench compliance and a 0.48-point MMLU-logit drop on its tests.
+- The editor's 211-token-per-second MTP result used four H200 GPUs, not the two-GPU hosting estimate.
+
+## Basically, the facts
+
+**The base: Zhipu's first natively multimodal GLM-5**
+
+Basically, Zhipu's card describes GLM-5.3-Flash as the first natively multimodal GLM-5 model.
+
+**The crack: a permanent edit with receipts**
+
+Basically, dealignai reported 320/320 HarmBench compliance for GLM-5.3-Flash, not a universal guarantee.
+
+**The hosting math: what the refusals were costing**
+
+Basically, dealignai's GLM speed measurements used four H200 GPUs, not the two-GPU price estimate.
+
+**How to run it**
+
+Basically, The GLM-5.3-Flash card says DeepGEMM compiles an FP8 kernel at startup and needs nvcc.
+
+**The creator: Zhipu AI, and the editor dealignai**
+
+Basically, dealignai credited @jordanschenck for compute used on the GLM-5.3-Flash release.
+
+**The idea, in plain words**
+
+Basically, GLM's MTP head proposes a next token for the main model to verify.
+<!-- /READING-TLDR -->
 
 Published 26 August 2026. Exact artifact: `dealignai/GLM-5.3-Flash-ABLITERATED-FP8`, revision `68fdc7b6c6ef90c40583f5f9224d402cc8fdf8b7`.
 
@@ -63,3 +92,11 @@ Primary sources:
 - [GLM-5 technical report](https://arxiv.org/abs/2602.15763)
 - [GLM-5.3-Flash blog](https://z.ai/blog/glm-5.3-flash)
 - [dealignai profile](https://huggingface.co/dealignai)
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

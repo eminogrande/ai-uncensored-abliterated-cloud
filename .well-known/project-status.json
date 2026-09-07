@@ -1,6 +1,6 @@
 {
   "project": "ABLITERATED.cloud",
-  "purpose": "Private on-demand evaluation on Vast.ai with llama.cpp; public documentation and editorial archive only.",
+  "purpose": "Dated snapshot of the private Vast.ai + llama.cpp reference setup used in our uncensored AI self-hosting work; not service availability.",
   "snapshot_at": "2026-09-05T20:12:39.126574+00:00",
   "snapshot_precision": "provider snapshot timestamp",
   "live_polling": false,

@@ -1,6 +1,21 @@
-# ABLITERATED.cloud — full project reading guide
+# ABLITERATED.cloud — service and model reading guide
 
-Public documentation for private on-demand evaluation on Vast.ai with llama.cpp. This is not a public hosted model catalog. No public inference or live MCP service is offered.
+> Intelligence, freed. Human-assisted cloud GPU renting and self-hosting for uncensored and abliterated models, with LLM router and app integration help.
+
+## Get help running a model
+
+ABLITERATED.cloud helps you choose an uncensored or abliterated model, plan a cloud GPU rental or a self-hosted setup, and connect it to your LLM router, chat app or coding tools. Start on [Signal](https://signal.me/#p/+13103408213) with the task, preferred model, hardware or budget, and the client you want to use. Scope, access and any costs are agreed with a human before provisioning or configuration changes.
+
+The public site provides service information, operating documentation and an active blog of model news and guides. It does not run a self-service inference API, sell API tokens or provide account checkout. A blog entry is a research lead, not proof that its model is loaded or available to rent.
+
+## Current operating documentation
+
+- [Service overview](https://abliterated.cloud/index.md): help with models, cloud GPU renting, self-hosting and LLM router/app integration.
+- [Vast operating guide](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md): inspect, start, verify, connect through SSH, test your client, stop and read back state.
+- [Status evidence](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/STATUS.md): dated observations, last configuration and outstanding validation.
+- [Licensing scope](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/LICENSING.md): project MIT license versus each upstream artifact's terms.
+
+The currently documented runtime is private Vast.ai + llama.cpp. The snapshot below covers the operator's instance, not the availability of the human-assisted service or every model covered by the blog.
 
 ## Dated operating snapshot
 
@@ -14,7 +29,9 @@ Last serving configuration: Qwen3.8-27B OBLITERATED, Q6_K, llama.cpp, 262144 tok
 Modal: Retired and not used by this project because of its cost budget. Four old apps still existed with zero tasks at the 2026-09-05 19:39 UTC audit; they were not decommissioned. Possible legacy storage charges remain unaudited.
 <!-- /PROJECT-STATUS -->
 
-## Running cost
+## Example infrastructure cost
+
+These are the dated operator-instance costs, not a customer service quote. Confirm current GPU, storage and transfer rates and the scope of assistance before approving paid work.
 
 <!-- RUNNING-COSTS -->
 | Usage | Cost |
@@ -25,14 +42,16 @@ Modal: Retired and not used by this project because of its cost budget. Four old
 | Stopped: retained disk / 30 days | **$24.00** |
 | 2 hours running per day / 30 days, disk retained throughout | **$60.00** |
 
-USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.
+USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.
 <!-- /RUNNING-COSTS -->
 
 ## Access and lifecycle
 
-The runtime is private localhost:8080, reached through an operator-controlled SSH tunnel. Confirm actual instance state and the loaded model before any evaluation. The website neither calls inference nor starts GPUs. Public documents require no authentication and cannot grant inference access.
+The documented runtime is private localhost:8080, reached through an operator-controlled SSH tunnel. Confirm actual instance state and the loaded model before any evaluation. The website neither calls inference nor starts GPUs. Public documents require no authentication and cannot grant inference access. There is no public MCP service, OAuth issuer, agent registration or payment protocol.
 
-Start and stop manually. Confirm costs and authorization before starting. After testing, stop and read back instance state. Stopping retains disk and ongoing storage charges; it is not deletion. No automatic idle shutdown is proven. Never infer that a stopped instance is free, or that an archived approach has been fully decommissioned.
+For setup assistance, agree the provider/account, model artifact, budget, client and access method with the human operator. Ask the user before sending a Signal message, changing client/router configuration or provisioning infrastructure. Never ask for account or SSH secrets in a public issue or document.
+
+Start and stop manually only with explicit authorization. After testing, stop and read back instance state. Stopping retains disk and ongoing storage charges; it is not deletion. No automatic idle shutdown is proven. Never infer that a stopped instance is free, or that an archived approach has been fully decommissioned.
 
 The old Modal approach is archived; the current operating path is Vast.ai with llama.cpp. Old catalog identifiers, bearer tokens, wake routes and benchmark comparisons are not the current contract.
 
@@ -42,47 +61,50 @@ Historical 262144 configured context is not long-context validation. No current 
 
 ## Licenses
 
-MIT applies to project-owned code and the website. Upstream libraries, base models, derivatives and weights retain their own licenses. Each archived article's license facts remain model-specific and historical, not a relicensing of its subject.
+MIT applies to project-owned code and the website. Upstream libraries, base models, derivatives and weights retain their own licenses. Each article's license facts remain model-specific and dated, not a relicensing of its subject. Check the exact artifact and its current license before deployment.
 
 ## Public documents
 
-- [Overview](https://abliterated.cloud/index.md)
+- [Concise agent reading index](https://abliterated.cloud/llms.txt)
 - [Status JSON](https://abliterated.cloud/.well-known/project-status.json)
-- [Access boundary](https://abliterated.cloud/auth.md)
+- [Access and human-assisted setup](https://abliterated.cloud/auth.md)
 - [Documentation-only OpenAPI](https://abliterated.cloud/openapi.json)
-- [Agent operating notes](https://abliterated.cloud/skills/abliterated-cloud/SKILL.md)
+- [AI resource catalog](https://abliterated.cloud/.well-known/ai-catalog.json)
+- [Model selection and connection skill](https://abliterated.cloud/skills/abliterated-cloud/SKILL.md)
 - [Source repository](https://github.com/eminogrande/ai-uncensored-abliterated-cloud)
 
-## Editorial archive — not live models
+## Model news and guides
 
-Source-linked reporting at each article's publication date, preserving per-model licenses, publisher measurements, community reports and historical estimates. None is a current hosting offer or current ranking. Compare evaluations only when artifact, runtime, prompts and decoding settings match.
+The [blog](https://abliterated.cloud/blog/) is an active publication covering uncensored and abliterated models, release news, runtime compatibility and practical guides. Follow the [RSS feed](https://abliterated.cloud/blog/feed.xml) or read [article metadata](https://abliterated.cloud/blog/posts.json) for dates, exact model IDs and source-linked summaries.
+
+Articles preserve per-model licenses, publisher measurements, community reports and historical estimates at their publication or revision dates. None is a current hosting offer or current ranking. Compare evaluations only when artifact, runtime, prompts and decoding settings match. Use the sources to shortlist candidates, then confirm current compatibility, license and cost before an authorized test.
 
 <!-- ARCHIVE-LINKS -->
-- [Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/index.md): archived field note, 2026-09-06.
-- [Eleven hours from DeepSeek drop to uncensor.](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/index.md): archived field note, 2026-08-31.
-- [Why would a translation model refuse? Tencent's Hy-MT2, decensored](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/index.md): archived field note, 2026-08-30.
-- [The 118B coding MoE nobody has refused](https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/index.md): archived field note, 2026-08-30.
-- [The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100](https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/index.md): archived field note, 2026-08-28.
-- [The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?](https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/index.md): archived field note, 2026-08-28.
-- [The 180B abliteration race on the model nobody can serve yet](https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/index.md): archived field note, 2026-08-27.
-- [GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320](https://abliterated.cloud/blog/glm-5-3-flash-crack/index.md): archived field note, 2026-08-26.
-- [The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage](https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/index.md): archived field note, 2026-08-25.
-- [One base, three uncensors: the Ornith-1.5 task-vector transplant](https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/index.md): archived field note, 2026-08-20.
-- [The lossless aggressive: Qwen3.8 27B Uncensored FP8](https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/index.md): archived field note, 2026-08-19.
-- [Small uncensored agents: what a 4.5B Heretic distill is for](https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/index.md): archived field note, 2026-08-17.
-- [What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/index.md): archived field note, 2026-08-17.
-- [The 2.78-trillion-parameter abliteration nobody can run](https://abliterated.cloud/blog/kimi-k3-abliterated-modal/index.md): archived field note, 2026-08-17.
-- [The first abliterated diffusion LLM: 1,000+ tokens a second on one GPU](https://abliterated.cloud/blog/diffusiongemma-26b-e38-abliterated-nvfp4/index.md): archived field note, 2026-08-16.
-- [The 48-hour abliteration race](https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/index.md): archived field note, 2026-08-16.
-- [Three ARA passes: how RVN got Qwen3.8-27B down to 0–1/100 refusals](https://abliterated.cloud/blog/qwen3-8-27b-rvn-heretic-abliterated-uncensored/index.md): archived field note, 2026-08-14.
-- [DeepSeek V4 Flash, uncensored by dial: 757 KB against 284B](https://abliterated.cloud/blog/huihui-deepseek-v4-flash-0731-abliterated/index.md): archived field note, 2026-08-13.
-- [The base of the wave: Muse-Glimmer-30B's measured de-refusal](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated/index.md): archived field note, 2026-08-12.
-- [A pentesting model, with the refusals taken out](https://abliterated.cloud/blog/huihui-cyberstrike-offsec-35b-abliterated/index.md): archived field note, 2026-08-10.
-- [Qwythos 9B: a model with three lives](https://abliterated.cloud/blog/qwythos-9b-claude-mythos-5-1m-abliterated/index.md): archived field note, 2026-07-18.
-- [Inside Huihui-Qwen3.6: 256 experts and one refusal direction](https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/index.md): archived field note, 2026-07-18.
-- [Ornith 397B: surgery on a model too large to hold at once](https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/index.md): archived field note, 2026-07-18.
-- [Ornith 35B: can self-scaffolding survive abliteration?](https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/index.md): archived field note, 2026-07-18.
-- [The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in](https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/index.md): archived field note, 2026-04-23.
-- [The quiet classic: how Huihui-Qwen3.5-9B-abliterated became the small-model default](https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/index.md): archived field note, 2026-03-09.
-- [The MIT vision sleeper that resurfaced in August](https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/index.md): archived field note, 2025-12-09.
+- [Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/index.md): model research, 2026-09-06.
+- [Eleven hours from DeepSeek drop to uncensor.](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/index.md): model research, 2026-08-31.
+- [Why would a translation model refuse? Tencent's Hy-MT2, decensored](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/index.md): model research, 2026-08-30.
+- [The 118B coding MoE nobody has refused](https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/index.md): model research, 2026-08-30.
+- [The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100](https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/index.md): model research, 2026-08-28.
+- [The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?](https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/index.md): model research, 2026-08-28.
+- [The 180B abliteration race on the model nobody can serve yet](https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/index.md): model research, 2026-08-27.
+- [GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320](https://abliterated.cloud/blog/glm-5-3-flash-crack/index.md): model research, 2026-08-26.
+- [The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage](https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/index.md): model research, 2026-08-25.
+- [One base, three uncensors: the Ornith-1.5 task-vector transplant](https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/index.md): model research, 2026-08-20.
+- [The lossless aggressive: Qwen3.8 27B Uncensored FP8](https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/index.md): model research, 2026-08-19.
+- [Small uncensored agents: what a 4.5B Heretic distill is for](https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/index.md): model research, 2026-08-17.
+- [What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/index.md): model research, 2026-08-17.
+- [The 2.78-trillion-parameter abliteration nobody can run](https://abliterated.cloud/blog/kimi-k3-abliterated-modal/index.md): model research, 2026-08-17.
+- [The first abliterated diffusion LLM: 1,000+ tokens a second on one GPU](https://abliterated.cloud/blog/diffusiongemma-26b-e38-abliterated-nvfp4/index.md): model research, 2026-08-16.
+- [The 48-hour abliteration race](https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/index.md): model research, 2026-08-16.
+- [Three ARA passes: how RVN got Qwen3.8-27B down to 0–1/100 refusals](https://abliterated.cloud/blog/qwen3-8-27b-rvn-heretic-abliterated-uncensored/index.md): model research, 2026-08-14.
+- [DeepSeek V4 Flash, uncensored by dial: 757 KB against 284B](https://abliterated.cloud/blog/huihui-deepseek-v4-flash-0731-abliterated/index.md): model research, 2026-08-13.
+- [The base of the wave: Muse-Glimmer-30B's measured de-refusal](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated/index.md): model research, 2026-08-12.
+- [A pentesting model, with the refusals taken out](https://abliterated.cloud/blog/huihui-cyberstrike-offsec-35b-abliterated/index.md): model research, 2026-08-10.
+- [Qwythos 9B: a model with three lives](https://abliterated.cloud/blog/qwythos-9b-claude-mythos-5-1m-abliterated/index.md): model research, 2026-07-18.
+- [Inside Huihui-Qwen3.6: 256 experts and one refusal direction](https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/index.md): model research, 2026-07-18.
+- [Ornith 397B: surgery on a model too large to hold at once](https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/index.md): model research, 2026-07-18.
+- [Ornith 35B: can self-scaffolding survive abliteration?](https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/index.md): model research, 2026-07-18.
+- [The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in](https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/index.md): model research, 2026-04-23.
+- [The quiet classic: how Huihui-Qwen3.5-9B-abliterated became the small-model default](https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/index.md): model research, 2026-03-09.
+- [The MIT vision sleeper that resurfaced in August](https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/index.md): model research, 2025-12-09.
 <!-- /ARCHIVE-LINKS -->

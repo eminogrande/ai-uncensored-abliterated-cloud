@@ -1,8 +1,45 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The quiet classic: how a 9B abliteration became the small-model default<!-- READING-TLDR -->
 
-# The quiet classic: how a 9B abliteration became the small-model default
+## TL;DR
+
+- Huihui-Qwen3.5-9B has roughly 19.3 GB of BF16 weights and a vision encoder.
+- The Huihui-Qwen3.5-9B article counted 58 downstream repos, including conversions and further fine-tunes.
+- Huihui's proof-of-concept card included no post-edit benchmark results.
+
+## Basically, the facts
+
+**Released quietly, reused constantly**
+
+Basically, The Qwen3.5-9B article counted 58 derivative repositories with 64,688 combined downloads.
+
+**A dense 9B with a hybrid spine**
+
+Basically, Huihui-Qwen3.5-9B has a dense 32-layer architecture with a vision encoder.
+
+**A proof of concept, published on purpose**
+
+Basically, Huihui's Qwen3.5-9B card calls the edit a crude proof of concept and supplies no post-edit benchmarks.
+
+**The derivative economy**
+
+Basically, Huihui-Qwen3.5-9B derivatives include format conversions and Grimoire preference fine-tunes.
+
+**Word of mouth, not benchmarks**
+
+Basically, A user said Huihui-Qwen3.5-9B fit an RTX 3060; the article did not specify the quantization.
+
+**The numbers that don't exist**
+
+Basically, Qwen3.5-9B's upstream benchmark results were not rerun on Huihui's abliterated artifact.
+
+**How we treat it**
+
+Basically, The Huihui-Qwen3.5-9B article's $2.34 hourly L40S figure was an estimate, not a live offer.
+
+**The idea, in plain words**
+
+Basically, Quantized model formats package weights for different hardware and runtimes.
+<!-- /READING-TLDR -->
 
 Published 9 March 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.5-9B-abliterated`, revision `05b9e7c9b978ba29bdb8f50a49c30e4b91183339`.
 
@@ -29,3 +66,11 @@ Primary sources:
 - [Original refusal-direction paper](https://arxiv.org/abs/2406.11717)
 
 The publisher warns that safety filtering is reduced and recommends controlled research use. "Abliterated" means refusal-reduced, not zero-refusal, correct, legal or harmless. Approximate managed price estimate: $2.34/hour (1× L40S).
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

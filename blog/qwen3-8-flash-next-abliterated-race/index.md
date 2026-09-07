@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The 180B abliteration race on the model nobody can serve yet<!-- READING-TLDR -->
 
-# The 180B abliteration race on the model nobody can serve yet
+## TL;DR
+
+- Qwen described Qwen3.8-Flash-Next as an experimental preview of its planned Qwen4 architecture.
+- dealignai reported strong refusal reduction, alongside an MMLU drop from 86.36% to 83.86%.
+- At publication, serving qwen4_exp required patched branches or custom recipes, not stable releases.
+
+## Basically, the facts
+
+**The base is a Qwen4 preview, not a Qwen3.8**
+
+Basically, Qwen described Qwen3.8-Flash-Next as a preview of the architecture planned for Qwen4.
+
+**Five editors, one new architecture**
+
+Basically, Jiunsong's Qwen edit card reports changing 36 storage tensors while leaving vision untouched.
+
+**The catch: released runtimes don't support qwen4_exp**
+
+Basically, Qwen3.8-Flash-Next needed patched or custom serving software at publication.
+
+**The n-gram table is the weird part of the size math**
+
+Basically, The Qwen NVFP4 builder kept the n-gram table in BF16, accounting for 95.4 GiB.
+
+**How to run it**
+
+Basically, dealignai's Qwen serving recipe offloaded the n-gram table to the CPU.
+
+**The creator: dealignai**
+
+Basically, dealignai describes its CRACK releases as weight-level uncensoring, not template tricks.
+
+**The idea, in plain words**
+
+Basically, Qwen's n-gram table looks up token pairs and triples rather than doing a matrix multiply.
+<!-- /READING-TLDR -->
 
 Published 27 August 2026. Exact artifact: `dealignai/Qwen3.8-Flash-Next-ABLITERATED-FP8`, revision `8d5a44586872fe3a22cfd14398894bc0fd054e29`.
 
@@ -72,3 +105,11 @@ Primary sources:
 - [windowsxp811203 NVFP4 build card](https://huggingface.co/windowsxp811203/Qwen3.8-Flash-Next-Abliterated-NVFP4) (runtime-support and size analysis)
 - [vLLM qwen4-exp PR #53896](https://github.com/vllm-project/vllm/pull/53896) and [SGLang qwen4-exp PR #36497](https://github.com/sgl-project/sglang/pull/36497)
 - [Qwen3.8-Flash-Next technical report](https://github.com/QwenLM/Qwen3.8-Flash-Next/blob/main/tech_report.pdf)
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

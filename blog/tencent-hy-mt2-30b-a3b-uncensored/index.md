@@ -1,8 +1,33 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# Why would a translation model refuse? Tencent's Hy-MT2, decensored<!-- READING-TLDR -->
 
-# Why would a translation model refuse? Tencent's Hy-MT2, decensored
+## TL;DR
+
+- Tencent's Hy-MT2-30B-A3B is a 33-language translation specialist, not a general chatbot.
+- The editor reported 0/100 refusal-keyword hits versus 100/100 on the base, with KL divergence 0.0276.
+- The BF16 checkpoint was 60.14 GB; the article listed a roughly 18.2 GB Q4_K_M alternative.
+
+## Basically, the facts
+
+**A translator that refuses is a broken translator**
+
+Basically, Tencent claims Hy-MT2's 7B and 30B-A3B models beat larger rivals on fast-thinking translation.
+
+**What the edit actually does**
+
+Basically, Hy-MT2's editor reported low behavioral drift, but the evaluation prompts were not published.
+
+**How to run it**
+
+Basically, The Hy-MT2 uncensored BF16 checkpoint was 60.14 GB across 13 files.
+
+**The creator: Md Ismail Sojal, and the OS-Software label**
+
+Basically, Identical Hy-MT2 model-card text appeared under 0xSojalSec and OS-Software; shared ownership was not verified.
+
+**The idea, in plain words**
+
+Basically, ARA trains a small adapter to counter a refusal direction while preserving weight-row norms.
+<!-- /READING-TLDR -->
 
 Published 30 August 2026. Exact artifact: `0xSojalSec/Tencent-Hy-30B-A3B-uncensored-heretic`, revision `abe0aae382c7abce58b4be4eda48953af034025b`.
 
@@ -65,3 +90,11 @@ Primary sources:
 - [Heretic project](https://heretic-project.org)
 
 Community note: Reddit community search returned HTTP 403 for this run, so the reaction on r/LocalLLaMA is a known gap; the one thread we can cite (Tencent Hy 30B/7B/1.8B, r/LocalLLaMA 1tjien7) predates the uncensor and covers the base release.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

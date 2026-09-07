@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# One base, three uncensors: the Ornith-1.5 task-vector transplant<!-- READING-TLDR -->
 
-# One base, three uncensors: the Ornith-1.5 task-vector transplant
+## TL;DR
+
+- 0xKitkat's Ornith edit adds an abliterated Qwen weight difference to the Ornith base.
+- The publisher reported 0/16 heuristic refusals and 4/4 capability passes on a Q4_K_M build.
+- The article had no edited-model benchmark showing that Ornith's coding ability survived.
+
+## Basically, the facts
+
+**The base: a model that writes its own homework**
+
+Basically, Ornith's release post describes a model that creates its own training tasks.
+
+**Method one: transplant a task vector**
+
+Basically, 0xKitkat's card describes adding Qwen's uncensoring weight changes to Ornith.
+
+**Method two and three: the classic projections**
+
+Basically, The alztrk and pottokao Ornith edits remove refusal directions rather than transplant weights.
+
+**What the transplant numbers do and don't say**
+
+Basically, Ornith's reported 0/16 refusals came from regex screening, not an LLM judge.
+
+**How to run it**
+
+Basically, The pinned 0xKitkat Ornith checkpoint includes the vision tower and MTP head.
+
+**The creator: 0xKitkat**
+
+Basically, 0xKitkat's model card linked to @procrastiness but gave no biography or team details.
+
+**The idea, in plain words**
+
+Basically, A task vector is the weight difference between an edited model and its original.
+<!-- /READING-TLDR -->
 
 Published 20 August 2026. Exact artifact: `0xKitkat/Ornith-1.5-35B-A3B-Uncensored`, revision `9ce64447864049ac16f7546265ae11d2a04fe9fb`.
 
@@ -69,3 +102,11 @@ Primary sources:
 - [Refusal in Language Models Is Mediated by a Single Direction](https://arxiv.org/abs/2406.11717)
 
 The 0/16 figure is a publisher measurement on 16 prompts with disclosed regex screening, not a guarantee. The base's benchmark table is a publisher claim on the unedited checkpoint; capability retention after the edit is asserted by construction, not yet measured.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

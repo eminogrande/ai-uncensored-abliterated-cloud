@@ -1,7 +1,7 @@
 {
   "name": "ABLITERATED.cloud",
   "short_name": "ABLITERATED",
-  "description": "Private Vast.ai + llama.cpp evaluation. Public documentation and editorial archive; no public inference.",
+  "description": "Intelligence, freed. Uncensored AI cloud rentals, self-hosting and LLM router integration help.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#f7f7f4",

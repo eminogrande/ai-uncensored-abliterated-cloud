@@ -1,8 +1,53 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The 48-hour abliteration race<!-- READING-TLDR -->
 
-# The 48-hour abliteration race
+## TL;DR
+
+- Huihui's card says the Qwen3.8 edit left the first 15 layers, vision encoder and MTP untouched.
+- Huihui published the edit and its GGUF companion on 16 August 2026.
+- Huihui published no refusal-rate benchmark or post-edit capability rerun for its Qwen3.8-27B release.
+
+## Basically, the facts
+
+**What is genuinely new in 3.8**
+
+Basically, Qwen3.8-27B is a dense model with 64 hybrid layers and a 27-layer vision encoder.
+
+**The 48-hour race, with timestamps**
+
+Basically, Huihui published the Qwen3.8 edit and the GGUF companion on the same day in August 2026.
+
+**What the edit actually touched**
+
+Basically, Huihui's card says the Qwen3.8 edit left the first 15 layers and vision encoder untouched.
+
+**Upstream numbers, upstream only**
+
+Basically, Qwen's base-model benchmark scores do not establish the performance of Huihui's edit.
+
+**The variant wave: what is actually useful**
+
+Basically, Most other abliterated Qwen3.8-27B repos were separate base-model edits, not Huihui forks.
+
+**How to run it**
+
+Basically, Huihui's Qwen3.8 GGUF companion included twelve quantizations and a vision projector.
+
+**Community temperature**
+
+Basically, The Huihui article could not assess the Reddit thread because access returned HTTP 403.
+
+**The creator: huihui.ai**
+
+Basically, Huihui's profile describes model-ablation work with the open-source NLP community.
+
+**How we treat it**
+
+Basically, Huihui's reduced-filtering claim was not backed by a published refusal-rate benchmark.
+
+**The idea, in plain words**
+
+Basically, Qwen3.8's multi-token prediction guesses several tokens ahead in a single step.
+<!-- /READING-TLDR -->
 
 Published 16 August 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.8-27B-abliterated`, revision `d42ca8978c5a66e92c3446d46e8adfe03ef692ff`.
 
@@ -42,3 +87,11 @@ Primary sources:
 - [Implementation linked by huihui-ai](https://github.com/Sumandora/remove-refusals-with-transformers)
 
 The card says safety filtering is significantly reduced — which is the whole point of this one. "Abliterated" means refusal-reduced, and what you do with that is your call.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->
