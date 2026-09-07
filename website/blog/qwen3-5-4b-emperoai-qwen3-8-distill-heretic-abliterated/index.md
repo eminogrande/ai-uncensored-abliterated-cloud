@@ -3,7 +3,7 @@
 ## TL;DR
 
 - insraq's Heretic edit builds on Empero's condensed Qwen3.8 in a Qwen3.5-4B design.
-- The publisher reported 6 of 100 refusals versus 99 of 100, with small measured answer drift.
+- The publisher reported 6 of 100 refusals versus 99 of 100, with small measured answer drift (KL 0.0167).
 - Empero's benchmark scores describe the condensed teacher model, not the modified checkpoint.
 
 ## Basically, the facts

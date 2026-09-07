@@ -90,7 +90,7 @@
  "tencent-hy-mt2-30b-a3b-uncensored": {
   "tldr": [
    "Tencent's Hy-MT2-30B-A3B is a 33-language translation specialist, not a general chatbot.",
-   "The editor reported 0 of 100 refusal-keyword hits versus 100 of 100 on the original, with small measured answer drift.",
+   "The editor reported 0 of 100 refusal-keyword hits versus 100 of 100 on the original, with small measured answer drift (KL 0.0276).",
    "The full model was 60.14 GB; the article listed a roughly 18.2 GB compressed alternative."
   ],
   "sections": [
@@ -169,7 +169,7 @@
  "securelayer7-afm-4-5b-uncensored-abliterated": {
   "tldr": [
    "SecureLayer7 published both safeguards against hijacked prompts and models that refuse less.",
-   "SecureLayer7 reported AFM refusals falling from 92 of 100 to 3 of 100, with small measured answer drift.",
+   "SecureLayer7 reported AFM refusals falling from 92 of 100 to 3 of 100, with small measured answer drift (KL 0.0200).",
    "The AFM edit was merged into 16-bit data; independent retests of ability and refusals were missing."
   ],
   "sections": [
@@ -224,7 +224,7 @@
    },
    {
     "heading": "Why a 1-bit model is the right vehicle for this",
-    "statement": "Prism ML claimed about 1.1 bits stored per value for Bonsai; Velum inherited that tiny format.",
+    "statement": "Prism ML claimed a true 1.125 bits stored per value for Bonsai; Velum inherited that tiny format.",
     "evidence": "Prism ML's published case: true 1.125 bits per weight"
    },
    {
@@ -252,7 +252,7 @@
  "qwen3-8-flash-next-abliterated-race": {
   "tldr": [
    "Qwen described Qwen3.8-Flash-Next as an experimental preview of its planned Qwen4 architecture.",
-   "dealignai reported strong refusal reduction, alongside a small drop on a general-knowledge benchmark.",
+   "dealignai reported strong refusal reduction, with its general-knowledge score falling from 86.36% to 83.86%.",
    "At publication, running qwen4_exp required modified, not-yet-standard software rather than a stable release."
   ],
   "sections": [
@@ -296,7 +296,7 @@
  "glm-5-3-flash-crack": {
   "tldr": [
    "Zhipu's card describes GLM-5.3-Flash as a text-and-image model with 320 billion parameters, 18 billion active.",
-   "dealignai reported full compliance on a harmful-prompt test and a small drop on its own scoring.",
+   "dealignai reported 320 of 320 harmful prompts answered and a 0.48-point drop on a general-knowledge test, on its own scoring.",
    "The editor's 211-tokens-per-second speed test used four H200 chips, not the two-chip hosting estimate."
   ],
   "sections": [
@@ -375,7 +375,7 @@
  "ornith-1-5-35b-a3b-uncensored-transplant": {
   "tldr": [
    "0xKitkat's Ornith edit adds the changes that make Qwen refuse less onto the Ornith original.",
-   "The publisher reported 0 of 16 refusals and 4 of 4 ability passes on a compressed build.",
+   "The publisher reported 0 of 16 refusals by keyword screening, not human review, and 4 of 4 ability passes on a compressed build.",
    "The article had no edited-model benchmark showing that Ornith's coding ability survived."
   ],
   "sections": [
@@ -463,7 +463,7 @@
  "qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated": {
   "tldr": [
    "insraq's Heretic edit builds on Empero's condensed Qwen3.8 in a Qwen3.5-4B design.",
-   "The publisher reported 6 of 100 refusals versus 99 of 100, with small measured answer drift.",
+   "The publisher reported 6 of 100 refusals versus 99 of 100, with small measured answer drift (KL 0.0167).",
    "Empero's benchmark scores describe the condensed teacher model, not the modified checkpoint."
   ],
   "sections": [
@@ -601,7 +601,7 @@
   "tldr": [
    "Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in 16-bit.",
    "Goodoldjam reported 0 of 402 target refusals and 0 of 249 harmless false refusals on its own prompt sets.",
-   "Goodoldjam reported about 1,053 tokens per second on a top-end chip; the smaller chip's speed was unverified."
+   "Goodoldjam reported about 1,053 tokens per second combined across 8 parallel requests on a top-end chip; the smaller chip's speed was unverified."
   ],
   "sections": [
    {
@@ -611,7 +611,7 @@
    },
    {
     "heading": "The NVFP4 quant is the actual story",
-    "statement": "Goodoldjam reported about 1,053 tokens per second total on a top-end workstation chip.",
+    "statement": "Goodoldjam reported about 1,053 tokens per second combined across 8 parallel requests on a top-end workstation chip.",
     "evidence": "1,053.64 tok/s aggregate at concurrency 8"
    },
    {
@@ -792,7 +792,7 @@
    },
    {
     "heading": "What this does not establish",
-    "statement": "the DeepSeek dial-setting tests did not benchmark general ability or test the full long context claimed.",
+    "statement": "the DeepSeek dial-setting tests did not benchmark general ability or measure the claimed 256K context.",
     "evidence": "general capability was not benchmarked, 256k context was not measured"
    },
    {

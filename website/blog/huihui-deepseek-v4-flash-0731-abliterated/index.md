@@ -30,7 +30,7 @@ Basically, the DeepSeek article estimated $10.90 per hour for two H200s, not a l
 
 **What this does not establish**
 
-Basically, the DeepSeek dial-setting tests did not benchmark general ability or test the full long context claimed.
+Basically, the DeepSeek dial-setting tests did not benchmark general ability or measure the claimed 256K context.
 
 **The idea, in plain words**
 

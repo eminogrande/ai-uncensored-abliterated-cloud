@@ -3,7 +3,7 @@
 ## TL;DR
 
 - Tencent's Hy-MT2-30B-A3B is a 33-language translation specialist, not a general chatbot.
-- The editor reported 0 of 100 refusal-keyword hits versus 100 of 100 on the original, with small measured answer drift.
+- The editor reported 0 of 100 refusal-keyword hits versus 100 of 100 on the original, with small measured answer drift (KL 0.0276).
 - The full model was 60.14 GB; the article listed a roughly 18.2 GB compressed alternative.
 
 ## Basically, the facts
