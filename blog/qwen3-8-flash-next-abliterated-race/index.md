@@ -3,7 +3,7 @@
 ## TL;DR
 
 - Qwen described Qwen3.8-Flash-Next as an experimental preview of its planned Qwen4 architecture.
-- dealignai reported strong refusal reduction, alongside a small drop on a general-knowledge benchmark.
+- dealignai reported strong refusal reduction, with its general-knowledge score falling from 86.36% to 83.86%.
 - At publication, running qwen4_exp required modified, not-yet-standard software rather than a stable release.
 
 ## Basically, the facts

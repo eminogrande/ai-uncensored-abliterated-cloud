@@ -3,7 +3,7 @@
 ## TL;DR
 
 - Zhipu's card describes GLM-5.3-Flash as a text-and-image model with 320 billion parameters, 18 billion active.
-- dealignai reported full compliance on a harmful-prompt test and a small drop on its own scoring.
+- dealignai reported 320 of 320 harmful prompts answered and a 0.48-point drop on a general-knowledge test, on its own scoring.
 - The editor's 211-tokens-per-second speed test used four H200 chips, not the two-chip hosting estimate.
 
 ## Basically, the facts

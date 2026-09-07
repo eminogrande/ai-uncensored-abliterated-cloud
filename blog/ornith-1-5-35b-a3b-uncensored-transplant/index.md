@@ -3,7 +3,7 @@
 ## TL;DR
 
 - 0xKitkat's Ornith edit adds the changes that make Qwen refuse less onto the Ornith original.
-- The publisher reported 0 of 16 refusals and 4 of 4 ability passes on a compressed build.
+- The publisher reported 0 of 16 refusals by keyword screening, not human review, and 4 of 4 ability passes on a compressed build.
 - The article had no edited-model benchmark showing that Ornith's coding ability survived.
 
 ## Basically, the facts

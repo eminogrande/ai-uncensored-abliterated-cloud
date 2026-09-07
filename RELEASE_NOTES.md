@@ -1,5 +1,9 @@
 # ABLITERATED.cloud website releases
 
+## website-v0.12.4
+
+[Exact numbers in plain-language facts](releases/website-v0.12.4.md).
+
 ## website-v0.12.3
 
 [Plain-language facts and article SEO layer](releases/website-v0.12.3.md).

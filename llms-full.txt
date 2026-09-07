@@ -90,7 +90,7 @@ Articles preserve per-model licenses, publisher measurements, community reports 
   - The reference card reported quick spot checks, not a measured refusal rate or real-world validation.
 - [Why would a translation model refuse? Tencent's Hy-MT2, decensored](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/index.md): model research, 2026-08-30.
   - Tencent's Hy-MT2-30B-A3B is a 33-language translation specialist, not a general chatbot.
-  - The editor reported 0 of 100 refusal-keyword hits versus 100 of 100 on the original, with small measured answer drift.
+  - The editor reported 0 of 100 refusal-keyword hits versus 100 of 100 on the original, with small measured answer drift (KL 0.0276).
   - The full model was 60.14 GB; the article listed a roughly 18.2 GB compressed alternative.
 - [The 118B coding MoE nobody has refused](https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/index.md): model research, 2026-08-30.
   - Laguna S 2.1 holds 118 billion parameters but only uses about 8 billion at a time.
@@ -98,7 +98,7 @@ Articles preserve per-model licenses, publisher measurements, community reports 
   - The uncensored model shipped as 218.99 GiB of 16-bit numbers across 48 files.
 - [The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100](https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/index.md): model research, 2026-08-28.
   - SecureLayer7 published both safeguards against hijacked prompts and models that refuse less.
-  - SecureLayer7 reported AFM refusals falling from 92 of 100 to 3 of 100, with small measured answer drift.
+  - SecureLayer7 reported AFM refusals falling from 92 of 100 to 3 of 100, with small measured answer drift (KL 0.0200).
   - The AFM edit was merged into 16-bit data; independent retests of ability and refusals were missing.
 - [The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?](https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/index.md): model research, 2026-08-28.
   - Velum repackages a Bonsai-family uncensor as tiny 1-bit numbers with an extra speedup helper.
@@ -106,11 +106,11 @@ Articles preserve per-model licenses, publisher measurements, community reports 
   - Velum's card left benchmarks pending, with no published refusal retest of the final 1-bit build.
 - [The 180B abliteration race on the model nobody can serve yet](https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/index.md): model research, 2026-08-27.
   - Qwen described Qwen3.8-Flash-Next as an experimental preview of its planned Qwen4 architecture.
-  - dealignai reported strong refusal reduction, alongside a small drop on a general-knowledge benchmark.
+  - dealignai reported strong refusal reduction, with its general-knowledge score falling from 86.36% to 83.86%.
   - At publication, running qwen4_exp required modified, not-yet-standard software rather than a stable release.
 - [GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320](https://abliterated.cloud/blog/glm-5-3-flash-crack/index.md): model research, 2026-08-26.
   - Zhipu's card describes GLM-5.3-Flash as a text-and-image model with 320 billion parameters, 18 billion active.
-  - dealignai reported full compliance on a harmful-prompt test and a small drop on its own scoring.
+  - dealignai reported 320 of 320 harmful prompts answered and a 0.48-point drop on a general-knowledge test, on its own scoring.
   - The editor's 211-tokens-per-second speed test used four H200 chips, not the two-chip hosting estimate.
 - [The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage](https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/index.md): model research, 2026-08-25.
   - Nemotron 3.5 Lightning combines a memory-efficient reader, a many-specialists design and selective attention.
@@ -118,7 +118,7 @@ Articles preserve per-model licenses, publisher measurements, community reports 
   - The roughly 22 GB compressed twin kept the memory-reader parts and the shortcut head in 16-bit.
 - [One base, three uncensors: the Ornith-1.5 task-vector transplant](https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/index.md): model research, 2026-08-20.
   - 0xKitkat's Ornith edit adds the changes that make Qwen refuse less onto the Ornith original.
-  - The publisher reported 0 of 16 refusals and 4 of 4 ability passes on a compressed build.
+  - The publisher reported 0 of 16 refusals by keyword screening, not human review, and 4 of 4 ability passes on a compressed build.
   - The article had no edited-model benchmark showing that Ornith's coding ability survived.
 - [The lossless aggressive: Qwen3.8 27B Uncensored FP8](https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/index.md): model research, 2026-08-19.
   - OrcaRouter's Qwen3.8 edit uses compressed numbers and keeps the image-reading part at full precision.
@@ -126,7 +126,7 @@ Articles preserve per-model licenses, publisher measurements, community reports 
   - The article had no measured refusal rate or ability comparison with the original model.
 - [Small uncensored agents: what a 4.5B Heretic distill is for](https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/index.md): model research, 2026-08-17.
   - insraq's Heretic edit builds on Empero's condensed Qwen3.8 in a Qwen3.5-4B design.
-  - The publisher reported 6 of 100 refusals versus 99 of 100, with small measured answer drift.
+  - The publisher reported 6 of 100 refusals versus 99 of 100, with small measured answer drift (KL 0.0167).
   - Empero's benchmark scores describe the condensed teacher model, not the modified checkpoint.
 - [What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/index.md): model research, 2026-08-17.
   - Muse-Glimmer Aggressive loosens the training drift guard from 1.0 to 0.5.
@@ -139,7 +139,7 @@ Articles preserve per-model licenses, publisher measurements, community reports 
 - [The first abliterated diffusion LLM: 1,000+ tokens a second on one GPU](https://abliterated.cloud/blog/diffusiongemma-26b-e38-abliterated-nvfp4/index.md): model research, 2026-08-16.
   - Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in 16-bit.
   - Goodoldjam reported 0 of 402 target refusals and 0 of 249 harmless false refusals on its own prompt sets.
-  - Goodoldjam reported about 1,053 tokens per second on a top-end chip; the smaller chip's speed was unverified.
+  - Goodoldjam reported about 1,053 tokens per second combined across 8 parallel requests on a top-end chip; the smaller chip's speed was unverified.
 - [The 48-hour abliteration race](https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/index.md): model research, 2026-08-16.
   - Huihui's card says the Qwen3.8 edit left the first 15 layers, image-reading part and shortcut untouched.
   - Huihui published the edit and its easy-to-run file on 16 August 2026.
