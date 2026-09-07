@@ -10,7 +10,7 @@
 
 **A 397B model that activates about 17B**
 
-Basically, Ornith 397B activates roughly 17 billion parameters per word, but the compressed build still exceeds 195 GiB.
+Basically, Ornith 397B activates roughly 17 billion parameters per token, but the compressed build still exceeds 195 GiB.
 
 **Why upstream Ornith attracted attention**
 

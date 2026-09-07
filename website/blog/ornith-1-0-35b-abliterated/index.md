@@ -14,7 +14,7 @@ Basically, DeepReinforce trained Ornith to propose a problem-solving scaffold an
 
 **A middleweight MoE with a large address book**
 
-Basically, Ornith 35B stores over 35 billion full-precision parameters and wakes eight specialists per word.
+Basically, Ornith 35B stores over 35 billion 16-bit parameters and wakes eight specialists per token.
 
 **The first edit was not good enough**
 

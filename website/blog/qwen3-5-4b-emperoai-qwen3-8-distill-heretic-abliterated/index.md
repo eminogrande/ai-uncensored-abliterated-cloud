@@ -10,7 +10,7 @@
 
 **Small is the point**
 
-Basically, the insraq 4.5B build contains about 9.1 GB of full-precision numbers.
+Basically, the insraq 4.5B build contains about 9.1 GB of 16-bit numbers.
 
 **A 2.4-trillion-parameter teacher, squeezed into 4.5B**
 

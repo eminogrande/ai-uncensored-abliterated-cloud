@@ -139,7 +139,7 @@ th, td { text-align: left; border: 1px solid var(--line); padding: 10px; }
       <div><dt>Quantization</dt><dd>W4A16 · group 128</dd></div><div><dt>License</dt><dd>MIT</dd></div>
     </dl>
     <div class="article-body">
-      <h2 id="a-397b-model-that-activates-about-17b">A 397B model that activates about 17B</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Ornith 397B activates roughly 17 billion parameters per word, but the compressed build still exceeds 195 GiB.</p></aside><!-- /READING-BASICALLY -->
+      <h2 id="a-397b-model-that-activates-about-17b">A 397B model that activates about 17B</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Ornith 397B activates roughly 17 billion parameters per token, but the compressed build still exceeds 195 GiB.</p></aside><!-- /READING-BASICALLY -->
       <p>Upstream Ornith inherits Qwen3.5’s 397B-A17B mixture-of-experts design. Its 60 language layers contain 512 experts; ten routed experts plus one shared expert participate in each token. Forty-five layers use Gated DeltaNet-style linear attention and fifteen use full attention. A 27-layer vision tower supplies image and video input.</p>
       <p>The sparse routing controls computation, not storage. The upstream model contains 396,802,360,816 BF16 parameters. Even after aggressive conversion, the exact derivative in our catalog occupies 210.1 GB in decimal units, or about 195.7 GiB, across 47 Safetensors shards according to the <a href="https://huggingface.co/api/models/cebeuq/Ornith-1.0-397B-abliterated-W4A16">Hugging Face API</a>.</p>
 

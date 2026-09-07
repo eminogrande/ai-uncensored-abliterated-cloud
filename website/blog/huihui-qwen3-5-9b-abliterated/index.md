@@ -2,7 +2,7 @@
 
 ## TL;DR
 
-- Huihui-Qwen3.5-9B has roughly 19.3 GB of full-precision data and an image reader.
+- Huihui-Qwen3.5-9B has roughly 19.3 GB of 16-bit data and an image reader.
 - The article counted 58 downstream repos, including format conversions and further retraining.
 - Huihui's proof-of-concept card included no post-edit benchmark results.
 

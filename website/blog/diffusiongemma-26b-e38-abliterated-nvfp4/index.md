@@ -2,9 +2,9 @@
 
 ## TL;DR
 
-- Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in full precision.
+- Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in 16-bit.
 - Goodoldjam reported 0 of 402 target refusals and 0 of 249 harmless false refusals on its own prompt sets.
-- Goodoldjam reported about 1,053 words per second on a top-end chip; the smaller chip's speed was unverified.
+- Goodoldjam reported about 1,053 tokens per second on a top-end chip; the smaller chip's speed was unverified.
 
 ## Basically, the facts
 
@@ -14,7 +14,7 @@ Basically, Goodoldjam's E38 card reports measurements but does not fully explain
 
 **The NVFP4 quant is the actual story**
 
-Basically, Goodoldjam reported about 1,053 words per second total on a top-end workstation chip.
+Basically, Goodoldjam reported about 1,053 tokens per second total on a top-end workstation chip.
 
 **The measurements on refusal**
 
@@ -26,7 +26,7 @@ Basically, Goodoldjam's card says project funding supports GPU compute and large
 
 **The RTX 5090 question**
 
-Basically, Goodoldjam's 1,000-plus words-per-second target on the smaller chip had not been validated for this build.
+Basically, Goodoldjam's 1,000-plus tokens-per-second target on the smaller chip had not been validated for this build.
 
 **How to run it**
 
@@ -34,7 +34,7 @@ Basically, the DiffusionGemma run instructions target one serving tool with cust
 
 **How we treat it**
 
-Basically, DiffusionGemma's compressed build keeps the 20 edited internal parts in exact full precision.
+Basically, DiffusionGemma's compressed build keeps the 20 edited internal parts in their exact 16-bit form.
 
 **The idea, in plain words**
 

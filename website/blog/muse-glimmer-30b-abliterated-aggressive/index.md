@@ -22,7 +22,7 @@ Basically, Muse-Glimmer's aggressive card did not recheck whether the model stay
 
 **A mirror upload, with the quants living elsewhere**
 
-Basically, SHS-Lab's Muse-Glimmer mirror shipped full-precision files; the compressed files were in jorkle's repo.
+Basically, SHS-Lab's Muse-Glimmer mirror shipped 16-bit files; the compressed files were in jorkle's repo.
 
 **How we treat it**
 

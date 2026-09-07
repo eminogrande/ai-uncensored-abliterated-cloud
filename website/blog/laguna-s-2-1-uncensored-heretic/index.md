@@ -4,7 +4,7 @@
 
 - Laguna S 2.1 holds 118 billion parameters but only uses about 8 billion at a time.
 - llmfan46 reported 6 refusals in 100, but a mislabeled comparison model clouds the result.
-- The uncensored model shipped as 218.99 GiB of full-precision numbers across 48 files.
+- The uncensored model shipped as 218.99 GiB of 16-bit numbers across 48 files.
 
 ## Basically, the facts
 
@@ -22,7 +22,7 @@ Basically, Laguna's 8B active parameters still require storing a 118B-parameter 
 
 **How to run it**
 
-Basically, llmfan46's Laguna uncensor shipped 48 full-precision files, not a working easy-to-run release.
+Basically, llmfan46's Laguna uncensor shipped 48 16-bit files, not a working easy-to-run release.
 
 **The creator: llmfan46**
 

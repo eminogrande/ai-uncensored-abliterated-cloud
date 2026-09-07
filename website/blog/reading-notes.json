@@ -77,7 +77,7 @@
    },
    {
     "heading": "The creator: Andreas Petersson",
-    "statement": "Andreas Petersson shipped Vision-Exp in full-precision, compressed and ultra-compact file formats.",
+    "statement": "Andreas Petersson shipped Vision-Exp in 16-bit, compressed and ultra-compact file formats.",
     "evidence": "He shipped the reference-native FP8, a reference GGUF, a routed IQ2 profile"
    },
    {
@@ -125,7 +125,7 @@
   "tldr": [
    "Laguna S 2.1 holds 118 billion parameters but only uses about 8 billion at a time.",
    "llmfan46 reported 6 refusals in 100, but a mislabeled comparison model clouds the result.",
-   "The uncensored model shipped as 218.99 GiB of full-precision numbers across 48 files."
+   "The uncensored model shipped as 218.99 GiB of 16-bit numbers across 48 files."
   ],
   "sections": [
    {
@@ -145,7 +145,7 @@
    },
    {
     "heading": "How to run it",
-    "statement": "llmfan46's Laguna uncensor shipped 48 full-precision files, not a working easy-to-run release.",
+    "statement": "llmfan46's Laguna uncensor shipped 48 16-bit files, not a working easy-to-run release.",
     "evidence": "ships as BF16: 218.99 GiB across 48 safetensors shards"
    },
    {
@@ -170,7 +170,7 @@
   "tldr": [
    "SecureLayer7 published both safeguards against hijacked prompts and models that refuse less.",
    "SecureLayer7 reported AFM refusals falling from 92 of 100 to 3 of 100, with small measured answer drift.",
-   "The AFM edit was merged into full-precision data; independent retests of ability and refusals were missing."
+   "The AFM edit was merged into 16-bit data; independent retests of ability and refusals were missing."
   ],
   "sections": [
    {
@@ -213,7 +213,7 @@
  "velum-unbound-1bit-uncensor": {
   "tldr": [
    "Velum repackages a Bonsai-family uncensor as tiny 1-bit numbers with an extra speedup helper.",
-   "s3nh reported 6 of 100 refusals on the full-precision middle step, not on the final 1-bit pack.",
+   "s3nh reported 6 of 100 refusals on the 16-bit middle step, not on the final 1-bit pack.",
    "Velum's card left benchmarks pending, with no published refusal retest of the final 1-bit build."
   ],
   "sections": [
@@ -229,7 +229,7 @@
    },
    {
     "heading": "The edit happened in FP16. The squeeze came after.",
-    "statement": "Velum's 1-bit pack had no published refusal retest; the 6-of-100 result belongs to the full-precision step.",
+    "statement": "Velum's 1-bit pack had no published refusal retest; the 6-of-100 result belongs to the 16-bit step.",
     "evidence": "Nobody has published a refusal re-test on the Q1_0 pack; the Velum card lists every benchmark as TBD. The 6/100 belongs to the FP16 edit, not to this artifact."
    },
    {
@@ -273,12 +273,12 @@
    },
    {
     "heading": "The n-gram table is the weird part of the size math",
-    "statement": "the Qwen compressed build kept its large word-lookup table in full precision, taking up 95.4 GiB.",
+    "statement": "the Qwen compressed build kept its large token-lookup table in 16-bit, taking up 95.4 GiB.",
     "evidence": "the editor chose to keep the table in BF16 (95.4 GiB) rather than quantize it"
    },
    {
     "heading": "How to run it",
-    "statement": "dealignai's Qwen serving recipe moved the large word-lookup table off the graphics cards to the main processor.",
+    "statement": "dealignai's Qwen serving recipe moved the large token-lookup table off the graphics cards to the main processor.",
     "evidence": "Set `VLLM_PLE_CPU_OFFLOAD=1` for the n-gram table"
    },
    {
@@ -288,7 +288,7 @@
    },
    {
     "heading": "The idea, in plain words",
-    "statement": "Qwen's word-lookup table looks up short word pairs and triples rather than doing a standard multiply.",
+    "statement": "Qwen's token-lookup table looks up short token pairs and triples rather than doing a standard multiply.",
     "evidence": "it is a giant dictionary keyed by short token pairs and triples at layer 2"
    }
   ]
@@ -327,7 +327,7 @@
    },
    {
     "heading": "The idea, in plain words",
-    "statement": "GLM's shortcut guesses the word that comes next, so the main model only has to check it.",
+    "statement": "GLM's shortcut guesses the next token, so the main model only has to check it.",
     "evidence": "A small extra \"draft head\" proposes the token that comes after, so on the next step the main model mostly verifies instead of generating from scratch."
    }
   ]
@@ -336,7 +336,7 @@
   "tldr": [
    "Nemotron 3.5 Lightning combines a memory-efficient reader, a many-specialists design and selective attention.",
    "Darkstar reported 200 of 200 harmful-prompt answers and 0 of 83 safe over-refusals on both builds.",
-   "The roughly 22 GB compressed twin kept the memory-reader parts and the shortcut head in full precision."
+   "The roughly 22 GB compressed twin kept the memory-reader parts and the shortcut head in 16-bit."
   ],
   "sections": [
    {
@@ -352,7 +352,7 @@
    },
    {
     "heading": "The NVFP4 twin: what stays protected",
-    "statement": "Darkstar's compressed twin squeezed the specialist parts while keeping the memory-reader parts in full precision.",
+    "statement": "Darkstar's compressed twin squeezed the specialist parts while keeping the memory-reader parts in 16-bit.",
     "evidence": "quantizes only the 5,934 expert up/down projections to W4A16-NVFP4 while keeping Mamba/SSM tensors, norms, embeddings, lm_head and MTP head in BF16."
    },
    {
@@ -367,7 +367,7 @@
    },
    {
     "heading": "The idea, in plain words",
-    "statement": "Mamba-2 compresses the conversation history into a fixed-size note that updates as new words arrive.",
+    "statement": "Mamba-2 compresses the conversation history into a fixed-size note that updates as new tokens arrive.",
     "evidence": "a Mamba-2 state-space block compresses history into a fixed-size internal state and updates it as it goes"
    }
   ]
@@ -469,7 +469,7 @@
   "sections": [
    {
     "heading": "Small is the point",
-    "statement": "the insraq 4.5B build contains about 9.1 GB of full-precision numbers.",
+    "statement": "the insraq 4.5B build contains about 9.1 GB of 16-bit numbers.",
     "evidence": "4,539,265,536 parameters, about 9.1 GB of BF16 weights"
    },
    {
@@ -533,7 +533,7 @@
    },
    {
     "heading": "A mirror upload, with the quants living elsewhere",
-    "statement": "SHS-Lab's Muse-Glimmer mirror shipped full-precision files; the compressed files were in jorkle's repo.",
+    "statement": "SHS-Lab's Muse-Glimmer mirror shipped 16-bit files; the compressed files were in jorkle's repo.",
     "evidence": "The SHS-Lab repo ships only the two BF16 shards (~56 GB); the GGUF quants"
    },
    {
@@ -599,9 +599,9 @@
  },
  "diffusiongemma-26b-e38-abliterated-nvfp4": {
   "tldr": [
-   "Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in full precision.",
+   "Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in 16-bit.",
    "Goodoldjam reported 0 of 402 target refusals and 0 of 249 harmless false refusals on its own prompt sets.",
-   "Goodoldjam reported about 1,053 words per second on a top-end chip; the smaller chip's speed was unverified."
+   "Goodoldjam reported about 1,053 tokens per second on a top-end chip; the smaller chip's speed was unverified."
   ],
   "sections": [
    {
@@ -611,7 +611,7 @@
    },
    {
     "heading": "The NVFP4 quant is the actual story",
-    "statement": "Goodoldjam reported about 1,053 words per second total on a top-end workstation chip.",
+    "statement": "Goodoldjam reported about 1,053 tokens per second total on a top-end workstation chip.",
     "evidence": "1,053.64 tok/s aggregate at concurrency 8"
    },
    {
@@ -626,7 +626,7 @@
    },
    {
     "heading": "The RTX 5090 question",
-    "statement": "Goodoldjam's 1,000-plus words-per-second target on the smaller chip had not been validated for this build.",
+    "statement": "Goodoldjam's 1,000-plus tokens-per-second target on the smaller chip had not been validated for this build.",
     "evidence": "\"1,000+ tok/s on a 5090\" is described as a plausible experimental target, explicitly not yet validated on this checkpoint"
    },
    {
@@ -636,7 +636,7 @@
    },
    {
     "heading": "How we treat it",
-    "statement": "DiffusionGemma's compressed build keeps the 20 edited internal parts in exact full precision.",
+    "statement": "DiffusionGemma's compressed build keeps the 20 edited internal parts in their exact 16-bit form.",
     "evidence": "20 abliteration-modified tensors preserved in exact BF16"
    },
    {
@@ -702,7 +702,7 @@
    },
    {
     "heading": "The idea, in plain words",
-    "statement": "Qwen3.8's multi-token prediction guesses several words ahead in a single step.",
+    "statement": "Qwen3.8's multi-token prediction guesses several tokens ahead in a single step.",
     "evidence": "Qwen3.8 adds multi-token prediction (MTP): it guesses several tokens ahead in one step"
    }
   ]
@@ -900,7 +900,7 @@
   "sections": [
    {
     "heading": "Life one: Qwen builds the skeleton",
-    "statement": "Qwythos starts with a non-sparse Qwen3.5-9B design and takes roughly 19.3 GB of full-precision data.",
+    "statement": "Qwythos starts with a non-sparse Qwen3.5-9B design and takes roughly 19.3 GB of 16-bit data.",
     "evidence": "Qwythos begins as dense Qwen3.5-9B architecture, then receives a full-parameter reasoning fine-tune from Empero, then goes through huihui-ai’s refusal-reduction process. The exact child has 9,653,104,368 BF16 parameters and occupies roughly 19.3 GB."
    },
    {
@@ -931,7 +931,7 @@
    },
    {
     "heading": "Why this is our inexpensive route",
-    "statement": "the Qwythos article paired the full-precision model with one L40S chip for experimentation.",
+    "statement": "the Qwythos article paired the 16-bit model with one L40S chip for experimentation.",
     "evidence": "Our prepared profile pairs it with one L40S and a 131K context, making it the sensible route for experimentation.",
     "evidence_format": "html-text"
    },
@@ -981,7 +981,7 @@
    },
    {
     "heading": "The idea, in plain words",
-    "statement": "Qwen3.6 wakes eight of its specialized parts plus one shared part for each word.",
+    "statement": "Qwen3.6 wakes eight of its specialized parts plus one shared part for each token.",
     "evidence": "for every token the model wakes up just eight of them plus one shared expert"
    }
   ]
@@ -995,7 +995,7 @@
   "sections": [
    {
     "heading": "A 397B model that activates about 17B",
-    "statement": "Ornith 397B activates roughly 17 billion parameters per word, but the compressed build still exceeds 195 GiB.",
+    "statement": "Ornith 397B activates roughly 17 billion parameters per token, but the compressed build still exceeds 195 GiB.",
     "evidence": "Upstream Ornith contains 396,802,360,816 BF16 parameters, with roughly 17B active per token. The W4A16 derivative still occupies 210.1 GB decimal, or about 195.7 GiB, in 47 shards."
    },
    {
@@ -1050,7 +1050,7 @@
    },
    {
     "heading": "A middleweight MoE with a large address book",
-    "statement": "Ornith 35B stores over 35 billion full-precision parameters and wakes eight specialists per word.",
+    "statement": "Ornith 35B stores over 35 billion 16-bit parameters and wakes eight specialists per token.",
     "evidence": "The model contains 35,107,181,936 BF16 parameters, 40 layers, 256 routed experts, eight selected experts per token and a shared expert."
    },
    {
@@ -1083,7 +1083,7 @@
  },
  "huihui-qwen3-6-27b-abliterated": {
   "tldr": [
-   "Huihui-Qwen3.6-27B is a non-sparse text-and-image model with about 55.6 GB of full-precision data.",
+   "Huihui-Qwen3.6-27B is a non-sparse text-and-image model with about 55.6 GB of 16-bit data.",
    "The article recorded 18,760 repository downloads on 16 August 2026.",
    "Reports were mixed, and Huihui had not published a post-edit benchmark rerun."
   ],
@@ -1096,7 +1096,7 @@
    },
    {
     "heading": "What is under the hood",
-    "statement": "Huihui-Qwen3.6-27B is non-sparse, with 64 layers and roughly 55.6 GB of full-precision data.",
+    "statement": "Huihui-Qwen3.6-27B is non-sparse, with 64 layers and roughly 55.6 GB of 16-bit data.",
     "evidence": "The checkpoint is dense: 27,781,427,952 BF16 parameters, 64 layers, 5,120-wide hidden dimension, laid out as sixteen repetitions of three Gated DeltaNet blocks followed by one Gated Attention block. It is natively multimodal (vision encoder, image and video tokens, thinking and non-thinking modes), carries a 262,144-token native context, and occupies about 55.6 GB in BF16."
    },
    {
@@ -1128,7 +1128,7 @@
  },
  "huihui-qwen3-5-9b-abliterated": {
   "tldr": [
-   "Huihui-Qwen3.5-9B has roughly 19.3 GB of full-precision data and an image reader.",
+   "Huihui-Qwen3.5-9B has roughly 19.3 GB of 16-bit data and an image reader.",
    "The article counted 58 downstream repos, including format conversions and further retraining.",
    "Huihui's proof-of-concept card included no post-edit benchmark results."
   ],

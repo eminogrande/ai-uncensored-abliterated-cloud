@@ -30,7 +30,7 @@ Basically, dealignai credited @jordanschenck for compute used on the GLM-5.3-Fla
 
 **The idea, in plain words**
 
-Basically, GLM's shortcut guesses the word that comes next, so the main model only has to check it.
+Basically, GLM's shortcut guesses the next token, so the main model only has to check it.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 26 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/glm-5-3-flash-crack/_

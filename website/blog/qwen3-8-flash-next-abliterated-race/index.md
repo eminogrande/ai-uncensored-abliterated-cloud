@@ -22,11 +22,11 @@ Basically, Qwen3.8-Flash-Next needed modified, not-yet-standard software to run 
 
 **The n-gram table is the weird part of the size math**
 
-Basically, the Qwen compressed build kept its large word-lookup table in full precision, taking up 95.4 GiB.
+Basically, the Qwen compressed build kept its large token-lookup table in 16-bit, taking up 95.4 GiB.
 
 **How to run it**
 
-Basically, dealignai's Qwen serving recipe moved the large word-lookup table off the graphics cards to the main processor.
+Basically, dealignai's Qwen serving recipe moved the large token-lookup table off the graphics cards to the main processor.
 
 **The creator: dealignai**
 
@@ -34,7 +34,7 @@ Basically, dealignai describes its CRACK releases as permanent uncensoring, not 
 
 **The idea, in plain words**
 
-Basically, Qwen's word-lookup table looks up short word pairs and triples rather than doing a standard multiply.
+Basically, Qwen's token-lookup table looks up short token pairs and triples rather than doing a standard multiply.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 27 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/_

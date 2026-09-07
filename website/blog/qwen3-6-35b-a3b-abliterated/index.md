@@ -34,7 +34,7 @@ Basically, Huihui's Qwen3.6 publisher recommends controlled research use because
 
 **The idea, in plain words**
 
-Basically, Qwen3.6 wakes eight of its specialized parts plus one shared part for each word.
+Basically, Qwen3.6 wakes eight of its specialized parts plus one shared part for each token.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 18 July 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/_

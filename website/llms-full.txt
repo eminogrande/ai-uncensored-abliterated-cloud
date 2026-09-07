@@ -95,14 +95,14 @@ Articles preserve per-model licenses, publisher measurements, community reports 
 - [The 118B coding MoE nobody has refused](https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/index.md): model research, 2026-08-30.
   - Laguna S 2.1 holds 118 billion parameters but only uses about 8 billion at a time.
   - llmfan46 reported 6 refusals in 100, but a mislabeled comparison model clouds the result.
-  - The uncensored model shipped as 218.99 GiB of full-precision numbers across 48 files.
+  - The uncensored model shipped as 218.99 GiB of 16-bit numbers across 48 files.
 - [The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100](https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/index.md): model research, 2026-08-28.
   - SecureLayer7 published both safeguards against hijacked prompts and models that refuse less.
   - SecureLayer7 reported AFM refusals falling from 92 of 100 to 3 of 100, with small measured answer drift.
-  - The AFM edit was merged into full-precision data; independent retests of ability and refusals were missing.
+  - The AFM edit was merged into 16-bit data; independent retests of ability and refusals were missing.
 - [The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?](https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/index.md): model research, 2026-08-28.
   - Velum repackages a Bonsai-family uncensor as tiny 1-bit numbers with an extra speedup helper.
-  - s3nh reported 6 of 100 refusals on the full-precision middle step, not on the final 1-bit pack.
+  - s3nh reported 6 of 100 refusals on the 16-bit middle step, not on the final 1-bit pack.
   - Velum's card left benchmarks pending, with no published refusal retest of the final 1-bit build.
 - [The 180B abliteration race on the model nobody can serve yet](https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/index.md): model research, 2026-08-27.
   - Qwen described Qwen3.8-Flash-Next as an experimental preview of its planned Qwen4 architecture.
@@ -115,7 +115,7 @@ Articles preserve per-model licenses, publisher measurements, community reports 
 - [The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage](https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/index.md): model research, 2026-08-25.
   - Nemotron 3.5 Lightning combines a memory-efficient reader, a many-specialists design and selective attention.
   - Darkstar reported 200 of 200 harmful-prompt answers and 0 of 83 safe over-refusals on both builds.
-  - The roughly 22 GB compressed twin kept the memory-reader parts and the shortcut head in full precision.
+  - The roughly 22 GB compressed twin kept the memory-reader parts and the shortcut head in 16-bit.
 - [One base, three uncensors: the Ornith-1.5 task-vector transplant](https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/index.md): model research, 2026-08-20.
   - 0xKitkat's Ornith edit adds the changes that make Qwen refuse less onto the Ornith original.
   - The publisher reported 0 of 16 refusals and 4 of 4 ability passes on a compressed build.
@@ -137,9 +137,9 @@ Articles preserve per-model licenses, publisher measurements, community reports 
   - The article estimated roughly eleven H200 chips just to hold the compressed data.
   - The copied SHS-Lab refusal-removal and video claims were not verified for this upload.
 - [The first abliterated diffusion LLM: 1,000+ tokens a second on one GPU](https://abliterated.cloud/blog/diffusiongemma-26b-e38-abliterated-nvfp4/index.md): model research, 2026-08-16.
-  - Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in full precision.
+  - Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in 16-bit.
   - Goodoldjam reported 0 of 402 target refusals and 0 of 249 harmless false refusals on its own prompt sets.
-  - Goodoldjam reported about 1,053 words per second on a top-end chip; the smaller chip's speed was unverified.
+  - Goodoldjam reported about 1,053 tokens per second on a top-end chip; the smaller chip's speed was unverified.
 - [The 48-hour abliteration race](https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/index.md): model research, 2026-08-16.
   - Huihui's card says the Qwen3.8 edit left the first 15 layers, image-reading part and shortcut untouched.
   - Huihui published the edit and its easy-to-run file on 16 August 2026.
@@ -177,11 +177,11 @@ Articles preserve per-model licenses, publisher measurements, community reports 
   - YuYu1015 replaced the first version after reporting it damaged Ornith's reasoning.
   - YuYu1015 reported roughly 5% hard refusals for its corrected Ornith 35B on its own tests.
 - [The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in](https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/index.md): model research, 2026-04-23.
-  - Huihui-Qwen3.6-27B is a non-sparse text-and-image model with about 55.6 GB of full-precision data.
+  - Huihui-Qwen3.6-27B is a non-sparse text-and-image model with about 55.6 GB of 16-bit data.
   - The article recorded 18,760 repository downloads on 16 August 2026.
   - Reports were mixed, and Huihui had not published a post-edit benchmark rerun.
 - [The quiet classic: how Huihui-Qwen3.5-9B-abliterated became the small-model default](https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/index.md): model research, 2026-03-09.
-  - Huihui-Qwen3.5-9B has roughly 19.3 GB of full-precision data and an image reader.
+  - Huihui-Qwen3.5-9B has roughly 19.3 GB of 16-bit data and an image reader.
   - The article counted 58 downstream repos, including format conversions and further retraining.
   - Huihui's proof-of-concept card included no post-edit benchmark results.
 - [The MIT vision sleeper that resurfaced in August](https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/index.md): model research, 2025-12-09.

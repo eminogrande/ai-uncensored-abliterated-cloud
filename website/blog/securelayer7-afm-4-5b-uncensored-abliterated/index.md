@@ -4,7 +4,7 @@
 
 - SecureLayer7 published both safeguards against hijacked prompts and models that refuse less.
 - SecureLayer7 reported AFM refusals falling from 92 of 100 to 3 of 100, with small measured answer drift.
-- The AFM edit was merged into full-precision data; independent retests of ability and refusals were missing.
+- The AFM edit was merged into 16-bit data; independent retests of ability and refusals were missing.
 
 ## Basically, the facts
 

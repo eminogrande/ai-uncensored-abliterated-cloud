@@ -2,7 +2,7 @@
 
 ## TL;DR
 
-- Huihui-Qwen3.6-27B is a non-sparse text-and-image model with about 55.6 GB of full-precision data.
+- Huihui-Qwen3.6-27B is a non-sparse text-and-image model with about 55.6 GB of 16-bit data.
 - The article recorded 18,760 repository downloads on 16 August 2026.
 - Reports were mixed, and Huihui had not published a post-edit benchmark rerun.
 
@@ -14,7 +14,7 @@ Basically, Huihui-Qwen3.6-27B had 18,760 repository downloads in the article's A
 
 **What is under the hood**
 
-Basically, Huihui-Qwen3.6-27B is non-sparse, with 64 layers and roughly 55.6 GB of full-precision data.
+Basically, Huihui-Qwen3.6-27B is non-sparse, with 64 layers and roughly 55.6 GB of 16-bit data.
 
 **What the card promised, what users report**
 

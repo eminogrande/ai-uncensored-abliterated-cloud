@@ -26,7 +26,7 @@ Basically, the Vision-Exp Basic128 card reports about 23.4 tokens per second on 
 
 **The creator: Andreas Petersson**
 
-Basically, Andreas Petersson shipped Vision-Exp in full-precision, compressed and ultra-compact file formats.
+Basically, Andreas Petersson shipped Vision-Exp in 16-bit, compressed and ultra-compact file formats.
 
 **The idea, in plain words**
 

@@ -3,7 +3,7 @@
 ## TL;DR
 
 - Velum repackages a Bonsai-family uncensor as tiny 1-bit numbers with an extra speedup helper.
-- s3nh reported 6 of 100 refusals on the full-precision middle step, not on the final 1-bit pack.
+- s3nh reported 6 of 100 refusals on the 16-bit middle step, not on the final 1-bit pack.
 - Velum's card left benchmarks pending, with no published refusal retest of the final 1-bit build.
 
 ## Basically, the facts
@@ -18,7 +18,7 @@ Basically, Prism ML claimed about 1.1 bits stored per value for Bonsai; Velum in
 
 **The edit happened in FP16. The squeeze came after.**
 
-Basically, Velum's 1-bit pack had no published refusal retest; the 6-of-100 result belongs to the full-precision step.
+Basically, Velum's 1-bit pack had no published refusal retest; the 6-of-100 result belongs to the 16-bit step.
 
 **How to run it**
 

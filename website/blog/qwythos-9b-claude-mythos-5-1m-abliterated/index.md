@@ -10,7 +10,7 @@
 
 **Life one: Qwen builds the skeleton**
 
-Basically, Qwythos starts with a non-sparse Qwen3.5-9B design and takes roughly 19.3 GB of full-precision data.
+Basically, Qwythos starts with a non-sparse Qwen3.5-9B design and takes roughly 19.3 GB of 16-bit data.
 
 **Life two: Empero changes the behavior**
 
@@ -34,7 +34,7 @@ Basically, Qwythos combines Qwen architecture, Empero's reasoning fine-tune and 
 
 **Why this is our inexpensive route**
 
-Basically, the Qwythos article paired the full-precision model with one L40S chip for experimentation.
+Basically, the Qwythos article paired the 16-bit model with one L40S chip for experimentation.
 
 **The idea, in plain words**
 
