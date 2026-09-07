@@ -4,7 +4,7 @@
 
 - Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in 16-bit.
 - Goodoldjam reported 0 of 402 target refusals and 0 of 249 harmless false refusals on its own prompt sets.
-- Goodoldjam reported about 1,053 tokens per second on a top-end chip; the smaller chip's speed was unverified.
+- Goodoldjam reported about 1,053 tokens per second combined across 8 parallel requests on a top-end chip; the smaller chip's speed was unverified.
 
 ## Basically, the facts
 
@@ -14,7 +14,7 @@ Basically, Goodoldjam's E38 card reports measurements but does not fully explain
 
 **The NVFP4 quant is the actual story**
 
-Basically, Goodoldjam reported about 1,053 tokens per second total on a top-end workstation chip.
+Basically, Goodoldjam reported about 1,053 tokens per second combined across 8 parallel requests on a top-end workstation chip.
 
 **The measurements on refusal**
 

@@ -14,7 +14,7 @@ Basically, Velum repackaged tommytracx's 1-bit uncensor with a speedup helper in
 
 **Why a 1-bit model is the right vehicle for this**
 
-Basically, Prism ML claimed about 1.1 bits stored per value for Bonsai; Velum inherited that tiny format.
+Basically, Prism ML claimed a true 1.125 bits stored per value for Bonsai; Velum inherited that tiny format.
 
 **The edit happened in FP16. The squeeze came after.**
 

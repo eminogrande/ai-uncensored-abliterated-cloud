@@ -3,6 +3,15 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## [website-v0.12.4] - 2026-09-07
+
+### Exact numbers in plain-language facts
+
+- Restore measured values a second truth review found softened: aggregate
+  throughput across 8 parallel requests, keyword-screened refusal counts,
+  1.125 bits per weight, benchmark deltas (86.36% to 83.86%, 0.48 points),
+  KL drift values and the 256K context claim. Wording stays plain; evidence unchanged.
+
 ## [website-v0.12.3] - 2026-09-07
 
 ### Plain-language facts and article SEO layer
