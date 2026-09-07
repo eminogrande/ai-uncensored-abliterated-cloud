@@ -76,6 +76,11 @@ time, .article-meta { color: var(--muted); font-size: 17px; }
 .article-body h3 { margin-top: 32px; }
 .article-body a, .article-repository { overflow-wrap: anywhere; }
 .article-callout, .article-learn { padding: 22px; border-left: 3px solid var(--accent); background: var(--surface); margin: 28px 0; }
+.article-toc { margin: 0 0 28px; font-size: 17px; }
+.article-toc strong { display: block; margin-bottom: 6px; }
+.article-toc ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 32px; }
+.article-toc li { margin-bottom: 6px; break-inside: avoid; }
+.article-body h2[id] { scroll-margin-top: 24px; }
 .article-callout strong, .article-learn strong { display: block; margin-bottom: 8px; }
 .article-callout p, .article-learn p { margin: 0; }
 .article-source-list { border-top: 1px solid var(--line); padding-top: 24px; }
@@ -112,4 +117,5 @@ th, td { text-align: left; border: 1px solid var(--line); padding: 10px; }
   .status-facts div { grid-template-columns: 1fr; gap: 4px; }
   .status-panel, .archive-notice { padding: 16px; }
   .article-shell { padding-top: 20px; }
+  .article-toc ol { columns: 1; }
 }

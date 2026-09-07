@@ -2,9 +2,9 @@
 
 ## TL;DR
 
-- Nemotron 3.5 Lightning combines Mamba-2, mixture-of-experts layers and sparse attention.
-- Darkstar reported 200/200 harmful-prompt compliance and 0/83 safe over-refusals on both builds.
-- The roughly 22 GB NVFP4 twin kept Mamba tensors and the MTP head in BF16.
+- Nemotron 3.5 Lightning combines a memory-efficient reader, a many-specialists design and selective attention.
+- Darkstar reported 200 of 200 harmful-prompt answers and 0 of 83 safe over-refusals on both builds.
+- The roughly 22 GB compressed twin kept the memory-reader parts and the shortcut head in 16-bit.
 
 ## Basically, the facts
 
@@ -14,24 +14,27 @@ Basically, NVIDIA positioned Nemotron 3.5 Lightning for agent tool calls, valida
 
 **What a hybrid means for abliteration**
 
-Basically, Darkstar's edit contract reports refusal-direction removal from 3,126 Nemotron tensors.
+Basically, Darkstar's edit reports removing a refusal pattern from 3,126 of the model's internal parts.
 
 **The NVFP4 twin: what stays protected**
 
-Basically, Darkstar's NVFP4 twin quantized expert projections while keeping Mamba tensors in BF16.
+Basically, Darkstar's compressed twin squeezed the specialist parts while keeping the memory-reader parts in 16-bit.
 
 **How to run it**
 
-Basically, The Darkstar Nemotron article lists a roughly 22 GB NVFP4 build for single-GPU use.
+Basically, the Darkstar Nemotron article lists a roughly 22 GB compressed build for use on one graphics card.
 
 **The creator: HangGlidersRule**
 
-Basically, HangGlidersRule's model-forge documents pinned recipes and validators for Darkstar releases.
+Basically, HangGlidersRule's build documents fixed steps and fail-safe checks for Darkstar releases.
 
 **The idea, in plain words**
 
-Basically, Mamba-2 compresses history into a fixed-size state that updates as new tokens arrive.
+Basically, Mamba-2 compresses the conversation history into a fixed-size note that updates as new tokens arrive.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 25 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 25 August 2026. Exact artifact: `HangGlidersRule/Darkstar-Nemotron-3.5-Lightning-30B-A3B-Abliterated-BF16`, revision `f3723fc56c3e05bf8a9499b985dec8cced37027c`.
 

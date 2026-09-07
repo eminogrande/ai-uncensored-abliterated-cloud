@@ -1,5 +1,9 @@
 # ABLITERATED.cloud website releases
 
+## website-v0.12.3
+
+[Plain-language facts and article SEO layer](releases/website-v0.12.3.md).
+
 ## website-v0.12.2
 
 [Intelligence, freed. and faster-reading model research](releases/website-v0.12.2.md).

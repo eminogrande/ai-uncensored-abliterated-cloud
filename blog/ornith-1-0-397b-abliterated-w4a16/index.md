@@ -2,44 +2,47 @@
 
 ## TL;DR
 
-- The Ornith 397B W4A16 artifact still occupies about 195.7 GiB across 47 shards.
-- cebeuq reported Ornith 397B refusals fell from 30.0% for the reference W4A16 quant to 7.5% after editing on 40 harmful prompts.
-- The Ornith 397B article’s two-H200 profile was deployment-disabled, not a live model offer.
+- The Ornith 397B compressed build still occupies about 195.7 GiB across 47 files.
+- cebeuq reported Ornith 397B refusals fell from 30.0% to 7.5% after editing on 40 harmful prompts.
+- The Ornith 397B article's two-H200 setup was disabled, not a live model offer.
 
 ## Basically, the facts
 
 **A 397B model that activates about 17B**
 
-Basically, Ornith 397B activates roughly 17B parameters per token, but the quantized artifact still exceeds 195 GiB.
+Basically, Ornith 397B activates roughly 17 billion parameters per token, but the compressed build still exceeds 195 GiB.
 
 **Why upstream Ornith attracted attention**
 
-Basically, Ornith's upstream 82.4 SWE-bench Verified score was not rerun on the W4A16 derivative.
+Basically, Ornith's earlier 82.4 coding-benchmark score was not rerun on the compressed build.
 
 **W4A16, translated**
 
-Basically, Ornith W4A16 stores selected weights at four bits while keeping activations at 16 bits.
+Basically, Ornith's four-bit compression stores selected numbers in 4 bits while keeping live calculations in 16 bits.
 
 **The shard-by-shard operation**
 
-Basically, Ornith's publisher describes editing and requantizing tensors while streaming the source shards.
+Basically, Ornith's publisher describes editing and recompressing the model's parts while streaming the source files.
 
 **What the publisher actually tested**
 
-Basically, Ornith W4A16's reported checks are publisher smoke tests, not independent benchmarks.
+Basically, Ornith's reported checks are publisher spot checks, not independent benchmarks.
 
 **Who built the derivative?**
 
-Basically, The Ornith W4A16 release explicitly disclaims affiliation with DeepReinforce.
+Basically, the Ornith compressed release explicitly disclaims affiliation with DeepReinforce.
 
 **Why our route remains disabled**
 
-Basically, The Ornith 397B article described a disabled two-H200 deployment profile with a 32K context.
+Basically, the Ornith 397B article described a disabled two-H200 setup with a conservative 32K context.
 
 **The idea, in plain words**
 
-Basically, Ornith's four-bit weight storage reduces memory needs without making every tensor four-bit.
+Basically, Storing the model's numbers in four bits cuts memory use without shrinking every part to four bits.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 18 July 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/_
+<!-- /ARTICLE-META-MD -->
 
 Published 18 July 2026. Exact artifact: `cebeuq/Ornith-1.0-397B-abliterated-W4A16`, revision `e5651d291be1c65ff1360eee47ab533ab13b3d97`.
 

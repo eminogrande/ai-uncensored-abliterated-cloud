@@ -2,43 +2,43 @@
 
 ## TL;DR
 
-- Huihui's card says the Qwen3.8 edit left the first 15 layers, vision encoder and MTP untouched.
-- Huihui published the edit and its GGUF companion on 16 August 2026.
-- Huihui published no refusal-rate benchmark or post-edit capability rerun for its Qwen3.8-27B release.
+- Huihui's card says the Qwen3.8 edit left the first 15 layers, image-reading part and shortcut untouched.
+- Huihui published the edit and its easy-to-run file on 16 August 2026.
+- Huihui published no refusal-rate benchmark or post-edit ability rerun for its Qwen3.8-27B release.
 
 ## Basically, the facts
 
 **What is genuinely new in 3.8**
 
-Basically, Qwen3.8-27B is a dense model with 64 hybrid layers and a 27-layer vision encoder.
+Basically, Qwen3.8-27B is a non-sparse model with 64 alternating layers and a 27-layer image reader.
 
 **The 48-hour race, with timestamps**
 
-Basically, Huihui published the Qwen3.8 edit and the GGUF companion on the same day in August 2026.
+Basically, Huihui published the Qwen3.8 edit and the easy-to-run file on the same day in August 2026.
 
 **What the edit actually touched**
 
-Basically, Huihui's card says the Qwen3.8 edit left the first 15 layers and vision encoder untouched.
+Basically, Huihui's card says the Qwen3.8 edit left the first 15 layers and the image-reading part untouched.
 
 **Upstream numbers, upstream only**
 
-Basically, Qwen's base-model benchmark scores do not establish the performance of Huihui's edit.
+Basically, Qwen's original-model benchmark scores do not establish how Huihui's edit performs.
 
 **The variant wave: what is actually useful**
 
-Basically, Most other abliterated Qwen3.8-27B repos were separate base-model edits, not Huihui forks.
+Basically, Most other refusal-stripped Qwen3.8-27B releases were separate edits, not copies of Huihui's.
 
 **How to run it**
 
-Basically, Huihui's Qwen3.8 GGUF companion included twelve quantizations and a vision projector.
+Basically, Huihui's Qwen3.8 easy-to-run file included twelve compression levels and an image-reading add-on.
 
 **Community temperature**
 
-Basically, The Huihui article could not assess the Reddit thread because access returned HTTP 403.
+Basically, the Huihui article could not assess the Reddit thread because access returned HTTP 403.
 
 **The creator: huihui.ai**
 
-Basically, Huihui's profile describes model-ablation work with the open-source NLP community.
+Basically, Huihui's profile describes model-editing work with the open-source language-model community.
 
 **How we treat it**
 
@@ -48,6 +48,9 @@ Basically, Huihui's reduced-filtering claim was not backed by a published refusa
 
 Basically, Qwen3.8's multi-token prediction guesses several tokens ahead in a single step.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 16 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 16 August 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.8-27B-abliterated`, revision `d42ca8978c5a66e92c3446d46e8adfe03ef692ff`.
 

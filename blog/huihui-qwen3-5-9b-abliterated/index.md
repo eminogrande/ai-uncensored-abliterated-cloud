@@ -2,19 +2,19 @@
 
 ## TL;DR
 
-- Huihui-Qwen3.5-9B has roughly 19.3 GB of BF16 weights and a vision encoder.
-- The Huihui-Qwen3.5-9B article counted 58 downstream repos, including conversions and further fine-tunes.
+- Huihui-Qwen3.5-9B has roughly 19.3 GB of 16-bit data and an image reader.
+- The article counted 58 downstream repos, including format conversions and further retraining.
 - Huihui's proof-of-concept card included no post-edit benchmark results.
 
 ## Basically, the facts
 
 **Released quietly, reused constantly**
 
-Basically, The Qwen3.5-9B article counted 58 derivative repositories with 64,688 combined downloads.
+Basically, the Qwen3.5-9B article counted 58 derivative repositories with 64,688 combined downloads.
 
 **A dense 9B with a hybrid spine**
 
-Basically, Huihui-Qwen3.5-9B has a dense 32-layer architecture with a vision encoder.
+Basically, Huihui-Qwen3.5-9B has a non-sparse 32-layer design with an image reader.
 
 **A proof of concept, published on purpose**
 
@@ -22,24 +22,27 @@ Basically, Huihui's Qwen3.5-9B card calls the edit a crude proof of concept and 
 
 **The derivative economy**
 
-Basically, Huihui-Qwen3.5-9B derivatives include format conversions and Grimoire preference fine-tunes.
+Basically, Huihui-Qwen3.5-9B derivatives include format conversions and preference-tuning retrains.
 
 **Word of mouth, not benchmarks**
 
-Basically, A user said Huihui-Qwen3.5-9B fit an RTX 3060; the article did not specify the quantization.
+Basically, a user said Huihui-Qwen3.5-9B fit an RTX 3060; the article did not name the compression level.
 
 **The numbers that don't exist**
 
-Basically, Qwen3.5-9B's upstream benchmark results were not rerun on Huihui's abliterated artifact.
+Basically, Qwen3.5-9B's upstream benchmark results were not rerun on Huihui's refusal-stripped build.
 
 **How we treat it**
 
-Basically, The Huihui-Qwen3.5-9B article's $2.34 hourly L40S figure was an estimate, not a live offer.
+Basically, the Huihui-Qwen3.5-9B article's $2.34 hourly L40S figure was an estimate, not a live offer.
 
 **The idea, in plain words**
 
-Basically, Quantized model formats package weights for different hardware and runtimes.
+Basically, Compressed model formats repackage the model's numbers for different hardware.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 9 March 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 9 March 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.5-9B-abliterated`, revision `05b9e7c9b978ba29bdb8f50a49c30e4b91183339`.
 

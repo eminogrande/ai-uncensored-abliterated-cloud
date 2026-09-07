@@ -2,9 +2,9 @@
 
 ## TL;DR
 
-- Huihui-Qwen3.6-27B is a dense multimodal model with about 55.6 GB of BF16 weights.
-- The Huihui-Qwen3.6-27B article recorded 18,760 repository downloads on 16 August 2026.
-- Reports on Huihui-Qwen3.6-27B were mixed, and Huihui had not published a post-edit benchmark rerun.
+- Huihui-Qwen3.6-27B is a non-sparse text-and-image model with about 55.6 GB of 16-bit data.
+- The article recorded 18,760 repository downloads on 16 August 2026.
+- Reports were mixed, and Huihui had not published a post-edit benchmark rerun.
 
 ## Basically, the facts
 
@@ -14,7 +14,7 @@ Basically, Huihui-Qwen3.6-27B had 18,760 repository downloads in the article's A
 
 **What is under the hood**
 
-Basically, Huihui-Qwen3.6-27B is dense, with 64 layers and roughly 55.6 GB of BF16 weights.
+Basically, Huihui-Qwen3.6-27B is non-sparse, with 64 layers and roughly 55.6 GB of 16-bit data.
 
 **What the card promised, what users report**
 
@@ -26,16 +26,19 @@ Basically, Qwen3.6-27B's reported benchmark scores belong to the unedited model,
 
 **The successor arrived; the 3.6 stayed**
 
-Basically, The August 2026 Huihui-Qwen3.8-27B release kept its first 15 layers free of ablation.
+Basically, the August 2026 Huihui-Qwen3.8-27B release kept its first 15 layers untouched by the edit.
 
 **How we treat it**
 
-Basically, The Qwen3.6-27B article's one-H200 budget was an estimate, not a live price offer.
+Basically, the Qwen3.6-27B article's one-H200 budget was an estimate, not a live price offer.
 
 **The idea, in plain words**
 
-Basically, A vision encoder turns image patches into tokens that a language model can read.
+Basically, a vision encoder turns image patches into tokens that a language model can read.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 23 April 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 23 April 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.6-27B-abliterated`, revision `27502c8717fd5a2f8c0c77188c10c243fd4f672e`.
 

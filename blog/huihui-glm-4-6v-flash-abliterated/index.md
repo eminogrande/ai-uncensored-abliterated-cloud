@@ -3,22 +3,22 @@
 ## TL;DR
 
 - Huihui's GLM-4.6V-Flash card says only the text part was edited.
-- Huihui’s GLM-4.6V-Flash derivative had no published refusal-rate or capability-retention evaluation.
-- The article recorded new GGUF repositories with vision-projector files in August 2026.
+- Huihui's GLM-4.6V-Flash derivative had no published refusal-rate or ability-check evaluation.
+- The article recorded new easy-to-run files with image-reading add-ons in August 2026.
 
 ## Basically, the facts
 
 **An abliteration that kept pace with the release**
 
-Basically, Huihui published its GLM-4.6V-Flash edit in December 2025, shortly after the upstream release.
+Basically, Huihui published its GLM-4.6V-Flash edit in December 2025, shortly after the original release.
 
 **Text-only abliteration, and what that really means**
 
-Basically, Huihui's GLM-4.6V-Flash text-only edit has no published test of image-conditioned refusals.
+Basically, Huihui's text-only edit has no published test of whether it still refuses on image-based requests.
 
 **Why the MIT part is the rare part**
 
-Basically, Huihui's GLM-4.6V-Flash derivative retains the upstream model's MIT license.
+Basically, Huihui's GLM-4.6V-Flash derivative keeps the original model's MIT license.
 
 **The first quant wave stalled at the runtime**
 
@@ -26,16 +26,19 @@ Basically, Huihui reported Ollama crashes during image recognition in the early 
 
 **What actually changed in August**
 
-Basically, The August 2026 GLM-4.6V-Flash GGUF release included vision-projector files.
+Basically, the August 2026 GLM-4.6V-Flash easy-to-run release included image-reading add-ons.
 
 **How we treat it**
 
-Basically, The GLM-4.6V-Flash article treated the edit as text-only and its L40S price as an estimate.
+Basically, the GLM-4.6V-Flash article treated the edit as text-only and its L40S price as an estimate.
 
 **The idea, in plain words**
 
-Basically, The MIT license permits commercial use, modification and redistribution of a model.
+Basically, the MIT license permits commercial use, modification and redistribution of a model.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 9 December 2025 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 9 December 2025, updated 17 August 2026. Exact artifact: `huihui-ai/Huihui-GLM-4.6V-Flash-abliterated`, revision `7d7926ee0a8d02e46bdab97ead8d5396bfc071df`.
 
