@@ -60,7 +60,8 @@ time, .article-meta { color: var(--muted); font-size: 17px; }
 .blog-card { display: block; min-width: 0; border-top: 1px solid var(--line); padding: 26px 0; text-decoration: none; }
 .blog-card h2, .blog-card h3 { font-size: 27px; color: var(--ink); margin: 10px 0 16px; }
 .blog-card p { color: var(--muted); font-size: 17px; }
-.blog-card > span { font-size: 17px; }
+.blog-card > span { font-size: 15px; color: var(--muted); font-family: var(--mono); }
+.latest-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .blog-card strong { text-decoration: underline; }
 .article-shell { max-width: 860px; margin: 0 auto; padding-block: 36px 64px; }
 .article-header { margin-bottom: 28px; }
@@ -82,10 +83,10 @@ time, .article-meta { color: var(--muted); font-size: 17px; }
 .article-next a { min-height: 44px; display: flex; align-items: center; }
 table { border-collapse: collapse; display: block; max-width: 100%; overflow-x: auto; font-size: 17px; margin-block: 28px; }
 th, td { text-align: left; border: 1px solid var(--line); padding: 10px; }
-#cost table { display: table; width: 100%; table-layout: fixed; }
-#cost th:first-child { width: 65%; }
-#cost td { white-space: nowrap; font-weight: 700; }
-#cost caption { text-align: left; margin-bottom: 10px; }
+#pricing table { display: table; width: 100%; table-layout: fixed; }
+#pricing th:first-child { width: 65%; }
+#pricing td { white-space: nowrap; font-weight: 700; }
+#pricing caption { text-align: left; margin-bottom: 10px; }
 .footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); padding-block: 36px; font-size: 17px; }
 .footer nav { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: start; }
 .footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
@@ -105,7 +106,7 @@ th, td { text-align: left; border: 1px solid var(--line); padding: 10px; }
   .hero { padding-block: 32px; }
   .hero-lead, .article-lead { font-size: 21px; }
   .section { padding-block: 36px; }
-  .step-grid, .blog-card-grid, .article-facts { grid-template-columns: 1fr; }
+  .step-grid, .blog-card-grid, .latest-grid, .article-facts { grid-template-columns: 1fr; }
   .step-grid { gap: 8px; }
   .archive-list li { grid-template-columns: 1fr; gap: 4px; }
   .status-facts div { grid-template-columns: 1fr; gap: 4px; }

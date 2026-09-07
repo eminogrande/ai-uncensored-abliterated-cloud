@@ -7,7 +7,7 @@ import re
 import shutil
 import sys
 from datetime import datetime, timezone
-from decimal import Decimal
+from decimal import ROUND_HALF_UP, Decimal
 from email.utils import format_datetime
 from html import escape, unescape
 from pathlib import Path
@@ -25,7 +25,7 @@ ARCHIVE_NOTE = (
 )
 SIGNAL = "https://signal.me/#p/+13103408213"
 BLOG_DESCRIPTION = "Uncensored and abliterated AI model news, cloud GPU costs and self-hosting research. Find a model worth running, then get help deploying it."
-NAV = f'''<header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#services">Services</a><a href="/#workflow">Self-host</a><a href="/blog/">Blog &amp; guides</a><a href="{SIGNAL}">Signal ↗</a></nav></div></header>'''
+NAV = f'''<header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#models">Models</a><a href="/#how">How it works</a><a href="/blog/">Blog</a><a href="/#faq">FAQ</a><a href="{SIGNAL}">Request access ↗</a></nav></div></header>'''
 FOOTER = f'''<footer class="footer"><p>ABLITERATED.cloud<br>Intelligence, freed.</p><nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/RELEASE_NOTES.md">Updates</a><a href="/llms.txt">Agent index</a></nav></footer>'''
 
 
@@ -122,7 +122,7 @@ def render_article(html: str) -> str:
     html, count = re.subn(r'<footer\b[^>]*>.*?</footer>', FOOTER, html, count=1, flags=re.S)
     if count != 1:
         raise ValueError("article has no footer")
-    notice = f'<aside class="archive-notice" aria-label="Self-hosting help and research context"><h2>Want to run uncensored AI yourself?</h2><p>We help with cloud GPU rentals, abliterated model setup and connecting your apps to your own LLM endpoint.</p><p><a class="button" href="{SIGNAL}">Talk on Signal</a> <a href="/#workflow">Explore self-hosting →</a></p><p>{escape(ARCHIVE_NOTE)}</p></aside>'
+    notice = f'<aside class="archive-notice" aria-label="Self-hosting help and research context"><h2>Want this model running for you?</h2><p>We set it up on a private cloud GPU or your own machine and connect the apps you already use.</p><p><a class="button" href="{SIGNAL}">Request access on Signal</a> <a href="/#how">How it works →</a></p><p>{escape(ARCHIVE_NOTE)}</p></aside>'
     html = re.sub(r'<aside class="archive-notice".*?</aside>\s*', '', html, flags=re.S)
     html, count = re.subn(r'\s*</article>', lambda m: "\n    " + notice + "\n  </article>", html, count=1)
     if count != 1:
@@ -137,7 +137,7 @@ def render_article(html: str) -> str:
 
 
 def render_article_md(markdown: str) -> str:
-    notice = "<!-- ARCHIVE-NOTICE -->\n## Run this model on your terms\n\nNeed help with cloud GPUs, self-hosting or app integration? " + f"[Talk on Signal]({SIGNAL}) or [explore self-hosting]({ORIGIN}/#workflow).\n\n> " + ARCHIVE_NOTE + "\n<!-- /ARCHIVE-NOTICE -->\n"
+    notice = "<!-- ARCHIVE-NOTICE -->\n## Run this model on your terms\n\nWant this model running for you, on a private cloud GPU or your own machine? " + f"[Request access on Signal]({SIGNAL}) or [see how it works]({ORIGIN}/#how).\n\n> " + ARCHIVE_NOTE + "\n<!-- /ARCHIVE-NOTICE -->\n"
     markdown = re.sub(r'<!-- ARCHIVE-NOTICE -->.*?<!-- /ARCHIVE-NOTICE -->\s*', '', markdown, flags=re.S)
     return markdown.rstrip() + "\n\n" + notice
 
@@ -263,6 +263,23 @@ def render_costs(status: dict, html: bool = False) -> str:
     return '| Usage | Cost |\n| --- | ---: |\n' + '\n'.join(f'| {label} | **{cost}** |' for label, cost in rows) + '\n\n' + note
 
 
+def plain_costs(status: dict, html: bool = False) -> str:
+    rates = status["current"]["running_quote_usd_per_hour"]
+    gpu, disk, total = (Decimal(str(rates[k])) for k in ("gpu", "disk", "total"))
+    rows = [
+        ("One hour, while it runs", f"about ${total.quantize(Decimal('0.01'), ROUND_HALF_UP)}"),
+        ("A full day, non-stop", f"${total * 24:.2f}"),
+        ("About two hours a day, for a month", f"${gpu * 60 + disk * 720:.2f}"),
+        ("Switched off, model kept ready", f"${disk * 720:.2f} a month"),
+    ]
+    caption = f"Example: one A100 cloud GPU with 120 GB of storage, rates checked {status['snapshot_at'][:10]}"
+    note = ("You only pay while it runs. A switched-off machine keeps paying for storage until you delete it. "
+            "Setup help is priced separately, before we start. Taxes and other services are extra.")
+    if html:
+        return f'<table><caption>{escape(caption)}</caption><thead><tr><th scope="col">What you use</th><th scope="col">What it costs</th></tr></thead><tbody>' + ''.join(f'<tr><th scope="row">{escape(label)}</th><td>{cost}</td></tr>' for label, cost in rows) + '</tbody></table><p>' + escape(note) + '</p>'
+    return caption + '\n\n| What you use | What it costs |\n| --- | ---: |\n' + '\n'.join(f'| {label} | **{cost}** |' for label, cost in rows) + '\n\n' + note
+
+
 def status_paragraphs(status: dict) -> list[str]:
     current, history = status["current"], status["historical_configuration"]
     stamp = datetime.fromisoformat(status["snapshot_at"].replace("Z", "+00:00")).strftime("%Y-%m-%d %H:%M UTC")
@@ -301,19 +318,19 @@ def build_outputs(posts: list[dict]) -> dict[Path, str]:
         outputs[file] = re.sub(r'<footer\b[^>]*>.*?</footer>', FOOTER, text, count=1, flags=re.S)
     outputs[BLOG / "feed.xml"] = render_feed(posts)
     outputs[WEBSITE / "sitemap.xml"] = render_sitemap(posts, page_count, max("2026-09-06", status["snapshot_at"][:10]))
-    latest_html = '\n'.join(f'<li><time datetime="{p["published_at"]}">{p["published_at"]}</time><a href="/blog/{p["slug"]}/">{escape(p["title"])}</a></li>' for p in posts[:LATEST_LIMIT])
-    latest_md = '\n'.join(f'- {p["published_at"]}: [{p["title"]}]({ORIGIN}/blog/{p["slug"]}/)' for p in posts[:LATEST_LIMIT])
+    latest_html = '\n'.join(f'<a class="blog-card" href="/blog/{p["slug"]}/"><span>{escape(p["kicker"])}</span><h3>{title_with_break(p["card_title"])}</h3><p>{escape(p["title"])}</p><strong>Read the review →</strong></a>' for p in posts[:LATEST_LIMIT])
+    latest_md = '\n'.join(f'- **{p["card_title"]}**: {p["title"]} [Read the review]({ORIGIN}/blog/{p["slug"]}/)' for p in posts[:LATEST_LIMIT])
     links = '\n'.join(f'- [{p["title"]}]({ORIGIN}/blog/{p["slug"]}/index.md): model research, {p["published_at"]}.' for p in posts)
     for name in ["index.html", "index.md", "llms.txt", "llms-full.txt"]:
         text = (WEBSITE / name).read_text()
-        body = '<div class="status-panel">' + ''.join(f'<p>{escape(p)}</p>' for p in paragraphs) + '</div>' if name.endswith('.html') else '\n\n'.join(paragraphs)
-        text = replace_section(text, "PROJECT-STATUS", body)
-        text = replace_section(text, "RUNNING-COSTS", render_costs(status, html=name.endswith(".html")))
-        if name == "index.html":
-            text = replace_section(text, "ABLITERATED-LATEST-RELEASES", latest_html)
-        elif name == "index.md":
-            text = replace_section(text, "ABLITERATED-LATEST-RELEASES-MD", latest_md)
+        is_html = name.endswith(".html")
+        if name.startswith("index"):
+            # The landing page speaks plainly; operating detail stays in the agent index and status JSON.
+            text = replace_section(text, "RUNNING-COSTS", plain_costs(status, html=is_html))
+            text = replace_section(text, "ABLITERATED-LATEST-RELEASES" if is_html else "ABLITERATED-LATEST-RELEASES-MD", latest_html if is_html else latest_md)
         else:
+            text = replace_section(text, "PROJECT-STATUS", '\n\n'.join(paragraphs))
+            text = replace_section(text, "RUNNING-COSTS", render_costs(status))
             text = replace_section(text, "ARCHIVE-LINKS", links)
         outputs[WEBSITE / name] = text
     readme = ROOT / "README.md"

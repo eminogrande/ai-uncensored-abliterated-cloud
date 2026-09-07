@@ -11,8 +11,8 @@ website. Restore the requested brand and make model research easy to discover.
 
 - Restore the exact headline **Intelligence, freed.** and clear uncensored,
   abliterated AI cloud rental, self-hosting and LLM-router integration copy.
-- Put the blog in the hero and navigation. Explain concrete setup deliverables,
-  open-source ownership, private connections and start/stop controls.
+- Rewrite the landing page in plain, non-technical language: models people can
+  try, three steps, plain costs and short FAQs. Operating detail moves to the agent index.
 - Add source-backed TL;DR and standalone Basically facts to all 27 articles,
   with equivalent HTML/Markdown output and original sources and dates retained.
 - Share the Nuri editorial contract with the daily editorial skill and cron prompt.

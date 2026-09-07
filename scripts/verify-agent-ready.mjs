@@ -42,7 +42,7 @@ for (const path of ["/app.js", "/.well-known/agent-card.json", "/.well-known/mcp
   assert.equal(response.status, 404, `${path}: retired surface must return 404`);
 }
 const rates = status.current.running_quote_usd_per_hour;
-for (const cost of [rates.total * 720, rates.gpu * 60 + rates.disk * 720]) {
+for (const cost of [rates.total * 24, rates.gpu * 60 + rates.disk * 720]) {
   assert.ok(html.includes(`$${cost.toFixed(2)}`), "running-cost scenarios missing");
 }
 assert.ok(/<h1[^>]*>Intelligence, freed\.<\/h1>/.test(html), "preserve the approved headline");

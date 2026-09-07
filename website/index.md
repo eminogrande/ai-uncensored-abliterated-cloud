@@ -1,140 +1,84 @@
 ---
-title: Uncensored AI Cloud & Self-Hosting | ABLITERATED.cloud
-description: Run uncensored and abliterated LLMs on rented cloud GPUs or your own hardware. Get hands-on setup, llama.cpp and app integration help. Free MIT-licensed code.
+title: Uncensored, Abliterated AI in the Cloud | ABLITERATED.cloud
+description: Uncensored, abliterated AI that actually answers. We run it for you on a private cloud GPU or set it up on your own machine. Open source, private access, real human help.
 canonical: https://abliterated.cloud/
 ---
 
 # Intelligence, freed.
 
-Rent cloud GPUs and self-host uncensored, abliterated AI.
+Uncensored, abliterated AI.
 
-Your model. Your GPU. Your rules. Run an uncensored LLM with our MIT code, or get personal help renting, self-hosting and connecting it.
+Pick a model that actually answers. We run it for you on a private cloud GPU, or set it up on your own machine, and you use it from the apps you already have. No giant downloads. No servers to babysit.
 
-[Talk on Signal](https://signal.me/#p/+13103408213) · [Self-hosting guide](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md) · [Read the model blog](https://abliterated.cloud/blog/)
+[Request access on Signal](https://signal.me/#p/+13103408213) · [Explore the models](https://abliterated.cloud/#models)
 
-[Services](https://abliterated.cloud/#services) · [Self-host](https://abliterated.cloud/#self-host) · [Blog & guides](https://abliterated.cloud/blog/) · [Signal](https://signal.me/#p/+13103408213)
+Open source · Private access · Real people, not a ticket queue
 
-<a id="services"></a>
-## Open code. Human help. Your infrastructure.
+[Models](https://abliterated.cloud/#models) · [How it works](https://abliterated.cloud/#how) · [Blog](https://abliterated.cloud/blog/) · [FAQ](https://abliterated.cloud/#faq)
 
-Bring your model and budget. Get a scoped setup, a client connection test and clear start/stop instructions.
+<a id="models"></a>
+## The newest models that actually answer.
 
-<a id="cloud"></a>
-### Rent a cloud GPU
-
-Try a larger model without buying a server. We help choose the GPU and quantization, check costs and set up private access. Our current cloud path is **Vast.ai + llama.cpp**.
-
-[See reference GPU costs](https://abliterated.cloud/#cost)
-
-<a id="self-host"></a>
-### Use your own hardware
-
-Run an uncensored LLM on a compatible workstation or server. Get help with model fit, llama.cpp and local access. Our code is free under MIT; hardware, operating costs and model licenses are separate.
-
-[Read the self-hosting guide](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md)
-
-<a id="integrations"></a>
-### Connect your app or router
-
-Connect your chat app, coding client or LLM router to llama.cpp's OpenAI-compatible interface. We help set the base URL and model ID, then test your client. This is integration help, not a hosted routing API.
-
-[Discuss your integration on Signal](https://signal.me/#p/+13103408213)
-
-<a id="workflow"></a>
-## Keep control of your setup.
-
-1. **Bring your use case.** Send your model, app and hardware or rental budget. We agree the setup, tests and assistance price.
-2. **Run it privately.** Start the Vast.ai GPU deliberately, connect to llama.cpp over SSH, then test the loaded model in your client.
-3. **Know how to stop.** Keep the configuration and operating steps. Stop cloud instances manually and verify the state. Retained disks still cost money.
-
-Your app connects to your model server, not this website. [Read the access details](https://abliterated.cloud/auth.md).
-
-<a id="archive"></a>
-## Read the facts. Find your next model.
-
-Uncensored model news, benchmarks and self-hosting research. Skim the TL;DR and Basically facts, check the sources, then choose what to run.
+Every week brings new uncensored releases. We read the sources, check the numbers and write it up in plain language. Like one? We get it running for you.
 
 <!-- ABLITERATED-LATEST-RELEASES-MD -->
-- 2026-09-06: [Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/)
-- 2026-08-31: [Eleven hours from DeepSeek drop to uncensor.](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/)
-- 2026-08-30: [Why would a translation model refuse? Tencent's Hy-MT2, decensored](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/)
+- **soyaakinohara/Spark-X2.5-4B-Heretic**: Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B [Read the review](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/)
+- **apetersson/DeepSeek-V4-Flash-Vision-Exp-Abliterated**: Eleven hours from DeepSeek drop to uncensor. [Read the review](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/)
+- **0xSojalSec/Tencent-Hy-30B-A3B-uncensored-heretic**: Why would a translation model refuse? Tencent's Hy-MT2, decensored [Read the review](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/)
 <!-- /ABLITERATED-LATEST-RELEASES-MD -->
 
-[Read all models & guides](https://abliterated.cloud/blog/) · [Subscribe via RSS](https://abliterated.cloud/blog/feed.xml)
+[See all models & reviews](https://abliterated.cloud/blog/)
 
-Coverage does not imply testing or hosting. Check each article's date, sources and license. [Ask about running a model](https://signal.me/#p/+13103408213).
+<a id="how"></a>
+## Three steps. Nothing to install.
 
-<a id="cost"></a>
-## Know what the machine costs.
+1. **Say hi on Signal.** Tell us which model you want and what you'd like to do with it.
+2. **We set it up.** On a private cloud GPU we rent for you, or on your own hardware. You get the price before anything starts.
+3. **Use it in your apps.** Works with the chat and coding tools you already use. Keep it running, or switch it off any time.
 
-**Reference GPU provider rates** from our dated Vast.ai contract, not customer service prices or a current rental offer. Assistance is scoped and priced separately on Signal.
+## Your model. Your GPU. Your rules.
+
+- **Answers, not lectures.** Abliterated models have their built-in refusals removed. You ask, they answer.
+- **Private by design.** Your model runs on a GPU that is yours alone, reached over a private connection. No shared chatbot.
+- **Free, open code.** Everything we build is MIT-licensed. Self-host it yourself whenever you like. No lock-in.
+- **A real person helps.** Setup, questions, switching models: message a human on Signal, not a ticket queue.
+
+## No subscription. No surprise bills.
+
+Our code is free. You pay for the GPU hours you actually use, plus the setup help you want, agreed up front.
 
 <!-- RUNNING-COSTS -->
-| Usage | Cost |
-| --- | ---: |
-| Running: GPU + disk / hour | **$0.63333** |
-| Running continuously / 24 hours | **$15.20** |
-| Running continuously / 30 days | **$456.00** |
-| Stopped: retained disk / 30 days | **$24.00** |
-| 2 hours running per day / 30 days, disk retained throughout | **$60.00** |
+Example: one A100 cloud GPU with 120 GB of storage, rates checked 2026-09-05
 
-USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.
+| What you use | What it costs |
+| --- | ---: |
+| One hour, while it runs | **about $0.63** |
+| A full day, non-stop | **$15.20** |
+| About two hours a day, for a month | **$60.00** |
+| Switched off, model kept ready | **$24.00 a month** |
+
+You only pay while it runs. A switched-off machine keeps paying for storage until you delete it. Setup help is priced separately, before we start. Taxes and other services are extra.
 <!-- /RUNNING-COSTS -->
 
-<a id="limits"></a>
-## Questions before you start.
+Model weights are free to download but keep their own licenses. Check them before commercial use.
 
-### What is an abliterated LLM?
+<a id="faq"></a>
+## Questions people ask.
 
-An abliterated LLM has been modified to reduce learned refusal behavior. Uncensored is a broader label, not a guarantee. A modified model can still refuse, make mistakes or lose capabilities.
+**What does abliterated mean?** An abliterated model had its built-in refusals removed, so it answers instead of lecturing. It can still make mistakes, and no model says yes to everything.
 
-### Can I run uncensored AI for free?
+**Is it free?** Our code is free and open source. GPU time and setup help cost money, agreed up front. There is no subscription.
 
-Our project-owned code is free to self-host under MIT. GPU rentals, storage, electricity and setup assistance are not free. Model weights have separate licenses. We scope and price assistance on Signal before work begins.
+**Do I need my own hardware?** No. We rent a private cloud GPU for you. If you already own a strong GPU, we can set it up there instead.
 
-### Does zero refusal AI mean it answers everything?
+**Which apps work with it?** Any app that talks to OpenAI-style models: chat apps, coding assistants, agent tools and LLM routers. We help you connect them.
 
-No. Zero refusal AI can describe results on a particular test set, not a universal guarantee. Behavior depends on the model, prompt and runtime. We help test your workload without promising zero refusals, accuracy or reliable tool use.
+**Can I get an API key right now?** Not yet. Access is private and by invitation. Message us on Signal and we set you up personally.
 
-### Is there a public inference API I can use now?
+## Try the model you want. Know exactly what is running.
 
-No. We offer human setup help, code and guides, not instant API keys or an always-on hosted catalog. The current cloud workflow uses manually started Vast.ai compute and llama.cpp over private SSH. Contact us on Signal.
+Tell us the model, the app and what you'd like to try. We reply on Signal.
 
-<a id="contact"></a>
-## Bring the model. We'll help with the rest.
+[Request access on Signal](https://signal.me/#p/+13103408213) · [See the open-source code](https://github.com/eminogrande/ai-uncensored-abliterated-cloud)
 
-Send a model link, your hardware or GPU budget, and the app you want to connect.
-
-[Talk on Signal](https://signal.me/#p/+13103408213) · [Explore the open-source code](https://github.com/eminogrande/ai-uncensored-abliterated-cloud)
-
-<a id="status"></a>
-## Our reference setup.
-
-**STOPPED · 2026-09-05 20:12 UTC.** Reference instance snapshot, not live availability. No current inference test.
-
-<!-- PROJECT-STATUS -->
-Stopped. Provider snapshot: 2026-09-05 20:12 UTC, not live polling. 1 Vast.ai instance: 49433042, A100 PCIE 40960 MB, 120 GB disk. actual_status=exited; intended_status=stopped.
-
-Last local health check (2026-09-05T19:39 UTC): localhost:8080 connection refused. No current inference test. Stopped storage remains billed.
-
-Last serving configuration: Qwen3.8-27B OBLITERATED, Q6_K, llama.cpp, 262144 tokens configured. Not serving now; long-context quality is unvalidated.
-
-Modal: Retired and not used by this project because of its cost budget. Four old apps still existed with zero tasks at the 2026-09-05 19:39 UTC audit; they were not decommissioned. Possible legacy storage charges remain unaudited.
-<!-- /PROJECT-STATUS -->
-
-Historical runs do not establish a best model or comparable speed. Vast.ai is the only current cloud path; Modal docs are historical.
-
-[Snapshot JSON](https://abliterated.cloud/.well-known/project-status.json) · [Agent operating notes](https://abliterated.cloud/skills/abliterated-cloud/SKILL.md)
-
-<a id="license"></a>
-## Free code. Yours to self-host.
-
-Our website and code use MIT: inspect, adapt and self-host without a software license fee. Compute and assistance cost separately. Model weights and third-party code keep their own licenses; public availability does not imply commercial-use permission.
-
-[Source repository](https://github.com/eminogrande/ai-uncensored-abliterated-cloud) · [Website notice](https://abliterated.cloud/NOTICE.md)
-
----
-
-ABLITERATED.cloud — Intelligence, freed.
-
-[Agent index](https://abliterated.cloud/llms.txt) · [Documentation schema](https://abliterated.cloud/openapi.json) · [Updates](https://abliterated.cloud/RELEASE_NOTES.md)
+[About](https://abliterated.cloud/about/) · [Contact](https://abliterated.cloud/contact/) · [Privacy](https://abliterated.cloud/privacy/) · [Updates](https://abliterated.cloud/RELEASE_NOTES.md) · [Agent index](https://abliterated.cloud/llms.txt)

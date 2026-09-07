@@ -63,7 +63,7 @@ The publisher warns that safety filtering is reduced and recommends controlled r
 <!-- ARCHIVE-NOTICE -->
 ## Run this model on your terms
 
-Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
 
 > Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
 <!-- /ARCHIVE-NOTICE -->

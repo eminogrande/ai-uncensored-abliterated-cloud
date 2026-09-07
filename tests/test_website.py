@@ -71,7 +71,10 @@ def test_public_schema_only_advertises_existing_static_gets():
         text = file.read_text()
         assert status["snapshot_at"][:10] in text
         assert "storage" in text.lower()
-        assert str(status["current"]["instance_id"]) in text
+    for file in [SITE / "llms.txt", SITE / "llms-full.txt"]:
+        assert str(status["current"]["instance_id"]) in file.read_text()
+    landing = (SITE / "index.html").read_text()
+    assert "actual_status" not in landing and "localhost" not in landing and str(status["current"]["instance_id"]) not in landing
     index = json.loads((SITE / ".well-known/agent-skills/index.json").read_text())
     expected = hashlib.sha256((SITE / "skills/abliterated-cloud/SKILL.md").read_bytes()).hexdigest()
     assert index["skills"][0]["digest"] == "sha256:" + expected

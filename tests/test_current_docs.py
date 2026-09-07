@@ -81,8 +81,11 @@ def test_generated_costs_match_provider_evidence():
     assert status["current"]["actual_status"] == evidence["instance"]["actual_status"]
     assert [cost for _, cost in builder["cost_rows"](status)] == ["$0.63333", "$15.20", "$456.00", "$24.00", "$60.00"]
     block = builder["render_costs"](status)
-    for file in [ROOT / "README.md", ROOT / "website/index.md", ROOT / "website/llms.txt", ROOT / "website/llms-full.txt"]:
+    for file in [ROOT / "README.md", ROOT / "website/llms.txt", ROOT / "website/llms-full.txt"]:
         assert block in file.read_text(), file
+    plain = builder["plain_costs"](status)
+    assert "$0.63" in plain and "$15.20" in plain and "$60.00" in plain and "$24.00" in plain
+    assert plain in (ROOT / "website/index.md").read_text()
 
 
 def test_cost_generator_rejects_inconsistent_rates():
