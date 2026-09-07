@@ -40,6 +40,9 @@ Basically, The article's L40S serving estimate was about $2.34 per hour, not a l
 
 Basically, Knowledge distillation trains a smaller model using a larger model's answers.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 17 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 17 August 2026. Exact artifact: `insraq/Qwen3.5-4B-EmperoAI-Qwen3.8-Distill-Heretic-Abliterated`, revision `ef859957528c1fceda193c54a7630c2ac9aad423`.
 

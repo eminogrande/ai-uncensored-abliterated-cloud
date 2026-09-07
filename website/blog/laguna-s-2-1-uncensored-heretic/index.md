@@ -36,6 +36,9 @@ Basically, poolside trained Laguna S 2.1 for coding agents, where refusals can s
 
 Basically, Laguna's router selects ten experts per token while keeping the full model stored.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 30 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/_
+<!-- /ARTICLE-META-MD -->
 
 Published 30 August 2026. Exact artifact: `llmfan46/Laguna-S-2.1-Uncensored-Heretic`, revision `c8a210847c1092c2c89ce814dc6a623b8afb0320`.
 

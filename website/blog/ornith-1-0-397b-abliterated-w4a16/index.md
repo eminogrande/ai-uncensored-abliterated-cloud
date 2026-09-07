@@ -40,6 +40,9 @@ Basically, The Ornith 397B article described a disabled two-H200 deployment prof
 
 Basically, Ornith's four-bit weight storage reduces memory needs without making every tensor four-bit.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 18 July 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/_
+<!-- /ARTICLE-META-MD -->
 
 Published 18 July 2026. Exact artifact: `cebeuq/Ornith-1.0-397B-abliterated-W4A16`, revision `e5651d291be1c65ff1360eee47ab533ab13b3d97`.
 

@@ -32,6 +32,9 @@ Basically, HangGlidersRule's model-forge documents pinned recipes and validators
 
 Basically, Mamba-2 compresses history into a fixed-size state that updates as new tokens arrive.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 25 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 25 August 2026. Exact artifact: `HangGlidersRule/Darkstar-Nemotron-3.5-Lightning-30B-A3B-Abliterated-BF16`, revision `f3723fc56c3e05bf8a9499b985dec8cced37027c`.
 

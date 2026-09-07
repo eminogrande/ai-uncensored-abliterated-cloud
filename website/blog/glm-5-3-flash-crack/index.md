@@ -32,6 +32,9 @@ Basically, dealignai credited @jordanschenck for compute used on the GLM-5.3-Fla
 
 Basically, GLM's MTP head proposes a next token for the main model to verify.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 26 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/glm-5-3-flash-crack/_
+<!-- /ARTICLE-META-MD -->
 
 Published 26 August 2026. Exact artifact: `dealignai/GLM-5.3-Flash-ABLITERATED-FP8`, revision `68fdc7b6c6ef90c40583f5f9224d402cc8fdf8b7`.
 

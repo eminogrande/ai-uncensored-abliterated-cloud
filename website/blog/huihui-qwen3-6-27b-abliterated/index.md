@@ -36,6 +36,9 @@ Basically, The Qwen3.6-27B article's one-H200 budget was an estimate, not a live
 
 Basically, A vision encoder turns image patches into tokens that a language model can read.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 23 April 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 23 April 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.6-27B-abliterated`, revision `27502c8717fd5a2f8c0c77188c10c243fd4f672e`.
 

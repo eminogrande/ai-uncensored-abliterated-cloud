@@ -36,6 +36,9 @@ Basically, YuYu1015's corrected Ornith still had roughly 5% hard refusals in the
 
 Basically, Abliteration projects a refusal-linked direction out of selected model weights.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 18 July 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 18 July 2026. Exact artifact: `YuYu1015/YuYu1015-Ornith-1.0-35B-abliterated`, revision `86065d1a9008773086a177637d54ec6dc2a56cbf`.
 

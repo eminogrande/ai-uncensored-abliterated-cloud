@@ -40,6 +40,9 @@ Basically, DiffusionGemma's NVFP4 quant keeps the 20 abliteration-modified tenso
 
 Basically, DiffusionGemma refines a noisy block of text over several steps instead of adding one token at a time.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 16 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/diffusiongemma-26b-e38-abliterated-nvfp4/_
+<!-- /ARTICLE-META-MD -->
 
 Published 16 August 2026. Exact artifact: `Goodoldjam/DiffusionGemma-26B-E38-Abliterated-NVFP4`, revision `2430478f0cc94c27623d3684ad03c7f05e858a7d`.
 

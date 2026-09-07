@@ -36,6 +36,9 @@ Basically, jorkle's Muse-Glimmer card still reports refusals, so the model is no
 
 Basically, KL divergence measures how far an edited model's answer distribution moved from the original.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 12 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/muse-glimmer-30b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 12 August 2026. Exact artifact: `jorkle/Muse-Glimmer-30B-Abliterated`, revision `f98c6e1f6a268fa79d1e704c6b69fa89a61ddda6`.
 

@@ -40,6 +40,9 @@ Basically, soyaakinohara's Spark release paired an uncensored base with a Japane
 
 Basically, Spark X2.5 mixes full-attention layers with roughly three times as many sliding-window layers.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 6 September 2026 · 11 min read · Canonical: https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/_
+<!-- /ARTICLE-META-MD -->
 
 *Published 6 September 2026 · Revision-pinned · Primary sources only*
 

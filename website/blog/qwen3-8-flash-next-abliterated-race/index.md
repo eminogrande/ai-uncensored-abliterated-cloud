@@ -36,6 +36,9 @@ Basically, dealignai describes its CRACK releases as weight-level uncensoring, n
 
 Basically, Qwen's n-gram table looks up token pairs and triples rather than doing a matrix multiply.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 27 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/_
+<!-- /ARTICLE-META-MD -->
 
 Published 27 August 2026. Exact artifact: `dealignai/Qwen3.8-Flash-Next-ABLITERATED-FP8`, revision `8d5a44586872fe3a22cfd14398894bc0fd054e29`.
 

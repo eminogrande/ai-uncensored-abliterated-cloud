@@ -40,6 +40,9 @@ Basically, The Qwythos article paired the small BF16 model with one L40S for exp
 
 Basically, Qwythos's million-token label is a configured limit, not proof of reasoning quality at that length.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 18 July 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/qwythos-9b-claude-mythos-5-1m-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 18 July 2026. Exact artifact: `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`, revision `efcc73cac15ff8fc5d46b8d41b53c22d571cf97d`.
 

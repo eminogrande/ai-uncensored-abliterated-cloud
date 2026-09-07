@@ -48,6 +48,9 @@ Basically, Huihui's reduced-filtering claim was not backed by a published refusa
 
 Basically, Qwen3.8's multi-token prediction guesses several tokens ahead in a single step.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 16 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 16 August 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.8-27B-abliterated`, revision `d42ca8978c5a66e92c3446d46e8adfe03ef692ff`.
 

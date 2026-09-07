@@ -32,6 +32,9 @@ Basically, s3nh made Velum's underlying refusal edit; guell00 packaged the final
 
 Basically, Bonsai's 1-bit format stores a sign per weight and shares a scale across 128 weights.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 28 August 2026 · Updated 6 September 2026 · 7 min read · Canonical: https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/_
+<!-- /ARTICLE-META-MD -->
 
 Published 28 August 2026. Exact artifact: `guell00/Velum-Unbound-Uncensored`, revision `97e4ecf9dd6dc2f2e263c60e8de8e17aafedddb9`.
 

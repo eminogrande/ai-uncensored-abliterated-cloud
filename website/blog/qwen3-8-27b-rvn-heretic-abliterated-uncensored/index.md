@@ -40,6 +40,9 @@ Basically, RVN's reported 0–1/100 refusals came from a prefix-forced test, not
 
 Basically, ARA adjusts model weights to reduce refusals while aiming to preserve harmless answers.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 14 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/qwen3-8-27b-rvn-heretic-abliterated-uncensored/_
+<!-- /ARTICLE-META-MD -->
 
 Published 14 August 2026. Exact artifact: `0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF`, revision `d8a1b834aa6f08e7b60dd4fb7586b90fd5a44363`.
 

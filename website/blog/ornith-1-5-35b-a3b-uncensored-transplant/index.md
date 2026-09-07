@@ -36,6 +36,9 @@ Basically, 0xKitkat's model card linked to @procrastiness but gave no biography 
 
 Basically, A task vector is the weight difference between an edited model and its original.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 20 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/_
+<!-- /ARTICLE-META-MD -->
 
 Published 20 August 2026. Exact artifact: `0xKitkat/Ornith-1.5-35B-A3B-Uncensored`, revision `9ce64447864049ac16f7546265ae11d2a04fe9fb`.
 

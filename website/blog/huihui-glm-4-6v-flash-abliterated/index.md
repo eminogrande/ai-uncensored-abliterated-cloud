@@ -36,6 +36,9 @@ Basically, The GLM-4.6V-Flash article treated the edit as text-only and its L40S
 
 Basically, The MIT license permits commercial use, modification and redistribution of a model.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 9 December 2025 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 9 December 2025, updated 17 August 2026. Exact artifact: `huihui-ai/Huihui-GLM-4.6V-Flash-abliterated`, revision `7d7926ee0a8d02e46bdab97ead8d5396bfc071df`.
 

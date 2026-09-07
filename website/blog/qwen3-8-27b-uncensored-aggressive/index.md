@@ -36,6 +36,9 @@ Basically, Block-FP8 stores model weights in 8 bits with a separate scale for ea
 
 Basically, The article had no refusal-rate measurement to back OrcaRouter's fully unlocked claim.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 19 August 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/_
+<!-- /ARTICLE-META-MD -->
 
 Published 19 August 2026. Exact artifact: `orcarouter/Qwen3.8-27B-Uncensored-FP8`, revision `9228df5c6c9c509e1019f83b4e085cf643118bac`.
 

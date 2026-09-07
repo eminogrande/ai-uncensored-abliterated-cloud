@@ -36,6 +36,9 @@ Basically, SecureLayer7's AFM NOTICE explicitly disclaims endorsement by Arcee.
 
 Basically, AFM's ReLU² activation turns negative values into zeros; abliteration is a separate edit.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 28 August 2026 · Updated 6 September 2026 · 7 min read · Canonical: https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 28 August 2026. Exact artifact: `Securelayer7/AFM-4.5B-Uncensored-Abliterated`, revision `38236c07c1fda2334dbc8e109ff746f0af9a3ff4`.
 

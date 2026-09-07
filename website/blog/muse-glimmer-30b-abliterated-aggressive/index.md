@@ -32,6 +32,9 @@ Basically, Muse-Glimmer's reported 0/100 refusals applies to the publisher's own
 
 Basically, LoRA de-refusal trains a small adapter to change how a model responds.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 17 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/_
+<!-- /ARTICLE-META-MD -->
 
 Published 17 August 2026. Exact artifact: `SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive`, revision `0e74fc7c36d24c58b22cc213c14d7f0512d9f7f1`.
 

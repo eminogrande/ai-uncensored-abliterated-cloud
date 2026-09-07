@@ -36,6 +36,9 @@ Basically, The DeepSeek runtime-dial tests did not benchmark general capability 
 
 Basically, pocharlies reports that setting DeepSeek's runtime lambda to zero restores stock outputs.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 13 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/huihui-deepseek-v4-flash-0731-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 13 August 2026. Exact artifact: `pocharlies/deepseek-v4-flash-0731-uncensored-abliterated-refusal-directions`, revision `d5d42ace94686374d97956698f89d7884aad5f84`.
 

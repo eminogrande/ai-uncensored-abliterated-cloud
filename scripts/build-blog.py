@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import re
 import shutil
 import sys
@@ -204,6 +205,95 @@ def render_reading_notes(html: str, markdown: str, notes: dict) -> tuple[str, st
     return html, markdown
 
 
+def strip_article_seo(text: str) -> str:
+    return re.sub(r'\n?<!-- ARTICLE-(?:META|TOC)(?:-MD)? -->.*?<!-- /ARTICLE-(?:META|TOC)(?:-MD)? -->', '', text, flags=re.S)
+
+
+def article_words(html: str) -> int:
+    body = strip_article_seo(strip_reading_notes(html))
+    body = re.sub(r'<aside class="archive-notice".*?</aside>', '', body, flags=re.S)
+    body = re.sub(r'<(p|div) class="article-meta">.*?</\1>', '', body, flags=re.S)
+    main = re.search(r'<main\b.*?</main>', body, re.S)
+    return len(plain_html(main[0] if main else body).split())
+
+
+def heading_id(heading: str, used: set[str]) -> str:
+    base = re.sub(r'[^a-z0-9]+', '-', heading.lower()).strip('-') or 'section'
+    candidate, n = base, 2
+    while candidate in used or candidate in {'main', 'top'}:
+        candidate, n = f'{base}-{n}', n + 1
+    used.add(candidate)
+    return candidate
+
+
+def render_article_seo(html: str, markdown: str, post: dict) -> tuple[str, str]:
+    """Add machine-readable dates, reading time, section anchors and a table of contents."""
+    html, markdown = strip_article_seo(html), strip_article_seo(markdown)
+    published, modified = (datetime.fromisoformat(post[k]) for k in ('published_at', 'modified_at'))
+    words = article_words(html)
+    minutes = max(1, math.ceil(words / 230))
+    long = lambda d: f'{d.day} {d:%B %Y}'
+    meta_parts = [f'Published {long(published)}'] + ([f'Updated {long(modified)}'] if modified > published else []) + [f'{minutes} min read', 'Sources linked below']
+    meta_text = ' · '.join(meta_parts)
+    meta_html = f'<div class="article-meta"><time datetime="{post["published_at"]}">{meta_parts[0]}</time>' + ''.join(f'<span>{part}</span>' for part in meta_parts[1:]) + '</div>'
+    html, count = re.subn(r'<(p|div) class="article-meta">.*?</\1>', lambda m: meta_html, html, count=1, flags=re.S)
+    if count != 1:
+        raise ValueError('article needs one article-meta block')
+    description = unescape(re.search(r'<meta name="description" content="(.*?)">', html)[1])
+    image = re.search(r'<meta property="og:image" content="(.*?)">', html)[1]
+    url = f'{ORIGIN}/blog/{post["slug"]}/'
+    # Section anchors: stable ids for deep links, added once and never changed.
+    used: set[str] = set(re.findall(r'\bid="([^"]+)"', html))
+    toc: list[tuple[str, str]] = []
+
+    def anchor(match):
+        attrs, inner = match[1], match[2]
+        heading = plain_html(inner)
+        existing = re.search(r'\bid="([^"]+)"', attrs)
+        section_id = existing[1] if existing else heading_id(heading, used)
+        toc.append((section_id, heading))
+        return f'<h2{attrs} id="{section_id}">{inner}</h2>' if not existing else match[0]
+
+    notice = re.search(r'<aside class="archive-notice".*?</aside>', html, re.S)
+    head, tail = (html[:notice.start()], html[notice.start():]) if notice else (html, '')
+    head = re.sub(r'<h2((?:\s[^>]*)?)>(.*?)</h2>', anchor, head, flags=re.S)
+    html = head + tail
+    toc_html = '<!-- ARTICLE-TOC --><nav class="article-toc" aria-label="In this article"><strong>In this article</strong><ol>' + ''.join(f'<li><a href="#{i}">{escape(h)}</a></li>' for i, h in toc) + '</ol></nav><!-- /ARTICLE-TOC -->'
+    html, count = re.subn(r'<!-- /READING-TLDR -->', lambda m: m[0] + toc_html, html, count=1)
+    if count != 1:
+        raise ValueError('article needs rendered TL;DR before its table of contents')
+    schema, count = re.subn(r'<script type="application/ld\+json">(.*?)</script>', lambda m: m[0], html, count=1, flags=re.S)
+    match = re.search(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+    if not match:
+        raise ValueError('article needs TechArticle JSON-LD')
+    article = json.loads(match[1])
+    if article.get('@type') != 'TechArticle':
+        raise ValueError('article JSON-LD must be a TechArticle')
+    article.update({'description': description, 'image': image, 'url': url, 'inLanguage': 'en', 'wordCount': words,
+                    'timeRequired': f'PT{minutes}M', 'keywords': [k.strip() for k in post['kicker'].split('·') if k.strip()],
+                    'articleSection': 'Uncensored AI model research', 'isAccessibleForFree': True,
+                    'datePublished': post['published_at'], 'dateModified': post['modified_at']})
+    html = html[:match.start(1)] + json.dumps(article, ensure_ascii=False, separators=(',', ':')) + html[match.end(1):]
+    breadcrumbs = json.dumps({'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': 1, 'name': 'ABLITERATED.cloud', 'item': f'{ORIGIN}/'},
+        {'@type': 'ListItem', 'position': 2, 'name': 'Models & guides', 'item': f'{ORIGIN}/blog/'},
+        {'@type': 'ListItem', 'position': 3, 'name': article['headline'], 'item': url}]}, ensure_ascii=False, separators=(',', ':'))
+    head_meta = ('<!-- ARTICLE-META -->'
+                 f'<meta property="article:published_time" content="{post["published_at"]}"><meta property="article:modified_time" content="{post["modified_at"]}">'
+                 '<meta property="article:section" content="Uncensored AI model research">'
+                 f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(article["headline"], quote=True)}"><meta name="twitter:description" content="{escape(description, quote=True)}"><meta name="twitter:image" content="{image}">'
+                 f'<script type="application/ld+json">{breadcrumbs}</script>'
+                 '<!-- /ARTICLE-META -->')
+    html, count = re.subn(r'\n?</head>', lambda m: '\n' + head_meta + '\n</head>', html, count=1)
+    if count != 1:
+        raise ValueError('article needs a head element')
+    md_meta = f'\n<!-- ARTICLE-META-MD -->\n_{meta_text.replace(" · Sources linked below", "")} · Canonical: {url}_\n<!-- /ARTICLE-META-MD -->'
+    markdown, count = re.subn(r'<!-- /READING-TLDR -->', lambda m: m[0] + md_meta, markdown, count=1)
+    if count != 1:
+        raise ValueError('Markdown article needs rendered TL;DR before its metadata')
+    return html, markdown
+
+
 def render_feed(posts: list[dict]) -> str:
     newest = datetime.fromisoformat(max(p["modified_at"] for p in posts)).replace(tzinfo=timezone.utc)
     items = []
@@ -311,7 +401,8 @@ def build_outputs(posts: list[dict]) -> dict[Path, str]:
         html = render_article((folder / "index.html").read_text())
         markdown = render_article_md((folder / "index.md").read_text())
         html = re.sub(r'("dateModified"\s*:\s*")[^"]+(")', lambda m: m[1] + post['modified_at'] + m[2], html)
-        outputs[folder / "index.html"], outputs[folder / "index.md"] = render_reading_notes(html, markdown, reading_notes[post['slug']])
+        html, markdown = render_reading_notes(html, markdown, reading_notes[post['slug']])
+        outputs[folder / "index.html"], outputs[folder / "index.md"] = render_article_seo(html, markdown, post)
     for slug in ("about", "contact", "privacy"):
         file = WEBSITE / slug / "index.html"
         text = re.sub(r'<header class="nav".*?</header>', NAV, file.read_text(), count=1, flags=re.S)
@@ -321,6 +412,8 @@ def build_outputs(posts: list[dict]) -> dict[Path, str]:
     latest_html = '\n'.join(f'<a class="blog-card" href="/blog/{p["slug"]}/"><span>{escape(p["kicker"])}</span><h3>{title_with_break(p["card_title"])}</h3><p>{escape(p["title"])}</p><strong>Read the review →</strong></a>' for p in posts[:LATEST_LIMIT])
     latest_md = '\n'.join(f'- **{p["card_title"]}**: {p["title"]} [Read the review]({ORIGIN}/blog/{p["slug"]}/)' for p in posts[:LATEST_LIMIT])
     links = '\n'.join(f'- [{p["title"]}]({ORIGIN}/blog/{p["slug"]}/index.md): model research, {p["published_at"]}.' for p in posts)
+    # The full guide carries each article's TL;DR so agents can answer without fetching every page.
+    full_links = '\n'.join(f'- [{p["title"]}]({ORIGIN}/blog/{p["slug"]}/index.md): model research, {p["published_at"]}.\n' + '\n'.join(f'  - {fact}' for fact in reading_notes[p["slug"]]["tldr"]) for p in posts)
     for name in ["index.html", "index.md", "llms.txt", "llms-full.txt"]:
         text = (WEBSITE / name).read_text()
         is_html = name.endswith(".html")
@@ -331,7 +424,7 @@ def build_outputs(posts: list[dict]) -> dict[Path, str]:
         else:
             text = replace_section(text, "PROJECT-STATUS", '\n\n'.join(paragraphs))
             text = replace_section(text, "RUNNING-COSTS", render_costs(status))
-            text = replace_section(text, "ARCHIVE-LINKS", links)
+            text = replace_section(text, "ARCHIVE-LINKS", full_links if name == "llms-full.txt" else links)
         outputs[WEBSITE / name] = text
     readme = ROOT / "README.md"
     outputs[readme] = replace_section(readme.read_text(), "RUNNING-COSTS", render_costs(status))

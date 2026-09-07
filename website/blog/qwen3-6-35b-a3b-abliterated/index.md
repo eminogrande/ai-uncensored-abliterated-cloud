@@ -36,6 +36,9 @@ Basically, Huihui's Qwen3.6 publisher recommends controlled research use because
 
 Basically, Qwen3.6 routes each token through eight selected experts plus one shared expert.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 18 July 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 18 July 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`, revision `8f0ee727aff5e771ea72466d64d13ecd851d2cc7`.
 

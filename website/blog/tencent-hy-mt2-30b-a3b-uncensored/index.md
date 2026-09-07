@@ -28,6 +28,9 @@ Basically, Identical Hy-MT2 model-card text appeared under 0xSojalSec and OS-Sof
 
 Basically, ARA trains a small adapter to counter a refusal direction while preserving weight-row norms.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 30 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/_
+<!-- /ARTICLE-META-MD -->
 
 Published 30 August 2026. Exact artifact: `0xSojalSec/Tencent-Hy-30B-A3B-uncensored-heretic`, revision `abe0aae382c7abce58b4be4eda48953af034025b`.
 

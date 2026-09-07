@@ -40,6 +40,9 @@ Basically, The Huihui-Qwen3.5-9B article's $2.34 hourly L40S figure was an estim
 
 Basically, Quantized model formats package weights for different hardware and runtimes.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 9 March 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 Published 9 March 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.5-9B-abliterated`, revision `05b9e7c9b978ba29bdb8f50a49c30e4b91183339`.
 

@@ -32,6 +32,9 @@ Basically, Andreas Petersson shipped Vision-Exp in FP8, GGUF and routed IQ2 form
 
 Basically, Vision-Exp's rank-1 edit removes a refusal direction from just 33 attention-output tensors.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 31 August 2026 · Updated 6 September 2026 · 8 min read · Canonical: https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/_
+<!-- /ARTICLE-META-MD -->
 
 *Published 31 August 2026 · Revision-pinned · Primary sources only*
 

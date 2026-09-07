@@ -40,6 +40,9 @@ Basically, The Kimi K3 article treated Resggg's upload as unverified, not as a z
 
 Basically, Holding Kimi K3's packed weights was estimated to need roughly eleven H200s before running.
 <!-- /READING-TLDR -->
+<!-- ARTICLE-META-MD -->
+_Published 17 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/kimi-k3-abliterated-modal/_
+<!-- /ARTICLE-META-MD -->
 
 Published 17 August 2026. Exact artifact: `Resggg/Kimi-K3-Abliterated-modal`, revision `b3a52d265b56551c0011b24d299ba3f8f1393e42`.
 
