@@ -31,7 +31,8 @@ for (const post of posts) {
   assert.equal(post.content_status, "editorial_archive");
   const route = `/blog/${post.slug}/`;
   const [article, markdown] = await Promise.all([read(route), read(`${route}index.md`)]);
-  assert.ok(article.includes("Editorial archive") && markdown.includes("Editorial archive"), route);
+  assert.ok(article.includes("Model research, dated at publication") && markdown.includes("Model research, dated at publication"), route);
+  assert.ok(article.includes("https://signal.me/#p/+13103408213") && markdown.includes("https://signal.me/#p/+13103408213"), route);
   assert.ok(article.includes("Primary sources") && markdown.includes("Primary sources"), route);
   for (const index of [llms, full, sitemap, feed]) assert.ok(index.includes(route), route);
 }
@@ -44,4 +45,9 @@ const rates = status.current.running_quote_usd_per_hour;
 for (const cost of [rates.total * 720, rates.gpu * 60 + rates.disk * 720]) {
   assert.ok(html.includes(`$${cost.toFixed(2)}`), "running-cost scenarios missing");
 }
-console.log(JSON.stringify({target:base, result:"passed", archived_articles:posts.length, public_inference:false, live_status_polling:false, scope:"Static documentation surfaces; no GPU or inference requests"}, null, 2));
+assert.ok(/<h1[^>]*>Intelligence, freed\.<\/h1>/.test(html), "preserve the approved headline");
+assert.ok(html.includes("https://signal.me/#p/+13103408213"), "Signal service contact missing");
+const catalog = await read("/.well-known/ai-catalog.json", true);
+assert.equal(catalog.specVersion, "1.0");
+assert.ok(catalog.entries.length > 0);
+console.log(JSON.stringify({target:base, result:"passed", model_articles:posts.length, public_inference:false, live_status_polling:false, scope:"Service website and read-only discovery; no GPU or inference requests"}, null, 2));

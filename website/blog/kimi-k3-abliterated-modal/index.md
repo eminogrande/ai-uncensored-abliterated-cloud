@@ -1,8 +1,45 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The 2.78-trillion-parameter abliteration nobody can run<!-- READING-TLDR -->
 
-# The 2.78-trillion-parameter abliteration nobody can run
+## TL;DR
+
+- Resggg's Kimi K3 upload stored about 1.56 TB across 96 shards at review.
+- The article estimated roughly eleven H200s just to hold the packed weights.
+- The copied SHS-Lab refusal-removal and video claims were not verified for this upload.
+
+## Basically, the facts
+
+**Two point seven eight trillion, zero downloads**
+
+Basically, Resggg's Kimi K3 upload had zero downloads, likes or discussions at review.
+
+**What 2.78 trillion parameters means in memory**
+
+Basically, The article's Kimi K3 estimate put packed weights at roughly 1.35 TiB before runtime memory.
+
+**Why "modal"?**
+
+Basically, Kimi K3's video claim came from copied SHS-Lab text, not a verified run of Resggg's upload.
+
+**Moonshot's Kimi K3, briefly**
+
+Basically, Moonshot's Kimi K3 card describes a mixture-of-experts model with a million-token context.
+
+**Who actually attempts a K3 abliteration**
+
+Basically, Resggg's copied Kimi K3 refusal-removal claim was unverified in the article.
+
+**The honest gap between uploaded and runnable**
+
+Basically, The article found no inference provider listing Resggg's Kimi K3 upload.
+
+**How we treat it**
+
+Basically, The Kimi K3 article treated Resggg's upload as unverified, not as a zero-refusal model.
+
+**The idea, in plain words**
+
+Basically, Holding Kimi K3's packed weights was estimated to need roughly eleven H200s before running.
+<!-- /READING-TLDR -->
 
 Published 17 August 2026. Exact artifact: `Resggg/Kimi-K3-Abliterated-modal`, revision `b3a52d265b56551c0011b24d299ba3f8f1393e42`.
 
@@ -32,3 +69,11 @@ Primary sources:
 - [Refusal in Language Models Is Mediated by a Single Direction](https://arxiv.org/abs/2406.11717)
 
 Uploaded, licensed and endpoints-compatible — and entirely unrun. "Abliterated" here means refusal-reduced per publisher claim: not verified, not zero-refusal, and not once executed.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

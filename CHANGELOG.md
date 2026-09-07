@@ -3,6 +3,38 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## [website-v0.12.2] - 2026-09-07
+
+### Fast-reading editorial format
+
+- Add source-backed TL;DR facts below each article title and standalone
+  `Basically,` statements for every substantive section across the article inventory.
+- Generate HTML callouts and a complete Markdown facts digest from one
+  `website/blog/reading-notes.json` ledger, with original supporting excerpts.
+- Preserve original research, source links, publication dates and historical
+  claims; refresh modification dates without pretending the research is new.
+- Validate complete coverage, source excerpts, 140-character limits, parity,
+  reversibility and idempotence; reuse existing CSS without JavaScript.
+- Make the homepage navigation link directly to the blog by name.
+- Align the local daily editorial skill and existing daily cron prompt with the
+  shared Nuri Basically contract; keep site-specific deployment separate.
+
+### Restore service positioning and search discovery
+
+- **Why:** the infrastructure cleanup incorrectly recast the service website as a
+  private experiment. Restore **Intelligence, freed.**, uncensored and abliterated
+  AI cloud rentals, self-hosting and LLM router integration help.
+- Restore the original Signal contact throughout the landing page and model blog.
+  Human-assisted setup remains distinct from a public self-service inference API.
+- Add matching visible FAQs and structured service data; improve page titles,
+  descriptions, Markdown discovery, AI catalog and agent guidance.
+- Keep model reporting active and useful: preserve sources and dates, remove the
+  archive-only framing, and connect articles to self-hosting assistance.
+- Retain the lightweight, script-free design and canonical dated operating costs.
+  No GPU start, payment integration, DNS change or infrastructure migration.
+- Scanner results are measured separately. No guaranteed rankings, AI citations,
+  universal zero-refusal behavior or fabricated 100-point claims.
+
 ## [website-v0.12.1] - 2026-09-06
 
 ### Editorial archive: Spark-X2.5 day-ten uncensors

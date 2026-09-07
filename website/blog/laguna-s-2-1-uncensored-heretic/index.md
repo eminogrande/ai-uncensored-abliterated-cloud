@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The 118B coding MoE nobody has refused<!-- READING-TLDR -->
 
-# The 118B coding MoE nobody has refused
+## TL;DR
+
+- Laguna S 2.1 stores 118B parameters while activating about 8B per token.
+- llmfan46 reported 6/100 refusals, but the card's mislabeled baseline prevents a clean comparison.
+- The uncensored checkpoint shipped as 218.99 GiB of BF16 weights across 48 shards.
+
+## Basically, the facts
+
+**Why this one matters**
+
+Basically, poolside reported 70.2% on Terminal-Bench 2.1 for Laguna S 2.1.
+
+**What the card gets right — and the copy-paste bug**
+
+Basically, Laguna's uncensor card mislabeled its baseline as Qwen3-Coder-Next.
+
+**The cost of 118 billion stored parameters**
+
+Basically, Laguna's 8B active parameters still require storing a 118B-parameter model.
+
+**How to run it**
+
+Basically, llmfan46's Laguna uncensor shipped 48 BF16 shards, not a working GGUF release.
+
+**The creator: llmfan46**
+
+Basically, llmfan46's model cards reported hitting Hugging Face's free storage limit.
+
+**The agentic dimension**
+
+Basically, poolside trained Laguna S 2.1 for coding agents, where refusals can stop tool-call loops.
+
+**The idea, in plain words**
+
+Basically, Laguna's router selects ten experts per token while keeping the full model stored.
+<!-- /READING-TLDR -->
 
 Published 30 August 2026. Exact artifact: `llmfan46/Laguna-S-2.1-Uncensored-Heretic`, revision `c8a210847c1092c2c89ce814dc6a623b8afb0320`.
 
@@ -33,3 +66,11 @@ Primary sources:
 - [OpenMDW license](https://openmdw.ai/)
 
 Safety filtering is significantly reduced in this edit — that is the whole point, and it changes both what the model says and, as an agent, what it does with a tool.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

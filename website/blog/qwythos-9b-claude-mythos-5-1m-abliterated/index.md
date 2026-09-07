@@ -1,8 +1,45 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# Qwythos has three lives: Qwen bones, 500M reasoning tokens and an abliterated refusal circuit<!-- READING-TLDR -->
 
-# Qwythos has three lives: Qwen bones, 500M reasoning tokens and an abliterated refusal circuit
+## TL;DR
+
+- Qwythos combines Qwen3.5-9B architecture, Empero reasoning training and Huihui abliteration.
+- Empero reports smoke testing near 137K tokens, not across the configured million-token window.
+- Huihui published no post-edit refusal test or benchmark rerun.
+
+## Basically, the facts
+
+**Life one: Qwen builds the skeleton**
+
+Basically, Qwythos starts with dense Qwen3.5-9B architecture and occupies roughly 19.3 GB in BF16.
+
+**Life two: Empero changes the behavior**
+
+Basically, Empero says Qwythos learned from more than 500 million tokens of reasoning traces.
+
+**The “1M” in the name**
+
+Basically, Qwythos has a million-token setting, but Empero reports smoke testing only around 137K.
+
+**Life three: huihui edits refusal again**
+
+Basically, Huihui's Qwythos derivative has no published post-abliteration refusal test or benchmark rerun.
+
+**A tiny tool-use demo, not a giant benchmark**
+
+Basically, Empero reported seven successful tool-use prompts for upstream Qwythos, not Huihui’s later abliterated derivative.
+
+**The people behind the lineage**
+
+Basically, Qwythos combines Qwen architecture, Empero's reasoning fine-tune and Huihui's refusal edit.
+
+**Why this is our inexpensive route**
+
+Basically, The Qwythos article paired the small BF16 model with one L40S for experimentation.
+
+**The idea, in plain words**
+
+Basically, Qwythos's million-token label is a configured limit, not proof of reasoning quality at that length.
+<!-- /READING-TLDR -->
 
 Published 18 July 2026. Exact artifact: `huihui-ai/Huihui-Qwythos-9B-Claude-Mythos-5-1M-abliterated`, revision `efcc73cac15ff8fc5d46b8d41b53c22d571cf97d`.
 
@@ -26,3 +63,11 @@ Primary sources:
 - [Official Empero site](https://empero.org/)
 - [Official Qwen3.5-9B repository](https://huggingface.co/Qwen/Qwen3.5-9B)
 - [Original refusal-direction paper](https://arxiv.org/abs/2406.11717)
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

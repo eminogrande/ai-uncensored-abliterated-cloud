@@ -1,97 +1,118 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ABLITERATED.cloud — Private model evaluation</title>
-  <meta name="description" content="Private, on-demand model evaluation on Vast.ai with llama.cpp. Dated operating status, clear limits, and a source-linked editorial archive. No public inference.">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
-  <meta name="content-signal" content="search=yes,ai-input=yes,ai-train=no">
-  <meta name="theme-color" content="#f7f7f4">
-  <meta name="color-scheme" content="light">
-  <link rel="canonical" href="https://abliterated.cloud/">
-  <link rel="alternate" type="text/markdown" href="/index.md" title="Project in Markdown">
-  <link rel="alternate" type="text/plain" href="/llms.txt" title="Agent reading index">
-  <link rel="alternate" type="application/rss+xml" href="/blog/feed.xml" title="Editorial archive">
-  <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog">
-  <link rel="agent-skill" type="text/markdown" href="/skills/abliterated-cloud/SKILL.md">
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" sizes="any">
-  <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
-
-  <link rel="manifest" href="/manifest.webmanifest">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ABLITERATED.cloud">
-  <meta property="og:url" content="https://abliterated.cloud/">
-  <meta property="og:title" content="ABLITERATED.cloud — Private model evaluation">
-  <meta property="og:description" content="Vast.ai + llama.cpp. Private on-demand evaluation, an honest status snapshot, and an editorial archive. No public inference.">
-  <meta property="og:image" content="https://abliterated.cloud/assets/icon-512.png">
-  <meta property="og:image:width" content="512">
-  <meta property="og:image:height" content="512">
-  <meta property="og:image:alt" content="ABLITERATED.cloud — Private model evaluation. Vast.ai + llama.cpp. No public inference.">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ABLITERATED.cloud — Private model evaluation">
-  <meta name="twitter:description" content="Vast.ai + llama.cpp. Documentation and editorial archive, not a public hosted model catalog.">
-  <meta name="twitter:image" content="https://abliterated.cloud/assets/icon-512.png">
-  <link rel="stylesheet" href="/styles.css">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://abliterated.cloud/#organization","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/","logo":"https://abliterated.cloud/assets/logo.svg","sameAs":["https://github.com/eminogrande/ai-uncensored-abliterated-cloud"]},{"@type":"WebSite","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/","description":"Private on-demand model evaluation on Vast.ai with llama.cpp. Public documentation and editorial archive; no public inference.","publisher":{"@id":"https://abliterated.cloud/#organization"},"inLanguage":"en"},{"@type":"SoftwareSourceCode","name":"ABLITERATED.cloud project-owned code","codeRepository":"https://github.com/eminogrande/ai-uncensored-abliterated-cloud","license":"https://spdx.org/licenses/MIT.html","description":"MIT applies to project-owned code, not model weights or third-party code."}]}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uncensored AI Cloud &amp; Self-Hosting | ABLITERATED.cloud</title>
+<meta name="description" content="Run uncensored and abliterated LLMs on rented cloud GPUs or your own hardware. Get hands-on setup, llama.cpp and app integration help. Free MIT-licensed code.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="content-signal" content="search=yes,ai-input=yes,ai-train=no">
+<meta name="theme-color" content="#f7f7f4">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://abliterated.cloud/">
+<link rel="alternate" type="text/markdown" href="/index.md">
+<link rel="alternate" type="text/plain" href="/llms.txt">
+<link rel="alternate" type="application/rss+xml" href="/blog/feed.xml">
+<link rel="ai-catalog" type="application/json" href="/.well-known/ai-catalog.json">
+<link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog">
+<link rel="agent-skill" type="text/markdown" href="/skills/abliterated-cloud/SKILL.md">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" sizes="any">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ABLITERATED.cloud">
+<meta property="og:url" content="https://abliterated.cloud/">
+<meta property="og:title" content="Intelligence, freed. | ABLITERATED.cloud">
+<meta property="og:description" content="Uncensored AI on infrastructure you control. Cloud GPU rental, self-hosting and app integration help, with free MIT-licensed code.">
+<meta property="og:image" content="https://abliterated.cloud/assets/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="ABLITERATED.cloud logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Intelligence, freed. | ABLITERATED.cloud">
+<meta name="twitter:description" content="Uncensored AI on infrastructure you control. Cloud GPU rental, self-hosting and app integration help, with free MIT-licensed code.">
+<meta name="twitter:image" content="https://abliterated.cloud/assets/icon-512.png">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://abliterated.cloud/#organization","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/","logo":"https://abliterated.cloud/assets/logo.svg","sameAs":["https://github.com/eminogrande/ai-uncensored-abliterated-cloud"],"contactPoint":{"@type":"ContactPoint","contactType":"Setup enquiries","url":"https://signal.me/#p/+13103408213"}},{"@type":"Service","@id":"https://abliterated.cloud/#service","name":"Uncensored LLM cloud GPU, self-hosting and integration help","url":"https://abliterated.cloud/#services","provider":{"@id":"https://abliterated.cloud/#organization"},"description":"Hands-on uncensored LLM setup with Vast.ai and llama.cpp or your own hardware. Assistance priced on Signal; no public inference API."},{"@type":"WebSite","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/","publisher":{"@id":"https://abliterated.cloud/#organization"},"inLanguage":"en"},{"@type":"FAQPage","@id":"https://abliterated.cloud/#limits","mainEntity":[{"@type":"Question","name":"What is an abliterated LLM?","acceptedAnswer":{"@type":"Answer","text":"An abliterated LLM has been modified to reduce learned refusal behavior. Uncensored is a broader label, not a guarantee. A modified model can still refuse, make mistakes or lose capabilities."}},{"@type":"Question","name":"Can I run uncensored AI for free?","acceptedAnswer":{"@type":"Answer","text":"Our project-owned code is free to self-host under MIT. GPU rentals, storage, electricity and setup assistance are not free. Model weights have separate licenses. We scope and price assistance on Signal before work begins."}},{"@type":"Question","name":"Does zero refusal AI mean it answers everything?","acceptedAnswer":{"@type":"Answer","text":"No. Zero refusal AI can describe results on a particular test set, not a universal guarantee. Behavior depends on the model, prompt and runtime. We help test your workload without promising zero refusals, accuracy or reliable tool use."}},{"@type":"Question","name":"Is there a public inference API I can use now?","acceptedAnswer":{"@type":"Answer","text":"No. We offer human setup help, code and guides, not instant API keys or an always-on hosted catalog. The current cloud workflow uses manually started Vast.ai compute and llama.cpp over private SSH. Contact us on Signal."}}]}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#status">Status</a><a href="/#cost">Cost</a><a href="/#workflow">Workflow</a><a href="/blog/">Archive</a><a href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud">GitHub ↗</a></nav></div></header>
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <p class="kicker">VAST.AI + LLAMA.CPP</p>
-      <h1 id="hero-title">Private model evaluation.<br>On your terms.</h1>
-      <p class="hero-lead">A small, operator-run workspace for evaluating abliterated models on a rented GPU. Start it when needed. Connect privately. Stop it when finished.</p>
-      <p>No public inference. No hosted model catalog. No promise that a model will answer every prompt.</p>
-      <div class="hero-actions"><a class="button" href="#status">Read the status</a><a class="button button-secondary" href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md">Read the operating docs ↗</a></div>
-    </section>
-    <section class="section" id="status" aria-labelledby="status-title">
-      <p class="kicker">DATED SNAPSHOT · NOT LIVE TELEMETRY</p>
-      <h2 id="status-title">What exists right now.</h2>
-      <!-- PROJECT-STATUS -->
-<div class="status-panel"><p>Stopped. Provider snapshot: 2026-09-05 20:12 UTC, not live polling. 1 Vast.ai instance: 49433042, A100 PCIE 40960 MB, 120 GB disk. actual_status=exited; intended_status=stopped.</p><p>Last local health check (2026-09-05T19:39 UTC): localhost:8080 connection refused. No current inference test. Stopped storage remains billed.</p><p>Last serving configuration: Qwen3.8-27B OBLITERATED, Q6_K, llama.cpp, 262144 tokens configured. Not serving now; long-context quality is unvalidated.</p><p>Modal: Retired and not used by this project because of its cost budget. Four old apps still existed with zero tasks at the 2026-09-05 19:39 UTC audit; they were not decommissioned. Possible legacy storage charges remain unaudited.</p></div>
-<!-- /PROJECT-STATUS -->
-      <p><a href="/.well-known/project-status.json">Read the snapshot as JSON</a></p>
-    </section>
-    <section class="section" id="cost" aria-labelledby="cost-title">
-      <p class="kicker">VAST.AI RUNNING COST</p>
-      <h2 id="cost-title">Pay for time, not requests.</h2>
-      <!-- RUNNING-COSTS -->
-<table><caption>Vast.ai A100 40 GB + 120 GB disk</caption><thead><tr><th scope="col">Usage</th><th scope="col">Cost</th></tr></thead><tbody><tr><th scope="row">Running: GPU + disk / hour</th><td>$0.63333</td></tr><tr><th scope="row">Running continuously / 24 hours</th><td>$15.20</td></tr><tr><th scope="row">Running continuously / 30 days</th><td>$456.00</td></tr><tr><th scope="row">Stopped: retained disk / 30 days</th><td>$24.00</td></tr><tr><th scope="row">2 hours running per day / 30 days, disk retained throughout</th><td>$60.00</td></tr></tbody></table><p>USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.</p>
-<!-- /RUNNING-COSTS -->
-    </section>
-    <section class="section" id="workflow" aria-labelledby="workflow-title">
-      <p class="kicker">THE CURRENT WORKFLOW</p>
-      <h2 id="workflow-title">Manual. Private. Deliberate.</h2>
-      <ol class="step-grid"><li><h3>Start on Vast.ai</h3><p>The operator checks the instance, disk, current quote and spending scope, then starts it explicitly. This website cannot start a GPU.</p></li><li><h3>Connect over SSH</h3><p>llama.cpp stays on <code>localhost:8080</code>. Use an operator-controlled SSH tunnel and inspect the actual loaded model before evaluating it.</p></li><li><h3>Stop and verify</h3><p>Stop manually and read back the instance state. No automatic idle shutdown is proven. Stopping retains disk and ongoing storage charges; it is not deletion.</p></li></ol>
-      <p><a href="/auth.md">Access boundary</a> · <a href="/skills/abliterated-cloud/SKILL.md">Agent operating notes</a></p>
-    </section>
-    <section class="section" id="limits" aria-labelledby="limits-title">
-      <p class="kicker">EVIDENCE, NOT A LEADERBOARD</p>
-      <h2 id="limits-title">What is not established.</h2>
-      <ul><li><strong>Long-context quality:</strong> 262144 is a configured context limit, not validation that long inputs work reliably.</li><li><strong>A best model or a speed promise:</strong> old runs used different artifacts, settings and tests. They do not establish a current winner or comparable performance.</li><li><strong>Zero refusals:</strong> abliteration aims to reduce refusal behavior. A publisher’s result on one test set is not a general guarantee of behavior, capability or correctness.</li><li><strong>A public service:</strong> no public inference, billing, customer accounts, inference OAuth or live MCP service is offered here.</li></ul>
-      <p>Modal is retired and not used: its cost did not fit this experiment. Vast.ai is the only current operating path. Archived documentation and release notes describe history, not available products.</p>
-    </section>
-    <section class="section" id="archive" aria-labelledby="archive-title">
-      <p class="kicker">EDITORIAL ARCHIVE</p>
-      <h2 id="archive-title">Field notes, not live models.</h2>
-      <p>Source-linked reporting on model releases, edits and published evaluations. These articles preserve their dates, per-model license facts and historical estimates. Inclusion is not a hosting offer, current price, or proof that we evaluated that model.</p>
-      <ul class="archive-list">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#services">Services</a><a href="/#self-host">Self-host</a><a href="/blog/">Blog &amp; guides</a><a href="https://signal.me/#p/+13103408213">Signal</a></nav></div></header>
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+<p class="kicker">OPEN-SOURCE UNCENSORED AI</p>
+<h1 id="hero-title">Intelligence, freed.</h1>
+<p class="hero-lead">Rent cloud GPUs and self-host uncensored, abliterated AI.</p>
+<p>Your model. Your GPU. Your rules. Run an uncensored LLM with our MIT code, or get personal help renting, self-hosting and connecting it.</p>
+<div class="hero-actions"><a class="button" href="https://signal.me/#p/+13103408213">Talk on Signal</a><a class="button button-secondary" href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md">Self-hosting guide ↗</a><a href="/blog/">Read the model blog →</a></div>
+</section>
+<section class="section" id="services" aria-labelledby="services-title">
+<p class="kicker">HANDS-ON SETUP</p>
+<h2 id="services-title">Open code. Human help. Your infrastructure.</h2>
+<p>Bring your model and budget. Get a scoped setup, a client connection test and clear start/stop instructions.</p>
+<div class="step-grid service-grid">
+<article id="cloud"><h3>Rent a cloud GPU</h3><p>Try a larger model without buying a server. We help choose the GPU and quantization, check costs and set up private access. Our current cloud path is <strong>Vast.ai + llama.cpp</strong>.</p><a href="#cost">See reference GPU costs →</a></article>
+<article id="self-host"><h3>Use your own hardware</h3><p>Run an uncensored LLM on a compatible workstation or server. Get help with model fit, llama.cpp and local access. Our code is free under MIT; hardware, operating costs and model licenses are separate.</p><a href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md">Read the self-hosting guide ↗</a></article>
+<article id="integrations"><h3>Connect your app or router</h3><p>Connect your chat app, coding client or LLM router to llama.cpp's OpenAI-compatible interface. We help set the base URL and model ID, then test your client. This is integration help, not a hosted routing API.</p><a href="https://signal.me/#p/+13103408213">Discuss your integration on Signal →</a></article>
+</div>
+</section>
+<section class="section" id="workflow" aria-labelledby="workflow-title">
+<h2 id="workflow-title">Keep control of your setup.</h2>
+<ol class="step-grid"><li><h3>Bring your use case</h3><p>Send your model, app and hardware or rental budget. We agree the setup, tests and assistance price.</p></li><li><h3>Run it privately</h3><p>Start the Vast.ai GPU deliberately, connect to llama.cpp over SSH, then test the loaded model in your client.</p></li><li><h3>Know how to stop</h3><p>Keep the configuration and operating steps. Stop cloud instances manually and verify the state. Retained disks still cost money.</p></li></ol>
+<p>Your app connects to your model server, not this website. <a href="/auth.md">Read the access details</a>.</p>
+</section>
+<section class="section" id="archive" aria-labelledby="archive-title">
+<p class="kicker">MODELS &amp; GUIDES</p>
+<h2 id="archive-title">Read the facts. Find your next model.</h2>
+<p>Uncensored model news, benchmarks and self-hosting research. Skim the TL;DR and Basically facts, check the sources, then choose what to run.</p>
+<ul class="archive-list">
       <!-- ABLITERATED-LATEST-RELEASES -->
 <li><time datetime="2026-09-06">2026-09-06</time><a href="/blog/spark-x2-5-uncensor-wave/">Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B</a></li>
 <li><time datetime="2026-08-31">2026-08-31</time><a href="/blog/deepseek-v4-flash-vision-exp-abliterated/">Eleven hours from DeepSeek drop to uncensor.</a></li>
 <li><time datetime="2026-08-30">2026-08-30</time><a href="/blog/tencent-hy-mt2-30b-a3b-uncensored/">Why would a translation model refuse? Tencent&#x27;s Hy-MT2, decensored</a></li>
 <!-- /ABLITERATED-LATEST-RELEASES -->
-      </ul>
-      <p><a href="/blog/">Browse the full archive →</a> · <a href="/blog/feed.xml">RSS</a></p>
-    </section>
-    <section class="section" id="license" aria-labelledby="license-title">
-      <h2 id="license-title">Open code. Separate model licenses.</h2>
-      <p>Our own website and code use MIT. Upstream code, model weights and derivatives retain their own licenses and restrictions. Public availability is not blanket permission for commercial use.</p>
-      <p><a href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud">Source repository ↗</a> · <a href="/NOTICE.md">Website notice</a></p>
-    </section>
-  </main>
-  <footer class="footer"><p>ABLITERATED.cloud<br>Private evaluation. Public notes.</p><nav aria-label="Footer navigation"><a href="/index.md">Markdown</a><a href="/llms.txt">Agent index</a><a href="/openapi.json">Documentation schema</a><a href="/blog/">Archive</a><a href="/RELEASE_NOTES.md">Updates</a></nav></footer>
+</ul>
+<p><a href="/blog/">Read all models &amp; guides →</a> · <a href="/blog/feed.xml">Subscribe via RSS</a></p>
+<p class="section-note">Coverage does not imply testing or hosting. Check each article's date, sources and license. <a href="https://signal.me/#p/+13103408213">Ask about running a model →</a></p>
+</section>
+<section class="section" id="cost" aria-labelledby="cost-title">
+<h2 id="cost-title">Know what the machine costs.</h2>
+<p><strong>Reference GPU provider rates</strong> from our dated Vast.ai contract, not customer service prices or a current rental offer. Assistance is scoped and priced separately on Signal.</p>
+      <!-- RUNNING-COSTS -->
+<table><caption>Vast.ai A100 40 GB + 120 GB disk</caption><thead><tr><th scope="col">Usage</th><th scope="col">Cost</th></tr></thead><tbody><tr><th scope="row">Running: GPU + disk / hour</th><td>$0.63333</td></tr><tr><th scope="row">Running continuously / 24 hours</th><td>$15.20</td></tr><tr><th scope="row">Running continuously / 30 days</th><td>$456.00</td></tr><tr><th scope="row">Stopped: retained disk / 30 days</th><td>$24.00</td></tr><tr><th scope="row">2 hours running per day / 30 days, disk retained throughout</th><td>$60.00</td></tr></tbody></table><p>USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.</p>
+<!-- /RUNNING-COSTS -->
+</section>
+<section class="section" id="limits" aria-labelledby="limits-title">
+<h2 id="limits-title">Questions before you start.</h2>
+<div class="faq-list">
+<details><summary>What is an abliterated LLM?</summary><p>An abliterated LLM has been modified to reduce learned refusal behavior. Uncensored is a broader label, not a guarantee. A modified model can still refuse, make mistakes or lose capabilities.</p></details>
+<details><summary>Can I run uncensored AI for free?</summary><p>Our project-owned code is free to self-host under MIT. GPU rentals, storage, electricity and setup assistance are not free. Model weights have separate licenses. We scope and price assistance on Signal before work begins.</p></details>
+<details><summary>Does zero refusal AI mean it answers everything?</summary><p>No. Zero refusal AI can describe results on a particular test set, not a universal guarantee. Behavior depends on the model, prompt and runtime. We help test your workload without promising zero refusals, accuracy or reliable tool use.</p></details>
+<details><summary>Is there a public inference API I can use now?</summary><p>No. We offer human setup help, code and guides, not instant API keys or an always-on hosted catalog. The current cloud workflow uses manually started Vast.ai compute and llama.cpp over private SSH. Contact us on Signal.</p></details>
+</div>
+</section>
+<section class="closing" id="contact" aria-labelledby="contact-title">
+<h2 id="contact-title">Bring the model. We'll help with the rest.</h2>
+<p>Send a model link, your hardware or GPU budget, and the app you want to connect.</p>
+<div class="hero-actions"><a class="button" href="https://signal.me/#p/+13103408213">Talk on Signal</a><a class="button button-secondary" href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud">Explore the open-source code ↗</a></div>
+</section>
+<section class="section" id="status" aria-labelledby="status-title">
+<p class="kicker">OPERATING NOTES</p>
+<h2 id="status-title">Our reference setup.</h2>
+<p><strong>STOPPED · 2026-09-05 20:12 UTC.</strong> Reference instance snapshot, not live availability. No current inference test.</p>
+<details class="status-disclosure"><summary>View snapshot and technical limits</summary>
+      <!-- PROJECT-STATUS -->
+<div class="status-panel"><p>Stopped. Provider snapshot: 2026-09-05 20:12 UTC, not live polling. 1 Vast.ai instance: 49433042, A100 PCIE 40960 MB, 120 GB disk. actual_status=exited; intended_status=stopped.</p><p>Last local health check (2026-09-05T19:39 UTC): localhost:8080 connection refused. No current inference test. Stopped storage remains billed.</p><p>Last serving configuration: Qwen3.8-27B OBLITERATED, Q6_K, llama.cpp, 262144 tokens configured. Not serving now; long-context quality is unvalidated.</p><p>Modal: Retired and not used by this project because of its cost budget. Four old apps still existed with zero tasks at the 2026-09-05 19:39 UTC audit; they were not decommissioned. Possible legacy storage charges remain unaudited.</p></div>
+<!-- /PROJECT-STATUS -->
+<p>Historical runs do not establish a best model or comparable speed. Vast.ai is the only current cloud path; Modal docs are historical.</p>
+</details>
+<p><a href="/.well-known/project-status.json">Snapshot JSON</a> · <a href="/skills/abliterated-cloud/SKILL.md">Agent operating notes</a></p>
+</section>
+<section class="section" id="license" aria-labelledby="license-title">
+<h2 id="license-title">Free code. Yours to self-host.</h2>
+<p>Our website and code use MIT: inspect, adapt and self-host without a software license fee. Compute and assistance cost separately. Model weights and third-party code keep their own licenses; public availability does not imply commercial-use permission.</p>
+<p><a href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud">Source repository ↗</a> · <a href="/NOTICE.md">Website notice</a></p>
+</section>
+</main>
+<footer class="footer"><p>ABLITERATED.cloud<br>Intelligence, freed.</p><nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/RELEASE_NOTES.md">Updates</a><a href="/llms.txt">Agent index</a></nav></footer>
 </body>
 </html>

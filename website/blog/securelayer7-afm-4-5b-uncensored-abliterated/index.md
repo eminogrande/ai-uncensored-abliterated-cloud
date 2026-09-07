@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100<!-- READING-TLDR -->
 
-# The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100
+## TL;DR
+
+- SecureLayer7 published both prompt-injection guardrails and refusal-reduced models.
+- SecureLayer7 reported AFM refusals falling from 92/100 to 3/100 at KL divergence 0.0200.
+- The AFM edit was merged into BF16 weights; independent capability and refusal retests were absent.
+
+## Basically, the facts
+
+**A security vendor walks into Hugging Face**
+
+Basically, SecureLayer7 published guardrail models and refusal-reduced models under the same account.
+
+**The base: an enterprise 4.5B with ReLU² instead of SwiGLU**
+
+Basically, Arcee's AFM card says ReLU² replaced SwiGLU to enable sparsification.
+
+**What the edit actually changed**
+
+Basically, SecureLayer7's AFM card reports refusal-direction edits across all 36 layers.
+
+**3/100 is not 0/100**
+
+Basically, SecureLayer7's 3/100 AFM result applies to its own probes, not every possible prompt.
+
+**How to run it**
+
+Basically, The AFM uncensor shipped safetensors for transformers or vLLM, with no GGUF at publication.
+
+**The creator: SecureLayer7**
+
+Basically, SecureLayer7's AFM NOTICE explicitly disclaims endorsement by Arcee.
+
+**The idea, in plain words**
+
+Basically, AFM's ReLU² activation turns negative values into zeros; abliteration is a separate edit.
+<!-- /READING-TLDR -->
 
 Published 28 August 2026. Exact artifact: `Securelayer7/AFM-4.5B-Uncensored-Abliterated`, revision `38236c07c1fda2334dbc8e109ff746f0af9a3ff4`.
 
@@ -76,3 +109,11 @@ Primary sources:
 - [TorchTitan paper](https://arxiv.org/abs/2410.06511)
 
 Reddit search for "AFM-4.5B", "SecureLayer7" and "Arcee AFM" returned HTTP 403 during research (read-only tool blocked), so community coverage there is not included.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

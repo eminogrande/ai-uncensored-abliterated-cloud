@@ -1,8 +1,45 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# Small uncensored agents: what a 4.5B Heretic distill is for<!-- READING-TLDR -->
 
-# Small uncensored agents: what a 4.5B Heretic distill is for
+## TL;DR
+
+- insraq's Heretic edit builds on Empero's Qwen3.8 distill in a Qwen3.5-4B architecture.
+- The publisher reported 6/100 refusals versus 99/100, with KL divergence of 0.0167.
+- Empero's benchmark scores describe the upstream distill, not the decensored checkpoint.
+
+## Basically, the facts
+
+**Small is the point**
+
+Basically, The insraq 4.5B checkpoint contains about 9.1 GB of BF16 weights.
+
+**A 2.4-trillion-parameter teacher, squeezed into 4.5B**
+
+Basically, Empero says its Qwen3.8 distill trained on roughly 45,000 curated teacher traces.
+
+**Heretic: abliteration by search, not by hand**
+
+Basically, Heretic uses an optimizer to search for fewer refusals with less drift from the base.
+
+**The exact run**
+
+Basically, insraq reported 6/100 refusals for selected trial 128, compared with 99/100 for the base.
+
+**What tiny uncensored trades away**
+
+Basically, Empero's distill benchmark scores do not measure the decensored insraq checkpoint.
+
+**Who made it**
+
+Basically, insraq's Qwen distill edit was made with Heretic v1.4.0 on top of Empero's model.
+
+**How we treat it**
+
+Basically, The article's L40S serving estimate was about $2.34 per hour, not a live price.
+
+**The idea, in plain words**
+
+Basically, Knowledge distillation trains a smaller model using a larger model's answers.
+<!-- /READING-TLDR -->
 
 Published 17 August 2026. Exact artifact: `insraq/Qwen3.5-4B-EmperoAI-Qwen3.8-Distill-Heretic-Abliterated`, revision `ef859957528c1fceda193c54a7630c2ac9aad423`.
 
@@ -31,3 +68,11 @@ Primary sources:
 - [r/LocalLLaMA Heretic thread](https://old.reddit.com/r/LocalLLaMA/comments/1oymku1/heretic_fully_automatic_censorship_removal_for/) (community opinion, via Heretic README)
 
 Coverage note: a direct Reddit search for "4B uncensored" returned HTTP 403, so community coverage here is limited to what the Heretic README quotes.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

@@ -1,5 +1,12 @@
 # ABLITERATED.cloud website releases
 
+## website-v0.12.2
+
+[Intelligence, freed. and faster-reading model research](releases/website-v0.12.2.md).
+
+Restored cloud-GPU, self-hosting and LLM-router positioning; direct blog access;
+source-backed TL;DR and Basically facts throughout the article inventory.
+
 ## website-v0.12.0
 
 [Vast-only documentation, MIT and lightweight website](releases/website-v0.12.0.md).

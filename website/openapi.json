@@ -2,17 +2,22 @@
   "openapi": "3.1.0",
   "info": {
     "title": "ABLITERATED.cloud public documentation",
-    "version": "0.12.0",
-    "description": "Read-only website documents for private on-demand evaluation on Vast.ai with llama.cpp. No public inference, model catalog, wake route, live MCP or OAuth service. The status endpoint is a dated snapshot, not a health API.",
+    "version": "0.12.1",
+    "description": "Read-only public documents for a human-assisted uncensored/abliterated model service: cloud GPU renting, self-hosting and LLM router/app integration. All operations are unauthenticated static GETs. No public inference, checkout, account provisioning, live billing, MCP or OAuth is offered. The status document is a dated operator snapshot, not a health API.",
+    "x-guidance": "Read /index.md for service scope and /auth.md for access. All document GETs require no authentication. Use /blog/posts.json to find dated model coverage; follow sources and recheck license/runtime compatibility. Treat /.well-known/project-status.json as a dated operator audit, not live availability. Ask the user before contacting Signal or changing infrastructure; agree scope, access and budget with a human. This API cannot start GPUs, run inference, issue credentials or take payment.",
+    "contact": {
+      "name": "ABLITERATED.cloud — Signal",
+      "url": "https://signal.me/#p/+13103408213"
+    },
     "license": {
-      "name": "MIT \u2014 project-owned documentation/code only",
+      "name": "MIT — project-owned documentation/code only",
       "identifier": "MIT"
     }
   },
   "servers": [
     {
       "url": "https://abliterated.cloud",
-      "description": "Public static documentation only; not an inference server"
+      "description": "Public static documents only; not an inference server"
     }
   ],
   "security": [],
@@ -20,14 +25,48 @@
     "/index.md": {
       "get": {
         "operationId": "readProjectOverview",
-        "summary": "Project overview in Markdown",
+        "summary": "Read the service overview in Markdown",
+        "description": "Human-assisted cloud GPU renting, self-hosting and LLM router/app integration. Request this explicit Markdown path; static hosting does not negotiate Markdown at the HTML homepage. Public read-only document; no authentication required.",
+        "security": [],
         "responses": {
           "200": {
-            "description": "Project overview in Markdown",
+            "description": "Read the service overview in Markdown",
             "content": {
               "text/markdown": {
                 "schema": {
                   "type": "string"
+                },
+                "examples": {
+                  "publishedDocument": {
+                    "summary": "The complete published overview, including its dated operating snapshot and costs.",
+                    "externalValue": "https://abliterated.cloud/index.md"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth.md": {
+      "get": {
+        "operationId": "readAccessGuide",
+        "summary": "Read public access and private setup guidance",
+        "description": "Public reading needs no credentials. Private setup is agreed with a human over Signal; this document cannot register accounts, issue credentials, start compute or accept payment. Public read-only document; no authentication required.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Read public access and private setup guidance",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "publishedDocument": {
+                    "summary": "The complete Auth.md document with unauthenticated reading and consent-based private setup.",
+                    "externalValue": "https://abliterated.cloud/auth.md"
+                  }
                 }
               }
             }
@@ -38,14 +77,22 @@
     "/.well-known/project-status.json": {
       "get": {
         "operationId": "readDatedStatusSnapshot",
-        "summary": "Dated operator audit; not live availability",
+        "summary": "Read the dated operator snapshot, not live availability",
+        "description": "Read snapshot_at and local_health_checked_at separately. This covers the operator runtime audit, not service enquiries or all blog models. No live polling or inference occurs. Public read-only document; no authentication required.",
+        "security": [],
         "responses": {
           "200": {
-            "description": "Dated operator audit; not live availability",
+            "description": "Read the dated operator snapshot, not live availability",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/ProjectStatus"
+                },
+                "examples": {
+                  "publishedDocument": {
+                    "summary": "The complete published operator snapshot, preserving its audit timestamps; not a fresh health check.",
+                    "externalValue": "https://abliterated.cloud/.well-known/project-status.json"
+                  }
                 }
               }
             }
@@ -55,17 +102,279 @@
     },
     "/blog/posts.json": {
       "get": {
-        "operationId": "readEditorialArchiveIndex",
-        "summary": "Historical editorial metadata; not available models or current prices",
+        "operationId": "readModelNewsIndex",
+        "summary": "Read model news and guide metadata",
+        "description": "Read and filter the array locally; this static file supports no search, pagination or model-loading parameters. Dates, model IDs, publisher claims and historical prices are editorial evidence, not deployed inventory or current quotes. Public read-only document; no authentication required.",
+        "security": [],
         "responses": {
           "200": {
-            "description": "Historical editorial metadata; not available models or current prices",
+            "description": "Read model news and guide metadata",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "type": "object"
+                    "$ref": "#/components/schemas/Article"
+                  }
+                },
+                "examples": {
+                  "publishedDocument": {
+                    "summary": "The complete published article index, including dated field notes and historical estimates.",
+                    "externalValue": "https://abliterated.cloud/blog/posts.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/skills/abliterated-cloud/SKILL.md": {
+      "get": {
+        "operationId": "readModelSelectionSkill",
+        "summary": "Read the model selection and connection skill",
+        "description": "Instructions for following model sources and arranging human-assisted self-hosting or LLM router/app integration with explicit consent. Downloading the skill grants no infrastructure access. Public read-only document; no authentication required.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Read the model selection and connection skill",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "publishedDocument": {
+                    "summary": "The complete skill with YAML frontmatter and consent-based selection and connection steps.",
+                    "externalValue": "https://abliterated.cloud/skills/abliterated-cloud/SKILL.md"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/ai-catalog.json": {
+      "get": {
+        "operationId": "readAIResourceCatalog",
+        "summary": "Read the AI resource discovery catalog",
+        "description": "Links to real overview, operating docs, model news and agent guidance. This static catalog advertises documents, not a public MCP, OAuth, payment or inference service. Public read-only document; no authentication required.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Read the AI resource discovery catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AIResourceCatalog"
+                },
+                "examples": {
+                  "publishedDocument": {
+                    "summary": "The complete public catalog with identifiers, media types and representative queries.",
+                    "externalValue": "https://abliterated.cloud/.well-known/ai-catalog.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProjectStatus": {
+        "type": "object",
+        "required": [
+          "project",
+          "snapshot_at",
+          "live_polling",
+          "public_inference",
+          "public_mcp",
+          "current"
+        ],
+        "properties": {
+          "project": {
+            "type": "string"
+          },
+          "snapshot_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "local_health_checked_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "live_polling": {
+            "type": "boolean",
+            "const": false
+          },
+          "public_inference": {
+            "type": "boolean",
+            "const": false
+          },
+          "public_mcp": {
+            "type": "boolean",
+            "const": false
+          },
+          "current": {
+            "type": "object",
+            "description": "Operator instance state and rates at snapshot_at, not live availability.",
+            "properties": {
+              "provider": {
+                "type": "string"
+              },
+              "instance_id": {
+                "type": "integer"
+              },
+              "instance_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "actual_status": {
+                "type": "string"
+              },
+              "intended_status": {
+                "type": "string"
+              },
+              "cur_state": {
+                "type": "string"
+              }
+            }
+          },
+          "historical_configuration": {
+            "type": "object",
+            "description": "Last recorded configuration, not proof of a currently loaded model."
+          },
+          "evidence_source": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "Article": {
+        "type": "object",
+        "required": [
+          "slug",
+          "type",
+          "title",
+          "summary",
+          "published_at",
+          "modified_at",
+          "model_id",
+          "content_status"
+        ],
+        "properties": {
+          "slug": {
+            "type": "string",
+            "description": "Article path segment: read /blog/{slug}/index.md using this value."
+          },
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "modified_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "model_id": {
+            "type": "string",
+            "description": "Subject artifact identifier, not an inference routing key."
+          },
+          "content_status": {
+            "type": "string",
+            "description": "Retained dated editorial reporting; not deployment availability or publication closure."
+          },
+          "historical_estimated_usd_per_hour": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Historical editorial estimate, not a current price or service quote."
+          },
+          "refusal_claim": {
+            "type": "string",
+            "description": "Scoped publisher/editor claim or measurement, not a universal guarantee."
+          },
+          "source_urls": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      },
+      "AIResourceCatalog": {
+        "type": "object",
+        "required": [
+          "specVersion",
+          "host",
+          "entries"
+        ],
+        "properties": {
+          "specVersion": {
+            "type": "string",
+            "const": "1.0"
+          },
+          "host": {
+            "type": "object",
+            "required": [
+              "displayName",
+              "identifier"
+            ],
+            "properties": {
+              "displayName": {
+                "type": "string"
+              },
+              "identifier": {
+                "type": "string"
+              }
+            }
+          },
+          "entries": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "identifier",
+                "displayName",
+                "type",
+                "url",
+                "representativeQueries"
+              ],
+              "properties": {
+                "identifier": {
+                  "type": "string"
+                },
+                "displayName": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "representativeQueries": {
+                  "type": "array",
+                  "minItems": 2,
+                  "maxItems": 5,
+                  "items": {
+                    "type": "string"
                   }
                 }
               }
@@ -76,8 +385,8 @@
     }
   },
   "externalDocs": {
-    "url": "https://github.com/eminogrande/ai-uncensored-abliterated-cloud",
-    "description": "Current Vast operating documentation; upstream/model licenses unchanged"
+    "url": "https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md",
+    "description": "Current authorized private Vast.ai + llama.cpp operating guide; outside this public document API."
   },
   "x-public-inference": false,
   "x-public-mcp": false

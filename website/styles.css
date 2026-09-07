@@ -90,11 +90,19 @@ th, td { text-align: left; border: 1px solid var(--line); padding: 10px; }
 .footer nav { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: start; }
 .footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
 .closing { padding-block: 64px; }
+.hero h1 { font-size: clamp(44px, 7.8vw, 88px); letter-spacing: -.055em; }
+.hero-note, .section-note { color: var(--muted); font-size: 17px; }
+.hero-note { margin-top: 20px; }
+.service-grid article { border-top: 2px solid var(--ink); padding-top: 12px; min-width: 0; }
+.service-grid a { font-size: 17px; }
+.faq-list details { border-top: 1px solid var(--line); }
+.faq-list summary, .status-disclosure summary { cursor: pointer; padding-block: 16px; font-weight: 650; }
+.faq-list details p { max-width: 820px; padding-bottom: 12px; }
 @media (max-width: 700px) {
   .nav-inner, .hero, .section, .blog-page-main, .article-main, .footer, .closing { width: calc(100% - 32px); }
   .nav-inner { display: block; }
-  .desktop-links { margin-top: 12px; gap: 4px 18px; }
-  .hero { padding-block: 44px; }
+  .desktop-links { margin-top: 12px; gap: 4px 12px; }
+  .hero { padding-block: 32px; }
   .hero-lead, .article-lead { font-size: 21px; }
   .section { padding-block: 36px; }
   .step-grid, .blog-card-grid, .article-facts { grid-template-columns: 1fr; }

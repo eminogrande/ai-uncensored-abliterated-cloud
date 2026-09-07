@@ -1,0 +1,120 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "ABLITERATED.cloud",
+    "identifier": "abliterated.cloud",
+    "documentationUrl": "https://abliterated.cloud/index.md"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:abliterated.cloud:docs:overview",
+      "displayName": "Intelligence, freed. — service overview",
+      "type": "text/markdown",
+      "url": "https://abliterated.cloud/index.md",
+      "description": "Human-assisted cloud GPU renting, self-hosting and LLM router/app integration for uncensored and abliterated models. Contact through Signal; no self-service inference or checkout.",
+      "representativeQueries": [
+        "How can I get help self-hosting an uncensored model?",
+        "Who can help connect an abliterated model to my LLM router or app?"
+      ]
+    },
+    {
+      "identifier": "urn:air:abliterated.cloud:docs:operations",
+      "displayName": "Current Vast.ai + llama.cpp operating guide",
+      "type": "text/html",
+      "url": "https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md",
+      "description": "Current private runtime instructions: account-owner authorization, SSH, model verification, client configuration and manual start/stop. Not a public inference service.",
+      "representativeQueries": [
+        "How do I connect an authorized private llama.cpp instance to a client?",
+        "How do I stop a Vast.ai session and verify the final state?"
+      ]
+    },
+    {
+      "identifier": "urn:air:abliterated.cloud:docs:status-evidence",
+      "displayName": "Operating status and evidence",
+      "type": "text/html",
+      "url": "https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/STATUS.md",
+      "description": "Dated operator checks, the last serving configuration, retained disk charges and evaluation limits. Not live availability.",
+      "representativeQueries": [
+        "What runtime checks have actually been performed?",
+        "Which model and long-context claims still need validation?"
+      ]
+    },
+    {
+      "identifier": "urn:air:abliterated.cloud:docs:status-snapshot",
+      "displayName": "Dated operator status snapshot",
+      "type": "application/json",
+      "url": "https://abliterated.cloud/.well-known/project-status.json",
+      "description": "Machine-readable operator snapshot with timestamps, private Vast.ai runtime state and cost evidence. Not a health monitor or a service availability API.",
+      "representativeQueries": [
+        "What instance state was recorded at the dated audit?",
+        "What were the retained disk and running GPU costs in the snapshot?"
+      ]
+    },
+    {
+      "identifier": "urn:air:abliterated.cloud:docs:access",
+      "displayName": "Auth.md — public reading and private setup",
+      "type": "text/markdown",
+      "url": "https://abliterated.cloud/auth.md",
+      "description": "Public documents require no authentication. Private setup and client changes require human agreement and explicit consent; the site issues no credentials.",
+      "representativeQueries": [
+        "Do I need an API key to read the documentation?",
+        "How do I arrange private setup assistance without publishing credentials?"
+      ]
+    },
+    {
+      "identifier": "urn:air:abliterated.cloud:skill:abliterated-cloud",
+      "displayName": "Model selection and human-assisted connection skill",
+      "type": "application/agent-skills+md",
+      "url": "https://abliterated.cloud/skills/abliterated-cloud/SKILL.md",
+      "description": "Help choose models, follow primary sources and arrange an authorized connection with a human. No automated purchase, payment or public inference.",
+      "representativeQueries": [
+        "How should an agent shortlist models using dated evidence and licenses?",
+        "How can an agent prepare a Signal handoff and verify an authorized connection?"
+      ]
+    },
+    {
+      "identifier": "urn:air:abliterated.cloud:news:blog",
+      "displayName": "Uncensored model news and guides",
+      "type": "text/html",
+      "url": "https://abliterated.cloud/blog/",
+      "description": "An active publication of source-linked model news, field notes and practical guides. Articles retain their own dates, licenses and historical estimates; coverage is not hosting availability.",
+      "representativeQueries": [
+        "Where can I read news about uncensored and abliterated models?",
+        "Where can I find runtime compatibility notes and model selection guides?"
+      ]
+    },
+    {
+      "identifier": "urn:air:abliterated.cloud:news:article-index",
+      "displayName": "Model news article metadata",
+      "type": "application/json",
+      "url": "https://abliterated.cloud/blog/posts.json",
+      "description": "Article titles, summaries, publication/revision dates and exact model IDs. Historical estimates and publisher claims are editorial evidence, not current prices or a deployed-model list.",
+      "representativeQueries": [
+        "Which model field notes have been published recently?",
+        "Where can I find the exact model IDs and dates behind the coverage?"
+      ]
+    },
+    {
+      "identifier": "urn:air:abliterated.cloud:news:spark-x2-5-uncensor-wave",
+      "displayName": "Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B",
+      "type": "text/markdown",
+      "url": "https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/index.md",
+      "description": "Field note published 2026-09-06 on Spark X2.5 uncensored derivatives, Apache-2.0 model licensing, publisher refusal tests and runtime compatibility. Article claims are dated, not a current hosting offer.",
+      "representativeQueries": [
+        "What evidence did the Spark X2.5 uncensor publishers report?",
+        "What runtime and license caveats does the Spark X2.5 field note describe?"
+      ]
+    },
+    {
+      "identifier": "urn:air:abliterated.cloud:docs:openapi",
+      "displayName": "Public read-only documentation OpenAPI",
+      "type": "application/json",
+      "url": "https://abliterated.cloud/openapi.json",
+      "description": "OpenAPI for real static document GETs, with response examples and explicit no authentication. Does not define inference, billing, MCP or OAuth endpoints.",
+      "representativeQueries": [
+        "Which public documents can an agent retrieve without authentication?",
+        "Does the OpenAPI describe inference or only read-only documentation?"
+      ]
+    }
+  ]
+}

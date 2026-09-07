@@ -1,8 +1,37 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals<!-- READING-TLDR -->
 
-# What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals
+## TL;DR
+
+- Muse-Glimmer Aggressive lowers the LoRA training KL penalty from 1.0 to 0.5.
+- The publisher reported 0/100 refusals, versus 13/100 for the normal variant.
+- The card skipped capability benchmarks; Meta's base-model scores do not apply to the edit.
+
+## Basically, the facts
+
+**"Aggressive" is a knob, and the label doesn't tell you which one**
+
+Basically, Muse-Glimmer's aggressive recipe lowers the KL penalty rather than editing more layers.
+
+**What the card actually measured**
+
+Basically, Muse-Glimmer's publisher reported 0/100 refusals for aggressive and 13/100 for normal.
+
+**The honest gap: KL is a drift meter, not a benchmark**
+
+Basically, Muse-Glimmer's aggressive card did not remeasure capability preservation.
+
+**A mirror upload, with the quants living elsewhere**
+
+Basically, SHS-Lab's Muse-Glimmer mirror shipped BF16 shards; the GGUF files were in jorkle's repo.
+
+**How we treat it**
+
+Basically, Muse-Glimmer's reported 0/100 refusals applies to the publisher's own 100-prompt test.
+
+**The idea, in plain words**
+
+Basically, LoRA de-refusal trains a small adapter to change how a model responds.
+<!-- /READING-TLDR -->
 
 Published 17 August 2026. Exact artifact: `SHS-Lab/Muse-Glimmer-30B-Abliterated-Aggressive`, revision `0e74fc7c36d24c58b22cc213c14d7f0512d9f7f1`.
 
@@ -31,3 +60,11 @@ Primary sources:
 - [Original refusal-direction paper](https://arxiv.org/abs/2406.11717)
 
 The 0/100 refusal figure is a publisher claim on its own 100-prompt harness; capability preservation was not re-measured, and this aggressive variant refuses fewer genuinely-harmful requests (0/2 correct refusals) than the normal twin. Verify against your own workload before deployment.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

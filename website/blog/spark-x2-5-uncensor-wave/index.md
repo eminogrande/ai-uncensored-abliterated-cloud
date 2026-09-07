@@ -1,8 +1,45 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B<!-- READING-TLDR -->
 
-# Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B
+## TL;DR
+
+- Spark X2.5's vendor claims up to 1M tokens of native context; community reproduction was unresolved.
+- soyaakinohara reported 3/100 refusals for the 4B edit, down from 58/100 on the base.
+- darioooooo0o reported no real refusals in 337 Spark 1.7B generations; flagged outputs were manually audited.
+
+## Basically, the facts
+
+**Day ten**
+
+Basically, Spark X2.5's first 1.7B uncensor appeared on 3 September 2026, ten days after the base.
+
+**What Spark X2.5 is**
+
+Basically, Spark X2.5's vendor claims 1M-token context, but community tests had not reproduced it.
+
+**The wall of no**
+
+Basically, soyaakinohara measured 58 refusals in 100 prompts on the stock Spark X2.5 4B.
+
+**Two edits, one argument about rulers**
+
+Basically, darioooooo0o argues that short keyword tests misread Spark X2.5's thinking traces.
+
+**How to run it**
+
+Basically, Spark X2.5 GGUF builds used the vendor's llama.cpp fork at publication.
+
+**The creator: XHToken (SparkLLM)**
+
+Basically, XHToken publishes Spark's runtime tools as well as the model weights.
+
+**The editors: soyaakinohara and darioooooo0o**
+
+Basically, soyaakinohara's Spark release paired an uncensored base with a Japanese-tuned version.
+
+**The idea, in plain words**
+
+Basically, Spark X2.5 mixes full-attention layers with roughly three times as many sliding-window layers.
+<!-- /READING-TLDR -->
 
 *Published 6 September 2026 · Revision-pinned · Primary sources only*
 
@@ -98,3 +135,11 @@ Safety filtering is significantly reduced on both edits, which is the whole poin
 - [github.com/XHToken/Spark-X2.5 (community issues incl. 1M-context reproduction request)](https://github.com/XHToken/Spark-X2.5)
 - [github.com/XHToken/llama.cpp (Spark fork, spark2_5 arch)](https://github.com/XHToken/llama.cpp) · [Spark-plugin](https://github.com/XHToken/Spark-plugin)
 - [XHToken (SparkLLM) profile](https://huggingface.co/XHToken) · [soyaakinohara profile](https://huggingface.co/soyaakinohara) · [darioooooo0o profile](https://huggingface.co/darioooooo0o) · [@imdariotoo (X)](https://x.com/imdariotoo)
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

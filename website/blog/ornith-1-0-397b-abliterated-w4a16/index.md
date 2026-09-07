@@ -1,8 +1,45 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# Ornith 397B: surgery on a model too large to hold at once<!-- READING-TLDR -->
 
-# Ornith 397B: surgery on a model too large to hold at once
+## TL;DR
+
+- The Ornith 397B W4A16 artifact still occupies about 195.7 GiB across 47 shards.
+- cebeuq reported Ornith 397B refusals fell from 30.0% for the reference W4A16 quant to 7.5% after editing on 40 harmful prompts.
+- The Ornith 397B article’s two-H200 profile was deployment-disabled, not a live model offer.
+
+## Basically, the facts
+
+**A 397B model that activates about 17B**
+
+Basically, Ornith 397B activates roughly 17B parameters per token, but the quantized artifact still exceeds 195 GiB.
+
+**Why upstream Ornith attracted attention**
+
+Basically, Ornith's upstream 82.4 SWE-bench Verified score was not rerun on the W4A16 derivative.
+
+**W4A16, translated**
+
+Basically, Ornith W4A16 stores selected weights at four bits while keeping activations at 16 bits.
+
+**The shard-by-shard operation**
+
+Basically, Ornith's publisher describes editing and requantizing tensors while streaming the source shards.
+
+**What the publisher actually tested**
+
+Basically, Ornith W4A16's reported checks are publisher smoke tests, not independent benchmarks.
+
+**Who built the derivative?**
+
+Basically, The Ornith W4A16 release explicitly disclaims affiliation with DeepReinforce.
+
+**Why our route remains disabled**
+
+Basically, The Ornith 397B article described a disabled two-H200 deployment profile with a 32K context.
+
+**The idea, in plain words**
+
+Basically, Ornith's four-bit weight storage reduces memory needs without making every tensor four-bit.
+<!-- /READING-TLDR -->
 
 Published 18 July 2026. Exact artifact: `cebeuq/Ornith-1.0-397B-abliterated-W4A16`, revision `e5651d291be1c65ff1360eee47ab533ab13b3d97`.
 
@@ -27,3 +64,11 @@ Primary sources:
 - [Official Qwen architecture card](https://huggingface.co/Qwen/Qwen3.5-397B-A17B)
 - [Original refusal-direction paper](https://arxiv.org/abs/2406.11717)
 - [Intel AutoRound](https://github.com/intel/auto-round)
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

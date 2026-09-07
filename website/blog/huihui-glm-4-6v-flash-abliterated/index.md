@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The MIT vision sleeper that resurfaced in August<!-- READING-TLDR -->
 
-# The MIT vision sleeper that resurfaced in August
+## TL;DR
+
+- Huihui's GLM-4.6V-Flash card says only the text part was edited.
+- Huihui’s GLM-4.6V-Flash derivative had no published refusal-rate or capability-retention evaluation.
+- The article recorded new GGUF repositories with vision-projector files in August 2026.
+
+## Basically, the facts
+
+**An abliteration that kept pace with the release**
+
+Basically, Huihui published its GLM-4.6V-Flash edit in December 2025, shortly after the upstream release.
+
+**Text-only abliteration, and what that really means**
+
+Basically, Huihui's GLM-4.6V-Flash text-only edit has no published test of image-conditioned refusals.
+
+**Why the MIT part is the rare part**
+
+Basically, Huihui's GLM-4.6V-Flash derivative retains the upstream model's MIT license.
+
+**The first quant wave stalled at the runtime**
+
+Basically, Huihui reported Ollama crashes during image recognition in the early GLM-4.6V-Flash discussion.
+
+**What actually changed in August**
+
+Basically, The August 2026 GLM-4.6V-Flash GGUF release included vision-projector files.
+
+**How we treat it**
+
+Basically, The GLM-4.6V-Flash article treated the edit as text-only and its L40S price as an estimate.
+
+**The idea, in plain words**
+
+Basically, The MIT license permits commercial use, modification and redistribution of a model.
+<!-- /READING-TLDR -->
 
 Published 9 December 2025, updated 17 August 2026. Exact artifact: `huihui-ai/Huihui-GLM-4.6V-Flash-abliterated`, revision `7d7926ee0a8d02e46bdab97ead8d5396bfc071df`.
 
@@ -33,3 +66,11 @@ Primary sources:
 - [r/LocalLLaMA release thread (community)](https://www.reddit.com/r/LocalLLaMA/comments/1phaaon/glm46v_108b_has_been_released/)
 
 Note: Reddit API access was rate-limited (HTTP 403) during research, so the r/LocalLLaMA thread is cited for its existence from web-search results, not read directly. Community corroboration of the text-only abliteration also appears in a [July 2026 uncensored-model roundup](https://note.com/keity717/n/na12c237cd70d) and an [April 2026 local-models list](https://www.latent.space/p/ainews-top-local-models-list-april).
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

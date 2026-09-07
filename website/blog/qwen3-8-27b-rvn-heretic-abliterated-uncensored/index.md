@@ -1,8 +1,45 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# Three ARA passes: how RVN got Qwen3.8-27B down to 0–1/100 refusals<!-- READING-TLDR -->
 
-# Three ARA passes: how RVN got Qwen3.8-27B down to 0–1/100 refusals
+## TL;DR
+
+- RVN adds two ARA passes to trohrbaugh's Qwen3.8 edit and ships only as GGUF.
+- 0bserverx reported 0–1/100 refusals on a prefix-forced test; some users still reported refusals.
+- RVN’s corrupted IQ3_M quant was rebuilt and re-uploaded in August 2026.
+
+## Basically, the facts
+
+**Why three passes instead of one**
+
+Basically, 0bserverx reported lower KL drift after two extra ARA passes on the Qwen3.8 edit.
+
+**ARA is a different animal from directional abliteration**
+
+Basically, ARA optimizes weight matrices directly instead of removing just one activation direction.
+
+**The GGUF-only release, and the KV math behind it**
+
+Basically, RVN's GGUF files exclude the MTP draft tensors, and the recommended Q4_K_M is 16.55 GB.
+
+**A corrupted quant, caught by the community**
+
+Basically, 0bserverx traced RVN's broken IQ3_M quant to NaN/Inf scales and zeroed tensors.
+
+**The creator: 0bserverx (Efe Buken)**
+
+Basically, RVN publisher Efe Buken credits Tim Rohrbaugh for the Qwen3.8 model he refined.
+
+**How to run it**
+
+Basically, The RVN article gives GGUF runtime commands that select one quant file explicitly.
+
+**How we treat it**
+
+Basically, RVN's reported 0–1/100 refusals came from a prefix-forced test, not every possible prompt.
+
+**The idea, in plain words**
+
+Basically, ARA adjusts model weights to reduce refusals while aiming to preserve harmless answers.
+<!-- /READING-TLDR -->
 
 Published 14 August 2026. Exact artifact: `0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF`, revision `d8a1b834aa6f08e7b60dd4fb7586b90fd5a44363`.
 
@@ -68,3 +105,11 @@ Primary sources:
 - [p-e-w/heretic — ARA implementation](https://github.com/p-e-w/heretic)
 - [Repo discussions](https://huggingface.co/api/models/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF/discussions)
 - [Original refusal-direction paper](https://arxiv.org/abs/2406.11717)
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

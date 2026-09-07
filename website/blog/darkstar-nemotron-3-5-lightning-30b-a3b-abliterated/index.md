@@ -1,8 +1,37 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage<!-- READING-TLDR -->
 
-# The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage
+## TL;DR
+
+- Nemotron 3.5 Lightning combines Mamba-2, mixture-of-experts layers and sparse attention.
+- Darkstar reported 200/200 harmful-prompt compliance and 0/83 safe over-refusals on both builds.
+- The roughly 22 GB NVFP4 twin kept Mamba tensors and the MTP head in BF16.
+
+## Basically, the facts
+
+**The base: 3B active, built for agents**
+
+Basically, NVIDIA positioned Nemotron 3.5 Lightning for agent tool calls, validation and delegation.
+
+**What a hybrid means for abliteration**
+
+Basically, Darkstar's edit contract reports refusal-direction removal from 3,126 Nemotron tensors.
+
+**The NVFP4 twin: what stays protected**
+
+Basically, Darkstar's NVFP4 twin quantized expert projections while keeping Mamba tensors in BF16.
+
+**How to run it**
+
+Basically, The Darkstar Nemotron article lists a roughly 22 GB NVFP4 build for single-GPU use.
+
+**The creator: HangGlidersRule**
+
+Basically, HangGlidersRule's model-forge documents pinned recipes and validators for Darkstar releases.
+
+**The idea, in plain words**
+
+Basically, Mamba-2 compresses history into a fixed-size state that updates as new tokens arrive.
+<!-- /READING-TLDR -->
 
 Published 25 August 2026. Exact artifact: `HangGlidersRule/Darkstar-Nemotron-3.5-Lightning-30B-A3B-Abliterated-BF16`, revision `f3723fc56c3e05bf8a9499b985dec8cced37027c`.
 
@@ -45,3 +74,11 @@ Primary sources:
 - [Refusal in Language Models Is Mediated by a Single Direction](https://arxiv.org/abs/2406.11717)
 
 The publisher measured 200/200 harmful compliance and 0/83 safe over-refusals on both artifacts — a real, disclosed measurement, not a general "never refuses" claim.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

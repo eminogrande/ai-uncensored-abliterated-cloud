@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# Inside Huihui-Qwen3.6: 256 experts, 3B active parameters, and one refusal direction<!-- READING-TLDR -->
 
-# Inside Huihui-Qwen3.6: 256 experts, 3B active parameters, and one refusal direction
+## TL;DR
+
+- Huihui-Qwen3.6 stores nearly 36B parameters while activating about 3B per token.
+- Huihui describes the refusal-direction edit as an uncensored proof of concept.
+- Qwen's upstream scores were not rerun on the abliterated checkpoint.
+
+## Basically, the facts
+
+**Sparse computation is not a small model**
+
+Basically, Qwen3.6 35B A3B activates about 3B parameters per token but stores nearly 36B.
+
+**Three days from release to abliteration**
+
+Basically, Huihui published its Qwen3.6 derivative three days after Qwen's April 2026 release.
+
+**What abliteration actually edits**
+
+Basically, Huihui's Qwen3.6 abliteration edits selected weights rather than using a jailbreak prompt.
+
+**The upstream numbers—and the honest boundary**
+
+Basically, Qwen's benchmark scores do not establish how Huihui's edited Qwen3.6 checkpoint performs.
+
+**Who made it?**
+
+Basically, Qwen supplied the original Qwen3.6 model; huihui-ai published the edited derivative.
+
+**How we treat it**
+
+Basically, Huihui's Qwen3.6 publisher recommends controlled research use because safety filtering is reduced.
+
+**The idea, in plain words**
+
+Basically, Qwen3.6 routes each token through eight selected experts plus one shared expert.
+<!-- /READING-TLDR -->
 
 Published 18 July 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.6-35B-A3B-abliterated`, revision `8f0ee727aff5e771ea72466d64d13ecd851d2cc7`.
 
@@ -26,3 +59,11 @@ Primary sources:
 - [Implementation linked by huihui-ai](https://github.com/Sumandora/remove-refusals-with-transformers)
 
 The publisher warns that safety filtering is reduced and recommends controlled research use. “Abliterated” means refusal-reduced, not zero-refusal, correct, legal or harmless.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Need help with cloud GPUs, self-hosting or app integration? [Talk on Signal](https://signal.me/#p/+13103408213) or [explore self-hosting](https://abliterated.cloud/#workflow).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->
