@@ -2,27 +2,27 @@
 
 ## TL;DR
 
-- Velum repackages a Bonsai-family 27B uncensor as Q1_0 weights with a DSpark drafter.
-- s3nh reported 6/100 refusals on the FP16 intermediate, not on the final 1-bit pack.
-- Velum's card left benchmarks pending, with no published refusal retest of the Q1_0 artifact.
+- Velum repackages a Bonsai-family uncensor as tiny 1-bit numbers with an extra speedup helper.
+- s3nh reported 6 of 100 refusals on the full-precision middle step, not on the final 1-bit pack.
+- Velum's card left benchmarks pending, with no published refusal retest of the final 1-bit build.
 
 ## Basically, the facts
 
 **Four hops down a family tree in one morning**
 
-Basically, Velum repackaged tommytracx's Q1_0 uncensor with a DSpark drafter in August 2026.
+Basically, Velum repackaged tommytracx's 1-bit uncensor with a speedup helper in August 2026.
 
 **Why a 1-bit model is the right vehicle for this**
 
-Basically, Prism ML claimed 1.125 bits per weight for Bonsai; Velum inherited the low-bit format.
+Basically, Prism ML claimed about 1.1 bits stored per value for Bonsai; Velum inherited that tiny format.
 
 **The edit happened in FP16. The squeeze came after.**
 
-Basically, Velum's Q1_0 pack had no published refusal retest; the 6/100 result belongs to FP16.
+Basically, Velum's 1-bit pack had no published refusal retest; the 6-of-100 result belongs to the full-precision step.
 
 **How to run it**
 
-Basically, Velum's Q1_0 format required the PrismML llama.cpp fork's low-bit kernels.
+Basically, Velum's 1-bit format needed a specific forked version of the serving software.
 
 **The creator: guell00 (and the chain behind the edit)**
 
@@ -30,7 +30,7 @@ Basically, s3nh made Velum's underlying refusal edit; guell00 packaged the final
 
 **The idea, in plain words**
 
-Basically, Bonsai's 1-bit format stores a sign per weight and shares a scale across 128 weights.
+Basically, Bonsai's 1-bit format stores just a plus or minus per value and shares one scale across every 128 values.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 28 August 2026 · Updated 6 September 2026 · 7 min read · Canonical: https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/_

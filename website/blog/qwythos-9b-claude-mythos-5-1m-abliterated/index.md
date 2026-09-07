@@ -2,31 +2,31 @@
 
 ## TL;DR
 
-- Qwythos combines Qwen3.5-9B architecture, Empero reasoning training and Huihui abliteration.
-- Empero reports smoke testing near 137K tokens, not across the configured million-token window.
+- Qwythos combines Qwen3.5-9B design, Empero reasoning training and Huihui's refusal-stripping edit.
+- Empero reports quick checks near 137K tokens, not across the full million-token window.
 - Huihui published no post-edit refusal test or benchmark rerun.
 
 ## Basically, the facts
 
 **Life one: Qwen builds the skeleton**
 
-Basically, Qwythos starts with dense Qwen3.5-9B architecture and occupies roughly 19.3 GB in BF16.
+Basically, Qwythos starts with a non-sparse Qwen3.5-9B design and takes roughly 19.3 GB of full-precision data.
 
 **Life two: Empero changes the behavior**
 
-Basically, Empero says Qwythos learned from more than 500 million tokens of reasoning traces.
+Basically, Empero says Qwythos learned from more than 500 million tokens of step-by-step example answers.
 
 **The “1M” in the name**
 
-Basically, Qwythos has a million-token setting, but Empero reports smoke testing only around 137K.
+Basically, Qwythos has a million-token setting, but Empero reports quick checks only around 137K.
 
 **Life three: huihui edits refusal again**
 
-Basically, Huihui's Qwythos derivative has no published post-abliteration refusal test or benchmark rerun.
+Basically, Huihui's Qwythos derivative has no published refusal test or benchmark rerun after its edit.
 
 **A tiny tool-use demo, not a giant benchmark**
 
-Basically, Empero reported seven successful tool-use prompts for upstream Qwythos, not Huihui’s later abliterated derivative.
+Basically, Empero reported seven successful tool-use prompts for the earlier Qwythos, not Huihui's later refusal-stripped version.
 
 **The people behind the lineage**
 
@@ -34,7 +34,7 @@ Basically, Qwythos combines Qwen architecture, Empero's reasoning fine-tune and 
 
 **Why this is our inexpensive route**
 
-Basically, The Qwythos article paired the small BF16 model with one L40S for experimentation.
+Basically, the Qwythos article paired the full-precision model with one L40S chip for experimentation.
 
 **The idea, in plain words**
 

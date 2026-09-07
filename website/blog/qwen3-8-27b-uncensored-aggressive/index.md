@@ -2,15 +2,15 @@
 
 ## TL;DR
 
-- OrcaRouter's Qwen3.8 edit uses block-FP8 weights and keeps the vision tower at full precision.
+- OrcaRouter's Qwen3.8 edit uses compressed numbers and keeps the image-reading part at full precision.
 - The article cites Artificial Analysis scores evaluated on 14 August 2026.
-- The article had no measured refusal rate or capability-retention comparison with the base.
+- The article had no measured refusal rate or ability comparison with the original model.
 
 ## Basically, the facts
 
 **The same weights, a different promise**
 
-Basically, OrcaRouter's card says its Qwen3.8 FP8 edit keeps the vision tower at full precision.
+Basically, OrcaRouter's card says its Qwen3.8 edit is compressed while the image-reading part stays at full precision.
 
 **What "Aggressive" means here**
 
@@ -18,23 +18,23 @@ Basically, OrcaRouter's aggressive label is a publisher claim, not a measured re
 
 **The numbers, third-party**
 
-Basically, Artificial Analysis gave the served Qwen3.8 build an AA Coding score of 68.1 in August 2026.
+Basically, Artificial Analysis gave the served Qwen3.8 build a coding score of 68.1 in August 2026.
 
 **Who made it**
 
-Basically, OrcaRouter made the Qwen3.8 edit and serving build as well as the gateway.
+Basically, OrcaRouter made the Qwen3.8 edit and the running build as well as the access gateway.
 
 **How to run it**
 
-Basically, The article described gated access to OrcaRouter's OpenAI-compatible API.
+Basically, the article described gated access to OrcaRouter's OpenAI-compatible API.
 
 **The idea, in plain words**
 
-Basically, Block-FP8 stores model weights in 8 bits with a separate scale for each block.
+Basically, OrcaRouter's compressed format stores the model's numbers in 8 bits with a separate scale for each chunk.
 
 **How we treat it**
 
-Basically, The article had no refusal-rate measurement to back OrcaRouter's fully unlocked claim.
+Basically, the article had no refusal-rate measurement to back OrcaRouter's fully unlocked claim.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 19 August 2026 · Updated 6 September 2026 · 4 min read · Canonical: https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/_

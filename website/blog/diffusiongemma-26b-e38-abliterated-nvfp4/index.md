@@ -2,19 +2,19 @@
 
 ## TL;DR
 
-- Goodoldjam's NVFP4 DiffusionGemma checkpoint is 18.86 GB, down from 51.68 GB in BF16.
-- Goodoldjam reported 0/402 target refusals and 0/249 benign false refusals for E38 on its own prompt sets.
-- Goodoldjam reported 1,053.64 tok/s aggregate on Blackwell; E38 throughput on RTX 5090 was unverified.
+- Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in full precision.
+- Goodoldjam reported 0 of 402 target refusals and 0 of 249 harmless false refusals on its own prompt sets.
+- Goodoldjam reported about 1,053 words per second on a top-end chip; the smaller chip's speed was unverified.
 
 ## Basically, the facts
 
 **Why abliterating a diffusion model is a different problem**
 
-Basically, Goodoldjam's E38 card reports measurements but does not fully explain the diffusion abliteration recipe.
+Basically, Goodoldjam's E38 card reports measurements but does not fully explain how the refusal-stripping edit was done.
 
 **The NVFP4 quant is the actual story**
 
-Basically, Goodoldjam reported 1,053.64 tok/s aggregate at concurrency 8 on an RTX PRO 6000 Blackwell.
+Basically, Goodoldjam reported about 1,053 words per second total on a top-end workstation chip.
 
 **The measurements on refusal**
 
@@ -26,15 +26,15 @@ Basically, Goodoldjam's card says project funding supports GPU compute and large
 
 **The RTX 5090 question**
 
-Basically, Goodoldjam's 1,000+ tok/s RTX 5090 target had not been validated for this checkpoint.
+Basically, Goodoldjam's 1,000-plus words-per-second target on the smaller chip had not been validated for this build.
 
 **How to run it**
 
-Basically, The DiffusionGemma run instructions target vLLM with compiled NVFP4 kernels on Blackwell.
+Basically, the DiffusionGemma run instructions target one serving tool with custom compressed math on a top-end chip.
 
 **How we treat it**
 
-Basically, DiffusionGemma's NVFP4 quant keeps the 20 abliteration-modified tensors in exact BF16.
+Basically, DiffusionGemma's compressed build keeps the 20 edited internal parts in exact full precision.
 
 **The idea, in plain words**
 

@@ -2,8 +2,8 @@
 
 ## TL;DR
 
-- 0xKitkat's Ornith edit adds an abliterated Qwen weight difference to the Ornith base.
-- The publisher reported 0/16 heuristic refusals and 4/4 capability passes on a Q4_K_M build.
+- 0xKitkat's Ornith edit adds the changes that make Qwen refuse less onto the Ornith original.
+- The publisher reported 0 of 16 refusals and 4 of 4 ability passes on a compressed build.
 - The article had no edited-model benchmark showing that Ornith's coding ability survived.
 
 ## Basically, the facts
@@ -14,19 +14,19 @@ Basically, Ornith's release post describes a model that creates its own training
 
 **Method one: transplant a task vector**
 
-Basically, 0xKitkat's card describes adding Qwen's uncensoring weight changes to Ornith.
+Basically, 0xKitkat's card describes adding the changes that make Qwen refuse less onto Ornith.
 
 **Method two and three: the classic projections**
 
-Basically, The alztrk and pottokao Ornith edits remove refusal directions rather than transplant weights.
+Basically, the alztrk and pottokao Ornith edits remove refusal patterns rather than borrow weight changes.
 
 **What the transplant numbers do and don't say**
 
-Basically, Ornith's reported 0/16 refusals came from regex screening, not an LLM judge.
+Basically, Ornith's reported 0 of 16 refusals came from keyword screening, not a separate judging model.
 
 **How to run it**
 
-Basically, The pinned 0xKitkat Ornith checkpoint includes the vision tower and MTP head.
+Basically, the pinned 0xKitkat Ornith build includes the image-reading part and the shortcut head.
 
 **The creator: 0xKitkat**
 
@@ -34,7 +34,7 @@ Basically, 0xKitkat's model card linked to @procrastiness but gave no biography 
 
 **The idea, in plain words**
 
-Basically, A task vector is the weight difference between an edited model and its original.
+Basically, a task vector is the difference between a model's numbers before and after an edit.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 20 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/_

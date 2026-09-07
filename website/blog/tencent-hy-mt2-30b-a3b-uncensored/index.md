@@ -3,22 +3,22 @@
 ## TL;DR
 
 - Tencent's Hy-MT2-30B-A3B is a 33-language translation specialist, not a general chatbot.
-- The editor reported 0/100 refusal-keyword hits versus 100/100 on the base, with KL divergence 0.0276.
-- The BF16 checkpoint was 60.14 GB; the article listed a roughly 18.2 GB Q4_K_M alternative.
+- The editor reported 0 of 100 refusal-keyword hits versus 100 of 100 on the original, with small measured answer drift.
+- The full model was 60.14 GB; the article listed a roughly 18.2 GB compressed alternative.
 
 ## Basically, the facts
 
 **A translator that refuses is a broken translator**
 
-Basically, Tencent claims Hy-MT2's 7B and 30B-A3B models beat larger rivals on fast-thinking translation.
+Basically, Tencent claims Hy-MT2's two sizes beat larger rival models at quick, direct translation.
 
 **What the edit actually does**
 
-Basically, Hy-MT2's editor reported low behavioral drift, but the evaluation prompts were not published.
+Basically, Hy-MT2's editor reported the edit barely changed its answers, but the test questions were not published.
 
 **How to run it**
 
-Basically, The Hy-MT2 uncensored BF16 checkpoint was 60.14 GB across 13 files.
+Basically, the Hy-MT2 uncensored model shipped as 60.14 GB of data across 13 files.
 
 **The creator: Md Ismail Sojal, and the OS-Software label**
 
@@ -26,7 +26,7 @@ Basically, Identical Hy-MT2 model-card text appeared under 0xSojalSec and OS-Sof
 
 **The idea, in plain words**
 
-Basically, ARA trains a small adapter to counter a refusal direction while preserving weight-row norms.
+Basically, ARA trains a small extra layer that cancels a refusal pattern while keeping the model's numbers close to where they started.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 30 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/_

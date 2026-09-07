@@ -3,8 +3,8 @@
 ## TL;DR
 
 - Qwen described Qwen3.8-Flash-Next as an experimental preview of its planned Qwen4 architecture.
-- dealignai reported strong refusal reduction, alongside an MMLU drop from 86.36% to 83.86%.
-- At publication, serving qwen4_exp required patched branches or custom recipes, not stable releases.
+- dealignai reported strong refusal reduction, alongside a small drop on a general-knowledge benchmark.
+- At publication, running qwen4_exp required modified, not-yet-standard software rather than a stable release.
 
 ## Basically, the facts
 
@@ -14,27 +14,27 @@ Basically, Qwen described Qwen3.8-Flash-Next as a preview of the architecture pl
 
 **Five editors, one new architecture**
 
-Basically, Jiunsong's Qwen edit card reports changing 36 storage tensors while leaving vision untouched.
+Basically, Jiunsong's Qwen edit card reports changing 36 internal number sets while leaving the vision part untouched.
 
 **The catch: released runtimes don't support qwen4_exp**
 
-Basically, Qwen3.8-Flash-Next needed patched or custom serving software at publication.
+Basically, Qwen3.8-Flash-Next needed modified, not-yet-standard software to run at publication.
 
 **The n-gram table is the weird part of the size math**
 
-Basically, The Qwen NVFP4 builder kept the n-gram table in BF16, accounting for 95.4 GiB.
+Basically, the Qwen compressed build kept its large word-lookup table in full precision, taking up 95.4 GiB.
 
 **How to run it**
 
-Basically, dealignai's Qwen serving recipe offloaded the n-gram table to the CPU.
+Basically, dealignai's Qwen serving recipe moved the large word-lookup table off the graphics cards to the main processor.
 
 **The creator: dealignai**
 
-Basically, dealignai describes its CRACK releases as weight-level uncensoring, not template tricks.
+Basically, dealignai describes its CRACK releases as permanent uncensoring, not quick prompt tricks.
 
 **The idea, in plain words**
 
-Basically, Qwen's n-gram table looks up token pairs and triples rather than doing a matrix multiply.
+Basically, Qwen's word-lookup table looks up short word pairs and triples rather than doing a standard multiply.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 27 August 2026 · Updated 6 September 2026 · 6 min read · Canonical: https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/_

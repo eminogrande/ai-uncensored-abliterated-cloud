@@ -2,35 +2,35 @@
 
 ## TL;DR
 
-- Andreas Petersson published the Vision-Exp uncensor on 31 August 2026, under eleven hours after the base.
-- The model card describes edits to 33 attention-output tensors, leaving the vision encoder unchanged.
-- The reference card reported smoke tests, not a refusal-rate benchmark or production validation.
+- Andreas Petersson published the Vision-Exp uncensored model on 31 August 2026, under eleven hours after the original.
+- The model card describes edits to 33 internal number sets, leaving the image-reading part unchanged.
+- The reference card reported quick spot checks, not a measured refusal rate or real-world validation.
 
 ## Basically, the facts
 
 **Eleven hours**
 
-Basically, apetersson's DeepSeek Vision-Exp uncensor appeared under eleven hours after the base on 31 August 2026.
+Basically, apetersson's DeepSeek Vision-Exp uncensored model appeared under eleven hours after the original, on 31 August 2026.
 
 **What the edit actually is**
 
-Basically, apetersson's Vision-Exp card describes a 33-tensor edit, not gradient fine-tuning.
+Basically, apetersson's Vision-Exp card describes direct edits to 33 internal number sets, not full retraining.
 
 **The descendant pipeline**
 
-Basically, s-zaizen's Vision-Exp card reports 99/100 on GSM8K for its NVFP4 derivative.
+Basically, s-zaizen's Vision-Exp card reports 99 of 100 on a math test, three points above its own unedited compressed build.
 
 **How to run it**
 
-Basically, The Vision-Exp Basic128 card reports about 23.4 tokens per second on an M1 Ultra.
+Basically, the Vision-Exp Basic128 card reports about 23.4 tokens per second on an M1 Ultra.
 
 **The creator: Andreas Petersson**
 
-Basically, Andreas Petersson shipped Vision-Exp in FP8, GGUF and routed IQ2 formats.
+Basically, Andreas Petersson shipped Vision-Exp in full-precision, compressed and ultra-compact file formats.
 
 **The idea, in plain words**
 
-Basically, Vision-Exp's rank-1 edit removes a refusal direction from just 33 attention-output tensors.
+Basically, Vision-Exp's edit removes a single refusal-linked pattern from just 33 internal parts.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 31 August 2026 · Updated 6 September 2026 · 8 min read · Canonical: https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/_

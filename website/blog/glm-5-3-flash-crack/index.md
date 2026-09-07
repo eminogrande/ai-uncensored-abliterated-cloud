@@ -2,19 +2,19 @@
 
 ## TL;DR
 
-- Zhipu's card describes GLM-5.3-Flash as a multimodal model with 320B total and 18B active parameters.
-- dealignai reported 320/320 HarmBench compliance and a 0.48-point MMLU-logit drop on its tests.
-- The editor's 211-token-per-second MTP result used four H200 GPUs, not the two-GPU hosting estimate.
+- Zhipu's card describes GLM-5.3-Flash as a text-and-image model with 320 billion parameters, 18 billion active.
+- dealignai reported full compliance on a harmful-prompt test and a small drop on its own scoring.
+- The editor's 211-tokens-per-second speed test used four H200 chips, not the two-chip hosting estimate.
 
 ## Basically, the facts
 
 **The base: Zhipu's first natively multimodal GLM-5**
 
-Basically, Zhipu's card describes GLM-5.3-Flash as the first natively multimodal GLM-5 model.
+Basically, Zhipu's card describes GLM-5.3-Flash as the first GLM-5 model built to handle images and text from the start.
 
 **The crack: a permanent edit with receipts**
 
-Basically, dealignai reported 320/320 HarmBench compliance for GLM-5.3-Flash, not a universal guarantee.
+Basically, dealignai reported full compliance on one harmful-prompt benchmark, not a universal guarantee.
 
 **The hosting math: what the refusals were costing**
 
@@ -22,7 +22,7 @@ Basically, dealignai's GLM speed measurements used four H200 GPUs, not the two-G
 
 **How to run it**
 
-Basically, The GLM-5.3-Flash card says DeepGEMM compiles an FP8 kernel at startup and needs nvcc.
+Basically, the GLM-5.3-Flash card says a helper library compiles a compressed math routine at startup and needs a compiler installed.
 
 **The creator: Zhipu AI, and the editor dealignai**
 
@@ -30,7 +30,7 @@ Basically, dealignai credited @jordanschenck for compute used on the GLM-5.3-Fla
 
 **The idea, in plain words**
 
-Basically, GLM's MTP head proposes a next token for the main model to verify.
+Basically, GLM's shortcut guesses the word that comes next, so the main model only has to check it.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 26 August 2026 · Updated 6 September 2026 · 5 min read · Canonical: https://abliterated.cloud/blog/glm-5-3-flash-crack/_

@@ -3,6 +3,21 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## [website-v0.12.3] - 2026-09-07
+
+### Plain-language facts and article SEO layer
+
+- Rewrite 164 TL;DR and `Basically,` lines in plain English for readers who never
+  open the article: named subject, one claim, who measured it, no jargon.
+  Evidence excerpts are unchanged; every line still validates against its source.
+- Generate an article SEO layer from the same data: section anchors, an
+  `In this article` list, visible reading time, `article:` meta, Twitter card,
+  `BreadcrumbList`, `TechArticle` wordCount/keywords, and TL;DR lines under each
+  article in `llms-full.txt`. Add a `When to use this site` section to `llms.txt`.
+- Inline the stylesheet at build time so pages render without a blocking request.
+- Daily editorial skill and cron prompt now require the plain-English bar and the
+  post-deploy scanner readback.
+
 ## [website-v0.12.2] - 2026-09-07
 
 ### Fast-reading editorial format

@@ -2,19 +2,19 @@
 
 ## TL;DR
 
-- Spark X2.5's vendor claims up to 1M tokens of native context; community reproduction was unresolved.
-- soyaakinohara reported 3/100 refusals for the 4B edit, down from 58/100 on the base.
-- darioooooo0o reported no real refusals in 337 Spark 1.7B generations; flagged outputs were manually audited.
+- Spark X2.5's maker claims it can read up to a million tokens at once, but testers have not confirmed that.
+- soyaakinohara found the small edit refused 3 of 100 prompts, down from 58 of 100 on the original model.
+- darioooooo0o reported no real refusals in 337 Spark generations, and flagged outputs were checked by hand.
 
 ## Basically, the facts
 
 **Day ten**
 
-Basically, Spark X2.5's first 1.7B uncensor appeared on 3 September 2026, ten days after the base.
+Basically, the first Spark X2.5 uncensored release appeared on 3 September 2026, ten days after the original model.
 
 **What Spark X2.5 is**
 
-Basically, Spark X2.5's vendor claims 1M-token context, but community tests had not reproduced it.
+Basically, Spark X2.5's maker claims it can read up to a million tokens at once, but testers have not reproduced that.
 
 **The wall of no**
 
@@ -22,23 +22,23 @@ Basically, soyaakinohara measured 58 refusals in 100 prompts on the stock Spark 
 
 **Two edits, one argument about rulers**
 
-Basically, darioooooo0o argues that short keyword tests misread Spark X2.5's thinking traces.
+Basically, darioooooo0o argues that short keyword checks misread how a thinking model answers.
 
 **How to run it**
 
-Basically, Spark X2.5 GGUF builds used the vendor's llama.cpp fork at publication.
+Basically, Spark X2.5 ran on a modified copy of the maker's own serving software.
 
 **The creator: XHToken (SparkLLM)**
 
-Basically, XHToken publishes Spark's runtime tools as well as the model weights.
+Basically, XHToken ships the software used to run Spark as well as the model's data.
 
 **The editors: soyaakinohara and darioooooo0o**
 
-Basically, soyaakinohara's Spark release paired an uncensored base with a Japanese-tuned version.
+Basically, soyaakinohara's Spark release paired an uncensored base model with a version tuned for Japanese.
 
 **The idea, in plain words**
 
-Basically, Spark X2.5 mixes full-attention layers with roughly three times as many sliding-window layers.
+Basically, Spark X2.5 pairs layers that read the whole text with roughly three times as many layers that scan a moving window.
 <!-- /READING-TLDR -->
 <!-- ARTICLE-META-MD -->
 _Published 6 September 2026 · 11 min read · Canonical: https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/_

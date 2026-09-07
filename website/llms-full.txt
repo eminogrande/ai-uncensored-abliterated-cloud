@@ -81,111 +81,111 @@ Articles preserve per-model licenses, publisher measurements, community reports 
 
 <!-- ARCHIVE-LINKS -->
 - [Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/index.md): model research, 2026-09-06.
-  - Spark X2.5's vendor claims up to 1M tokens of native context; community reproduction was unresolved.
-  - soyaakinohara reported 3/100 refusals for the 4B edit, down from 58/100 on the base.
-  - darioooooo0o reported no real refusals in 337 Spark 1.7B generations; flagged outputs were manually audited.
+  - Spark X2.5's maker claims it can read up to a million tokens at once, but testers have not confirmed that.
+  - soyaakinohara found the small edit refused 3 of 100 prompts, down from 58 of 100 on the original model.
+  - darioooooo0o reported no real refusals in 337 Spark generations, and flagged outputs were checked by hand.
 - [Eleven hours from DeepSeek drop to uncensor.](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/index.md): model research, 2026-08-31.
-  - Andreas Petersson published the Vision-Exp uncensor on 31 August 2026, under eleven hours after the base.
-  - The model card describes edits to 33 attention-output tensors, leaving the vision encoder unchanged.
-  - The reference card reported smoke tests, not a refusal-rate benchmark or production validation.
+  - Andreas Petersson published the Vision-Exp uncensored model on 31 August 2026, under eleven hours after the original.
+  - The model card describes edits to 33 internal number sets, leaving the image-reading part unchanged.
+  - The reference card reported quick spot checks, not a measured refusal rate or real-world validation.
 - [Why would a translation model refuse? Tencent's Hy-MT2, decensored](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/index.md): model research, 2026-08-30.
   - Tencent's Hy-MT2-30B-A3B is a 33-language translation specialist, not a general chatbot.
-  - The editor reported 0/100 refusal-keyword hits versus 100/100 on the base, with KL divergence 0.0276.
-  - The BF16 checkpoint was 60.14 GB; the article listed a roughly 18.2 GB Q4_K_M alternative.
+  - The editor reported 0 of 100 refusal-keyword hits versus 100 of 100 on the original, with small measured answer drift.
+  - The full model was 60.14 GB; the article listed a roughly 18.2 GB compressed alternative.
 - [The 118B coding MoE nobody has refused](https://abliterated.cloud/blog/laguna-s-2-1-uncensored-heretic/index.md): model research, 2026-08-30.
-  - Laguna S 2.1 stores 118B parameters while activating about 8B per token.
-  - llmfan46 reported 6/100 refusals, but the card's mislabeled baseline prevents a clean comparison.
-  - The uncensored checkpoint shipped as 218.99 GiB of BF16 weights across 48 shards.
+  - Laguna S 2.1 holds 118 billion parameters but only uses about 8 billion at a time.
+  - llmfan46 reported 6 refusals in 100, but a mislabeled comparison model clouds the result.
+  - The uncensored model shipped as 218.99 GiB of full-precision numbers across 48 files.
 - [The security vendor uncensor: AFM-4.5B from 92/100 refusals to 3/100](https://abliterated.cloud/blog/securelayer7-afm-4-5b-uncensored-abliterated/index.md): model research, 2026-08-28.
-  - SecureLayer7 published both prompt-injection guardrails and refusal-reduced models.
-  - SecureLayer7 reported AFM refusals falling from 92/100 to 3/100 at KL divergence 0.0200.
-  - The AFM edit was merged into BF16 weights; independent capability and refusal retests were absent.
+  - SecureLayer7 published both safeguards against hijacked prompts and models that refuse less.
+  - SecureLayer7 reported AFM refusals falling from 92 of 100 to 3 of 100, with small measured answer drift.
+  - The AFM edit was merged into full-precision data; independent retests of ability and refusals were missing.
 - [The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?](https://abliterated.cloud/blog/velum-unbound-1bit-uncensor/index.md): model research, 2026-08-28.
-  - Velum repackages a Bonsai-family 27B uncensor as Q1_0 weights with a DSpark drafter.
-  - s3nh reported 6/100 refusals on the FP16 intermediate, not on the final 1-bit pack.
-  - Velum's card left benchmarks pending, with no published refusal retest of the Q1_0 artifact.
+  - Velum repackages a Bonsai-family uncensor as tiny 1-bit numbers with an extra speedup helper.
+  - s3nh reported 6 of 100 refusals on the full-precision middle step, not on the final 1-bit pack.
+  - Velum's card left benchmarks pending, with no published refusal retest of the final 1-bit build.
 - [The 180B abliteration race on the model nobody can serve yet](https://abliterated.cloud/blog/qwen3-8-flash-next-abliterated-race/index.md): model research, 2026-08-27.
   - Qwen described Qwen3.8-Flash-Next as an experimental preview of its planned Qwen4 architecture.
-  - dealignai reported strong refusal reduction, alongside an MMLU drop from 86.36% to 83.86%.
-  - At publication, serving qwen4_exp required patched branches or custom recipes, not stable releases.
+  - dealignai reported strong refusal reduction, alongside a small drop on a general-knowledge benchmark.
+  - At publication, running qwen4_exp required modified, not-yet-standard software rather than a stable release.
 - [GLM-5.3-Flash, cracked open: 320B total, 18B active, 320/320](https://abliterated.cloud/blog/glm-5-3-flash-crack/index.md): model research, 2026-08-26.
-  - Zhipu's card describes GLM-5.3-Flash as a multimodal model with 320B total and 18B active parameters.
-  - dealignai reported 320/320 HarmBench compliance and a 0.48-point MMLU-logit drop on its tests.
-  - The editor's 211-token-per-second MTP result used four H200 GPUs, not the two-GPU hosting estimate.
+  - Zhipu's card describes GLM-5.3-Flash as a text-and-image model with 320 billion parameters, 18 billion active.
+  - dealignai reported full compliance on a harmful-prompt test and a small drop on its own scoring.
+  - The editor's 211-tokens-per-second speed test used four H200 chips, not the two-chip hosting estimate.
 - [The first Nemotron-H abliteration: 3,126 tensors, 0.000160 leakage](https://abliterated.cloud/blog/darkstar-nemotron-3-5-lightning-30b-a3b-abliterated/index.md): model research, 2026-08-25.
-  - Nemotron 3.5 Lightning combines Mamba-2, mixture-of-experts layers and sparse attention.
-  - Darkstar reported 200/200 harmful-prompt compliance and 0/83 safe over-refusals on both builds.
-  - The roughly 22 GB NVFP4 twin kept Mamba tensors and the MTP head in BF16.
+  - Nemotron 3.5 Lightning combines a memory-efficient reader, a many-specialists design and selective attention.
+  - Darkstar reported 200 of 200 harmful-prompt answers and 0 of 83 safe over-refusals on both builds.
+  - The roughly 22 GB compressed twin kept the memory-reader parts and the shortcut head in full precision.
 - [One base, three uncensors: the Ornith-1.5 task-vector transplant](https://abliterated.cloud/blog/ornith-1-5-35b-a3b-uncensored-transplant/index.md): model research, 2026-08-20.
-  - 0xKitkat's Ornith edit adds an abliterated Qwen weight difference to the Ornith base.
-  - The publisher reported 0/16 heuristic refusals and 4/4 capability passes on a Q4_K_M build.
+  - 0xKitkat's Ornith edit adds the changes that make Qwen refuse less onto the Ornith original.
+  - The publisher reported 0 of 16 refusals and 4 of 4 ability passes on a compressed build.
   - The article had no edited-model benchmark showing that Ornith's coding ability survived.
 - [The lossless aggressive: Qwen3.8 27B Uncensored FP8](https://abliterated.cloud/blog/qwen3-8-27b-uncensored-aggressive/index.md): model research, 2026-08-19.
-  - OrcaRouter's Qwen3.8 edit uses block-FP8 weights and keeps the vision tower at full precision.
+  - OrcaRouter's Qwen3.8 edit uses compressed numbers and keeps the image-reading part at full precision.
   - The article cites Artificial Analysis scores evaluated on 14 August 2026.
-  - The article had no measured refusal rate or capability-retention comparison with the base.
+  - The article had no measured refusal rate or ability comparison with the original model.
 - [Small uncensored agents: what a 4.5B Heretic distill is for](https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/index.md): model research, 2026-08-17.
-  - insraq's Heretic edit builds on Empero's Qwen3.8 distill in a Qwen3.5-4B architecture.
-  - The publisher reported 6/100 refusals versus 99/100, with KL divergence of 0.0167.
-  - Empero's benchmark scores describe the upstream distill, not the decensored checkpoint.
+  - insraq's Heretic edit builds on Empero's condensed Qwen3.8 in a Qwen3.5-4B design.
+  - The publisher reported 6 of 100 refusals versus 99 of 100, with small measured answer drift.
+  - Empero's benchmark scores describe the condensed teacher model, not the modified checkpoint.
 - [What 'Aggressive' means: Muse-Glimmer-30B abliterated to 0/100 refusals](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated-aggressive/index.md): model research, 2026-08-17.
-  - Muse-Glimmer Aggressive lowers the LoRA training KL penalty from 1.0 to 0.5.
-  - The publisher reported 0/100 refusals, versus 13/100 for the normal variant.
-  - The card skipped capability benchmarks; Meta's base-model scores do not apply to the edit.
+  - Muse-Glimmer Aggressive loosens the training drift guard from 1.0 to 0.5.
+  - The publisher reported 0 of 100 refusals, versus 13 of 100 for the normal variant.
+  - The card skipped ability benchmarks; Meta's base-model scores do not apply to the edit.
 - [The 2.78-trillion-parameter abliteration nobody can run](https://abliterated.cloud/blog/kimi-k3-abliterated-modal/index.md): model research, 2026-08-17.
-  - Resggg's Kimi K3 upload stored about 1.56 TB across 96 shards at review.
-  - The article estimated roughly eleven H200s just to hold the packed weights.
+  - Resggg's Kimi K3 upload stored about 1.56 TB across 96 files at review.
+  - The article estimated roughly eleven H200 chips just to hold the compressed data.
   - The copied SHS-Lab refusal-removal and video claims were not verified for this upload.
 - [The first abliterated diffusion LLM: 1,000+ tokens a second on one GPU](https://abliterated.cloud/blog/diffusiongemma-26b-e38-abliterated-nvfp4/index.md): model research, 2026-08-16.
-  - Goodoldjam's NVFP4 DiffusionGemma checkpoint is 18.86 GB, down from 51.68 GB in BF16.
-  - Goodoldjam reported 0/402 target refusals and 0/249 benign false refusals for E38 on its own prompt sets.
-  - Goodoldjam reported 1,053.64 tok/s aggregate on Blackwell; E38 throughput on RTX 5090 was unverified.
+  - Goodoldjam's compressed DiffusionGemma build is 18.86 GB, down from 51.68 GB in full precision.
+  - Goodoldjam reported 0 of 402 target refusals and 0 of 249 harmless false refusals on its own prompt sets.
+  - Goodoldjam reported about 1,053 words per second on a top-end chip; the smaller chip's speed was unverified.
 - [The 48-hour abliteration race](https://abliterated.cloud/blog/huihui-qwen3-8-27b-abliterated/index.md): model research, 2026-08-16.
-  - Huihui's card says the Qwen3.8 edit left the first 15 layers, vision encoder and MTP untouched.
-  - Huihui published the edit and its GGUF companion on 16 August 2026.
-  - Huihui published no refusal-rate benchmark or post-edit capability rerun for its Qwen3.8-27B release.
+  - Huihui's card says the Qwen3.8 edit left the first 15 layers, image-reading part and shortcut untouched.
+  - Huihui published the edit and its easy-to-run file on 16 August 2026.
+  - Huihui published no refusal-rate benchmark or post-edit ability rerun for its Qwen3.8-27B release.
 - [Three ARA passes: how RVN got Qwen3.8-27B down to 0–1/100 refusals](https://abliterated.cloud/blog/qwen3-8-27b-rvn-heretic-abliterated-uncensored/index.md): model research, 2026-08-14.
-  - RVN adds two ARA passes to trohrbaugh's Qwen3.8 edit and ships only as GGUF.
-  - 0bserverx reported 0–1/100 refusals on a prefix-forced test; some users still reported refusals.
-  - RVN’s corrupted IQ3_M quant was rebuilt and re-uploaded in August 2026.
+  - RVN adds two extra weight-tweaking passes to trohrbaugh's Qwen3.8 edit and ships only as an easy-to-run file.
+  - 0bserverx reported 0 to 1 of 100 refusals on a forced-start test; some users still reported refusals.
+  - RVN's corrupted compressed file was rebuilt and re-uploaded in August 2026.
 - [DeepSeek V4 Flash, uncensored by dial: 757 KB against 284B](https://abliterated.cloud/blog/huihui-deepseek-v4-flash-0731-abliterated/index.md): model research, 2026-08-13.
-  - pocharlies published a 757,712-byte directions file for DeepSeek V4 Flash, not a full checkpoint.
-  - pocharlies reported 0/10 DeepSeek V4 Flash refusals at lambda 1.5 on its ten-trigger set.
-  - pocharlies’ DeepSeek runtime-dial tests did not benchmark general capability or measure 256K context.
+  - pocharlies published a small edits file for DeepSeek V4 Flash, not a full model.
+  - pocharlies reported 0 of 10 DeepSeek V4 Flash refusals at its chosen dial setting on its ten-trigger set.
+  - pocharlies' dial-setting tests did not benchmark general ability or measure the long context claimed.
 - [The base of the wave: Muse-Glimmer-30B's measured de-refusal](https://abliterated.cloud/blog/muse-glimmer-30b-abliterated/index.md): model research, 2026-08-12.
-  - jorkle's Muse-Glimmer edit uses LoRA fine-tuning, not weight ablation.
-  - jorkle reported 13/100 refusals for its normal Muse-Glimmer edit, versus 100/100 for the base.
-  - jorkle skipped Muse-Glimmer capability benchmarks; its published KL table measures drift instead.
+  - jorkle's Muse-Glimmer edit uses lightweight retraining, not weight stripping.
+  - jorkle reported 13 of 100 refusals, versus 100 of 100 for the original.
+  - jorkle skipped ability benchmarks; its published drift table measures how much answers changed instead.
 - [A pentesting model, with the refusals taken out](https://abliterated.cloud/blog/huihui-cyberstrike-offsec-35b-abliterated/index.md): model research, 2026-08-10.
-  - CyberStrike's base card describes tool-call alignment with 300 examples.
-  - Huihui applied a refusal-direction weight edit to the CyberStrike fine-tune.
-  - Huihui’s CyberStrike derivative card reports neither refusal measurements nor a post-edit tool-call rerun.
+  - CyberStrike's base card describes training for tool use with 300 examples.
+  - Huihui applied an edit that strips a refusal-linked pattern from the fine-tuned model.
+  - Huihui's CyberStrike derivative card reports neither refusal measurements nor a post-edit tool-use rerun.
 - [Qwythos 9B: a model with three lives](https://abliterated.cloud/blog/qwythos-9b-claude-mythos-5-1m-abliterated/index.md): model research, 2026-07-18.
-  - Qwythos combines Qwen3.5-9B architecture, Empero reasoning training and Huihui abliteration.
-  - Empero reports smoke testing near 137K tokens, not across the configured million-token window.
+  - Qwythos combines Qwen3.5-9B design, Empero reasoning training and Huihui's refusal-stripping edit.
+  - Empero reports quick checks near 137K tokens, not across the full million-token window.
   - Huihui published no post-edit refusal test or benchmark rerun.
 - [Inside Huihui-Qwen3.6: 256 experts and one refusal direction](https://abliterated.cloud/blog/qwen3-6-35b-a3b-abliterated/index.md): model research, 2026-07-18.
-  - Huihui-Qwen3.6 stores nearly 36B parameters while activating about 3B per token.
-  - Huihui describes the refusal-direction edit as an uncensored proof of concept.
-  - Qwen's upstream scores were not rerun on the abliterated checkpoint.
+  - Huihui-Qwen3.6 stores nearly 36 billion parameters while activating about 3 billion at a time.
+  - Huihui describes the edit as an uncensored proof of concept.
+  - Qwen's upstream scores were not rerun on the refusal-stripped build.
 - [Ornith 397B: surgery on a model too large to hold at once](https://abliterated.cloud/blog/ornith-1-0-397b-abliterated-w4a16/index.md): model research, 2026-07-18.
-  - The Ornith 397B W4A16 artifact still occupies about 195.7 GiB across 47 shards.
-  - cebeuq reported Ornith 397B refusals fell from 30.0% for the reference W4A16 quant to 7.5% after editing on 40 harmful prompts.
-  - The Ornith 397B article’s two-H200 profile was deployment-disabled, not a live model offer.
+  - The Ornith 397B compressed build still occupies about 195.7 GiB across 47 files.
+  - cebeuq reported Ornith 397B refusals fell from 30.0% to 7.5% after editing on 40 harmful prompts.
+  - The Ornith 397B article's two-H200 setup was disabled, not a live model offer.
 - [Ornith 35B: can self-scaffolding survive abliteration?](https://abliterated.cloud/blog/ornith-1-0-35b-abliterated/index.md): model research, 2026-07-18.
   - DeepReinforce trained Ornith to propose a problem-solving scaffold and work inside it.
-  - YuYu1015 replaced the first edited weights after reporting reasoning damage.
-  - YuYu1015 reported roughly 5% hard refusals for its corrected Ornith 35B derivative on its own tests.
+  - YuYu1015 replaced the first version after reporting it damaged Ornith's reasoning.
+  - YuYu1015 reported roughly 5% hard refusals for its corrected Ornith 35B on its own tests.
 - [The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in](https://abliterated.cloud/blog/huihui-qwen3-6-27b-abliterated/index.md): model research, 2026-04-23.
-  - Huihui-Qwen3.6-27B is a dense multimodal model with about 55.6 GB of BF16 weights.
-  - The Huihui-Qwen3.6-27B article recorded 18,760 repository downloads on 16 August 2026.
-  - Reports on Huihui-Qwen3.6-27B were mixed, and Huihui had not published a post-edit benchmark rerun.
+  - Huihui-Qwen3.6-27B is a non-sparse text-and-image model with about 55.6 GB of full-precision data.
+  - The article recorded 18,760 repository downloads on 16 August 2026.
+  - Reports were mixed, and Huihui had not published a post-edit benchmark rerun.
 - [The quiet classic: how Huihui-Qwen3.5-9B-abliterated became the small-model default](https://abliterated.cloud/blog/huihui-qwen3-5-9b-abliterated/index.md): model research, 2026-03-09.
-  - Huihui-Qwen3.5-9B has roughly 19.3 GB of BF16 weights and a vision encoder.
-  - The Huihui-Qwen3.5-9B article counted 58 downstream repos, including conversions and further fine-tunes.
+  - Huihui-Qwen3.5-9B has roughly 19.3 GB of full-precision data and an image reader.
+  - The article counted 58 downstream repos, including format conversions and further retraining.
   - Huihui's proof-of-concept card included no post-edit benchmark results.
 - [The MIT vision sleeper that resurfaced in August](https://abliterated.cloud/blog/huihui-glm-4-6v-flash-abliterated/index.md): model research, 2025-12-09.
   - Huihui's GLM-4.6V-Flash card says only the text part was edited.
-  - Huihui’s GLM-4.6V-Flash derivative had no published refusal-rate or capability-retention evaluation.
-  - The article recorded new GGUF repositories with vision-projector files in August 2026.
+  - Huihui's GLM-4.6V-Flash derivative had no published refusal-rate or ability-check evaluation.
+  - The article recorded new easy-to-run files with image-reading add-ons in August 2026.
 <!-- /ARCHIVE-LINKS -->

@@ -2,31 +2,31 @@
 
 ## TL;DR
 
-- insraq's Heretic edit builds on Empero's Qwen3.8 distill in a Qwen3.5-4B architecture.
-- The publisher reported 6/100 refusals versus 99/100, with KL divergence of 0.0167.
-- Empero's benchmark scores describe the upstream distill, not the decensored checkpoint.
+- insraq's Heretic edit builds on Empero's condensed Qwen3.8 in a Qwen3.5-4B design.
+- The publisher reported 6 of 100 refusals versus 99 of 100, with small measured answer drift.
+- Empero's benchmark scores describe the condensed teacher model, not the modified checkpoint.
 
 ## Basically, the facts
 
 **Small is the point**
 
-Basically, The insraq 4.5B checkpoint contains about 9.1 GB of BF16 weights.
+Basically, the insraq 4.5B build contains about 9.1 GB of full-precision numbers.
 
 **A 2.4-trillion-parameter teacher, squeezed into 4.5B**
 
-Basically, Empero says its Qwen3.8 distill trained on roughly 45,000 curated teacher traces.
+Basically, Empero says its Qwen3.8 distill learned from roughly 45,000 example answers from a larger model.
 
 **Heretic: abliteration by search, not by hand**
 
-Basically, Heretic uses an optimizer to search for fewer refusals with less drift from the base.
+Basically, Heretic uses a search program to cut refusals while changing the original model as little as possible.
 
 **The exact run**
 
-Basically, insraq reported 6/100 refusals for selected trial 128, compared with 99/100 for the base.
+Basically, insraq reported 6 of 100 refusals for its chosen trial, compared with 99 of 100 for the original.
 
 **What tiny uncensored trades away**
 
-Basically, Empero's distill benchmark scores do not measure the decensored insraq checkpoint.
+Basically, Empero's distill benchmark scores do not measure the modified insraq model.
 
 **Who made it**
 
@@ -34,7 +34,7 @@ Basically, insraq's Qwen distill edit was made with Heretic v1.4.0 on top of Emp
 
 **How we treat it**
 
-Basically, The article's L40S serving estimate was about $2.34 per hour, not a live price.
+Basically, the article's L40S serving estimate was about $2.34 per hour, not a live price.
 
 **The idea, in plain words**
 
