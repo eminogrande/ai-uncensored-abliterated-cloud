@@ -2,7 +2,7 @@
   "name": "abliterated-cloud-website",
   "private": true,
   "type": "module",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "license": "MIT",
   "scripts": {
     "build:blog": "uv run python -I scripts/build-blog.py",

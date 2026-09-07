@@ -71,7 +71,10 @@ def test_public_schema_only_advertises_existing_static_gets():
         text = file.read_text()
         assert status["snapshot_at"][:10] in text
         assert "storage" in text.lower()
-        assert str(status["current"]["instance_id"]) in text
+    for file in [SITE / "llms.txt", SITE / "llms-full.txt"]:
+        assert str(status["current"]["instance_id"]) in file.read_text()
+    landing = (SITE / "index.html").read_text()
+    assert "actual_status" not in landing and "localhost" not in landing and str(status["current"]["instance_id"]) not in landing
     index = json.loads((SITE / ".well-known/agent-skills/index.json").read_text())
     expected = hashlib.sha256((SITE / "skills/abliterated-cloud/SKILL.md").read_bytes()).hexdigest()
     assert index["skills"][0]["digest"] == "sha256:" + expected
@@ -88,7 +91,9 @@ def test_archive_preserves_articles_and_all_indexes():
         for extension in ("html", "md"):
             text = (article / f"index.{extension}").read_text()
             assert "Primary sources" in text
-            assert "Editorial archive" in text
+            assert "Model research, dated at publication" in text
+            assert "https://signal.me/#p/+13103408213" in text
+            assert "Private evaluation. Public notes." not in text
         for target in ("sitemap.xml", "blog/feed.xml", "llms.txt", "llms-full.txt"):
             assert f"/blog/{post['slug']}/" in (SITE / target).read_text()
     ET.parse(SITE / "sitemap.xml")
@@ -99,6 +104,18 @@ def test_generated_outputs_are_reproducible():
     subprocess.run([sys.executable, "-I", "scripts/build-blog.py", "--check"], cwd=ROOT, check=True)
 
 
+def test_shared_article_rendering_is_idempotent():
+    import runpy
+    builder = runpy.run_path(str(ROOT / "scripts/build-blog.py"))
+    posts = json.loads((SITE / "blog/posts.json").read_text())
+    for post in posts:
+        for suffix, render in (("html", builder["render_article"]), ("md", builder["render_article_md"])):
+            source = (SITE / "blog" / post["slug"] / f"index.{suffix}").read_text()
+            rendered = render(source)
+            assert render(rendered) == rendered, (post["slug"], suffix)
+            assert "Primary sources" in rendered
+
+
 def test_homepage_payload_budget():
     critical = ["index.html", "styles.css", "assets/logo.svg", "assets/favicon.svg"]
     assert sum((SITE / path).stat().st_size for path in critical) < 25000
@@ -106,3 +123,41 @@ def test_homepage_payload_budget():
     css = (SITE / "styles.css").read_text()
     assert "hero-brain" not in css and "@import" not in css
     assert "focus-visible" in css
+
+
+def test_service_positioning_and_structured_answers():
+    from html import unescape
+    html = (SITE / "index.html").read_text()
+    markdown = (SITE / "index.md").read_text()
+    assert re.search(r'<h1[^>]*>Intelligence, freed\.</h1>', html)
+    for text in (html, markdown):
+        assert "https://signal.me/#p/+13103408213" in text
+        for word in ("uncensored", "abliterated", "self-host", "router"):
+            assert word in text.lower()
+        assert "Private model evaluation" not in text
+    structured = re.search(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+    assert structured
+    graph = json.loads(structured[1])["@graph"]
+    assert {"Organization", "WebSite", "Service", "FAQPage"} <= {row["@type"] for row in graph}
+    visible = unescape(re.sub(r'<script\b.*?</script>', '', html, flags=re.S))
+    visible = ' '.join(re.sub(r'<[^>]+>', ' ', visible).split())
+    faq = next(row for row in graph if row["@type"] == "FAQPage")
+    for question in faq["mainEntity"]:
+        assert question["name"] in visible
+        assert question["acceptedAnswer"]["text"] in visible
+
+
+def test_ai_catalog_points_to_real_documents():
+    catalog = json.loads((SITE / ".well-known/ai-catalog.json").read_text())
+    assert catalog["specVersion"] == "1.0"
+    assert catalog["host"]["displayName"] == "ABLITERATED.cloud"
+    assert catalog["entries"]
+    for entry in catalog["entries"]:
+        assert entry["identifier"] and entry["displayName"]
+        assert ("url" in entry) != ("data" in entry)
+        assert 2 <= len(entry["representativeQueries"]) <= 5
+        if "url" in entry:
+            url = urlparse(entry["url"])
+            if url.netloc == "abliterated.cloud":
+                path = SITE / url.path.lstrip("/")
+                assert path.is_file() or (path / "index.html").is_file()

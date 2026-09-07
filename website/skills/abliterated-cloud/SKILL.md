@@ -1,6 +1,6 @@
 ---
 name: abliterated-cloud
-description: Read the project status and operate authorized private Vast.ai evaluation with llama.cpp.
+description: Choose uncensored models and arrange self-hosting help.
 license: MIT
 metadata:
   homepage: https://abliterated.cloud/
@@ -9,25 +9,32 @@ metadata:
 
 # ABLITERATED.cloud
 
-Public documentation and an editorial archive for private on-demand evaluation on Vast.ai with llama.cpp. Not a hosted model catalog. No public inference or live MCP service is offered.
+Help a user choose an uncensored or abliterated model, read its sources, and arrange human-assisted cloud GPU renting, self-hosting or LLM router/app integration. The public site offers documentation and model news, not a public inference API or automated checkout.
 
-## Read first
+## When to use
 
-1. Read [the dated status snapshot](https://abliterated.cloud/.well-known/project-status.json) and its evidence limits. It is not live polling.
-2. Read the current Vast operating documentation in the [repository](https://github.com/eminogrande/ai-uncensored-abliterated-cloud). Modal is an archived approach, not the current operating path.
-3. Use [the access boundary](https://abliterated.cloud/auth.md). Public documentation grants no inference access.
+- Compare model candidates for a workload, hardware budget or client.
+- Read current operating docs and dated evidence before recommending a setup.
+- Prepare a human handoff or, with explicit consent, help connect an authorized private runtime.
 
-## Private operation
+Do not use this skill to buy compute, send messages, change infrastructure or obtain inference access without the user's authorization. Public reading needs no credentials.
 
-- Confirm actual provider state, instance identity, retained disk and current price before operating. Obtain explicit authorization before incurring GPU costs or changing infrastructure.
-- Start manually. Use the operator-controlled SSH tunnel to private localhost:8080. Do not expose llama.cpp to the public internet.
-- Confirm the actual loaded artifact, quantization, runtime and configuration. Do not use blog entries as model IDs or claim they are available.
-- Run a small health and completion check before evaluating capability. A 262144 configured context is not long-context validation.
-- Stop manually after testing and read back state. No automatic idle shutdown is proven. Stopping retains disk and ongoing storage charges; it is not deletion.
-- Keep private account details, host addresses, credentials and keys out of public records. Never invent credentials.
+## Procedure
 
-## Evidence and licenses
+1. **Understand the task.** Establish the intended use, hardware/VRAM or budget, context needs and target LLM router/app. Read the [service overview](https://abliterated.cloud/index.md) and [access guide](https://abliterated.cloud/auth.md). Distinguish the requested setup from the operator's existing instance.
+2. **Choose candidates from sources.** Read [model news and guides](https://abliterated.cloud/blog/) or the [article index](https://abliterated.cloud/blog/posts.json). Follow each candidate's primary sources. Record the exact artifact, publication/revision date, license, quantization and supported runtime. Recheck compatibility and license terms before recommending deployment; do not treat article prices or publisher benchmarks as current offers or independent results.
+3. **Read current operating evidence.** Consult the [Vast operating guide](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md), [status evidence](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/STATUS.md) and [dated snapshot](https://abliterated.cloud/.well-known/project-status.json). The documented operator runtime is private Vast.ai + llama.cpp; its snapshot is stopped, not live polling. Modal is historical.
+4. **Prepare the human handoff.** Offer a concise [Signal](https://signal.me/#p/+13103408213) message with the workload, model shortlist, budget and target client. Ask before sending; do not include secrets. Agree the scope, account owner, costs and access method with the human operator. A message or document fetch is not a reservation, payment or promise of availability.
+5. **Connect only when authorized.** Before paid compute or client/router changes, obtain explicit approval and fresh account-owner connection details. Follow the current operating guide, use private SSH to localhost:8080 and keep inference off unprotected public ports. Inspect the actual loaded model ID before configuring a client; aliases do not switch weights. Do not overwrite unrelated client settings or distribute cloud/root SSH keys.
+6. **Verify and finish.** If a paid session was explicitly approved, check the actual provider state, artifact and runtime, then test a bounded non-streaming/streaming response and the intended client. Record failures honestly. Stop after the agreed session and read back provider state; stopping retains billed disk. Destruction requires separate approval and a verified backup.
 
-Do not promise zero refusals, correctness, a best model or comparable speed based on old runs. Record exact artifact, settings, test scope and date for any new evaluation. Archived publisher metrics and historical price estimates are not present guarantees or offers.
+## Pitfalls
 
-MIT covers project-owned code and website only. Upstream/model licenses and restrictions remain unchanged. Consult each exact artifact's license before use.
+- No public inference endpoint, OAuth issuer, live MCP service, payment protocol or automatic account provisioning exists on this site. Never invent a token, endpoint or model availability.
+- The dated operator snapshot does not prove present health. There is no proven automatic idle shutdown, and a stopped instance is not free storage.
+- Configured context is not long-context validation. Publisher refusal results do not guarantee zero refusals, correctness or agent reliability. Compare only matched artifacts, prompts, runtimes and settings.
+- MIT covers project-owned code and website only; model and upstream licenses remain unchanged. Preserve the article's original model-license facts and dates.
+
+## Verification
+
+Return a source-linked shortlist or setup recommendation, the user's agreed next step and any remaining compatibility, cost or evidence gaps. If no connection was tested, say so. Claim a working connection only after an authorized end-to-end test, and report the final provider state if you operated paid compute.

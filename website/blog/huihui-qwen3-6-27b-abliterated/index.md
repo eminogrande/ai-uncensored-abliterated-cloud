@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in<!-- READING-TLDR -->
 
-# The workhorse: Huihui-Qwen3.6-27B-abliterated, four months in
+## TL;DR
+
+- Huihui-Qwen3.6-27B is a dense multimodal model with about 55.6 GB of BF16 weights.
+- The Huihui-Qwen3.6-27B article recorded 18,760 repository downloads on 16 August 2026.
+- Reports on Huihui-Qwen3.6-27B were mixed, and Huihui had not published a post-edit benchmark rerun.
+
+## Basically, the facts
+
+**Four months, 18,760 downloads**
+
+Basically, Huihui-Qwen3.6-27B had 18,760 repository downloads in the article's August 2026 snapshot.
+
+**What is under the hood**
+
+Basically, Huihui-Qwen3.6-27B is dense, with 64 layers and roughly 55.6 GB of BF16 weights.
+
+**What the card promised, what users report**
+
+Basically, User reports on Huihui-Qwen3.6-27B include remaining refusals and a setup-specific vision failure.
+
+**The upstream numbers, clearly labeled**
+
+Basically, Qwen3.6-27B's reported benchmark scores belong to the unedited model, not Huihui's derivative.
+
+**The successor arrived; the 3.6 stayed**
+
+Basically, The August 2026 Huihui-Qwen3.8-27B release kept its first 15 layers free of ablation.
+
+**How we treat it**
+
+Basically, The Qwen3.6-27B article's one-H200 budget was an estimate, not a live price offer.
+
+**The idea, in plain words**
+
+Basically, A vision encoder turns image patches into tokens that a language model can read.
+<!-- /READING-TLDR -->
 
 Published 23 April 2026. Exact artifact: `huihui-ai/Huihui-Qwen3.6-27B-abliterated`, revision `27502c8717fd5a2f8c0c77188c10c243fd4f672e`.
 
@@ -32,3 +65,11 @@ Primary sources:
 - [Original refusal-direction paper](https://arxiv.org/abs/2406.11717) and [implementation linked by huihui-ai](https://github.com/Sumandora/remove-refusals-with-transformers)
 
 The publisher warns that safety filtering is reduced and recommends controlled research use. "Abliterated" means refusal-reduced, not zero-refusal, correct, legal or harmless.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

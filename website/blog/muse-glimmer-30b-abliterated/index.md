@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The base of the wave: Muse-Glimmer-30B's measured de-refusal<!-- READING-TLDR -->
 
-# The base of the wave: Muse-Glimmer-30B's measured de-refusal
+## TL;DR
+
+- jorkle's Muse-Glimmer edit uses LoRA fine-tuning, not weight ablation.
+- jorkle reported 13/100 refusals for its normal Muse-Glimmer edit, versus 100/100 for the base.
+- jorkle skipped Muse-Glimmer capability benchmarks; its published KL table measures drift instead.
+
+## Basically, the facts
+
+**The model at the base**
+
+Basically, Muse-Glimmer-30B is a dense model, not a mixture-of-experts model.
+
+**Three days, four methods**
+
+Basically, jorkle's Muse-Glimmer build followed earlier de-refusal releases from other publishers.
+
+**What jorkle actually did**
+
+Basically, jorkle's card describes a LoRA fine-tune of Muse-Glimmer, not a weight ablation.
+
+**The table where benchmarks should be**
+
+Basically, jorkle's Muse-Glimmer card reports drift measurements but skips capability benchmarks.
+
+**What the wave reveals**
+
+Basically, Muse-Glimmer's de-refusal releases split between direction ablation and KL-bounded fine-tuning.
+
+**How we treat it**
+
+Basically, jorkle's Muse-Glimmer card still reports refusals, so the model is not zero-refusal.
+
+**The idea, in plain words**
+
+Basically, KL divergence measures how far an edited model's answer distribution moved from the original.
+<!-- /READING-TLDR -->
 
 Published 12 August 2026. Exact artifact: `jorkle/Muse-Glimmer-30B-Abliterated`, revision `f98c6e1f6a268fa79d1e704c6b69fa89a61ddda6`.
 
@@ -32,3 +65,11 @@ Primary sources:
 - Hugging Face model API records for jorkle, Blackfrost-AI, mlasli, SHS-Lab, Jundot, unsloth and meta-models repositories
 
 We pin the BF16 normal variant and serve it as text-generation on one H200 (about $5.45/hour, approximate managed price estimate). Vision behavior after the fold is not re-verified by the publisher, so we do not claim it. The card retains 13% refusals on its own eval: this is refusal-reduced with documented drift, not a zero-refusal model. Verify behavior for your use case before deployment.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

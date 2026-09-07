@@ -1,8 +1,37 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?<!-- READING-TLDR -->
 
-# The 1-bit uncensor: can a refusal direction survive 1.125 bits per weight?
+## TL;DR
+
+- Velum repackages a Bonsai-family 27B uncensor as Q1_0 weights with a DSpark drafter.
+- s3nh reported 6/100 refusals on the FP16 intermediate, not on the final 1-bit pack.
+- Velum's card left benchmarks pending, with no published refusal retest of the Q1_0 artifact.
+
+## Basically, the facts
+
+**Four hops down a family tree in one morning**
+
+Basically, Velum repackaged tommytracx's Q1_0 uncensor with a DSpark drafter in August 2026.
+
+**Why a 1-bit model is the right vehicle for this**
+
+Basically, Prism ML claimed 1.125 bits per weight for Bonsai; Velum inherited the low-bit format.
+
+**The edit happened in FP16. The squeeze came after.**
+
+Basically, Velum's Q1_0 pack had no published refusal retest; the 6/100 result belongs to FP16.
+
+**How to run it**
+
+Basically, Velum's Q1_0 format required the PrismML llama.cpp fork's low-bit kernels.
+
+**The creator: guell00 (and the chain behind the edit)**
+
+Basically, s3nh made Velum's underlying refusal edit; guell00 packaged the final release.
+
+**The idea, in plain words**
+
+Basically, Bonsai's 1-bit format stores a sign per weight and shares a scale across 128 weights.
+<!-- /READING-TLDR -->
 
 Published 28 August 2026. Exact artifact: `guell00/Velum-Unbound-Uncensored`, revision `97e4ecf9dd6dc2f2e263c60e8de8e17aafedddb9`.
 
@@ -67,3 +96,11 @@ Primary sources:
 - [Community discussions on the Bonsai GGUF](https://huggingface.co/prism-ml/Bonsai-27B-gguf/discussions)
 
 Reddit search for "Bonsai 27B" returned HTTP 403 during research (read-only tool blocked), so community coverage there is not included.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

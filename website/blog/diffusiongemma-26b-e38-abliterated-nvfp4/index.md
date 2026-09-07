@@ -1,8 +1,45 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# The first abliterated diffusion LLM: DiffusionGemma-26B E38 NVFP4<!-- READING-TLDR -->
 
-# The first abliterated diffusion LLM: DiffusionGemma-26B E38 NVFP4
+## TL;DR
+
+- Goodoldjam's NVFP4 DiffusionGemma checkpoint is 18.86 GB, down from 51.68 GB in BF16.
+- Goodoldjam reported 0/402 target refusals and 0/249 benign false refusals for E38 on its own prompt sets.
+- Goodoldjam reported 1,053.64 tok/s aggregate on Blackwell; E38 throughput on RTX 5090 was unverified.
+
+## Basically, the facts
+
+**Why abliterating a diffusion model is a different problem**
+
+Basically, Goodoldjam's E38 card reports measurements but does not fully explain the diffusion abliteration recipe.
+
+**The NVFP4 quant is the actual story**
+
+Basically, Goodoldjam reported 1,053.64 tok/s aggregate at concurrency 8 on an RTX PRO 6000 Blackwell.
+
+**The measurements on refusal**
+
+Basically, Goodoldjam reported zero refusals on 402 target prompts, not a universal refusal-free model.
+
+**The creator: Goodoldjam (Atom)**
+
+Basically, Goodoldjam's card says project funding supports GPU compute and larger validation runs.
+
+**The RTX 5090 question**
+
+Basically, Goodoldjam's 1,000+ tok/s RTX 5090 target had not been validated for this checkpoint.
+
+**How to run it**
+
+Basically, The DiffusionGemma run instructions target vLLM with compiled NVFP4 kernels on Blackwell.
+
+**How we treat it**
+
+Basically, DiffusionGemma's NVFP4 quant keeps the 20 abliteration-modified tensors in exact BF16.
+
+**The idea, in plain words**
+
+Basically, DiffusionGemma refines a noisy block of text over several steps instead of adding one token at a time.
+<!-- /READING-TLDR -->
 
 Published 16 August 2026. Exact artifact: `Goodoldjam/DiffusionGemma-26B-E38-Abliterated-NVFP4`, revision `2430478f0cc94c27623d3684ad03c7f05e858a7d`.
 
@@ -62,3 +99,11 @@ Primary sources:
 - [Google launch blog](https://blog.google/innovation-and-ai/technology/developers-tools/diffusion-gemma-faster-text-generation/)
 - [Hugging Face model API](https://huggingface.co/api/models/Goodoldjam/DiffusionGemma-26B-E38-Abliterated-NVFP4)
 - [Project funding page](https://ko-fi.com/goodoldjam)
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

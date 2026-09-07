@@ -1,8 +1,41 @@
-<!-- ARCHIVE-NOTICE -->
-> Editorial archive — not a live model listing. This article preserves reporting at its publication date, including model-specific licenses, publisher claims and historical hosting estimates. Those estimates are not current prices or offers. Benchmarks from different artifacts, runtimes and tests are not a current ranking. Reported refusal results do not guarantee zero refusals. The current project is private on-demand evaluation on Vast.ai with llama.cpp; no public inference. [Current project status](https://abliterated.cloud/).
-<!-- /ARCHIVE-NOTICE -->
+# Abliterating the model powering this blog: DeepSeek V4 Flash by refusal directions<!-- READING-TLDR -->
 
-# Abliterating the model powering this blog: DeepSeek V4 Flash by refusal directions
+## TL;DR
+
+- pocharlies published a 757,712-byte directions file for DeepSeek V4 Flash, not a full checkpoint.
+- pocharlies reported 0/10 DeepSeek V4 Flash refusals at lambda 1.5 on its ten-trigger set.
+- pocharlies’ DeepSeek runtime-dial tests did not benchmark general capability or measure 256K context.
+
+## Basically, the facts
+
+**The model this blog runs on**
+
+Basically, vLLM's recipe describes DeepSeek V4 Flash as 284B total parameters with 13B active.
+
+**Flash-class models get abliterated fast**
+
+Basically, Huihui's DeepSeek card says its baked edit leaves every routed expert untouched.
+
+**A dial, not a download**
+
+Basically, pocharlies' DeepSeek release contains 46 refusal vectors rather than another checkpoint.
+
+**Baked abliteration overshoots**
+
+Basically, pocharlies and cebeuq disagree on how FP8 quantization affects baked refusal removal.
+
+**The cost math**
+
+Basically, The DeepSeek article estimated $10.90 per hour for two H200s, not a live hosting quote.
+
+**What this does not establish**
+
+Basically, The DeepSeek runtime-dial tests did not benchmark general capability or measure 256K context.
+
+**The idea, in plain words**
+
+Basically, pocharlies reports that setting DeepSeek's runtime lambda to zero restores stock outputs.
+<!-- /READING-TLDR -->
 
 Published 13 August 2026. Exact artifact: `pocharlies/deepseek-v4-flash-0731-uncensored-abliterated-refusal-directions`, revision `d5d42ace94686374d97956698f89d7884aad5f84`.
 
@@ -29,3 +62,11 @@ Primary sources:
 - Community: [r/LocalLLaMA thread 1](https://www.reddit.com/r/LocalLLaMA/comments/1vbp7kb/deepseekai_deepseekv4flash0731_on_huggingface/), [thread 2](https://www.reddit.com/r/LocalLLaMA/comments/1vchoua/deepseekv4flash0731_models_you_can_run_locally/), [independent five-RTX-3090 run report](https://xhinker.medium.com/deepseek-v4-flash-0731-i-ran-the-opus-4-6-equivalent-locally-d6bfd9d26f32)
 
 "Uncensored" here is a dial setting on a 284B model, not a property of the 757 KB file itself. Reducing refusal reduces resistance to injected instructions; the publisher recommends λ>0 stay away from write-capable tools.
+
+<!-- ARCHIVE-NOTICE -->
+## Run this model on your terms
+
+Want this model running for you, on a private cloud GPU or your own machine? [Request access on Signal](https://signal.me/#p/+13103408213) or [see how it works](https://abliterated.cloud/#how).
+
+> Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.
+<!-- /ARCHIVE-NOTICE -->

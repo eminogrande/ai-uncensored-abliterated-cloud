@@ -6,4 +6,4 @@ Previous designs took high-level visual inspiration from receive.link and privat
 
 The old decorative hero artwork and animated canvas have been removed. The small site identity icons remain. The social preview is a plain text card with no background illustration.
 
-The blog and release notes are historical editorial records. Their per-model license facts and older operating claims describe their publication dates, not the current service. See the dated project status and current Vast documentation.
+The blog publishes uncensored AI model research and self-hosting guidance. Per-model licenses, benchmarks and cost estimates describe their source dates, not guaranteed hosting availability. Release notes preserve project history. Current hands-on setup assistance is arranged through Signal; reference infrastructure status is dated separately.

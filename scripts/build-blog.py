@@ -7,9 +7,9 @@ import re
 import shutil
 import sys
 from datetime import datetime, timezone
-from decimal import Decimal
+from decimal import ROUND_HALF_UP, Decimal
 from email.utils import format_datetime
-from html import escape
+from html import escape, unescape
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
@@ -19,15 +19,14 @@ ORIGIN = "https://abliterated.cloud"
 LATEST_LIMIT = 3
 PAGE_SIZE = 9
 ARCHIVE_NOTE = (
-    "Editorial archive — not a live model listing. This article preserves reporting "
-    "at its publication date, including model-specific licenses, publisher claims and "
-    "historical hosting estimates. Those estimates are not current prices or offers. "
-    "Benchmarks from different artifacts, runtimes and tests are not a current ranking. "
-    "Reported refusal results do not guarantee zero refusals. The current project is "
-    "private on-demand evaluation on Vast.ai with llama.cpp; no public inference."
+    "Model research, dated at publication. Model licenses, publisher benchmarks and "
+    "hosting estimates are specific to each article, not a live availability or price list. "
+    "Reported zero-refusal results are test-specific, not a universal guarantee."
 )
-NAV = '''<header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#status">Status</a><a href="/#cost">Cost</a><a href="/#workflow">Workflow</a><a href="/blog/">Archive</a><a href="https://github.com/eminogrande/ai-uncensored-abliterated-cloud">GitHub ↗</a></nav></div></header>'''
-FOOTER = '''<footer class="footer"><p>ABLITERATED.cloud<br>Private evaluation. Public notes.</p><nav aria-label="Footer navigation"><a href="/">Project status</a><a href="/blog/">Archive</a><a href="/RELEASE_NOTES.md">Updates</a><a href="/llms.txt">Agent index</a><a href="/NOTICE.md">Licenses</a></nav></footer>'''
+SIGNAL = "https://signal.me/#p/+13103408213"
+BLOG_DESCRIPTION = "Uncensored and abliterated AI model news, cloud GPU costs and self-hosting research. Find a model worth running, then get help deploying it."
+NAV = f'''<header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#models">Models</a><a href="/#how">How it works</a><a href="/blog/">Blog</a><a href="/#faq">FAQ</a><a href="{SIGNAL}">Request access ↗</a></nav></div></header>'''
+FOOTER = f'''<footer class="footer"><p>ABLITERATED.cloud<br>Intelligence, freed.</p><nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/RELEASE_NOTES.md">Updates</a><a href="/llms.txt">Agent index</a></nav></footer>'''
 
 
 def load_posts() -> list[dict]:
@@ -76,7 +75,7 @@ def render_index(posts: list[dict], page: int, total_pages: int) -> str:
     start = (page - 1) * PAGE_SIZE
     page_posts = posts[start:start + PAGE_SIZE]
     cards = "\n".join(
-        f'<a class="blog-card" href="/blog/{p["slug"]}/"><span>Archived field note · <time datetime="{p["published_at"]}">{p["published_at"]}</time></span><h2>{title_with_break(p["card_title"])}</h2><p>{escape(p["summary"])}</p><strong>Read the article →</strong></a>'
+        f'<a class="blog-card" href="/blog/{p["slug"]}/"><span>Model research · <time datetime="{p["published_at"]}">{p["published_at"]}</time></span><h2>{title_with_break(p["card_title"])}</h2><p>{escape(p["summary"])}</p><strong>Read the article →</strong></a>'
         for p in page_posts
     )
     canonical = f"{ORIGIN}/blog/" if page == 1 else f"{ORIGIN}/blog/page/{page}/"
@@ -88,8 +87,8 @@ def render_index(posts: list[dict], page: int, total_pages: int) -> str:
         pagination += f'<a href="/blog/page/{page + 1}/">Older →</a>'
     pagination += '</nav>'
     structured = json.dumps({"@context": "https://schema.org", "@graph": [
-        {"@type": "Blog", "name": "ABLITERATED.cloud editorial archive", "url": canonical,
-         "description": ARCHIVE_NOTE, "publisher": {"@type": "Organization", "name": "ABLITERATED.cloud"}},
+        {"@type": "Blog", "name": "Uncensored AI models & self-hosting guides", "url": canonical,
+         "description": BLOG_DESCRIPTION, "publisher": {"@type": "Organization", "name": "ABLITERATED.cloud", "url": ORIGIN}},
         {"@type": "ItemList", "itemListElement": [
             {"@type": "ListItem", "position": start + i, "url": f'{ORIGIN}/blog/{p["slug"]}/', "name": p["title"]}
             for i, p in enumerate(page_posts, 1)]}
@@ -98,17 +97,18 @@ def render_index(posts: list[dict], page: int, total_pages: int) -> str:
     return f'''<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Editorial archive{suffix} — ABLITERATED.cloud</title>
-<meta name="description" content="Historical, source-linked model field notes. An editorial archive, not a live model catalog, current price list or hosting offer.">
+<title>Uncensored AI Models &amp; Self-Hosting Guides{suffix} | ABLITERATED.cloud</title>
+<meta name="description" content="{escape(BLOG_DESCRIPTION)}">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
-<link rel="canonical" href="{canonical}"><link rel="alternate" type="application/rss+xml" title="Editorial archive" href="/blog/feed.xml">
-<meta property="og:type" content="website"><meta property="og:url" content="{canonical}"><meta property="og:title" content="Editorial archive{suffix} — ABLITERATED.cloud"><meta property="og:description" content="Source-linked field notes, not live models."><meta property="og:image" content="{ORIGIN}/assets/icon-512.png">
+<link rel="canonical" href="{canonical}"><link rel="alternate" type="application/rss+xml" title="Uncensored AI model news" href="/blog/feed.xml">
+<link rel="alternate" type="text/markdown" href="{canonical}index.md"><link rel="ai-catalog" href="/.well-known/ai-catalog.json">
+<meta property="og:type" content="website"><meta property="og:url" content="{canonical}"><meta property="og:title" content="Uncensored AI Models &amp; Self-Hosting Guides{suffix} | ABLITERATED.cloud"><meta property="og:description" content="{escape(BLOG_DESCRIPTION)}"><meta property="og:image" content="{ORIGIN}/assets/icon-512.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">{structured}</script>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 {NAV}
-<main class="blog-page-main" id="main"><header class="blog-index-hero"><p class="kicker">EDITORIAL ARCHIVE</p><h1>Field notes, not live models.</h1><p>{escape(ARCHIVE_NOTE)}</p><p><a href="/#status">Read the current project status →</a></p></header>
-<section class="blog-index-grid" aria-label="Archived articles"><div class="blog-card-grid">{cards}</div></section>{pagination}</main>
+<main class="blog-page-main" id="main"><header class="blog-index-hero"><p class="kicker">UNCENSORED AI MODEL NEWS</p><h1>Find your next model.</h1><p>{escape(BLOG_DESCRIPTION)}</p><p>Release notes, source links, license details and reported benchmarks. Read the research. Choose your stack. Make it yours.</p><p><a href="{SIGNAL}">Need help running a model? Talk on Signal ↗</a></p></header>
+<section class="blog-index-grid" aria-label="Model articles"><div class="blog-card-grid">{cards}</div></section>{pagination}<p>{escape(ARCHIVE_NOTE)}</p></main>
 {FOOTER}
 </body></html>
 '''
@@ -122,25 +122,86 @@ def render_article(html: str) -> str:
     html, count = re.subn(r'<footer\b[^>]*>.*?</footer>', FOOTER, html, count=1, flags=re.S)
     if count != 1:
         raise ValueError("article has no footer")
-    notice = f'<aside class="archive-notice" aria-label="Archive notice"><p>{escape(ARCHIVE_NOTE)}</p><p><a href="/#status">Current project status →</a></p></aside>'
+    notice = f'<aside class="archive-notice" aria-label="Self-hosting help and research context"><h2>Want this model running for you?</h2><p>We set it up on a private cloud GPU or your own machine and connect the apps you already use.</p><p><a class="button" href="{SIGNAL}">Request access on Signal</a> <a href="/#how">How it works →</a></p><p>{escape(ARCHIVE_NOTE)}</p></aside>'
     html = re.sub(r'<aside class="archive-notice".*?</aside>\s*', '', html, flags=re.S)
-    html, count = re.subn(r'(<article\b[^>]*>)\s*', lambda m: m[1] + "\n    " + notice + "\n    ", html, count=1)
+    html, count = re.subn(r'\s*</article>', lambda m: "\n    " + notice + "\n  </article>", html, count=1)
     if count != 1:
         raise ValueError("article has no article element")
     # A small SVG favicon replaces the legacy multi-resolution ICO request.
     html = re.sub(r'<link\b[^>]*rel="shortcut icon"[^>]*>\s*', '', html)
-    # Metadata also identifies the article as historical when read without body text.
-    html = re.sub(r'(<meta (?:name|property)="(?:description|og:description)" content=")(?!Editorial archive: )', r'\1Editorial archive: ', html)
+    # Keep unique article descriptions rather than a boilerplate archive prefix.
+    html = re.sub(r'(<meta (?:name|property)="(?:description|og:description)" content=")Editorial archive: ', r'\1', html)
+    if 'rel="ai-catalog"' not in html:
+        html = html.replace('</head>', '<link rel="ai-catalog" href="/.well-known/ai-catalog.json">\n</head>')
     return html
 
 
 def render_article_md(markdown: str) -> str:
-    notice = "<!-- ARCHIVE-NOTICE -->\n> " + ARCHIVE_NOTE + f" [Current project status]({ORIGIN}/).\n<!-- /ARCHIVE-NOTICE -->\n\n"
-    markdown = re.sub(r'<!-- ARCHIVE-NOTICE -->.*?<!-- /ARCHIVE-NOTICE -->\n\n', '', markdown, flags=re.S)
-    # Keep YAML frontmatter at byte zero, if present.
-    frontmatter = re.match(r'\A---\n.*?\n---\n\n?', markdown, re.S)
-    split = frontmatter.end() if frontmatter else 0
-    return markdown[:split] + notice + markdown[split:]
+    notice = "<!-- ARCHIVE-NOTICE -->\n## Run this model on your terms\n\nWant this model running for you, on a private cloud GPU or your own machine? " + f"[Request access on Signal]({SIGNAL}) or [see how it works]({ORIGIN}/#how).\n\n> " + ARCHIVE_NOTE + "\n<!-- /ARCHIVE-NOTICE -->\n"
+    markdown = re.sub(r'<!-- ARCHIVE-NOTICE -->.*?<!-- /ARCHIVE-NOTICE -->\s*', '', markdown, flags=re.S)
+    return markdown.rstrip() + "\n\n" + notice
+
+
+def strip_reading_notes(text: str) -> str:
+    return re.sub(r'<!-- READING-(?:TLDR|BASICALLY) -->.*?<!-- /READING-(?:TLDR|BASICALLY) -->', '', text, flags=re.S)
+
+
+def plain_html(text: str) -> str:
+    return ' '.join(unescape(re.sub(r'<[^>]+>', ' ', text)).split())
+
+
+def article_headings(html: str) -> list[str]:
+    headings = [plain_html(h) for h in re.findall(r'<h2\b[^>]*>(.*?)</h2>', strip_reading_notes(html), re.S)]
+    return [h for h in headings[:headings.index('Primary sources')] if h != 'One honest line']
+
+
+def validate_reading_notes(notes: dict, html: str, markdown: str) -> None:
+    # Validate against the original prose, never against generated summaries themselves.
+    html, markdown = strip_reading_notes(html), strip_reading_notes(markdown)
+    if not isinstance(notes.get('tldr'), list) or not 2 <= len(notes['tldr']) <= 4:
+        raise ValueError('reading notes need 2-4 TL;DR facts')
+    if any(not isinstance(line, str) or not line.strip() or len(line) > 240 or '\n' in line or '—' in line for line in notes['tldr']):
+        raise ValueError('invalid TL;DR fact')
+    sections = notes.get('sections', [])
+    if [s['heading'] for s in sections] != article_headings(html):
+        raise ValueError('Basically notes must cover each substantive heading in order')
+    statements = []
+    for section in sections:
+        statement, evidence = section['statement'], section['evidence']
+        if not isinstance(statement, str) or not 1 <= len(statement) <= 140 or '\n' in statement or '—' in statement:
+            raise ValueError('Basically statement must be one line, at most 140 characters, no em dash')
+        if re.match(r'^(?:it|this|that|these|they)\b', statement, re.I):
+            raise ValueError('Basically statement needs an explicit subject')
+        if not isinstance(evidence, str) or not evidence.strip() or not (evidence in markdown or ' '.join(evidence.split()) in plain_html(html)):
+            raise ValueError(f'Basically evidence not found: {section["heading"]}')
+        statements.append(statement)
+    if len(set(statements)) != len(statements):
+        raise ValueError('duplicate Basically statement')
+
+
+def render_reading_notes(html: str, markdown: str, notes: dict) -> tuple[str, str]:
+    html, markdown = strip_reading_notes(html), strip_reading_notes(markdown)
+    validate_reading_notes(notes, html, markdown)
+    facts = ''.join(f'<li>{escape(line)}</li>' for line in notes['tldr'])
+    summary = '<!-- READING-TLDR --><aside class="article-callout" aria-label="TL;DR"><strong>TL;DR</strong><ul>' + facts + '</ul></aside><!-- /READING-TLDR -->'
+    html, count = re.subn(r'(</h1>)', lambda m: m[0] + summary, html, count=1)
+    if count != 1:
+        raise ValueError('article needs H1 for TL;DR')
+    by_heading = {s['heading']: s['statement'] for s in notes['sections']}
+
+    def insert(match):
+        heading = plain_html(match[1])
+        if heading not in by_heading:
+            return match[0]
+        return match[0] + '<!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>' + escape(by_heading[heading]) + '</p></aside><!-- /READING-BASICALLY -->'
+
+    html = re.sub(r'<h2\b[^>]*>(.*?)</h2>', insert, html, flags=re.S)
+    digest = '\n\n## TL;DR\n\n' + '\n'.join('- ' + line for line in notes['tldr'])
+    digest += '\n\n## Basically, the facts\n\n' + '\n\n'.join('**' + s['heading'] + '**\n\nBasically, ' + s['statement'] for s in notes['sections']) + '\n'
+    markdown, count = re.subn(r'(^# [^\n]+)', lambda m: m[0] + '<!-- READING-TLDR -->' + digest + '<!-- /READING-TLDR -->', markdown, count=1, flags=re.M)
+    if count != 1:
+        raise ValueError('Markdown article needs H1 for TL;DR')
+    return html, markdown
 
 
 def render_feed(posts: list[dict]) -> str:
@@ -151,14 +212,14 @@ def render_feed(posts: list[dict]) -> str:
         url = f'{ORIGIN}/blog/{post["slug"]}/'
         items.append(f'<item><title>{escape(post["title"])}</title><link>{url}</link><guid isPermaLink="true">{url}</guid><pubDate>{format_datetime(published)}</pubDate><description>{escape(ARCHIVE_NOTE + " " + post["summary"])}</description></item>')
     return f'''<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ABLITERATED.cloud editorial archive</title><link>{ORIGIN}/blog/</link><description>{escape(ARCHIVE_NOTE)}</description><language>en</language><lastBuildDate>{format_datetime(newest)}</lastBuildDate><atom:link href="{ORIGIN}/blog/feed.xml" rel="self" type="application/rss+xml"/>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ABLITERATED.cloud: uncensored AI models and self-hosting</title><link>{ORIGIN}/blog/</link><description>{escape(BLOG_DESCRIPTION)}</description><language>en</language><lastBuildDate>{format_datetime(newest)}</lastBuildDate><atom:link href="{ORIGIN}/blog/feed.xml" rel="self" type="application/rss+xml"/>
 {chr(10).join(items)}
 </channel></rss>
 '''
 
 
 def render_sitemap(posts: list[dict], page_count: int, snapshot_date: str) -> str:
-    static = ["/", "/index.md", "/llms.txt", "/llms-full.txt", "/auth.md", "/openapi.json", "/blog/", "/blog/feed.xml"]
+    static = ["/", "/index.md", "/llms.txt", "/llms-full.txt", "/auth.md", "/openapi.json", "/blog/", "/blog/feed.xml", "/about/", "/contact/", "/privacy/"]
     paths = [(p, snapshot_date) for p in static]
     paths += [(f"/blog/page/{p}/", snapshot_date) for p in range(2, page_count + 1)]
     # Archive framing changed, but original article publication dates stay intact.
@@ -190,14 +251,33 @@ def cost_rows(status: dict) -> list[tuple[str, str]]:
 
 def render_costs(status: dict, html: bool = False) -> str:
     rates = status["current"]["running_quote_usd_per_hour"]
+    gpu, disk = (Decimal(str(rates[k])) for k in ("gpu", "disk"))
     note = (f'USD, contract quote checked {status["snapshot_at"][:10]}. '
             f'GPU ${rates["gpu"]:.2f}/hour plus storage ${rates["disk"]:.5f}/hour. '
+            f'Stopped disk: ${disk * 24:.2f}/day. Two hours/day for 30 days: ${gpu * 60:.2f} GPU + ${disk * 720:.2f} disk. '
             'GPU time is billed while running, even without requests. Storage is billed continuously. '
             'Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.')
     rows = cost_rows(status)
     if html:
         return '<table><caption>Vast.ai A100 40 GB + 120 GB disk</caption><thead><tr><th scope="col">Usage</th><th scope="col">Cost</th></tr></thead><tbody>' + ''.join(f'<tr><th scope="row">{escape(label)}</th><td>{cost}</td></tr>' for label, cost in rows) + '</tbody></table><p>' + escape(note) + '</p>'
     return '| Usage | Cost |\n| --- | ---: |\n' + '\n'.join(f'| {label} | **{cost}** |' for label, cost in rows) + '\n\n' + note
+
+
+def plain_costs(status: dict, html: bool = False) -> str:
+    rates = status["current"]["running_quote_usd_per_hour"]
+    gpu, disk, total = (Decimal(str(rates[k])) for k in ("gpu", "disk", "total"))
+    rows = [
+        ("One hour, while it runs", f"about ${total.quantize(Decimal('0.01'), ROUND_HALF_UP)}"),
+        ("A full day, non-stop", f"${total * 24:.2f}"),
+        ("About two hours a day, for a month", f"${gpu * 60 + disk * 720:.2f}"),
+        ("Switched off, model kept ready", f"${disk * 720:.2f} a month"),
+    ]
+    caption = f"Example: one A100 cloud GPU with 120 GB of storage, rates checked {status['snapshot_at'][:10]}"
+    note = ("You only pay while it runs. A switched-off machine keeps paying for storage until you delete it. "
+            "Setup help is priced separately, before we start. Taxes and other services are extra.")
+    if html:
+        return f'<table><caption>{escape(caption)}</caption><thead><tr><th scope="col">What you use</th><th scope="col">What it costs</th></tr></thead><tbody>' + ''.join(f'<tr><th scope="row">{escape(label)}</th><td>{cost}</td></tr>' for label, cost in rows) + '</tbody></table><p>' + escape(note) + '</p>'
+    return caption + '\n\n| What you use | What it costs |\n| --- | ---: |\n' + '\n'.join(f'| {label} | **{cost}** |' for label, cost in rows) + '\n\n' + note
 
 
 def status_paragraphs(status: dict) -> list[str]:
@@ -219,25 +299,38 @@ def build_outputs(posts: list[dict]) -> dict[Path, str]:
     page_count = (len(posts) + PAGE_SIZE - 1) // PAGE_SIZE
     outputs = {BLOG / "index.html": render_index(posts, 1, page_count)}
     outputs.update({BLOG / "page" / str(p) / "index.html": render_index(posts, p, page_count) for p in range(2, page_count + 1)})
+    for page in range(1, page_count + 1):
+        folder = BLOG if page == 1 else BLOG / "page" / str(page)
+        page_posts = posts[(page - 1) * PAGE_SIZE:page * PAGE_SIZE]
+        outputs[folder / "index.md"] = "# Uncensored AI models & self-hosting guides\n\n" + BLOG_DESCRIPTION + "\n\n" + "\n".join(f'- [{p["title"]}]({ORIGIN}/blog/{p["slug"]}/): {p["published_at"]}. {p["summary"]}' for p in page_posts) + f"\n\n[Get self-hosting help on Signal]({SIGNAL}) · [All articles]({ORIGIN}/blog/)\n\n" + ARCHIVE_NOTE + "\n"
+    reading_notes = json.loads((BLOG / "reading-notes.json").read_text())
+    if set(reading_notes) != {post['slug'] for post in posts}:
+        raise ValueError('reading-notes.json must cover exactly the published article inventory')
     for post in posts:
         folder = BLOG / post["slug"]
-        outputs[folder / "index.html"] = render_article((folder / "index.html").read_text())
-        outputs[folder / "index.md"] = render_article_md((folder / "index.md").read_text())
+        html = render_article((folder / "index.html").read_text())
+        markdown = render_article_md((folder / "index.md").read_text())
+        html = re.sub(r'("dateModified"\s*:\s*")[^"]+(")', lambda m: m[1] + post['modified_at'] + m[2], html)
+        outputs[folder / "index.html"], outputs[folder / "index.md"] = render_reading_notes(html, markdown, reading_notes[post['slug']])
+    for slug in ("about", "contact", "privacy"):
+        file = WEBSITE / slug / "index.html"
+        text = re.sub(r'<header class="nav".*?</header>', NAV, file.read_text(), count=1, flags=re.S)
+        outputs[file] = re.sub(r'<footer\b[^>]*>.*?</footer>', FOOTER, text, count=1, flags=re.S)
     outputs[BLOG / "feed.xml"] = render_feed(posts)
-    outputs[WEBSITE / "sitemap.xml"] = render_sitemap(posts, page_count, status["snapshot_at"][:10])
-    latest_html = '\n'.join(f'<li><time datetime="{p["published_at"]}">{p["published_at"]}</time><a href="/blog/{p["slug"]}/">{escape(p["title"])}</a></li>' for p in posts[:LATEST_LIMIT])
-    latest_md = '\n'.join(f'- {p["published_at"]}: [{p["title"]}]({ORIGIN}/blog/{p["slug"]}/)' for p in posts[:LATEST_LIMIT])
-    links = '\n'.join(f'- [{p["title"]}]({ORIGIN}/blog/{p["slug"]}/index.md): archived field note, {p["published_at"]}.' for p in posts)
+    outputs[WEBSITE / "sitemap.xml"] = render_sitemap(posts, page_count, max("2026-09-06", status["snapshot_at"][:10]))
+    latest_html = '\n'.join(f'<a class="blog-card" href="/blog/{p["slug"]}/"><span>{escape(p["kicker"])}</span><h3>{title_with_break(p["card_title"])}</h3><p>{escape(p["title"])}</p><strong>Read the review →</strong></a>' for p in posts[:LATEST_LIMIT])
+    latest_md = '\n'.join(f'- **{p["card_title"]}**: {p["title"]} [Read the review]({ORIGIN}/blog/{p["slug"]}/)' for p in posts[:LATEST_LIMIT])
+    links = '\n'.join(f'- [{p["title"]}]({ORIGIN}/blog/{p["slug"]}/index.md): model research, {p["published_at"]}.' for p in posts)
     for name in ["index.html", "index.md", "llms.txt", "llms-full.txt"]:
         text = (WEBSITE / name).read_text()
-        body = '<div class="status-panel">' + ''.join(f'<p>{escape(p)}</p>' for p in paragraphs) + '</div>' if name.endswith('.html') else '\n\n'.join(paragraphs)
-        text = replace_section(text, "PROJECT-STATUS", body)
-        text = replace_section(text, "RUNNING-COSTS", render_costs(status, html=name.endswith(".html")))
-        if name == "index.html":
-            text = replace_section(text, "ABLITERATED-LATEST-RELEASES", latest_html)
-        elif name == "index.md":
-            text = replace_section(text, "ABLITERATED-LATEST-RELEASES-MD", latest_md)
+        is_html = name.endswith(".html")
+        if name.startswith("index"):
+            # The landing page speaks plainly; operating detail stays in the agent index and status JSON.
+            text = replace_section(text, "RUNNING-COSTS", plain_costs(status, html=is_html))
+            text = replace_section(text, "ABLITERATED-LATEST-RELEASES" if is_html else "ABLITERATED-LATEST-RELEASES-MD", latest_html if is_html else latest_md)
         else:
+            text = replace_section(text, "PROJECT-STATUS", '\n\n'.join(paragraphs))
+            text = replace_section(text, "RUNNING-COSTS", render_costs(status))
             text = replace_section(text, "ARCHIVE-LINKS", links)
         outputs[WEBSITE / name] = text
     readme = ROOT / "README.md"
