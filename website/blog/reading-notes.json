@@ -1219,5 +1219,55 @@
     "evidence": "commercial use, modification, redistribution"
    }
   ]
+ },
+ "minicpm5-2b-heretic-abliterated-reproducible": {
+  "tldr": [
+   "OpenBMB released MiniCPM5-2B, a 2.5B Apache-2.0 dense model with 128K context, on 6 September 2026.",
+   "insraq measured the stock model refusing 99 of 100 prompts and the Heretic edit 5 of 100.",
+   "The edit pins its base commit, prompt datasets, RNG seed and weight hashes, so the rebuild is byte-checkable.",
+   "GGUF and Apple MLX packs of the edit arrived within two days, the smallest rung at 1.23 GB."
+  ],
+  "sections": [
+   {
+    "heading": "What MiniCPM5-2B is",
+    "statement": "OpenBMB released MiniCPM5-2B on 6 September 2026 with Apache-2.0 and a 128K-token context window.",
+    "evidence": "The card's headline claim is a 2B-class open-source SOTA with an average of 53.9 across its comparison set"
+   },
+   {
+    "heading": "The refusal wall: 99 of 100",
+    "statement": "insraq measured 99 refusals in 100 prompts on the stock MiniCPM5-2B before the edit.",
+    "evidence": "and the stock model refused 99 of the 100"
+   },
+   {
+    "heading": "Heretic, trial 254",
+    "statement": "Heretic's search ran 254 trials and chose trial 254: 5 refusals in 100 prompts at KL 0.0391.",
+    "evidence": "the published artifact is trial 254: 5 refusals out of 100 on the same screen that counted 99 on the stock model, at a KL divergence of 0.0391"
+   },
+   {
+    "heading": "A kit, not just a model",
+    "statement": "insraq ships a kit of pinned base, datasets, seed and hashes so anyone can rebuild the edit byte for byte.",
+    "evidence": "the full Optuna study journal as openbmb--MiniCPM5-2B.jsonl so the other 253 trials are inspectable"
+   },
+   {
+    "heading": "The ladder that followed",
+    "statement": "Two days after the edit, packagers added GGUF and Apple MLX builds down to 1.23 GB.",
+    "evidence": "mondk published a GGUF ladder of the edit on 8 September: F16 at 5.04 GB"
+   },
+   {
+    "heading": "How to run it",
+    "statement": "The edited model keeps the standard Llama architecture, so llama.cpp, Ollama and MLX load it without forks.",
+    "evidence": "the usual runtimes load it without forks"
+   },
+   {
+    "heading": "The editor: insraq",
+    "statement": "The kit follows insraq's house pattern from his August Heretic on Empero's Qwen3.8-4B.",
+    "evidence": "the two releases share the same house pattern: an Optuna study journal, a config file with the RNG seed, pinned prompt sets and a SHA256SUMS file"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Abliteration subtracts a refusal direction found per layer; the search here picks how far, trial by trial.",
+    "evidence": "it searches per layer for how strongly to subtract, balancing two goals, fewer refusals and less drift from the original model, measured as KL divergence"
+   }
+  ]
  }
 }

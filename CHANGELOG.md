@@ -3,6 +3,31 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## [website-v0.12.5] - 2026-09-09
+
+### Editorial archive: MiniCPM5-2B reproducible Heretic uncensor
+
+- **Why:** the archive covers new uncensored releases with primary sources;
+  the freshest complete story was insraq's reproducible Heretic edit of
+  OpenBMB's official MiniCPM5-2B (Apache-2.0, 6 Sep 2026), which shipped a
+  hash-pinned rebuild kit alongside the weights.
+- Add field note `minicpm5-2b-heretic-abliterated-reproducible` anchored on
+  insraq/MiniCPM5-2B-heretic-abliterated (pinned revision 8d83eaf4): 5/100
+  refusals vs 99/100 stock on the same 100-prompt harmful-behaviors screen at
+  KL 0.0391, trial 254 of a 254-trial Optuna search, publisher-measured and
+  kit-verifiable (base commit 3497c460, pinned prompt datasets, RNG seed,
+  Optuna journal, SHA256SUMS). Refusal claims labeled publisher-measured; no
+  zero-refusal badge.
+- Community quant wave covered: mondk GGUF ladder (F16 5.04 GB to IQ3_M
+  1.23 GB) plus MLX 4-bit and safetensors repack, mradermacher imatrix GGUF
+  and Abiray GGUF, all enabled by the unchanged standard Llama architecture.
+- No dated rental quote in this release: a fresh provider quote for the 2B
+  class was not fetched and none is claimed; the largest rung is ~4.7 GiB
+  BF16. Site status snapshot (5 Sep 2026, stopped A100) untouched.
+- Regenerate homepage latest list, blog index and pagination (4 pages), RSS,
+  sitemap, `llms.txt`/`llms-full.txt`. Archive now has 28 field notes. No
+  runtime, instance or cost-snapshot change.
+
 ## [website-v0.12.4] - 2026-09-07
 
 ### Exact numbers in plain-language facts

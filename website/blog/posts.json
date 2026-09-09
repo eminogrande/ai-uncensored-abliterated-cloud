@@ -1,5 +1,38 @@
 [
   {
+    "slug": "minicpm5-2b-heretic-abliterated-reproducible",
+    "type": "model",
+    "kicker": "2.52B DENSE · 128K CTX · APACHE-2.0 · REPRODUCIBLE HERETIC",
+    "title": "MiniCPM5-2B, uncensored and reproducible",
+    "card_title": "insraq/MiniCPM5-2B-heretic-abliterated",
+    "summary": "OpenBMB shipped MiniCPM5-2B on 6 September 2026 (2,516,756,480 params, dense LlamaForCausalLM, 131,072-token context, Apache-2.0, open UltraData training sets) with a card claiming 2B-class SOTA at 53.9 average, above every listed 4B rival. Stock, insraq's screen measured 99 refusals of 100 prompts. Thirty-four hours later his Heretic v1.4.0 edit, trial 254 of an Optuna Pareto search, measured 5/100 at KL 0.0391 on the same screen, and it ships a reproduction kit: base commit 3497c460, pinned prompt datasets, RNG seed, full Optuna journal and SHA256SUMS, so a rebuild is byte-checkable. GGUF (F16 5.04 GB to IQ3_M 1.23 GB) and Apple MLX 4-bit packs followed within two days. Publisher-measured claims; no GPU was rented and no inference was run for this article.",
+    "published_at": "2026-09-09",
+    "modified_at": "2026-09-09",
+    "content_status": "editorial_archive",
+    "model_id": "insraq/MiniCPM5-2B-heretic-abliterated",
+    "refusal_claim": "5/100 refusals vs 99/100 on the same 100-prompt harmful-behaviors screen (mlabonne sets, commit-pinned), KL 0.0391, trial 254 of 254, publisher-measured by insraq, reproducible via the shipped kit. Not a universal zero-refusal claim.",
+    "source_urls": [
+      "https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated",
+      "https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated/tree/8d83eaf42e30f4e4f164b8685be0ecdccd8ef0d8",
+      "https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated/blob/main/reproduce/README.md",
+      "https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated/blob/main/reproduce/SHA256SUMS",
+      "https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated/blob/main/reproduce/config.toml",
+      "https://huggingface.co/openbmb/MiniCPM5-2B",
+      "https://huggingface.co/api/models/insraq/MiniCPM5-2B-heretic-abliterated",
+      "https://huggingface.co/api/models/openbmb/MiniCPM5-2B",
+      "https://huggingface.co/mondk/MiniCPM5-2B-Abliterated-Uncensored-GGUF",
+      "https://huggingface.co/mondk/MiniCPM5-2B-Abliterated-Uncensored-MLX-4Bit",
+      "https://huggingface.co/mondk/MiniCPM5-2B-Abliterated-Uncensored-Safetensors",
+      "https://huggingface.co/mradermacher/MiniCPM5-2B-heretic-abliterated-i1-GGUF",
+      "https://huggingface.co/Abiray/MiniCPM5-2B-heretic-abliterated-GGUF",
+      "https://huggingface.co/datasets/mlabonne/harmful_behaviors",
+      "https://huggingface.co/datasets/mlabonne/harmless_alpaca",
+      "https://github.com/p-e-w/heretic",
+      "https://huggingface.co/insraq",
+      "https://github.com/OpenBMB/MiniCPM"
+    ]
+  },
+  {
     "slug": "spark-x2-5-uncensor-wave",
     "type": "model",
     "kicker": "4.1B/1.7B · HYBRID SWA · 1M CTX · APACHE-2.0 · DAY-TEN UNCENSORS",

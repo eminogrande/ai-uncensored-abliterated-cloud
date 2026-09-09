@@ -22,9 +22,9 @@ Open source · Private access · Real people, not a ticket queue
 Every week brings new uncensored releases. We read the sources, check the numbers and write it up in plain language. Like one? We get it running for you.
 
 <!-- ABLITERATED-LATEST-RELEASES-MD -->
+- **insraq/MiniCPM5-2B-heretic-abliterated**: MiniCPM5-2B, uncensored and reproducible [Read the review](https://abliterated.cloud/blog/minicpm5-2b-heretic-abliterated-reproducible/)
 - **soyaakinohara/Spark-X2.5-4B-Heretic**: Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B [Read the review](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/)
 - **apetersson/DeepSeek-V4-Flash-Vision-Exp-Abliterated**: Eleven hours from DeepSeek drop to uncensor. [Read the review](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/)
-- **0xSojalSec/Tencent-Hy-30B-A3B-uncensored-heretic**: Why would a translation model refuse? Tencent's Hy-MT2, decensored [Read the review](https://abliterated.cloud/blog/tencent-hy-mt2-30b-a3b-uncensored/)
 <!-- /ABLITERATED-LATEST-RELEASES-MD -->
 
 [See all models & reviews](https://abliterated.cloud/blog/)
