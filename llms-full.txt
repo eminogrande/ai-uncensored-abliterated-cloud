@@ -80,6 +80,11 @@ The [blog](https://abliterated.cloud/blog/) is an active publication covering un
 Articles preserve per-model licenses, publisher measurements, community reports and historical estimates at their publication or revision dates. None is a current hosting offer or current ranking. Compare evaluations only when artifact, runtime, prompts and decoding settings match. Use the sources to shortlist candidates, then confirm current compatibility, license and cost before an authorized test.
 
 <!-- ARCHIVE-LINKS -->
+- [MiniCPM5-2B, uncensored and reproducible](https://abliterated.cloud/blog/minicpm5-2b-heretic-abliterated-reproducible/index.md): model research, 2026-09-09.
+  - OpenBMB released MiniCPM5-2B, a 2.5B Apache-2.0 dense model with 128K context, on 6 September 2026.
+  - insraq measured the stock model refusing 99 of 100 prompts and the Heretic edit 5 of 100.
+  - The edit pins its base commit, prompt datasets, RNG seed and weight hashes, so the rebuild is byte-checkable.
+  - GGUF and Apple MLX packs of the edit arrived within two days, the smallest rung at 1.23 GB.
 - [Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/index.md): model research, 2026-09-06.
   - Spark X2.5's maker claims it can read up to a million tokens at once, but testers have not confirmed that.
   - soyaakinohara found the small edit refused 3 of 100 prompts, down from 58 of 100 on the original model.

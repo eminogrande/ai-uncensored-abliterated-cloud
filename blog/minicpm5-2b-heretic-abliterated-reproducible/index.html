@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiniCPM5-2B, uncensored and reproducible — ABLITERATED.cloud</title>
+  <meta name="description" content="OpenBMB's MiniCPM5-2B refused 99 of 100 prompts in insraq's screen; a Heretic edit cut that to 5 of 100 and shipped a hash-pinned rebuild kit.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="https://abliterated.cloud/blog/minicpm5-2b-heretic-abliterated-reproducible/">
+  <link rel="alternate" type="text/markdown" href="index.md">
+  <meta property="og:type" content="article"><meta property="og:url" content="https://abliterated.cloud/blog/minicpm5-2b-heretic-abliterated-reproducible/"><meta property="og:title" content="MiniCPM5-2B, uncensored and reproducible"><meta property="og:description" content="OpenBMB's MiniCPM5-2B refused 99 of 100 prompts stock. insraq's Heretic edit measures 5 of 100, and ships the base commit, seed and hashes to rebuild it byte for byte."><meta property="og:image" content="https://abliterated.cloud/assets/icon-512.png">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" sizes="any"><link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32"><style id="site-css">:root {
+  --background: #f7f7f4;
+  --surface: #fff;
+  --ink: #17191d;
+  --muted: #565c63;
+  --line: #d9dad6;
+  --accent: #1746aa;
+  --max: 1040px;
+  --mono: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--background); color: var(--ink); font: 18px/1.65 system-ui, -apple-system, sans-serif; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, summary:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+img, svg { max-width: 100%; }
+code, pre { font-family: var(--mono); font-size: .9em; }
+code { overflow-wrap: anywhere; }
+pre { max-width: 100%; overflow-x: auto; padding: 20px; background: var(--surface); border: 1px solid var(--line); white-space: pre-wrap; overflow-wrap: anywhere; }
+h1, h2, h3 { line-height: 1.16; letter-spacing: -.035em; overflow-wrap: anywhere; }
+h1 { font-size: clamp(36px, 5.5vw, 62px); margin: 0 0 24px; }
+h2 { font-size: clamp(28px, 3.5vw, 40px); margin: 0 0 24px; }
+h3 { font-size: 23px; }
+p { margin: 0 0 22px; }
+ul, ol { padding-left: 24px; }
+li { margin-bottom: 12px; }
+.skip-link { position: absolute; top: -100px; left: 20px; padding: 12px; z-index: 10; background: var(--ink); color: white; }
+.skip-link:focus { top: 12px; }
+.nav { border-bottom: 1px solid var(--line); background: var(--background); }
+.nav-inner, .hero, .section, .blog-page-main, .article-main, .footer, .closing { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; padding-block: 20px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font: 700 17px/1.4 var(--mono); text-decoration: none; }
+.brand img { flex: none; }
+.desktop-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.desktop-links a { min-height: 44px; display: inline-flex; align-items: center; color: var(--ink); font-size: 17px; }
+.hero { padding-block: 72px 64px; }
+.hero-lead { max-width: 730px; font-size: 23px; line-height: 1.5; }
+.hero > p:not(.kicker) { max-width: 760px; }
+.kicker { color: var(--accent); font: 700 17px/1.5 var(--mono); margin-bottom: 18px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 18px; border: 1px solid var(--ink); border-radius: 3px; background: var(--ink); color: white; text-decoration: none; font-weight: 650; }
+.button-secondary { color: var(--ink); background: transparent; }
+.section { padding-block: 52px; border-top: 1px solid var(--line); }
+.section > p, .section > ul { max-width: 820px; }
+.status-panel, .archive-notice { border: 1px solid var(--line); border-left: 4px solid var(--accent); background: var(--surface); padding: 22px; margin: 24px 0; }
+.status-panel p:last-child, .archive-notice p:last-child { margin-bottom: 0; }
+.status-heading { font-size: 23px; }
+.status-facts { margin: 20px 0; }
+.status-facts div { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 20px; border-top: 1px solid var(--line); padding-block: 12px; }
+dt { font-weight: 650; }
+dd { margin: 0; overflow-wrap: anywhere; }
+.step-grid { list-style-position: inside; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; padding: 0; margin: 30px 0; }
+.step-grid h3 { margin: 12px 0; }
+.step-grid p { font-size: 17px; }
+.archive-list { list-style: none; padding: 0; }
+.archive-list li { display: grid; grid-template-columns: 115px minmax(0, 1fr); gap: 16px; border-top: 1px solid var(--line); padding: 16px 0; margin: 0; }
+time, .article-meta { color: var(--muted); font-size: 17px; }
+.blog-index-hero { padding-block: 60px 32px; max-width: 820px; }
+.blog-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; }
+.blog-card { display: block; min-width: 0; border-top: 1px solid var(--line); padding: 26px 0; text-decoration: none; }
+.blog-card h2, .blog-card h3 { font-size: 27px; color: var(--ink); margin: 10px 0 16px; }
+.blog-card p { color: var(--muted); font-size: 17px; }
+.blog-card > span { font-size: 15px; color: var(--muted); font-family: var(--mono); }
+.latest-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.blog-card strong { text-decoration: underline; }
+.article-shell { max-width: 860px; margin: 0 auto; padding-block: 36px 64px; }
+.article-header { margin-bottom: 28px; }
+.article-lead { font-size: 22px; line-height: 1.5; }
+.article-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.article-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 28px 0; border-top: 1px solid var(--line); }
+.article-facts div { padding: 16px 20px 16px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.article-facts dt, .article-facts dd { font-size: 17px; }
+.article-facts dd { margin-top: 6px; }
+.article-body { max-width: 780px; }
+.article-body h2 { margin: 48px 0 20px; }
+.article-body h3 { margin-top: 32px; }
+.article-body a, .article-repository { overflow-wrap: anywhere; }
+.article-callout, .article-learn { padding: 22px; border-left: 3px solid var(--accent); background: var(--surface); margin: 28px 0; }
+.article-toc { margin: 0 0 28px; font-size: 17px; }
+.article-toc strong { display: block; margin-bottom: 6px; }
+.article-toc ol { margin: 0; padding-left: 22px; columns: 2; column-gap: 32px; }
+.article-toc li { margin-bottom: 6px; break-inside: avoid; }
+.article-body h2[id] { scroll-margin-top: 24px; }
+.article-callout strong, .article-learn strong { display: block; margin-bottom: 8px; }
+.article-callout p, .article-learn p { margin: 0; }
+.article-source-list { border-top: 1px solid var(--line); padding-top: 24px; }
+.article-next { display: flex; flex-wrap: wrap; gap: 16px 24px; padding-block: 28px; border-top: 1px solid var(--line); }
+.article-next a { min-height: 44px; display: flex; align-items: center; }
+table { border-collapse: collapse; display: block; max-width: 100%; overflow-x: auto; font-size: 17px; margin-block: 28px; }
+th, td { text-align: left; border: 1px solid var(--line); padding: 10px; }
+#pricing table { display: table; width: 100%; table-layout: fixed; }
+#pricing th:first-child { width: 65%; }
+#pricing td { white-space: nowrap; font-weight: 700; }
+#pricing caption { text-align: left; margin-bottom: 10px; }
+.footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); padding-block: 36px; font-size: 17px; }
+.footer nav { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: start; }
+.footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
+.closing { padding-block: 64px; }
+.hero h1 { font-size: clamp(44px, 7.8vw, 88px); letter-spacing: -.055em; }
+.hero-note, .section-note { color: var(--muted); font-size: 17px; }
+.hero-note { margin-top: 20px; }
+.service-grid article { border-top: 2px solid var(--ink); padding-top: 12px; min-width: 0; }
+.service-grid a { font-size: 17px; }
+.faq-list details { border-top: 1px solid var(--line); }
+.faq-list summary, .status-disclosure summary { cursor: pointer; padding-block: 16px; font-weight: 650; }
+.faq-list details p { max-width: 820px; padding-bottom: 12px; }
+@media (max-width: 700px) {
+  .nav-inner, .hero, .section, .blog-page-main, .article-main, .footer, .closing { width: calc(100% - 32px); }
+  .nav-inner { display: block; }
+  .desktop-links { margin-top: 12px; gap: 4px 12px; }
+  .hero { padding-block: 32px; }
+  .hero-lead, .article-lead { font-size: 21px; }
+  .section { padding-block: 36px; }
+  .step-grid, .blog-card-grid, .latest-grid, .article-facts { grid-template-columns: 1fr; }
+  .step-grid { gap: 8px; }
+  .archive-list li { grid-template-columns: 1fr; gap: 4px; }
+  .status-facts div { grid-template-columns: 1fr; gap: 4px; }
+  .status-panel, .archive-notice { padding: 16px; }
+  .article-shell { padding-top: 20px; }
+  .article-toc ol { columns: 1; }
+}</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"MiniCPM5-2B, uncensored and reproducible","datePublished":"2026-09-09","dateModified":"2026-09-09","author":{"@type":"Organization","name":"ABLITERATED.cloud"},"publisher":{"@type":"Organization","name":"ABLITERATED.cloud","url":"https://abliterated.cloud/"},"mainEntityOfPage":"https://abliterated.cloud/blog/minicpm5-2b-heretic-abliterated-reproducible/","about":{"@type":"SoftwareApplication","name":"insraq/MiniCPM5-2B-heretic-abliterated"},"description":"OpenBMB's MiniCPM5-2B refused 99 of 100 prompts in insraq's screen; a Heretic edit cut that to 5 of 100 and shipped a hash-pinned rebuild kit.","image":"https://abliterated.cloud/assets/icon-512.png","url":"https://abliterated.cloud/blog/minicpm5-2b-heretic-abliterated-reproducible/","inLanguage":"en","wordCount":1951,"timeRequired":"PT9M","keywords":["2.52B DENSE","128K CTX","APACHE-2.0","REPRODUCIBLE HERETIC"],"articleSection":"Uncensored AI model research","isAccessibleForFree":true}</script>
+<link rel="ai-catalog" href="/.well-known/ai-catalog.json">
+<!-- ARTICLE-META --><meta property="article:published_time" content="2026-09-09"><meta property="article:modified_time" content="2026-09-09"><meta property="article:section" content="Uncensored AI model research"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="MiniCPM5-2B, uncensored and reproducible"><meta name="twitter:description" content="OpenBMB&#x27;s MiniCPM5-2B refused 99 of 100 prompts in insraq&#x27;s screen; a Heretic edit cut that to 5 of 100 and shipped a hash-pinned rebuild kit."><meta name="twitter:image" content="https://abliterated.cloud/assets/icon-512.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ABLITERATED.cloud","item":"https://abliterated.cloud/"},{"@type":"ListItem","position":2,"name":"Models & guides","item":"https://abliterated.cloud/blog/"},{"@type":"ListItem","position":3,"name":"MiniCPM5-2B, uncensored and reproducible","item":"https://abliterated.cloud/blog/minicpm5-2b-heretic-abliterated-reproducible/"}]}</script><!-- /ARTICLE-META -->
+</head>
+<body>
+<a class="skip-link" href="#article">Skip to article</a>
+<header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#models">Models</a><a href="/#how">How it works</a><a href="/blog/">Blog</a><a href="/#faq">FAQ</a><a href="https://signal.me/#p/+13103408213">Request access ↗</a></nav></div></header>
+<main class="article-main">
+  <article class="article-shell" id="article">
+    <header class="article-header">
+      <p class="kicker">MODEL FIELD NOTE · MINICPM5-2B · 2.5B DENSE · 128K CTX · APACHE-2.0 · REPRODUCIBLE HERETIC</p>
+      <h1>MiniCPM5-2B, uncensored and reproducible</h1><!-- READING-TLDR --><aside class="article-callout" aria-label="TL;DR"><strong>TL;DR</strong><ul><li>OpenBMB released MiniCPM5-2B, a 2.5B Apache-2.0 dense model with 128K context, on 6 September 2026.</li><li>insraq measured the stock model refusing 99 of 100 prompts and the Heretic edit 5 of 100.</li><li>The edit pins its base commit, prompt datasets, RNG seed and weight hashes, so the rebuild is byte-checkable.</li><li>GGUF and Apple MLX packs of the edit arrived within two days, the smallest rung at 1.23 GB.</li></ul></aside><!-- /READING-TLDR --><!-- ARTICLE-TOC --><nav class="article-toc" aria-label="In this article"><strong>In this article</strong><ol><li><a href="#what-minicpm5-2b-is">What MiniCPM5-2B is</a></li><li><a href="#the-refusal-wall-99-of-100">The refusal wall: 99 of 100</a></li><li><a href="#heretic-trial-254">Heretic, trial 254</a></li><li><a href="#a-kit-not-just-a-model">A kit, not just a model</a></li><li><a href="#the-ladder-that-followed">The ladder that followed</a></li><li><a href="#how-to-run-it">How to run it</a></li><li><a href="#the-editor-insraq">The editor: insraq</a></li><li><a href="#one-honest-line">One honest line</a></li><li><a href="#the-idea-in-plain-words">The idea, in plain words</a></li><li><a href="#primary-sources">Primary sources</a></li></ol></nav><!-- /ARTICLE-TOC -->
+      <p class="article-lead">On 6 September 2026, OpenBMB released MiniCPM5-2B, the second model of its MiniCPM5 family and its first proper 2B-class flagship: Apache-2.0, dense, 128K native context, a full open-data release behind it, and a benchmark card that claims the top of the 2B class with agent scores above several 4B rivals. The stock model is also extremely reluctant. On the editor's 100-prompt screen it refused 99 of 100. Thirty-four hours after the base appeared, insraq shipped a Heretic edit that measures 5 refusals out of 100 on the same screen, and the edit is not a trust-me binary: it comes with the base commit, the prompt sets, the random seed and the weight hashes needed to rebuild it byte for byte.</p>
+      <div class="article-meta"><time datetime="2026-09-09">Published 9 September 2026</time><span>9 min read</span><span>Sources linked below</span></div>
+      <dl class="article-facts">
+        <div><dt>Exact artifact</dt><dd><a href="https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated" class="article-repository">insraq/MiniCPM5-2B-heretic-abliterated</a> (BF16 full weights, 2 shards) · reproduction kit in <code>reproduce/</code></dd></div>
+        <div><dt>Pinned revision</dt><dd><code>8d83eaf4…cd8ef0d8</code> (edit) · base revision pinned by editor: <code>3497c460…647f1177</code> · dataset commits pinned in kit</dd></div>
+        <div><dt>Parameters</dt><dd>2,516,756,480 total · 1,981,982,720 non-embedding</dd></div>
+        <div><dt>Architecture</dt><dd>Dense <code>LlamaForCausalLM</code> · 42 layers · GQA 16 Q / 2 KV heads · vocab 130,560 · no custom kernels</dd></div>
+        <div><dt>Native checkpoint</dt><dd>BF16 ≈ 4.7 GiB; community GGUF ladder F16 5.04 GB down to IQ3_M 1.23 GB; MLX 4-bit for Apple Silicon</dd></div>
+        <div><dt>Native context</dt><dd>131,072 tokens (unchanged by the edit)</dd></div>
+        <div><dt>Modality</dt><dd>Text · English and Chinese · tool calling · agent-oriented post-training</dd></div>
+        <div><dt>License metadata</dt><dd>Apache-2.0 (official base and edit)</dd></div>
+        <div><dt>Published</dt><dd>Base 6 September 2026 · Heretic edit 7 September 2026, 21:13 UTC</dd></div>
+        <div><dt>Estimated cost</dt><dd>No dated rental quote in this article. Q4_K_M ≈ 1.5 GiB and IQ3_M ≈ 1.23 GB run on 8 GB cards; BF16 ≈ 4.7 GiB</dd></div>
+        <div><dt>Refusal claim</dt><dd>5/100 refusals vs 99/100 stock on the same 100-prompt harmful-behaviors screen, KL 0.0391, trial 254 of 254, publisher-measured, kit-verifiable</dd></div>
+      </dl>
+    </header>
+    <div class="article-body">
+      <h2 id="what-minicpm5-2b-is">What MiniCPM5-2B is</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>OpenBMB released MiniCPM5-2B on 6 September 2026 with Apache-2.0 and a 128K-token context window.</p></aside><!-- /READING-BASICALLY -->
+      <p>MiniCPM5-2B is a text-only, dense causal model from OpenBMB, the lab behind the MiniCPM family, and the second release in the MiniCPM5 series after MiniCPM5-1B. The card lists a plain <code>LlamaForCausalLM</code> architecture with no custom kernels: 2,516,756,480 parameters (1,981,982,720 non-embedding), 42 layers, grouped-query attention with 16 query heads and 2 key-value heads, 130,560-token vocabulary and a 131,072-token native context window. It is licensed Apache-2.0 and speaks English and Chinese. Post-training runs SFT, RL and OPD: roughly 400B tokens of deep-thinking SFT, specialized RL teachers for math, code, agentic work and writing, and On-Policy Distillation that merges 16 expert models back into one release checkpoint. The training data is public too, the UltraData family: UltraX-Preview web data, tiered UltraData-Code, 500K agent SFT samples and 80K+ RL samples among them.</p>
+      <p>The card's headline claim is a 2B-class open-source SOTA with an average of 53.9 across its comparison set, above LFM2.5-2.6B at 33.2, Qwen3.5-2B at 28.0 and Gemma-4-E2B-it at 24.6, and also above every larger model listed, including Qwen3.5-4B at 51.1. The strongest cells are coding, math, long context and agents: AIME 2026 at 86.5, SWE-bench Verified at 46.4, τ²-bench Telecom at 97.1. Those are publisher measurements from the OpenBMB card: cells marked with a dagger come from the official Artificial Analysis release and the rest were reproduced internally by the vendor, and none were independently reproduced for this article. Community appetite is visible in the numbers: 2,879 downloads and 758 likes inside its first three days, with base-repo discussions already proposing NPU, browser and local-runtime builds (community signal, not measurement).</p>
+      <h2 id="the-refusal-wall-99-of-100">The refusal wall: 99 of 100</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>insraq measured 99 refusals in 100 prompts on the stock MiniCPM5-2B before the edit.</p></aside><!-- /READING-BASICALLY -->
+      <p>What interests this site is the stock behavior the marketing table does not show. Small models trained hard for agentic usefulness are usually trained hard against refusal too, and MiniCPM5-2B sits at the reluctant end of that trade. insraq's published screen compares the stock model with the edited one on the same prompts, and the stock model refused 99 of the 100. The prompts are not secret: the reproduction kit pins the bad-prompt set to <a href="https://huggingface.co/datasets/mlabonne/harmful_behaviors">mlabonne/harmful_behaviors</a> at commit <code>01cead01…ebba7</code> and the good-prompt set to <a href="https://huggingface.co/datasets/mlabonne/harmless_alpaca">mlabonne/harmless_alpaca</a> at commit <code>02c6a92c…b587f</code>, the standard public suites of this genre. So the 99/100 is a publisher measurement on a 100-prompt harmful-behaviors screen, narrow by design, and this article reports it as that, not as a universal property. A 2B model that refuses almost everything on that screen is exactly the shape of model the uncensor ecosystem exists for.</p>
+      <h2 id="heretic-trial-254">Heretic, trial 254</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Heretic&#x27;s search ran 254 trials and chose trial 254: 5 refusals in 100 prompts at KL 0.0391.</p></aside><!-- /READING-BASICALLY -->
+      <p>The edit was made with <a href="https://github.com/p-e-w/heretic">Heretic</a> v1.4.0 (p-e-w, AGPL-3.0), the same toolchain insraq used for his August edit of Empero's Qwen3.8-4B distill, covered on this site on 17 August. Heretic is abliteration by search: a TPE-based optimizer powered by Optuna co-minimizes two goals at once, fewer refusals and less KL divergence from the original model, and the operator exports a trial from the resulting Pareto front. For MiniCPM5-2B the search ran 254 trials, and the published artifact is trial 254: 5 refusals out of 100 on the same screen that counted 99 on the stock model, at a KL divergence of 0.0391 from the base (0 by definition for the base itself). The card publishes the resulting per-layer direction parameters, including projection weights up to 1.47 concentrated in the upper half of the 42 layers, which is the signature of a deeper edit than his previous run, where trial 128 of the Qwen3.8-4B distill measured 6/100 at KL 0.0167.</p>
+      <p>The derivative went up 7 September at 21:13 UTC, about thirty-four hours after the base repo appeared, and had 510 downloads and 1 like when this article's facts were fetched on 9 September. Everything in this paragraph is publisher-reported, but it is reported with receipts, which is the point of the next section.</p>
+      <h2 id="a-kit-not-just-a-model">A kit, not just a model</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>insraq ships a kit of pinned base, datasets, seed and hashes so anyone can rebuild the edit byte for byte.</p></aside><!-- /READING-BASICALLY -->
+      <p>The <code>reproduce/</code> directory inside the model repo is what separates this release from most of the genre. It contains a reproduction guide, an exact <code>requirements.txt</code>, a <code>config.toml</code> with the configuration including the RNG seed, the full Optuna study journal as <code>openbmb--MiniCPM5-2B.jsonl</code> so the other 253 trials are inspectable rather than just claimed, and a <code>SHA256SUMS</code> file over both weight shards. The base model is pinned to openbmb/MiniCPM5-2B commit <code>3497c460…647f1177</code>, the good and bad prompt sets are pinned to their dataset commits, and the environment is documented: Heretic v1.4.0 from PyPI and PyTorch 2.12.1+cu130. The guide's suggested command is <code>heretic --reproduce reproduce.json</code>, which automates the run and its verification steps. Anybody with a GPU can download the kit and rebuild the published weights, then check them with <code>sha256sum -c SHA256SUMS</code>; byte-identical output is the acceptance test. Most uncensors ask you to trust a name and a download count. This one publishes the receipts first.</p>
+      <h2 id="the-ladder-that-followed">The ladder that followed</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Two days after the edit, packagers added GGUF and Apple MLX builds down to 1.23 GB.</p></aside><!-- /READING-BASICALLY -->
+      <p>The quantization wave started the same week, all on the standard Llama architecture so no custom conversion code was needed. <a href="https://huggingface.co/mondk">mondk</a> published a GGUF ladder of the edit on 8 September: F16 at 5.04 GB, Q8_0 at 2.68 GB, Q6_K at 2.07 GB, Q5_K_M at 1.81 GB, Q4_K_M at 1.56 GB, IQ4_XS at 1.42 GB, Q3_K_L at 1.38 GB and IQ3_M at 1.23 GB, file sizes from the Hugging Face tree at research time. The same packager added a safetensors repack on 8 September and an MLX 4-bit build for Apple Silicon on 9 September. <a href="https://huggingface.co/mradermacher">mradermacher</a> shipped an imatrix GGUF pack (<code>MiniCPM5-2B-heretic-abliterated-i1-GGUF</code>) and <a href="https://huggingface.co/Abiray">Abiray</a> a GGUF pack, both on 8 September. The derivative itself is the 2B of this family, so every rung is a laptop file: the smallest is 1.23 GB and even the F16 checkpoint is about 4.7 GiB. At research time these packs showed zero downloads while the source edit had 510, which is the usual lag between a fresh edit and the ecosystem catching up.</p>
+      <h2 id="how-to-run-it">How to run it</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>The edited model keeps the standard Llama architecture, so llama.cpp, Ollama and MLX load it without forks.</p></aside><!-- /READING-BASICALLY -->
+      <p>Because the edited model keeps the standard <code>LlamaForCausalLM</code> shape, the usual runtimes load it without forks. The GGUF rungs run in upstream llama.cpp, Ollama and LM Studio; the MLX build runs on Apple Silicon; the BF16 checkpoint loads in transformers, vLLM and SGLang the same way the official model does, with the same 131,072-token context ceiling. A working llama.cpp start for the mid rungs looks like this:</p>
+      <pre><code>llama-cli -m minicpm5-2b-abliterated-Q4_K_M.gguf \
+  -c 32768 -n 512 --temp 1.0 --top-p 0.95</code></pre>
+      <p>One honest sizing note: the weight file is only part of the memory bill. At the full 131,072-token context the attention cache alone is on the order of 5 GiB for this shape (2 KV heads, 128-dim head, 42 layers, 16-bit cache), so very long contexts want 16 GB-class hardware or a quantized cache, while everyday contexts run on any 8 GB card and most laptops. This site does not currently serve the edited model: the project's documented path stays private on-demand evaluation on Vast.ai with llama.cpp, and its reference box was stopped at the 5 September snapshot. No dated rental quote is claimed in this article; a fresh provider quote for a 2B serving box was not fetched, and a model whose largest rung is 5 GB does not need the GPU class this site's snapshot describes anyway.</p>
+      <h2 id="the-editor-insraq">The editor: insraq</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>The kit follows insraq&#x27;s house pattern from his August Heretic on Empero&#x27;s Qwen3.8-4B.</p></aside><!-- /READING-BASICALLY -->
+      <p>insraq is the same editor this site covered on 17 August for <a href="https://huggingface.co/insraq/Qwen3.5-4B-EmperoAI-Qwen3.8-Distill-Heretic-Abliterated">Qwen3.5-4B-EmperoAI-Qwen3.8-Distill-Heretic-Abliterated</a>, and the two releases share the same house pattern: an Optuna study journal, a config file with the RNG seed, pinned prompt sets and a SHA256SUMS file, with the chosen trial and its refusal and KL numbers stated plainly on the card. What changed is the base: the August run edited a community distill of Qwen3.8, while this run edits an official OpenBMB release three days after it shipped, with 758 likes and a vendor org behind it. That is the pattern that matters for the genre: measured, reproducible edits arriving days after an official Apache-2.0 release, so the refusal behavior of a popular small model does not stay the last word on it.</p>
+      <h2 id="one-honest-line">One honest line</h2>
+      <p>The safety filtering on an agent-capable official model is significantly reduced by this edit, so anything you have it do, you own, and a 5-out-of-100 score on one narrow screen is not a zero-refusal guarantee of anything.</p>
+      <h2 id="the-idea-in-plain-words">The idea, in plain words</h2><!-- READING-BASICALLY --><aside class="article-callout" aria-label="Basically"><strong>Basically,</strong><p>Abliteration subtracts a refusal direction found per layer; the search here picks how far, trial by trial.</p></aside><!-- /READING-BASICALLY -->
+      <p><strong>Direction surgery.</strong> A model's refusals are not a switch; they live in directions of its internal activations that were reinforced during training. Abliteration finds the refusal direction and subtracts it, scaled, from the activations, and Heretic automates the fiddly part: it searches per layer for how strongly to subtract, balancing two goals, fewer refusals and less drift from the original model, measured as KL divergence. Because that search involves randomness, the same recipe can land on different trials, which is why the artifact here is not just "an uncensored MiniCPM5-2B" but "trial 254 of 254, with this seed, these prompts and these hashes". The numbers become checkable claims instead of marketing.</p>
+      <p><em>Coverage gaps: this article is built from Hugging Face model cards, repo files and the Hugging Face API, fetched 9 September 2026. All refusal counts and benchmarks are publisher-reported; none were independently reproduced, no GPU was rented and no inference was run for this article. Community signal is limited to download counts and base-repo discussion threads and is labeled as such.</em></p>
+      <h2 id="primary-sources">Primary sources</h2>
+      <ul>
+        <li><a href="https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated">insraq/MiniCPM5-2B-heretic-abliterated (card: Heretic v1.4.0, refusal and KL table, direction parameters)</a> · <a href="https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated/tree/8d83eaf42e30f4e4f164b8685be0ecdccd8ef0d8">pinned revision <code>8d83eaf4…cd8ef0d8</code></a></li>
+        <li><a href="https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated/blob/main/reproduce/README.md">reproduce/README.md (base and dataset commit pins, trial 254, environment, reproduce steps)</a> · <a href="https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated/blob/main/reproduce/SHA256SUMS">SHA256SUMS</a> · <a href="https://huggingface.co/insraq/MiniCPM5-2B-heretic-abliterated/blob/main/reproduce/config.toml">config.toml</a></li>
+        <li><a href="https://huggingface.co/openbmb/MiniCPM5-2B">openbmb/MiniCPM5-2B (official card: architecture, benchmarks, training recipe, 6 Sep 2026)</a></li>
+        <li><a href="https://huggingface.co/api/models/insraq/MiniCPM5-2B-heretic-abliterated">HF API: derivative facts (created 2026-09-07T21:13:33Z, sha 8d83eaf4, downloads/likes)</a></li>
+        <li><a href="https://huggingface.co/api/models/openbmb/MiniCPM5-2B">HF API: base facts (created 2026-09-06T11:12:19Z, downloads/likes)</a></li>
+        <li><a href="https://huggingface.co/mondk/MiniCPM5-2B-Abliterated-Uncensored-GGUF">mondk GGUF ladder (file sizes from HF tree, 8 Sep 2026)</a> · <a href="https://huggingface.co/mondk/MiniCPM5-2B-Abliterated-Uncensored-MLX-4Bit">MLX 4-bit</a> · <a href="https://huggingface.co/mondk/MiniCPM5-2B-Abliterated-Uncensored-Safetensors">safetensors repack</a></li>
+        <li><a href="https://huggingface.co/mradermacher/MiniCPM5-2B-heretic-abliterated-i1-GGUF">mradermacher imatrix GGUF pack</a> · <a href="https://huggingface.co/Abiray/MiniCPM5-2B-heretic-abliterated-GGUF">Abiray GGUF pack</a></li>
+        <li><a href="https://huggingface.co/datasets/mlabonne/harmful_behaviors">mlabonne/harmful_behaviors (pinned <code>01cead01…ebba7</code>)</a> · <a href="https://huggingface.co/datasets/mlabonne/harmless_alpaca">mlabonne/harmless_alpaca (pinned <code>02c6a92c…b587f</code>)</a></li>
+        <li><a href="https://github.com/p-e-w/heretic">Heretic tool and project</a> · <a href="https://abliterated.cloud/blog/qwen3-5-4b-emperoai-qwen3-8-distill-heretic-abliterated/">prior coverage: insraq's Qwen3.8-4B distill edit, 17 Aug 2026</a></li>
+        <li><a href="https://huggingface.co/insraq">insraq profile</a> · <a href="https://github.com/OpenBMB/MiniCPM">openbmb/MiniCPM GitHub</a></li>
+      </ul>
+    </div>
+    <aside class="archive-notice" aria-label="Self-hosting help and research context"><h2>Want this model running for you?</h2><p>We set it up on a private cloud GPU or your own machine and connect the apps you already use.</p><p><a class="button" href="https://signal.me/#p/+13103408213">Request access on Signal</a> <a href="/#how">How it works →</a></p><p>Model research, dated at publication. Model licenses, publisher benchmarks and hosting estimates are specific to each article, not a live availability or price list. Reported zero-refusal results are test-specific, not a universal guarantee.</p></aside>
+  </article>
+</main>
+<footer class="footer"><p>ABLITERATED.cloud<br>Intelligence, freed.</p><nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/RELEASE_NOTES.md">Updates</a><a href="/llms.txt">Agent index</a></nav></footer>
+</body>
+</html>
