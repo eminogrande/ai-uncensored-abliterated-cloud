@@ -1269,5 +1269,60 @@
     "evidence": "it searches per layer for how strongly to subtract, balancing two goals, fewer refusals and less drift from the original model, measured as KL divergence"
    }
   ]
+ },
+ "deepseek-v4-1-flash-day-one-uncensoring": {
+  "tldr": [
+   "DeepSeek released V4.1-Flash on 10 September 2026: a 552-billion-parameter backbone, a one-million-token context, MIT license.",
+   "The first uncensored build, s-zaizen's Heretic edit, appeared 8 hours and 41 minutes after the base repository.",
+   "dealignai's weight-level edit reports all 320 HarmBench prompts answered, versus 137 of 320 for the stock model (publisher-measured).",
+   "No released mainstream runtime serves the architecture yet; the working paths are preview branches and community forks."
+  ],
+  "sections": [
+   {
+    "heading": "What DeepSeek-V4.1-Flash is",
+    "statement": "DeepSeek released V4.1-Flash on 10 September 2026: a 552-billion-parameter backbone, a million-token context.",
+    "evidence": "552 billion backbone parameters in a mixture-of-experts design"
+   },
+   {
+    "heading": "The first edit: 97 of 100 to 24",
+    "statement": "s-zaizen's Heretic edit cut DeepSeek V4.1-Flash refusals from 97 to 24 out of 100 measured prompts.",
+    "evidence": "counted 97 refusals for the stock model and 24 after the edit"
+   },
+   {
+    "heading": "The weightless route: 800 KB, no weights touched",
+    "statement": "msuiche's 800 KB vector raised compliance on 32 cyber prompts from 5 to 31, with no weight changes.",
+    "evidence": "On a 32-prompt offensive-security screen, it rose from 5 to 31."
+   },
+   {
+    "heading": "The alpha ladder: 0.5 works, 2.0 backfires",
+    "statement": "Doubling msuiche's steering strength to 1.0 slipped Chinese words into English answers; at 2.0 refusals returned.",
+    "evidence": "Alpha 1.0 delivers 25 of 32 but slips Chinese phrases into 2 to 7 of 32 English answers."
+   },
+   {
+    "heading": "The weight-level crack: 137 of 320 to 320",
+    "statement": "dealignai's weight-level edit measured all 320 HarmBench prompts answered, up from 137 for the stock model.",
+    "evidence": "the stock model complies with 137 of 320 prompts at reasoning off"
+   },
+   {
+    "heading": "The day-one shrink wave",
+    "statement": "Day-one shrink work took V4.1-Flash from 510 GB to 169.92 GB at best, still needing datacenter-class hardware.",
+    "evidence": "169.92 GB across five shards with SHA256SUMS"
+   },
+   {
+    "heading": "What actually serves it",
+    "statement": "No released mainstream runtime serves V4.1-Flash yet; preview branches and community forks do.",
+    "evidence": "the registry still has no DeepseekV41 entry, so no released build serves it"
+   },
+   {
+    "heading": "The editors",
+    "statement": "s-zaizen, msuiche and dealignai all had prior releases this site covered in August.",
+    "evidence": "this site's coverage of the V4-Flash-Vision-Exp abliteration noted his NVFP4 graft the same day"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Uncensoring can edit the weights or subtract a refusal direction at runtime; V4.1-Flash got both on day one.",
+    "evidence": "subtract the direction during inference with a scaled projection"
+   }
+  ]
  }
 }

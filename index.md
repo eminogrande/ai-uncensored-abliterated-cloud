@@ -22,9 +22,9 @@ Open source · Private access · Real people, not a ticket queue
 Every week brings new uncensored releases. We read the sources, check the numbers and write it up in plain language. Like one? We get it running for you.
 
 <!-- ABLITERATED-LATEST-RELEASES-MD -->
+- **dealignai/DeepSeek-V4.1-Flash-UNCENSORED-FP8**: DeepSeek-V4.1-Flash, uncensored within a day [Read the review](https://abliterated.cloud/blog/deepseek-v4-1-flash-day-one-uncensoring/)
 - **insraq/MiniCPM5-2B-heretic-abliterated**: MiniCPM5-2B, uncensored and reproducible [Read the review](https://abliterated.cloud/blog/minicpm5-2b-heretic-abliterated-reproducible/)
 - **soyaakinohara/Spark-X2.5-4B-Heretic**: Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B [Read the review](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/)
-- **apetersson/DeepSeek-V4-Flash-Vision-Exp-Abliterated**: Eleven hours from DeepSeek drop to uncensor. [Read the review](https://abliterated.cloud/blog/deepseek-v4-flash-vision-exp-abliterated/)
 <!-- /ABLITERATED-LATEST-RELEASES-MD -->
 
 [See all models & reviews](https://abliterated.cloud/blog/)
