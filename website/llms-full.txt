@@ -80,6 +80,11 @@ The [blog](https://abliterated.cloud/blog/) is an active publication covering un
 Articles preserve per-model licenses, publisher measurements, community reports and historical estimates at their publication or revision dates. None is a current hosting offer or current ranking. Compare evaluations only when artifact, runtime, prompts and decoding settings match. Use the sources to shortlist candidates, then confirm current compatibility, license and cost before an authorized test.
 
 <!-- ARCHIVE-LINKS -->
+- [DeepSeek-V4.1-Flash, uncensored within a day](https://abliterated.cloud/blog/deepseek-v4-1-flash-day-one-uncensoring/index.md): model research, 2026-09-11.
+  - DeepSeek released V4.1-Flash on 10 September 2026: a 552-billion-parameter backbone, a one-million-token context, MIT license.
+  - The first uncensored build, s-zaizen's Heretic edit, appeared 8 hours and 41 minutes after the base repository.
+  - dealignai's weight-level edit reports all 320 HarmBench prompts answered, versus 137 of 320 for the stock model (publisher-measured).
+  - No released mainstream runtime serves the architecture yet; the working paths are preview branches and community forks.
 - [MiniCPM5-2B, uncensored and reproducible](https://abliterated.cloud/blog/minicpm5-2b-heretic-abliterated-reproducible/index.md): model research, 2026-09-09.
   - OpenBMB released MiniCPM5-2B, a 2.5B Apache-2.0 dense model with 128K context, on 6 September 2026.
   - insraq measured the stock model refusing 99 of 100 prompts and the Heretic edit 5 of 100.

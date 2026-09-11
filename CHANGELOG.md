@@ -3,6 +3,33 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## [website-v0.12.6] - 2026-09-11
+
+### Editorial archive: DeepSeek-V4.1-Flash day-one uncensoring
+
+- **Why:** the freshest complete story is the uncensoring wave on DeepSeek's
+  official V4.1-Flash (MIT, 10 Sep 2026, 552B backbone, 1M-token context):
+  three independent uncensored builds appeared within 19 hours of the base
+  repository, and no released mainstream runtime serves the architecture yet.
+- Add field note `deepseek-v4-1-flash-day-one-uncensoring` anchored on
+  dealignai/DeepSeek-V4.1-Flash-UNCENSORED-FP8 (pinned revision 86392f73)
+  with two same-day siblings: s-zaizen's Heretic conversion (97/100 to
+  24/100 keyword-screen refusals, Heretic commit 3521f864) and msuiche's
+  gated 800 KB GLP-39 control vector (compliance 5/32 to 31/32 on a cyber
+  set at alpha 0.5; the card shows alpha 2.0 regresses). dealignai's
+  weight-level edit reports 320/320 HarmBench compliance vs 137/320 stock
+  at reasoning off and MMLU -4.22pp (-1.1pp excluding the ethics cluster).
+  All refusal claims labeled publisher-measured; no zero-refusal badge.
+- Serving and size reality documented: SGLang `dsv4.1` preview branch,
+  unmerged vLLM PRs, converter-only llama.cpp PR, community MLX and
+  4x DGX Spark lines; day-one reductions (NVFP4 399.9 GiB, mixed-Q2 GGUF
+  169.92 GB, MLX 427.6 GB, REAP 2-bit ~199 GiB) all stay datacenter-sized.
+  No dated rental quote in this release: the checkpoint is outside the
+  site's stopped 40 GB reference class in every published quant.
+- Regenerate homepage latest list, blog index and pagination (4 pages), RSS,
+  sitemap, `llms.txt`/`llms-full.txt`. Archive now has 29 field notes. No
+  runtime, instance or cost-snapshot change.
+
 ## [website-v0.12.5] - 2026-09-09
 
 ### Editorial archive: MiniCPM5-2B reproducible Heretic uncensor
