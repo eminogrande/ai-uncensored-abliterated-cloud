@@ -1324,5 +1324,50 @@
     "evidence": "subtract the direction during inference with a scaled projection"
    }
   ]
+ },
+ "gemma-4-31b-qat-uncensored-heretic": {
+  "tldr": [
+   "Google's Gemma 4 31B is a 30.7-billion-parameter dense model from March 2026; a Q4_0 quantisation-aware checkpoint followed on 28 April.",
+   "Four months of Heretic edits have uncensored it: coder3101's April run reports 15 of 100 refusals, wnfldchen's August rebuild 8 of 100 at KL 0.0900.",
+   "OS-Software's September build reports 0 of 100 refusals at KL 0.0083, made with a development build of Heretic (v2.0.0.dev0).",
+   "The uncensored pack is a 17.29 GB Q4_0 GGUF plus a 0.81 or 1.20 GB vision projector; no GPU was rented and no dated rental quote is claimed."
+  ],
+  "sections": [
+   {
+    "heading": "What Gemma 4 31B is",
+    "statement": "Google's Gemma 4 31B arrived in March 2026; the Q4_0 quantisation-aware checkpoints followed on 28 April.",
+    "evidence": "The 31B unquantized QAT checkpoint went up on 28 April 2026"
+   },
+   {
+    "heading": "The April edit: 15 of 100 refusals",
+    "statement": "coder3101's April Heretic edit reports Gemma 4 31B refusals down from 99 to 15 of 100, at KL 0.0434.",
+    "evidence": "refusals at 15 of 100, against 99 of 100 for the stock model on the same screen"
+   },
+   {
+    "heading": "The August rebuild: 8 of 100, reproducible",
+    "statement": "wnfldchen's August QAT-checkpoint run reports 8 of 100 refusals and ships a reproduction kit with its trial pinned.",
+    "evidence": "8 of 100 refusals against 99 of 100 for the stock checkpoint, at KL 0.0900"
+   },
+   {
+    "heading": "September: 0 of 100 with a Heretic development build",
+    "statement": "OS-Software's September Gemma 4 31B build reports 0 of 100 refusals at KL 0.0083, using a Heretic development build.",
+    "evidence": "refusals at 0 of 100 against 100 of 100 for the stock checkpoint, at KL 0.0083"
+   },
+   {
+    "heading": "The requant week",
+    "statement": "All three Heretic edits drew requants within days, from a 4-bit EXL3 conversion to same-parameter republications.",
+    "evidence": "an EXL3 conversion of coder3101's April edit appeared at 4.00 bits per weight"
+   },
+   {
+    "heading": "How to run it",
+    "statement": "The uncensored Gemma 4 31B ships as a 17.29 GB Q4_0 file plus a vision projector, sized for a single 24 GB GPU.",
+    "evidence": "OS-Software's Q4_0 file measures 17,287,669,696 bytes, about 17.29 GB"
+   },
+   {
+    "heading": "The idea, in plain words",
+    "statement": "Gemma 4's QAT checkpoints are trained to stay close to bfloat16 quality at 4 bits, and uncensored copies inherit that.",
+    "evidence": "preserving similar quality to bfloat16 while dramatically reducing the memory requirements"
+   }
+  ]
  }
 }

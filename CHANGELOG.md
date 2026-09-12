@@ -3,6 +3,43 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## [website-v0.12.7] - 2026-09-12
+
+### Editorial archive: Gemma 4 31B uncensored from the QAT checkpoint
+
+- **Why:** the freshest complete story is the uncensoring line on Google's
+  Gemma 4 31B (30.7B dense, 60 layers, 256K context, text and image input,
+  Apache 2.0, March 2026): an April edit, a reproducible August rebuild and
+  a September run against the Q4_0 quantisation-aware checkpoint made with
+  a Heretic v2.0.0.dev0+custom development build, plus the requants and
+  mirrored copies that followed within days.
+- Add field note `gemma-4-31b-qat-uncensored-heretic` anchored on
+  OS-Software/gemma-4-31B-it-qat-q4_0-uncensored-heretic-GGUF (8 September
+  2026, pinned revision c0fa1000; weight-level sibling 244246e6, 13 shards),
+  base google/gemma-4-31B-it-qat-q4_0-unquantized (28 April 2026, pinned
+  1e4d8bee). Card reports 0/100 refusals vs 100/100 for the stock checkpoint
+  at KL 0.0083; parameter table (layers 30-41, attn.o_proj + mlp.down_proj,
+  Gaussian transport rank 4, entropy regularization 0.1, rank-128 LoRA merge,
+  no row normalization) quoted. Publisher-measured; no zero-refusal badge.
+- Lineage: coder3101's April Heretic v1.2.0 + ARA edit (15/100 vs 99/100,
+  KL 0.0434; 75 likes / 8,906 downloads at fetch); wnfldchen's 14 August
+  rebuild on the same QAT checkpoint (trial 6, 8/100 vs 99/100, KL 0.0900,
+  reproduction kit; W4A16 variant with a capability table vs Google's
+  official W4A16 base, PIQA -0.71pp and EQ-Bench +4.05 disclosed); the
+  requant week (sjoe1244 EXL3 4.00 bpw, musafa901 same-parameter
+  republication, guga112 E4B Q4_0, Alfredofrog E4B at 7/100 and KL 0.0043);
+  the separate Madras1 orthogonalization line (alpha 1.35, layers 12-51)
+  with mradermacher quants at 6,495 / 3,407 downloads.
+- Serving and size reality documented: Q4_0 GGUF 17,287,669,696 bytes plus
+  a 1,200,726,080 or 809,541,440-byte vision projector; Google's own Q4_0
+  GGUF for the tier (477,215 downloads) ships the same two-file shape; about
+  18.1 GB of weights fits a single 24 GB card and the site's stopped 40 GB
+  A100 reference class. No dated rental quote in this release: nothing was
+  rented, started or served.
+- Regenerate homepage latest list, blog index and pagination (4 pages), RSS,
+  sitemap, `llms.txt`/`llms-full.txt`. Archive now has 30 field notes. No
+  runtime, instance or cost-snapshot change.
+
 ## [website-v0.12.6] - 2026-09-11
 
 ### Editorial archive: DeepSeek-V4.1-Flash day-one uncensoring

@@ -58,6 +58,7 @@ Manual start/stop, no proven automatic idle shutdown. Stop retains disk with ong
 The [blog](https://abliterated.cloud/blog/) publishes model news, field notes and practical guides. Use the [article index](https://abliterated.cloud/blog/posts.json) or [RSS feed](https://abliterated.cloud/blog/feed.xml) to follow new coverage. Each article retains its publication date, model-specific license facts and sources. Measurements and price estimates describe that article's evidence, not a live hosting offer or a current ranking.
 
 <!-- ARCHIVE-LINKS -->
+- [Gemma 4 31B, uncensored from the QAT checkpoint](https://abliterated.cloud/blog/gemma-4-31b-qat-uncensored-heretic/index.md): model research, 2026-09-12.
 - [DeepSeek-V4.1-Flash, uncensored within a day](https://abliterated.cloud/blog/deepseek-v4-1-flash-day-one-uncensoring/index.md): model research, 2026-09-11.
 - [MiniCPM5-2B, uncensored and reproducible](https://abliterated.cloud/blog/minicpm5-2b-heretic-abliterated-reproducible/index.md): model research, 2026-09-09.
 - [Day ten for Spark X2.5: the uncensor wave on the 1M-context 4B](https://abliterated.cloud/blog/spark-x2-5-uncensor-wave/index.md): model research, 2026-09-06.
