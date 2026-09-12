@@ -80,6 +80,11 @@ The [blog](https://abliterated.cloud/blog/) is an active publication covering un
 Articles preserve per-model licenses, publisher measurements, community reports and historical estimates at their publication or revision dates. None is a current hosting offer or current ranking. Compare evaluations only when artifact, runtime, prompts and decoding settings match. Use the sources to shortlist candidates, then confirm current compatibility, license and cost before an authorized test.
 
 <!-- ARCHIVE-LINKS -->
+- [Gemma 4 31B, uncensored from the QAT checkpoint](https://abliterated.cloud/blog/gemma-4-31b-qat-uncensored-heretic/index.md): model research, 2026-09-12.
+  - Google's Gemma 4 31B is a 30.7-billion-parameter dense model from March 2026; a Q4_0 quantisation-aware checkpoint followed on 28 April.
+  - Four months of Heretic edits have uncensored it: coder3101's April run reports 15 of 100 refusals, wnfldchen's August rebuild 8 of 100 at KL 0.0900.
+  - OS-Software's September build reports 0 of 100 refusals at KL 0.0083, made with a development build of Heretic (v2.0.0.dev0).
+  - The uncensored pack is a 17.29 GB Q4_0 GGUF plus a 0.81 or 1.20 GB vision projector; no GPU was rented and no dated rental quote is claimed.
 - [DeepSeek-V4.1-Flash, uncensored within a day](https://abliterated.cloud/blog/deepseek-v4-1-flash-day-one-uncensoring/index.md): model research, 2026-09-11.
   - DeepSeek released V4.1-Flash on 10 September 2026: a 552-billion-parameter backbone, a one-million-token context, MIT license.
   - The first uncensored build, s-zaizen's Heretic edit, appeared 8 hours and 41 minutes after the base repository.
