@@ -1,59 +1,68 @@
 # ABLITERATED.cloud
 
-**Intelligence, freed.** Human-assisted cloud GPU renting and self-hosting for
-uncensored and abliterated models. Get help choosing a model and connecting it to
-your LLM router, chat app or coding tools.
+**Intelligence, freed.**
 
-[Talk on Signal](https://signal.me/#p/+13103408213) about your workload, model,
-hardware budget and client. Scope, access and any costs are agreed with a human
-before setup. The public website offers service information, documentation and
-[model news and guides](https://abliterated.cloud/blog/), not self-service inference
-or account checkout.
+Run an uncensored AI model on a GPU you rent by the hour. No account with us,
+no API key from us, no content filter, no logs but your own. About **$0.60 an
+hour** while it runs, and nothing when it doesn't.
 
-## Current operating docs
+This repository is the complete recipe: scripts to rent the GPU, a gateway to
+share access safely, and honest notes about what actually works.
 
-- **[Self-hosting guide](docs/SELFHOST.md): the 10-minute community path** —
-  rent a GPU, run an abliterated model, connect your browser or coding tool.
-  Start here.
-- **[API access](docs/API.md): `api.abliterated.cloud`** — OpenAI-compatible
-  endpoint with expiring bearer tokens (24-hour test tokens, revocation).
-- [Operating guide](docs/OPERATIONS.md): the owner-only **Vast.ai + llama.cpp**
-  procedure, SSH access, client configuration and manual start/stop.
-- [Status evidence](docs/STATUS.md): dated checks, last configuration, our
-  12-prompt refusal probe and what remains untested.
-- [Licensing scope](docs/LICENSING.md): project-owned MIT work versus upstream
-  model terms.
-- [Website](https://abliterated.cloud/) · [Repo shortlink](https://github.abliterated.cloud) ·
-  [Agent reading index](website/llms.txt) · [Website development](website/README.md)
+```sh
+git clone https://github.com/eminogrande/ai-uncensored-abliterated-cloud
+cd ai-uncensored-abliterated-cloud
+export VAST_API_KEY=...        # from cloud.vast.ai/account
+./scripts/rent-gpu.sh          # pick a GPU, confirm the price
+./scripts/setup-model.sh <ID>  # build llama.cpp, fetch the model
+./scripts/gpu.sh serve <ID>    # start the server
+./scripts/gpu.sh tunnel <ID>   # chat at http://127.0.0.1:8080
+```
 
-## Current state
+Ten minutes from clone to your own private model. Stop it with
+`./scripts/gpu.sh stop <ID>` and the billing stops with it.
 
-**Both instances STOPPED — last checked 2026-09-15.** `49433042` (A100 PCIe
-40 GB, 120 GB disk, $0.60/h) and `50934401` (A100 SXM4 80 GB, 90 GB disk,
-$0.99/h, used for the 2026-09-13 A/B refusal test). Both retain disks that are
-**still billed while stopped**. No GPU is consuming compute. This is not live
-availability or a statement about service enquiries.
+## Why do this
 
-Last tested configuration (2026-09-13, stopped after the test):
-`OBLITERATUS/Qwen3.8-27B-OBLITERATED` Q6_K and
-`OS-Software/Qwen3.8-27B-Uncensored-Heretic-v3-UD` Q6_K_XL, llama.cpp commit
-`5f436dd`, through a private SSH tunnel to `http://127.0.0.1:8080/v1`.
-Our own 12-prompt probe: **0/12 keyword refusals for OBLITERATED** (thinking
-off), 5/12 for Heretic-v3 (thinking off), 0/12 for Heretic-v3 with thinking on
-but 7/12 empty outputs. See [status evidence](docs/STATUS.md) — small probe,
-coding quality **not** tested.
+Hosted models refuse. Sometimes for good reason, often for no reason you can
+predict: a security question, a medical question, a piece of fiction, a word
+that pattern-matched badly. You cannot appeal it and you cannot see the rule.
 
-Modal is retired from this project's operating path for its cost budget. The
-[implementation is archived](archive/modal/README.md), not decommissioned:
-four legacy apps had zero tasks at the earlier audit; remaining storage/other
-charges were not audited. It is not the current setup guide.
+An **abliterated** model has had its refusal direction removed from the
+weights. It answers. It is not a jailbreak prompt that stops working next
+week, and it is not a model trained to be harmful - the knowledge is the same,
+the reflex to decline is gone.
 
-## Cost
+Running it yourself means:
 
-Example infrastructure costs from the [20:12 UTC Vast recheck](docs/evidence/2026-09-05-vast-recheck.json),
-not a customer service quote or live public billing. Confirm current provider rates
-and the scope of assistance before authorizing spend. Running rates are not the
-stopped bill.
+- **Your prompts stay yours.** They go to a GPU you rented, through a tunnel
+  only you hold the key to.
+- **No rate limits, no revocation.** The card is yours for the hour.
+- **You pick the model.** Swap one line, run a different one.
+- **You see the whole bill.** Per hour, per gigabyte, no bundled mystery.
+
+## What it costs
+
+Real marketplace quotes, checked 2026-09-15. Prices move; these are the shape.
+
+| What you want | Card | Per hour | Per month if never stopped |
+| --- | --- | ---: | ---: |
+| Chat + everyday code, 27B model | RTX 3090 24 GB | $0.17 | $125 |
+| Roomier, faster, 27B at Q6 | A100 40 GB | $0.63 | $456 |
+| Big model, 176B, huge context | RTX PRO 6000 96 GB | $1.28 | $922 |
+
+Most people never pay the monthly number. Two hours a day on the 3090 is about
+**$14 a month**, plus a few dollars for the disk that keeps your model between
+sessions. The scripts stop the GPU when you tell them to; nothing runs behind
+your back.
+
+**Three things that cost people money.** A stopped instance is
+still billed while stopped for its disk (cents a day, not free). There is no
+automatic idle shutdown, so a forgotten GPU bills all night. And `destroy`
+deletes your disk while `stop` keeps it — the scripts here only ever stop.
+
+<details>
+<summary>Our own instance, exactly — generated from the provider quote</summary>
 
 <!-- RUNNING-COSTS -->
 | Usage | Cost |
@@ -67,40 +76,114 @@ stopped bill.
 USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.
 <!-- /RUNNING-COSTS -->
 
-Cheaper community setups exist — an RTX 3090 24 GB runs the same 27B model
-**24/7 for about $125/month**. See the
-[model table in the self-hosting guide](docs/SELFHOST.md#choose-your-model) and
-the [budget arithmetic in status evidence](docs/STATUS.md#monthly-budget-arithmetic-2026-09-15-live-offers)
-(2026-09-15 live offers).
+</details>
 
-**Stop retains the disk and ends GPU compute billing; destroy deletes the instance
-and its container disk.** A normal pause is a stop, never a destroy.
+## What you get
 
-## Connect with consent
+```mermaid
+flowchart LR
+    Y["You"] -->|"ssh tunnel"| G["Rented GPU<br/>by the hour"]
+    G --> M[("Abliterated model<br/>on your disk")]
+    Y -.->|"optional"| P["Control panel<br/>start / stop / cost"]
+    Y -.->|"optional"| A["API gateway<br/>expiring tokens for friends"]
+    P -.-> G
+    A -.-> G
 
-1. Agree the model, provider/account, GPU/storage budget and client with the operator.
-2. Obtain explicit consent before paid compute, configuration changes or sharing
-   connection details. Use the [operating guide](docs/OPERATIONS.md), not old tokens
-   or archived wake routes.
-3. Verify the server and loaded artifact, connect through private SSH, then test
-   a bounded response and the intended LLM router/app. A client alias does not load
-   or switch model weights; model autostart is not verified.
-4. Stop after use and read back provider state. **Automatic idle shutdown is not
-   verified**; disk billing continues. Never destroy an instance as a routine stop.
+    style G fill:#eef6ff,stroke:#4a90d9
+    style M fill:#f2f7ef,stroke:#5a9e4c
+    style Y fill:#faf5ef,stroke:#c98a2b
+```
 
-## Evidence limits
+**The scripts** ([`scripts/`](scripts/)) are the whole product. Everything else
+is optional.
 
-- **No universal zero-refusal guarantee.** Publisher claims and small prompt probes
-  do not establish general refusal rates, coding quality or agent reliability.
-- **No validated 262k workload.** `262144` is a recorded context setting, not proof
-  of long-context quality. Model/build pins and controlled speed benchmarks are missing.
-- **Human-assisted setup, not a public inference API.** No public self-service
-  endpoint, API-key issuance, account checkout, MCP service or automated billing is
-  deployed. Availability and setup scope must be agreed with a human.
+| Command | What it does |
+| --- | --- |
+| `./scripts/rent-gpu.sh` | finds the cheapest card that fits, shows the price, asks before charging |
+| `./scripts/rent-gpu.sh --big` | same, but a 96 GB card for the 176B model |
+| `./scripts/setup-model.sh <ID>` | builds llama.cpp, downloads the model, re-runnable |
+| `./scripts/gpu.sh status <ID>` | state and what it is costing right now |
+| `./scripts/gpu.sh start\|stop <ID>` | start and stop; stop always keeps your disk |
+| `./scripts/gpu.sh serve <ID>` | launches the model server with the right flags |
+| `./scripts/gpu.sh tunnel <ID>` | opens `http://127.0.0.1:8080` on your machine |
 
-[Status](docs/STATUS.md) records what was checked and what still needs a paid-session
-test. The active blog's field notes retain their publication dates, model licenses
-and historical estimates; coverage is not a hosted-model inventory or current price.
+**The control panel** ([`gateway/control.py`](gateway/control.py)) is a small
+password-protected page for starting and stopping without a terminal, showing
+live state and cost. Handy on a phone.
+
+```sh
+export ABL_VAST_KEY=...   ABL_INSTANCE=<your-id>
+export ABL_PANEL_HASH=$(python3 -c "import hashlib,getpass;print(hashlib.sha256(getpass.getpass().encode()).hexdigest())")
+python3 gateway/control.py serve     # http://127.0.0.1:8099
+```
+
+**The API gateway** ([`gateway/gateway.py`](gateway/gateway.py)) puts an
+OpenAI-compatible endpoint in front of your model with bearer tokens that
+expire on their own - so you can hand a friend a 24-hour token instead of SSH
+access. See [API docs](docs/API.md).
+
+Both are stdlib-only Python. No dependencies, no build step, no framework.
+
+## Which model
+
+| Model | Size | Refusals (publisher) | Coding evidence |
+| --- | --- | --- | --- |
+| [OBLITERATUS/Qwen3.8-27B-OBLITERATED](https://huggingface.co/OBLITERATUS/Qwen3.8-27B-OBLITERATED) | 22 GB | 20/20 probes passed | none published |
+| [0bserverx/…Heretic-Abliterated](https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF) | 15 GB | 0-1 of 100 | none published |
+| [apetersson/Qwen3.8-Flash-Next-Abliterated](https://huggingface.co/apetersson/Qwen3.8-Flash-Next-Abliterated) | 184 GB | 0 of 6 sentinels | 10/12 HumanEval+ after edit |
+| [OS-Software/…Heretic-v3](https://huggingface.co/OS-Software/Qwen3.8-27B-Uncensored-Heretic-v3) | 25 GB | 0 of 100 | none published |
+
+The default is the 27B OBLITERATED build: it fits a cheap card and it is the
+one we have actually run. **Those refusal numbers are publisher claims**, not
+our measurements, and none of them say anything about coding quality.
+
+We ran our own 12-prompt probe on identical hardware. OBLITERATED came out
+cleanest at 0 of 12, but on the two most extreme prompts it lectured instead of
+answering - a keyword counter scores that as a pass; a human would not.
+[The full table and the caveats](docs/STATUS.md#12-prompt-refusal-probe-2026-09-13)
+are published, including the run that made a model look perfect by returning
+nothing at all.
+
+## Documentation
+
+- **[Self-hosting guide](docs/SELFHOST.md)** - the ten-minute path, in detail,
+  with the `--reasoning off` trap that silently freezes every streaming client.
+- [Control panel](docs/CONTROL-PANEL.md) - start and stop from a browser.
+- [API access](docs/API.md) - expiring tokens, revocation, client setup.
+- [Status and evidence](docs/STATUS.md) - what we measured, what we did not.
+- [Operations](docs/OPERATIONS.md) - the owner-account procedure.
+- [Licensing](docs/LICENSING.md) - our MIT code versus upstream model terms.
+- [Field notes and model news](https://abliterated.cloud/blog/)
+
+## Honest limits
+
+- **No universal zero-refusal guarantee.** Small probes cannot prove a general
+  property. Anyone selling you one is guessing.
+- **No validated 262k workload.** A configured context length is a setting, not
+  proof that quality holds across it. Our probe ran at 16k.
+- **Abliteration removes refusals, it does not add ability.** A model that
+  stops declining is not suddenly a better coder. Published capability numbers
+  usually come from the *base* model, before the edit.
+- **Restarting a stopped GPU can fail.** The card goes back to the marketplace
+  when you stop; getting one back competes with everyone else. We have had a
+  start request sit unavailable for twenty minutes.
+- **Small models make poor agents.** A 27B model behind a tool-calling loop
+  stalls and invents tool calls far more than a frontier model. Excellent as
+  chat and completion; test one bounded task before trusting a long loop.
+- **This is not a hosted service.** There is no public endpoint, no signup and
+  no billing here. You rent your own GPU with your own account. Our own
+  operating path is **Vast.ai + llama.cpp** over a private SSH tunnel; the
+  retired Modal implementation is kept in [archive/modal/README.md](archive/modal/README.md)
+  as history, not as instructions.
+
+## Contributing
+
+Issues and pull requests are welcome, especially: cold-start timings on cards
+we have not tried, coding benchmarks on abliterated builds (the gap nobody has
+filled), and scripts for other GPU marketplaces.
+
+Corrections to our numbers are the most valuable contribution of all. Every
+claim here should be checkable; if one is not, that is a bug.
 
 ## Work on the website
 
@@ -111,23 +194,15 @@ uv run pytest -q
 python3 -m http.server 8788 --bind 127.0.0.1 --directory website
 ```
 
-Open `http://127.0.0.1:8788/`. Reading the static site requires no GPU, inference
-call, external font service or background artwork. See the
-[website guide](website/README.md) for publishing and verification.
+Reading the site needs no GPU, no inference call and no external font service.
+See the [website guide](website/README.md).
 
-Current operations and evidence live in `docs/`; site content in `website/`;
-build, verification and signed Pages publishing helpers in `scripts/`; checks in
-`tests/`. `archive/modal/` is historical. This repository is the documentation
-source of truth, not stale status JSON or "live" badges in the earlier
-`ai-uncensored-selfhost` experiment repository.
+## License
 
-## License and history
+Our code, docs and website are [MIT](LICENSE). Model weights, llama.cpp and
+every dependency keep their own upstream licenses - see
+[licensing scope](docs/LICENSING.md). Earlier Apache-2.0 releases keep their
+terms; the [changelog](CHANGELOG.md) has the history.
 
-Our own code, documentation and website are [MIT licensed](LICENSE) from this
-release. Previous Apache-2.0 releases keep their terms; that license was a project
-choice, not a Vast.ai, Modal or llama.cpp requirement. Model weights, dependencies
-and third-party materials retain their upstream licenses; see
-[licensing scope](docs/LICENSING.md).
-
-The [changelog](CHANGELOG.md) and [release notes](docs/RELEASE_NOTES.md) preserve
-release history and earlier claim corrections without changing the current path.
+Use this, fork it, sell services with it. Just do not promise a zero-refusal
+guarantee you cannot prove.

@@ -5,6 +5,36 @@ entries are historical, not current deployment instructions.
 
 ## [unreleased] - 2026-09-15
 
+### Anyone can run this: rent-to-chat scripts, control panel, honest README
+
+- **Why:** the repo documented what *we* run. Nothing here let a stranger with
+  their own Vast account get a model running, and nothing let the owner start
+  or stop a GPU without a terminal. Both are now one command.
+- Add `scripts/rent-gpu.sh`: finds the cheapest card that fits the model,
+  prints GPU, location, hourly and projected monthly price, and **asks for
+  confirmation before anything is charged**. `--big` switches to a 96 GB card
+  for the 176B model.
+- Add `scripts/setup-model.sh`: builds llama.cpp with CUDA and downloads the
+  GGUF over SSH. Idempotent — re-running skips completed work.
+- Add `scripts/gpu.sh` with `status`, `start`, `stop`, `serve` and `tunnel`.
+  `status` reports live state and what it is costing *right now* (hourly while
+  running, per-day disk while stopped). `serve` applies `--reasoning off` so
+  streaming clients do not hang. No script can destroy an instance.
+- Add `gateway/control.py`: password-protected web panel to start and stop the
+  GPU from a phone, showing live state and cost. SHA-256 password hash and API
+  key come from the environment; sessions are random 32-byte tokens with an
+  8-hour TTL and a deliberate delay on failed logins.
+- Rewrite `README.md` for people arriving from outside: what it costs before
+  what it is, a five-line quick start, a real price table, the three billing
+  traps that actually cost people money, and an honest-limits section that
+  keeps every existing claim boundary.
+- Add `tests/test_gateway.py` (11 tests): token verification, expiry, **forged
+  expiry rejected by signature**, revocation beating a valid expiry, public
+  `/health` vs authenticated `/v1`, no committed credentials, scripts parse,
+  scripts never destroy and always confirm spend.
+
+## [unreleased-api] - 2026-09-15
+
 ### Public API endpoint with expiring tokens
 
 - **Why:** testers needed a way to try the model without SSH access, an owner
