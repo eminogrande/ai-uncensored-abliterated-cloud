@@ -22,6 +22,7 @@ import json
 import os
 import socketserver
 import sqlite3
+import subprocess
 import sys
 import time
 import urllib.error
@@ -32,8 +33,29 @@ UPSTREAM = os.environ.get("ABL_UPSTREAM", "http://127.0.0.1:8080")
 DB_PATH = os.environ.get("ABL_DB", "/opt/abliterated/tokens.db")
 SECRET_PATH = os.environ.get("ABL_SECRET", "/opt/abliterated/secret.key")
 PORT = int(os.environ.get("ABL_PORT", "8090"))
+# Path to autopilot.py. Set it to enable wake-on-request; leave empty to disable.
+AUTOPILOT = os.environ.get("ABL_AUTOPILOT", "")
+WAKE_TIMEOUT = int(os.environ.get("ABL_WAKE_TIMEOUT", "900"))
 # Endpoints served without a token.
 PUBLIC_PATHS = {"/health", "/v1/health"}
+
+
+def _upstream_alive():
+    try:
+        with urllib.request.urlopen(UPSTREAM + "/health", timeout=4) as resp:
+            return resp.status == 200
+    except Exception:
+        return False
+
+
+def _touch_activity():
+    """Record a request so the idle reaper knows the GPU is in use."""
+    try:
+        path = os.path.join(os.path.dirname(DB_PATH), "last-activity")
+        with open(path, "w") as fh:
+            fh.write(str(int(time.time())))
+    except OSError:
+        pass
 
 
 def secret():
@@ -139,11 +161,30 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return False
         return True
 
+    def _wake_upstream(self):
+        """Ask the autopilot to bring the GPU up. Returns True when serving."""
+        if not AUTOPILOT or not os.path.exists(AUTOPILOT):
+            return False
+        try:
+            result = subprocess.run(
+                [sys.executable, AUTOPILOT, "wake"],
+                capture_output=True, text=True, timeout=WAKE_TIMEOUT,
+            )
+            return json.loads(result.stdout or "{}").get("state") == "ready"
+        except Exception:
+            return False
+
     def _proxy(self, method):
         if not self._auth_ok():
             return
         length = int(self.headers.get("Content-Length") or 0)
         payload = self.rfile.read(length) if length else None
+
+        if AUTOPILOT and not _upstream_alive():
+            self._wake_upstream()
+        elif AUTOPILOT:
+            _touch_activity()
+
         req = urllib.request.Request(UPSTREAM + self.path, data=payload, method=method)
         for name in ("Content-Type", "Accept"):
             if self.headers.get(name):

@@ -56,6 +56,10 @@ Most people never pay the monthly number. Two hours a day on the 3090 is about
 sessions. The scripts stop the GPU when you tell them to; nothing runs behind
 your back.
 
+Better still, [autopilot](docs/AUTOPILOT.md) makes that automatic: the GPU
+wakes when a request arrives and stops after 30 idle minutes. An A100 used four
+hours a day costs **$96 a month instead of $456**, with no discipline required.
+
 **Three things that cost people money.** A stopped instance is
 still billed while stopped for its disk (cents a day, not free). There is no
 automatic idle shutdown, so a forgotten GPU bills all night. And `destroy`
@@ -148,6 +152,7 @@ nothing at all.
 
 - **[Self-hosting guide](docs/SELFHOST.md)** - the ten-minute path, in detail,
   with the `--reasoning off` trap that silently freezes every streaming client.
+- [Autopilot](docs/AUTOPILOT.md) - wake on demand, stop after 30 idle minutes.
 - [Control panel](docs/CONTROL-PANEL.md) - start and stop from a browser.
 - [API access](docs/API.md) - expiring tokens, revocation, client setup.
 - [Status and evidence](docs/STATUS.md) - what we measured, what we did not.

@@ -5,6 +5,31 @@ entries are historical, not current deployment instructions.
 
 ## [unreleased] - 2026-09-15
 
+### Autopilot: wake on demand, stop when idle
+
+- **Why:** a GPU left running bills every hour whether or not anyone uses it,
+  and there is no idle shutdown on the provider side. Remembering to stop it is
+  the single most expensive thing to get wrong.
+- Add `gateway/autopilot.py`: `wake` starts the instance, waits for it,
+  launches llama-server and opens the tunnel; `reap` stops the instance when
+  the last request is older than `ABL_IDLE_MINUTES` (default 30).
+- Wire wake-on-request into the gateway behind `ABL_AUTOPILOT`. When the
+  variable is unset the gateway behaves exactly as before — no waking, no
+  stopping. Every proxied request records activity for the reaper.
+- Add `abliterated-reaper.timer` (systemd, every 5 minutes) so the idle check
+  survives reboots and does not depend on anyone's laptop being awake.
+- Effect: an A100 used four hours a day costs **$96/month instead of $456**.
+  Nothing used all month costs $24 (retained disk only).
+- Add `docs/AUTOPILOT.md` with the cost table, **honest wake timing (2–4
+  minutes before the first token)**, the risk that a stopped GPU cannot be
+  reclaimed from the marketplace, idle-window tuning and the safety properties.
+- Add `tests/test_autopilot.py` (9 tests): the 29-vs-31-minute boundary, a wake
+  in progress is never reaped, concurrent wakes do not stack, no duplicate
+  stops, a missing activity file does not crash, the gateway hook is optional,
+  and autopilot can never destroy an instance.
+
+## [unreleased-scripts] - 2026-09-15
+
 ### Anyone can run this: rent-to-chat scripts, control panel, honest README
 
 - **Why:** the repo documented what *we* run. Nothing here let a stranger with

@@ -1,0 +1,18 @@
+[Unit]
+Description=ABLITERATED.cloud API gateway
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/opt/abliterated/autopilot.env
+Environment=ABL_UPSTREAM=http://127.0.0.1:8095
+Environment=ABL_AUTOPILOT=/opt/abliterated/autopilot.py
+Environment=ABL_DB=/opt/abliterated/tokens.db
+Environment=ABL_SECRET=/opt/abliterated/secret.key
+Environment=ABL_PORT=8090
+ExecStart=/usr/bin/python3 /opt/abliterated/gateway.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
