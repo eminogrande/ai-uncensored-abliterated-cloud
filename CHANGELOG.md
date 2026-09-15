@@ -5,6 +5,30 @@ entries are historical, not current deployment instructions.
 
 ## [unreleased] - 2026-09-15
 
+### Public API endpoint with expiring tokens
+
+- **Why:** testers needed a way to try the model without SSH access, an owner
+  account or a Vast login. A bearer token they can be handed, that dies on its
+  own, is the smallest thing that works.
+- Add `gateway/gateway.py` (stdlib only, no dependencies): OpenAI-compatible
+  reverse proxy with HMAC-SHA256 signed bearer tokens. Tokens carry a signed
+  expiry, so a client cannot extend its own window; a SQLite registry adds
+  instant revocation, call counts and last-used timestamps.
+- Token CLI: `mint <label> <hours|never>`, `list`, `revoke <id-prefix>`.
+  Expired, revoked and tampered tokens each fail closed with a distinct 401
+  reason so a tester can tell "expired" from "service down".
+- Deploy `api.abliterated.cloud` on the existing Caddy host: TLS via Let's
+  Encrypt, gateway on loopback `:8090`, upstream `:8095` for the GPU tunnel.
+  `/health` public, every `/v1/*` path authenticated.
+- Add `github.abliterated.cloud` as a Porkbun URL forward to the GitHub repo.
+- Add `docs/API.md`: quick start, token semantics table, operator commands,
+  client configuration, tunnel wiring and security boundaries.
+- Verified end-to-end over HTTPS: missing token 401, forged signature 401
+  `bad signature`, expired 401 `token expired`, revoked 401 `token revoked`,
+  valid tokens pass auth and reach the upstream.
+
+## [unreleased-docs] - 2026-09-15
+
 ### Community self-hosting guide + honest test record
 
 - **Why:** the repo was operator-only documentation. Anyone wanting to

@@ -15,14 +15,16 @@ or account checkout.
 - **[Self-hosting guide](docs/SELFHOST.md): the 10-minute community path** —
   rent a GPU, run an abliterated model, connect your browser or coding tool.
   Start here.
+- **[API access](docs/API.md): `api.abliterated.cloud`** — OpenAI-compatible
+  endpoint with expiring bearer tokens (24-hour test tokens, revocation).
 - [Operating guide](docs/OPERATIONS.md): the owner-only **Vast.ai + llama.cpp**
   procedure, SSH access, client configuration and manual start/stop.
 - [Status evidence](docs/STATUS.md): dated checks, last configuration, our
   12-prompt refusal probe and what remains untested.
 - [Licensing scope](docs/LICENSING.md): project-owned MIT work versus upstream
   model terms.
-- [Website](https://abliterated.cloud/) · [Agent reading index](website/llms.txt) ·
-  [Website development](website/README.md)
+- [Website](https://abliterated.cloud/) · [Repo shortlink](https://github.abliterated.cloud) ·
+  [Agent reading index](website/llms.txt) · [Website development](website/README.md)
 
 ## Current state
 
