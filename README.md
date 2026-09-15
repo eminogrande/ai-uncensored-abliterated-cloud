@@ -12,25 +12,34 @@ or account checkout.
 
 ## Current operating docs
 
-- [Operating guide](docs/OPERATIONS.md): the private **Vast.ai + llama.cpp** path,
-  SSH access, client configuration and manual start/stop.
-- [Status evidence](docs/STATUS.md): dated checks, last configuration and untested claims.
-- [Licensing scope](docs/LICENSING.md): project-owned MIT work versus upstream model terms.
+- **[Self-hosting guide](docs/SELFHOST.md): the 10-minute community path** —
+  rent a GPU, run an abliterated model, connect your browser or coding tool.
+  Start here.
+- [Operating guide](docs/OPERATIONS.md): the owner-only **Vast.ai + llama.cpp**
+  procedure, SSH access, client configuration and manual start/stop.
+- [Status evidence](docs/STATUS.md): dated checks, last configuration, our
+  12-prompt refusal probe and what remains untested.
+- [Licensing scope](docs/LICENSING.md): project-owned MIT work versus upstream
+  model terms.
 - [Website](https://abliterated.cloud/) · [Agent reading index](website/llms.txt) ·
   [Website development](website/README.md)
 
 ## Current state
 
-**A100 STOPPED — operator state and rates rechecked 2026-09-05 at 20:12 UTC.**
-The [read-only snapshot](docs/evidence/2026-09-05-vast-recheck.json) found one A100
-PCIe 40 GB instance (`49433042`), actual `exited` / intended `stopped`, with a
-120 GB retained disk **still billed while stopped**. No inference was tested.
-This is not live availability or a statement about service enquiries.
+**Both instances STOPPED — last checked 2026-09-15.** `49433042` (A100 PCIe
+40 GB, 120 GB disk, $0.60/h) and `50934401` (A100 SXM4 80 GB, 90 GB disk,
+$0.99/h, used for the 2026-09-13 A/B refusal test). Both retain disks that are
+**still billed while stopped**. No GPU is consuming compute. This is not live
+availability or a statement about service enquiries.
 
-Last serving configuration: `OBLITERATUS/Qwen3.8-27B-OBLITERATED`,
-`Qwen3.8-27B-OBLITERATED-Q6_K.gguf`, llama.cpp, through a private SSH tunnel to
-`http://127.0.0.1:8080/v1`. The local endpoint was unreachable at the earlier
-19:39 UTC audit. Verify the actual loaded model before reconnecting.
+Last tested configuration (2026-09-13, stopped after the test):
+`OBLITERATUS/Qwen3.8-27B-OBLITERATED` Q6_K and
+`OS-Software/Qwen3.8-27B-Uncensored-Heretic-v3-UD` Q6_K_XL, llama.cpp commit
+`5f436dd`, through a private SSH tunnel to `http://127.0.0.1:8080/v1`.
+Our own 12-prompt probe: **0/12 keyword refusals for OBLITERATED** (thinking
+off), 5/12 for Heretic-v3 (thinking off), 0/12 for Heretic-v3 with thinking on
+but 7/12 empty outputs. See [status evidence](docs/STATUS.md) — small probe,
+coding quality **not** tested.
 
 Modal is retired from this project's operating path for its cost budget. The
 [implementation is archived](archive/modal/README.md), not decommissioned:
@@ -55,6 +64,12 @@ stopped bill.
 
 USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.
 <!-- /RUNNING-COSTS -->
+
+Cheaper community setups exist — an RTX 3090 24 GB runs the same 27B model
+**24/7 for about $125/month**. See the
+[model table in the self-hosting guide](docs/SELFHOST.md#choose-your-model) and
+the [budget arithmetic in status evidence](docs/STATUS.md#monthly-budget-arithmetic-2026-09-15-live-offers)
+(2026-09-15 live offers).
 
 **Stop retains the disk and ends GPU compute billing; destroy deletes the instance
 and its container disk.** A normal pause is a stop, never a destroy.

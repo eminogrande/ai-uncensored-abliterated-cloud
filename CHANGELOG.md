@@ -3,6 +3,38 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## [unreleased] - 2026-09-15
+
+### Community self-hosting guide + honest test record
+
+- **Why:** the repo was operator-only documentation. Anyone wanting to
+  self-host an uncensored model had to reverse-engineer an owner account
+  procedure. This release adds a public, copy-pasteable path and records what
+  we actually measured — including the results that favour no model.
+- Add `docs/SELFHOST.md`: the 10-minute community path (rent a Vast GPU →
+  build llama.cpp → download a GGUF → SSH tunnel → browser chat), with three
+  Mermaid diagrams (system flow, session sequence, cost-control flowchart), a
+  model-choice decision tree, a client-compatibility table (Cline and Open
+  WebUI active; Continue.dev unmaintained and Roo Code discontinued as of
+  September 2026 — both marked not recommended), and a troubleshooting table.
+- Document the `--reasoning off` showstopper as a first-class callout:
+  abliterated Qwen3.8 GGUFs loop in `/`-reasoning output under
+  `--reasoning auto`; non-streaming `curl` masks it, every streaming client
+  freezes. Streaming verification with `curl -N` is now a mandatory step.
+- Record the 2026-09-13 A/B refusal probe in `docs/STATUS.md`: 12 prompts
+  from `mlabonne/harmful_behaviors`, seed 42, temperature 0, same GPU and
+  quant class. OBLITERATED Q6_K 0/12 keyword refusals (thinking off);
+  Heretic-v3 Q6_K_XL 5/12 (thinking off) and 0/12 with thinking on but 7/12
+  empty outputs. Published with the honesty note that two extreme prompts
+  were lectured rather than answered, and that **coding quality was not
+  tested**.
+- Refresh `docs/STATUS.md` with both instances stopped, the failed
+  `49433042` restart ("Required resources are currently unavailable"), the
+  2026-09-15 live-offer budget arithmetic table, and the account-credit
+  blocker noted as an untested item.
+- README: self-hosting guide is now the front door; cost section links to
+  the cheaper community setups (RTX 3090 24/7 ≈ $125/month).
+
 ## [website-v0.12.7] - 2026-09-12
 
 ### Editorial archive: Gemma 4 31B uncensored from the QAT checkpoint
