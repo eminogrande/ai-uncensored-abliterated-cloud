@@ -3,6 +3,117 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## [unreleased] - 2026-09-15
+
+### Autopilot: wake on demand, stop when idle
+
+- **Why:** a GPU left running bills every hour whether or not anyone uses it,
+  and there is no idle shutdown on the provider side. Remembering to stop it is
+  the single most expensive thing to get wrong.
+- Add `gateway/autopilot.py`: `wake` starts the instance, waits for it,
+  launches llama-server and opens the tunnel; `reap` stops the instance when
+  the last request is older than `ABL_IDLE_MINUTES` (default 30).
+- Wire wake-on-request into the gateway behind `ABL_AUTOPILOT`. When the
+  variable is unset the gateway behaves exactly as before — no waking, no
+  stopping. Every proxied request records activity for the reaper.
+- Add `abliterated-reaper.timer` (systemd, every 5 minutes) so the idle check
+  survives reboots and does not depend on anyone's laptop being awake.
+- Effect: an A100 used four hours a day costs **$96/month instead of $456**.
+  Nothing used all month costs $24 (retained disk only).
+- Add `docs/AUTOPILOT.md` with the cost table, **honest wake timing (2–4
+  minutes before the first token)**, the risk that a stopped GPU cannot be
+  reclaimed from the marketplace, idle-window tuning and the safety properties.
+- Add `tests/test_autopilot.py` (9 tests): the 29-vs-31-minute boundary, a wake
+  in progress is never reaped, concurrent wakes do not stack, no duplicate
+  stops, a missing activity file does not crash, the gateway hook is optional,
+  and autopilot can never destroy an instance.
+
+## [unreleased-scripts] - 2026-09-15
+
+### Anyone can run this: rent-to-chat scripts, control panel, honest README
+
+- **Why:** the repo documented what *we* run. Nothing here let a stranger with
+  their own Vast account get a model running, and nothing let the owner start
+  or stop a GPU without a terminal. Both are now one command.
+- Add `scripts/rent-gpu.sh`: finds the cheapest card that fits the model,
+  prints GPU, location, hourly and projected monthly price, and **asks for
+  confirmation before anything is charged**. `--big` switches to a 96 GB card
+  for the 176B model.
+- Add `scripts/setup-model.sh`: builds llama.cpp with CUDA and downloads the
+  GGUF over SSH. Idempotent — re-running skips completed work.
+- Add `scripts/gpu.sh` with `status`, `start`, `stop`, `serve` and `tunnel`.
+  `status` reports live state and what it is costing *right now* (hourly while
+  running, per-day disk while stopped). `serve` applies `--reasoning off` so
+  streaming clients do not hang. No script can destroy an instance.
+- Add `gateway/control.py`: password-protected web panel to start and stop the
+  GPU from a phone, showing live state and cost. SHA-256 password hash and API
+  key come from the environment; sessions are random 32-byte tokens with an
+  8-hour TTL and a deliberate delay on failed logins.
+- Rewrite `README.md` for people arriving from outside: what it costs before
+  what it is, a five-line quick start, a real price table, the three billing
+  traps that actually cost people money, and an honest-limits section that
+  keeps every existing claim boundary.
+- Add `tests/test_gateway.py` (11 tests): token verification, expiry, **forged
+  expiry rejected by signature**, revocation beating a valid expiry, public
+  `/health` vs authenticated `/v1`, no committed credentials, scripts parse,
+  scripts never destroy and always confirm spend.
+
+## [unreleased-api] - 2026-09-15
+
+### Public API endpoint with expiring tokens
+
+- **Why:** testers needed a way to try the model without SSH access, an owner
+  account or a Vast login. A bearer token they can be handed, that dies on its
+  own, is the smallest thing that works.
+- Add `gateway/gateway.py` (stdlib only, no dependencies): OpenAI-compatible
+  reverse proxy with HMAC-SHA256 signed bearer tokens. Tokens carry a signed
+  expiry, so a client cannot extend its own window; a SQLite registry adds
+  instant revocation, call counts and last-used timestamps.
+- Token CLI: `mint <label> <hours|never>`, `list`, `revoke <id-prefix>`.
+  Expired, revoked and tampered tokens each fail closed with a distinct 401
+  reason so a tester can tell "expired" from "service down".
+- Deploy `api.abliterated.cloud` on the existing Caddy host: TLS via Let's
+  Encrypt, gateway on loopback `:8090`, upstream `:8095` for the GPU tunnel.
+  `/health` public, every `/v1/*` path authenticated.
+- Add `github.abliterated.cloud` as a Porkbun URL forward to the GitHub repo.
+- Add `docs/API.md`: quick start, token semantics table, operator commands,
+  client configuration, tunnel wiring and security boundaries.
+- Verified end-to-end over HTTPS: missing token 401, forged signature 401
+  `bad signature`, expired 401 `token expired`, revoked 401 `token revoked`,
+  valid tokens pass auth and reach the upstream.
+
+## [unreleased-docs] - 2026-09-15
+
+### Community self-hosting guide + honest test record
+
+- **Why:** the repo was operator-only documentation. Anyone wanting to
+  self-host an uncensored model had to reverse-engineer an owner account
+  procedure. This release adds a public, copy-pasteable path and records what
+  we actually measured — including the results that favour no model.
+- Add `docs/SELFHOST.md`: the 10-minute community path (rent a Vast GPU →
+  build llama.cpp → download a GGUF → SSH tunnel → browser chat), with three
+  Mermaid diagrams (system flow, session sequence, cost-control flowchart), a
+  model-choice decision tree, a client-compatibility table (Cline and Open
+  WebUI active; Continue.dev unmaintained and Roo Code discontinued as of
+  September 2026 — both marked not recommended), and a troubleshooting table.
+- Document the `--reasoning off` showstopper as a first-class callout:
+  abliterated Qwen3.8 GGUFs loop in `/`-reasoning output under
+  `--reasoning auto`; non-streaming `curl` masks it, every streaming client
+  freezes. Streaming verification with `curl -N` is now a mandatory step.
+- Record the 2026-09-13 A/B refusal probe in `docs/STATUS.md`: 12 prompts
+  from `mlabonne/harmful_behaviors`, seed 42, temperature 0, same GPU and
+  quant class. OBLITERATED Q6_K 0/12 keyword refusals (thinking off);
+  Heretic-v3 Q6_K_XL 5/12 (thinking off) and 0/12 with thinking on but 7/12
+  empty outputs. Published with the honesty note that two extreme prompts
+  were lectured rather than answered, and that **coding quality was not
+  tested**.
+- Refresh `docs/STATUS.md` with both instances stopped, the failed
+  `49433042` restart ("Required resources are currently unavailable"), the
+  2026-09-15 live-offer budget arithmetic table, and the account-credit
+  blocker noted as an untested item.
+- README: self-hosting guide is now the front door; cost section links to
+  the cheaper community setups (RTX 3090 24/7 ≈ $125/month).
+
 ## [website-v0.12.7] - 2026-09-12
 
 ### Editorial archive: Gemma 4 31B uncensored from the QAT checkpoint

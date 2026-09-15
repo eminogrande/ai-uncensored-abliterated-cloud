@@ -1,0 +1,8 @@
+[Unit]
+Description=Stop the ABLITERATED GPU when idle
+After=network.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=/opt/abliterated/autopilot.env
+ExecStart=/usr/bin/python3 /opt/abliterated/autopilot.py reap
