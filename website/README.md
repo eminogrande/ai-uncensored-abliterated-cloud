@@ -38,6 +38,29 @@ node scripts/verify-agent-ready.mjs http://127.0.0.1:8788 --local-only
 
 The build synchronizes generated sections, pagination, RSS, sitemap and discovery digests. Tests cover local links, metadata, assets, evidence and read-only discovery. `--check` detects stale outputs. Reading or building the site never requires a GPU or inference call. The old optional Worker and protocol implementations under `archive/` are historical, not current services.
 
+## Refreshing the model-size cost table
+
+`website/.well-known/gpu-prices.json` is the only hand-off between the provider
+and the site, and it is written by a script, never typed:
+
+```sh
+python3 -I scripts/fetch-gpu-prices.py            # fetch live offers, write the JSON
+python3 -I scripts/fetch-gpu-prices.py --check    # verify the committed file's arithmetic
+python3 -I scripts/build-blog.py                  # render it into the pages
+```
+
+The fetch is read-only: a public bundles search, no account key, nothing rented,
+started or stopped. `build-blog.py` fails closed if the file is missing or not
+Vast.ai data, so a stale hand-edited table cannot ship. The generated
+`/costs/` page, `index.md`, `llms.txt`, `llms-full.txt` and the root README all
+carry the same table with its fetch timestamp.
+
+Each tier is the cheapest supported offer that fits one model-size class, with
+the GPU rate, the requested disk, the derived disk rate and every derived
+figure recorded in the JSON. Tests re-derive the arithmetic from those
+components and confirm every published model maps to exactly one tier. Rerun
+the fetch before a release; offer availability changes by the minute.
+
 ## Model news and guides
 
 Add an HTML/Markdown article pair and a dated `posts.json` entry using the existing `content_status: editorial_archive` metadata convention, then build and test. Keep article bodies, original model-license facts and evidence dates intact when refreshing shared navigation or notices. Use `historical_estimated_usd_per_hour`, not a current-looking price field. Scope refusal claims to the publisher, test and settings; never add a global zero-refusal badge.

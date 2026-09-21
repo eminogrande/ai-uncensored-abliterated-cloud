@@ -59,6 +59,26 @@ USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hou
 **Stop retains the disk and ends GPU compute billing; destroy deletes the instance
 and its container disk.** A normal pause is a stop, never a destroy.
 
+## Self-hosting costs by model size
+
+What it costs to run a model yourself, refreshed from the live marketplace by
+[`scripts/fetch-gpu-prices.py`](scripts/fetch-gpu-prices.py) rather than typed by
+hand. The same table is published at [abliterated.cloud/costs](https://abliterated.cloud/costs/).
+
+<!-- MODEL-SIZE-PRICES -->
+| Model size | Cheapest supported offer | Per hour | Per day | Per month, 24/7 | Per month, 2 h/day | Models covered |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| Up to 14B | RTX 3060, 12 GB VRAM, 40 GB disk | **$0.0511** | $1.23 | $36.80 | $10.40 | MiniCPM5-2B-heretic-abliterated, Spark-X2.5-4B-Heretic, AFM-4.5B-Uncensored-Abliterated +4 more |
+| 27-35B | Tesla V100, 32 GB VRAM, 70 GB disk | **$0.1589** | $3.81 | $114.40 | $35.20 | gemma-4-31B-it-qat-q4_0-uncensored, Tencent-Hy-30B-A3B-uncensored-here, Velum-Unbound-Uncensored +12 more |
+| 70-80B | Q RTX 8000, 48 GB VRAM, 92 GB disk | **$0.2922** | $7.01 | $210.40 | $34.40 | no covered model published yet |
+| 118-120B MoE | RTX PRO 6000 Max-Q, 96 GB VRAM, 120 GB disk | **$1.0556** | $25.33 | $760.00 | $100.00 | Laguna-S-2.1-Uncensored-Heretic |
+| 180-400B MoE | 2x RTX PRO 6000 Max-Q, 191 GB VRAM | **$2.2583** | $54.20 | $1,626.00 | $218.00 | DeepSeek-V4-Flash-Vision-Exp-Ablit, Qwen3.8-Flash-Next-ABLITERATED, GLM-5.3-Flash-ABLITERATED +1 more |
+| 550B-1T | 4x RTX PRO 6000 S, 382 GB VRAM | **$6.6489** | $159.57 | $4,787.20 | $985.60 | DeepSeek-V4.1-Flash-UNCENSORED, Ornith-1.0-397B-abliterated |
+| 1T and larger | 8x RTX PRO 6000 WS, 765 GB VRAM | **$11.94** | $286.58 | $8,597.33 | $853.33 | Kimi-K3-Abliterated-modal |
+
+Cheapest supported offer per size class, fetched 2026-09-21, reliability 0.98 and above. GPU time is billed while running, even with no requests. Storage is billed continuously, including while the instance is stopped, which is what the two-hours-a-day column keeps paying. Bandwidth, taxes and other provider services are excluded. Prices move by the minute: the timestamp above is the honest date, not the moment you read this.
+<!-- /MODEL-SIZE-PRICES -->
+
 ## Connect with consent
 
 1. Agree the model, provider/account, GPU/storage budget and client with the operator.

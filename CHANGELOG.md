@@ -3,6 +3,48 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## [unreleased] - 2026-09-21
+
+### Self-hosting costs by model size, refreshed from the live marketplace
+
+- **Why:** the site showed one dated cost block for the operator's own A100. It
+  answered "what does your instance cost" but never the question a visitor
+  actually has: "what would the model I want cost to run myself?" The README
+  also carried hand-typed rate ranges that no longer matched the marketplace.
+- Add `scripts/fetch-gpu-prices.py`: a read-only public Vast.ai bundles search,
+  no account key, nothing rented, started or stopped. It writes
+  `website/.well-known/gpu-prices.json` with the GPU rate, the requested disk,
+  the derived disk rate and every derived figure, so each number can be checked
+  by hand: `disk_usd_hour = storage_cost_per_gb_month / 720`,
+  `total_usd_hour = dph_base + disk_usd_hour`.
+- Add the generated `/costs/` page (`website/costs/index.html` + `index.md`):
+  one row per model-size class, from up-to-14B to 1T-and-larger, showing the
+  cheapest supported GPU, its VRAM, the requested disk, and the price per hour,
+  per day, per month at 24/7 and per month at two hours a day. Each row names
+  the published models it covers.
+- Render the same table into `index.md`, `llms.txt`, `llms-full.txt` and the
+  root README. The build **fails closed** if the JSON is missing or not
+  Vast.ai data, so a hand-edited table cannot ship.
+- Keep the homepage summary to a short line and a link: its critical payload
+  stays at 22.8 KB against the 25 KB budget, leaving room for future price
+  changes.
+- Record excluded GPU families with reasons (pre-Pascal architectures and
+  mining-only silicon that the current llama.cpp CUDA build does not support)
+  and test that no tier ever resolves to one.
+- Map every published model to exactly one tier from the parameter count in its
+  own `posts.json` kicker, so the table grows with the blog without edits.
+- Add `Costs` to the navigation on every page, plus `/costs/` in the sitemap,
+  the AI resource catalog and the documentation OpenAPI document.
+- Add `tests/test_gpu_prices.py` (8 tests) and a model-size table contract in
+  `tests/test_website.py`: arithmetic, filters, coverage, tamper rejection.
+  Suite goes from 48 to **57 passed**.
+- Point `docs/SELFHOST.md`'s hand-typed rate ranges at the live table instead
+  of competing with it, and document the refresh sequence in
+  `website/README.md`.
+- Example row at fetch time (2026-09-21): a 27-35B model runs on an RTX 3090
+  24 GB for **$0.1394/hour**, $3.35 a day, $100.40 a month non-stop, or $21.20
+  a month at two hours a day with the disk retained.
+
 ## [website-v0.12.7] - 2026-09-12
 
 ### Editorial archive: Gemma 4 31B uncensored from the QAT checkpoint

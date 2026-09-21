@@ -47,6 +47,10 @@ Every week brings new uncensored releases. We read the sources, check the number
 
 Our code is free. You pay for the GPU hours you actually use, plus the setup help you want, agreed up front.
 
+<!-- MODEL-SIZE-PRICES -->
+[See self-hosting costs by model size](https://abliterated.cloud/costs/): live marketplace prices, fetched 2026-09-21, from $0.05 an hour for a small model to $12 an hour for the largest ones.
+<!-- /MODEL-SIZE-PRICES -->
+
 <!-- RUNNING-COSTS -->
 Example: one A100 cloud GPU with 120 GB of storage, rates checked 2026-09-05
 

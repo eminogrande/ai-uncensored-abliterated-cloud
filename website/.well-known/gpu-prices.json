@@ -1,0 +1,251 @@
+{
+  "generated_at": "2026-09-21T10:37:14+00:00",
+  "provider": "Vast.ai",
+  "endpoint": "https://console.vast.ai/api/v0/bundles/",
+  "method": "GET public bundles search, read-only. No account key, no instance created, started or stopped.",
+  "currency": "USD",
+  "hours_per_month": 720,
+  "arithmetic": {
+    "disk_usd_hour": "storage_cost_usd_per_gb_month / 720",
+    "total_usd_hour": "dph_base (GPU rate) + disk_usd_hour",
+    "usd_day": "total_usd_hour * 24",
+    "usd_month_24_7": "total_usd_hour * 720",
+    "usd_month_2h_day": "dph_base * 60 + storage_cost * disk_gb",
+    "usd_stopped_month": "storage_cost * disk_gb"
+  },
+  "filters": {
+    "rentable": true,
+    "rented": false,
+    "reliability_gte": 0.98,
+    "tier_70_80b_reliability_gte": 0.97,
+    "excluded_gpu_families": [
+      {
+        "family": "GTX TITAN",
+        "reason": "Maxwell, no supported CUDA build"
+      },
+      {
+        "family": "Titan Xp",
+        "reason": "Pascal, no supported CUDA build"
+      },
+      {
+        "family": "Titan V",
+        "reason": "Volta datacentre card, not offered for serving"
+      },
+      {
+        "family": "Titan X",
+        "reason": "Maxwell, no supported CUDA build"
+      },
+      {
+        "family": "Tesla P100",
+        "reason": "Pascal datacentre card, no display output"
+      },
+      {
+        "family": "Tesla P40",
+        "reason": "Pascal datacentre card, no display output"
+      },
+      {
+        "family": "Tesla M40",
+        "reason": "Maxwell, no supported CUDA build"
+      },
+      {
+        "family": "CMP 170HX",
+        "reason": "mining-only silicon, no vendor support"
+      },
+      {
+        "family": "Quadro P",
+        "reason": "Pascal workstation, no supported CUDA build"
+      },
+      {
+        "family": "GTX 10",
+        "reason": "Pascal and older, no supported CUDA build"
+      },
+      {
+        "family": "GTX 16",
+        "reason": "Turing consumer, unsupported by current llama.cpp builds"
+      },
+      {
+        "family": "K80",
+        "reason": "Kepler, no supported CUDA build"
+      },
+      {
+        "family": "M40",
+        "reason": "Maxwell, no supported CUDA build"
+      }
+    ]
+  },
+  "tiers": [
+    {
+      "label": "Up to 14B",
+      "gpus": 1,
+      "vram_per_gpu_mb": 12288,
+      "disk_gb": 40,
+      "gpu_name": "RTX 3060",
+      "offer_id": 48635103,
+      "location": "South Korea, KR",
+      "reliability": 0.9941,
+      "gpu_usd_hour": 0.04,
+      "disk_usd_hour": 0.01111111111111111,
+      "total_usd_hour": 0.05111111111111111,
+      "usd_day": 1.2266666666666666,
+      "usd_month_24_7": 36.8,
+      "usd_month_2h_day": 10.399999999999999,
+      "usd_stopped_month": 7.999999999999999,
+      "offers_in_tier": 62,
+      "example_models": [
+        "MiniCPM5-2B-heretic-abliterated",
+        "Spark-X2.5-4B-Heretic",
+        "AFM-4.5B-Uncensored-Abliterated"
+      ],
+      "covered_models": 7,
+      "more_models": 4
+    },
+    {
+      "label": "27-35B",
+      "gpus": 1,
+      "vram_per_gpu_mb": 32768,
+      "disk_gb": 70,
+      "gpu_name": "Tesla V100",
+      "offer_id": 49757632,
+      "location": "Nevada, US",
+      "reliability": 0.9908,
+      "gpu_usd_hour": 0.12000000000000001,
+      "disk_usd_hour": 0.03888888888888888,
+      "total_usd_hour": 0.15888888888888889,
+      "usd_day": 3.8133333333333335,
+      "usd_month_24_7": 114.39999999999999,
+      "usd_month_2h_day": 35.199999999999996,
+      "usd_stopped_month": 27.999999999999996,
+      "offers_in_tier": 64,
+      "example_models": [
+        "gemma-4-31B-it-qat-q4_0-uncensored",
+        "Tencent-Hy-30B-A3B-uncensored-here",
+        "Velum-Unbound-Uncensored"
+      ],
+      "covered_models": 15,
+      "more_models": 12
+    },
+    {
+      "label": "70-80B",
+      "gpus": 1,
+      "vram_per_gpu_mb": 49152,
+      "disk_gb": 92,
+      "gpu_name": "Q RTX 8000",
+      "offer_id": 51000654,
+      "location": "Shandong, CN",
+      "reliability": 0.9798,
+      "gpu_usd_hour": 0.26666666666666666,
+      "disk_usd_hour": 0.025555555555555554,
+      "total_usd_hour": 0.2922222222222222,
+      "usd_day": 7.013333333333334,
+      "usd_month_24_7": 210.4,
+      "usd_month_2h_day": 34.4,
+      "usd_stopped_month": 18.4,
+      "offers_in_tier": 1,
+      "example_models": [],
+      "covered_models": 0,
+      "more_models": 0
+    },
+    {
+      "label": "118-120B MoE",
+      "gpus": 1,
+      "vram_per_gpu_mb": 97887,
+      "disk_gb": 120,
+      "gpu_name": "RTX PRO 6000 Max-Q",
+      "offer_id": 49402016,
+      "location": "Australia, AU",
+      "reliability": 0.9891,
+      "gpu_usd_hour": 1.0,
+      "disk_usd_hour": 0.05555555555555555,
+      "total_usd_hour": 1.0555555555555556,
+      "usd_day": 25.333333333333336,
+      "usd_month_24_7": 760.0,
+      "usd_month_2h_day": 100.0,
+      "usd_stopped_month": 40.0,
+      "offers_in_tier": 46,
+      "example_models": [
+        "Laguna-S-2.1-Uncensored-Heretic"
+      ],
+      "covered_models": 1,
+      "more_models": 0
+    },
+    {
+      "label": "180-400B MoE",
+      "gpus": 2,
+      "vram_per_gpu_mb": 97887,
+      "disk_gb": 450,
+      "gpu_name": "RTX PRO 6000 Max-Q",
+      "offer_id": 47585466,
+      "location": "Ohio, US",
+      "reliability": 0.9884,
+      "gpu_usd_hour": 2.1333333333333333,
+      "disk_usd_hour": 0.12499999999999999,
+      "total_usd_hour": 2.2583333333333333,
+      "usd_day": 54.2,
+      "usd_month_24_7": 1626.0,
+      "usd_month_2h_day": 218.0,
+      "usd_stopped_month": 89.99999999999999,
+      "offers_in_tier": 31,
+      "example_models": [
+        "DeepSeek-V4-Flash-Vision-Exp-Ablit",
+        "Qwen3.8-Flash-Next-ABLITERATED",
+        "GLM-5.3-Flash-ABLITERATED"
+      ],
+      "covered_models": 4,
+      "more_models": 1
+    },
+    {
+      "label": "550B-1T",
+      "gpus": 4,
+      "vram_per_gpu_mb": 97887,
+      "disk_gb": 800,
+      "gpu_name": "RTX PRO 6000 S",
+      "offer_id": 50476495,
+      "location": "Jiangxi, CN",
+      "reliability": 0.981,
+      "gpu_usd_hour": 5.760000000000001,
+      "disk_usd_hour": 0.8888888888888888,
+      "total_usd_hour": 6.648888888888889,
+      "usd_day": 159.57333333333332,
+      "usd_month_24_7": 4787.2,
+      "usd_month_2h_day": 985.6,
+      "usd_stopped_month": 640.0,
+      "offers_in_tier": 14,
+      "example_models": [
+        "DeepSeek-V4.1-Flash-UNCENSORED",
+        "Ornith-1.0-397B-abliterated"
+      ],
+      "covered_models": 2,
+      "more_models": 0
+    },
+    {
+      "label": "1T and larger",
+      "gpus": 8,
+      "vram_per_gpu_mb": 97887,
+      "disk_gb": 1600,
+      "gpu_name": "RTX PRO 6000 WS",
+      "offer_id": 51390225,
+      "location": "British Columbia, CA",
+      "reliability": 0.9978,
+      "gpu_usd_hour": 11.733333333333334,
+      "disk_usd_hour": 0.20740740740740737,
+      "total_usd_hour": 11.940740740740742,
+      "usd_day": 286.5777777777778,
+      "usd_month_24_7": 8597.333333333334,
+      "usd_month_2h_day": 853.3333333333333,
+      "usd_stopped_month": 149.33333333333331,
+      "offers_in_tier": 5,
+      "example_models": [
+        "Kimi-K3-Abliterated-modal"
+      ],
+      "covered_models": 1,
+      "more_models": 0
+    }
+  ],
+  "notes": [
+    "Prices are live marketplace quotes for the cheapest matching offer at the moment of the fetch, not a reservation or a quote for your account.",
+    "Offers change by the minute and can disappear while you read the table; the fetch timestamp is the only honest date.",
+    "GPU time is billed while running, even without requests. Storage is billed continuously, including while the instance is stopped.",
+    "Bandwidth, taxes and other provider services are excluded.",
+    "A tier is a size class for Q4-style GGUF weights plus context headroom, not a compatibility guarantee. Check the model card and the runtime before renting."
+  ]
+}
