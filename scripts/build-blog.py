@@ -26,7 +26,7 @@ ARCHIVE_NOTE = (
 )
 SIGNAL = "https://signal.me/#p/+13103408213"
 BLOG_DESCRIPTION = "Uncensored and abliterated AI model news, cloud GPU costs and self-hosting research. Find a model worth running, then get help deploying it."
-NAV = f'''<header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#models">Models</a><a href="/#how">How it works</a><a href="/blog/">Blog</a><a href="/#faq">FAQ</a><a href="{SIGNAL}">Request access ↗</a></nav></div></header>'''
+NAV = f'''<header class="nav"><div class="nav-inner"><a class="brand" href="/"><img src="/assets/logo.svg" width="32" height="32" alt=""><span>ABLITERATED.cloud</span></a><nav class="desktop-links" aria-label="Primary navigation"><a href="/#models">Models</a><a href="/costs/">Costs</a><a href="/#how">How it works</a><a href="/blog/">Blog</a><a href="/#faq">FAQ</a><a href="{SIGNAL}">Request access ↗</a></nav></div></header>'''
 FOOTER = f'''<footer class="footer"><p>ABLITERATED.cloud<br>Intelligence, freed.</p><nav aria-label="Footer navigation"><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy</a><a href="/RELEASE_NOTES.md">Updates</a><a href="/llms.txt">Agent index</a></nav></footer>'''
 
 
@@ -309,7 +309,7 @@ def render_feed(posts: list[dict]) -> str:
 
 
 def render_sitemap(posts: list[dict], page_count: int, snapshot_date: str) -> str:
-    static = ["/", "/index.md", "/llms.txt", "/llms-full.txt", "/auth.md", "/openapi.json", "/blog/", "/blog/feed.xml", "/about/", "/contact/", "/privacy/"]
+    static = ["/", "/index.md", "/costs/", "/llms.txt", "/llms-full.txt", "/auth.md", "/openapi.json", "/blog/", "/blog/feed.xml", "/about/", "/contact/", "/privacy/"]
     paths = [(p, snapshot_date) for p in static]
     paths += [(f"/blog/page/{p}/", snapshot_date) for p in range(2, page_count + 1)]
     # Archive framing changed, but original article publication dates stay intact.
@@ -353,6 +353,79 @@ def render_costs(status: dict, html: bool = False) -> str:
     return '| Usage | Cost |\n| --- | ---: |\n' + '\n'.join(f'| {label} | **{cost}** |' for label, cost in rows) + '\n\n' + note
 
 
+def load_price_tiers() -> dict:
+    """Load the refreshed Vast.ai price table. Fails closed: no stale hand-typed numbers."""
+    path = WEBSITE / ".well-known/gpu-prices.json"
+    if not path.is_file():
+        raise SystemExit(f"missing {path}: run scripts/fetch-gpu-prices.py first")
+    prices = json.loads(path.read_text())
+    if prices.get("provider") != "Vast.ai" or not prices.get("tiers"):
+        raise SystemExit("gpu-prices.json has no usable Vast.ai tiers")
+    return prices
+
+
+def money(value: float) -> str:
+    """Two decimals for money, more only when the hourly figure needs it."""
+    return f"${value:,.2f}"
+
+
+def hourly(value: float) -> str:
+    """Four decimals under a dollar, two above: honest about sub-cent GPU rates."""
+    return f"${value:,.4f}".rstrip("0").rstrip(".") if value < 10 else f"${value:,.2f}"
+
+
+def model_size_price_rows(prices: dict) -> list[list[str]]:
+    """One row per size class: GPU, VRAM, hourly, day, month, two-hours-a-day month."""
+    rows = []
+    for tier in prices["tiers"]:
+        gpus = tier["gpus"]
+        gpu_name = f"{gpus}x {tier['gpu_name']}" if gpus > 1 else tier["gpu_name"]
+        total_vram = gpus * tier["vram_per_gpu_mb"] / 1024
+        vram = f"{total_vram:.0f} GB" if total_vram >= 1 else f"{tier['vram_per_gpu_mb']} MB"
+        examples = ", ".join(tier.get("example_models") or [])
+        if tier.get("more_models"):
+            examples += f" +{tier['more_models']} more"
+        rows.append([
+            tier["label"],
+            f"{gpu_name}, {vram} VRAM" + (f", {tier['disk_gb']} GB disk" if gpus == 1 else ""),
+            hourly(tier["total_usd_hour"]),
+            money(tier["usd_day"]),
+            money(tier["usd_month_24_7"]),
+            money(tier["usd_month_2h_day"]),
+            examples or "no covered model published yet",
+        ])
+    return rows
+
+
+def render_model_size_prices(prices: dict, html: bool = False) -> str:
+    """The model-size cost table, in HTML for the site and Markdown for agents."""
+    checked = prices["generated_at"][:10]
+    note = (f"Cheapest supported offer per size class, fetched {checked}, reliability 0.98 and above. "
+            f"GPU time is billed while running, even with no requests. Storage is billed continuously, "
+            f"including while the instance is stopped, which is what the two-hours-a-day column keeps paying. "
+            f"Bandwidth, taxes and other provider services are excluded. "
+            f"Prices move by the minute: the timestamp above is the honest date, not the moment you read this.")
+    if html:
+        head = ('<table><caption>Self-hosting costs by model size</caption><thead><tr>'
+                '<th scope="col">Model size</th><th scope="col">Cheapest supported offer</th>'
+                '<th scope="col">Per hour</th><th scope="col">Per day</th>'
+                '<th scope="col">Per month, 24/7</th><th scope="col">Per month, 2 h/day</th>'
+                '<th scope="col">Models covered</th></tr></thead><tbody>')
+        body = "".join(
+            '<tr>' + "".join(
+                f'<th scope="row">{escape(cell)}</th>' if index == 0 else f'<td>{escape(cell)}</td>'
+                for index, cell in enumerate(row)
+            ) + '</tr>'
+            for row in model_size_price_rows(prices)
+        )
+        return head + body + '</tbody></table><p>' + escape(note) + '</p>'
+    lines = ['| Model size | Cheapest supported offer | Per hour | Per day | Per month, 24/7 | Per month, 2 h/day | Models covered |',
+             '| --- | --- | ---: | ---: | ---: | ---: | --- |']
+    lines += [f'| {row[0]} | {row[1]} | **{row[2]}** | {row[3]} | {row[4]} | {row[5]} | {row[6]} |'
+              for row in model_size_price_rows(prices)]
+    return "\n".join(lines) + "\n\n" + note
+
+
 def plain_costs(status: dict, html: bool = False) -> str:
     rates = status["current"]["running_quote_usd_per_hour"]
     gpu, disk, total = (Decimal(str(rates[k])) for k in ("gpu", "disk", "total"))
@@ -385,6 +458,7 @@ def status_paragraphs(status: dict) -> list[str]:
 
 def build_outputs(posts: list[dict]) -> dict[Path, str]:
     status = json.loads((WEBSITE / ".well-known/project-status.json").read_text())
+    prices = load_price_tiers()
     paragraphs = status_paragraphs(status)
     page_count = (len(posts) + PAGE_SIZE - 1) // PAGE_SIZE
     outputs = {BLOG / "index.html": render_index(posts, 1, page_count)}
@@ -424,10 +498,35 @@ def build_outputs(posts: list[dict]) -> dict[Path, str]:
         else:
             text = replace_section(text, "PROJECT-STATUS", '\n\n'.join(paragraphs))
             text = replace_section(text, "RUNNING-COSTS", render_costs(status))
+            text = replace_section(text, "MODEL-SIZE-PRICES", render_model_size_prices(prices))
             text = replace_section(text, "ARCHIVE-LINKS", full_links if name == "llms-full.txt" else links)
         outputs[WEBSITE / name] = text
     readme = ROOT / "README.md"
     outputs[readme] = replace_section(readme.read_text(), "RUNNING-COSTS", render_costs(status))
+    outputs[readme] = replace_section(outputs[readme], "MODEL-SIZE-PRICES", render_model_size_prices(prices))
+    # The full table lives on its own page so the homepage keeps its small
+    # critical payload; the landing page only links to it.
+    outputs[WEBSITE / "costs/index.html"] = replace_section(
+        (WEBSITE / "costs/index.html").read_text(), "MODEL-SIZE-PRICES",
+        render_model_size_prices(prices, html=True))
+    outputs[WEBSITE / "costs/index.md"] = replace_section(
+        (WEBSITE / "costs/index.md").read_text(), "MODEL-SIZE-PRICES",
+        render_model_size_prices(prices))
+    outputs[WEBSITE / "index.html"] = replace_section(
+        outputs[WEBSITE / "index.html"], "MODEL-SIZE-PRICES",
+        '<p><a class="button button-secondary" href="/costs/">See self-hosting costs by model size →</a></p>'
+        '<p class="section-note">Live marketplace prices, fetched '
+        + escape(prices["generated_at"][:10])
+        + ': from $' + f"{min(tier['total_usd_hour'] for tier in prices['tiers']):.2f}"
+        + ' an hour for a small model to $'
+        + f"{max(tier['total_usd_hour'] for tier in prices['tiers']):,.0f}"
+        + ' an hour for the largest ones.</p>')
+    outputs[WEBSITE / "index.md"] = replace_section(
+        outputs[WEBSITE / "index.md"], "MODEL-SIZE-PRICES",
+        f"[See self-hosting costs by model size]({ORIGIN}/costs/): live marketplace prices, fetched "
+        f"{prices['generated_at'][:10]}, from "
+        f"${min(tier['total_usd_hour'] for tier in prices['tiers']):.2f} an hour for a small model to $"
+        f"{max(tier['total_usd_hour'] for tier in prices['tiers']):,.0f} an hour for the largest ones.")
     index = WEBSITE / ".well-known/agent-skills/index.json"
     skills = json.loads(index.read_text())
     skills["skills"][0]["digest"] = "sha256:" + hashlib.sha256((WEBSITE / "skills/abliterated-cloud/SKILL.md").read_bytes()).hexdigest()

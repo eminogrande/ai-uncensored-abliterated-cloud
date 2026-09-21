@@ -6,11 +6,11 @@
     "description": "Read-only public documents for a human-assisted uncensored/abliterated model service: cloud GPU renting, self-hosting and LLM router/app integration. All operations are unauthenticated static GETs. No public inference, checkout, account provisioning, live billing, MCP or OAuth is offered. The status document is a dated operator snapshot, not a health API.",
     "x-guidance": "Read /index.md for service scope and /auth.md for access. All document GETs require no authentication. Use /blog/posts.json to find dated model coverage; follow sources and recheck license/runtime compatibility. Treat /.well-known/project-status.json as a dated operator audit, not live availability. Ask the user before contacting Signal or changing infrastructure; agree scope, access and budget with a human. This API cannot start GPUs, run inference, issue credentials or take payment.",
     "contact": {
-      "name": "ABLITERATED.cloud — Signal",
+      "name": "ABLITERATED.cloud \u2014 Signal",
       "url": "https://signal.me/#p/+13103408213"
     },
     "license": {
-      "name": "MIT — project-owned documentation/code only",
+      "name": "MIT \u2014 project-owned documentation/code only",
       "identifier": "MIT"
     }
   },
@@ -173,6 +173,32 @@
                   "publishedDocument": {
                     "summary": "The complete public catalog with identifiers, media types and representative queries.",
                     "externalValue": "https://abliterated.cloud/.well-known/ai-catalog.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/costs/index.md": {
+      "get": {
+        "operationId": "readSelfHostingCosts",
+        "summary": "Read the self-hosting cost table in Markdown",
+        "description": "Live Vast.ai marketplace prices per model size class: GPU, VRAM, per hour, per day, per month and at two hours a day. Public read-only document; no authentication required.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Read the self-hosting cost table in Markdown",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "publishedDocument": {
+                    "summary": "The complete published cost table, with its fetch timestamp and billing notes.",
+                    "externalValue": "https://abliterated.cloud/costs/index.md"
                   }
                 }
               }

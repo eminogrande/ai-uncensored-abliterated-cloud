@@ -1,8 +1,12 @@
 # ABLITERATED.cloud website releases
 
-## website-v0.12.4
+## website-v0.12.8
 
-[Exact numbers in plain-language facts](releases/website-v0.12.4.md).
+[Self-hosting costs by model size, refreshed live](releases/website-v0.12.8.md).
+
+## website-v0.12.7
+
+[Exact numbers in plain-language facts](releases/website-v0.12.7.md).
 
 ## website-v0.12.3
 

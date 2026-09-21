@@ -5,6 +5,7 @@ import re
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
+from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlparse
@@ -102,6 +103,48 @@ def test_archive_preserves_articles_and_all_indexes():
 
 def test_generated_outputs_are_reproducible():
     subprocess.run([sys.executable, "-I", "scripts/build-blog.py", "--check"], cwd=ROOT, check=True)
+
+
+def test_model_size_price_table_is_live_arithmetic_and_matches_models():
+    prices = json.loads((SITE / ".well-known/gpu-prices.json").read_text())
+    assert prices["provider"] == "Vast.ai"
+    assert prices["method"].startswith("GET public bundles search")
+    assert datetime.fromisoformat(prices["generated_at"])
+    tiers = prices["tiers"]
+    assert len(tiers) >= 5
+    labels = [tier["label"] for tier in tiers]
+    assert len(labels) == len(set(labels))
+    posts = json.loads((SITE / "blog/posts.json").read_text())
+    assert sum(tier["covered_models"] for tier in tiers) == len(posts)
+    for tier in tiers:
+        recomputed = tier["gpu_usd_hour"] + tier["disk_usd_hour"]
+        assert abs(recomputed - tier["total_usd_hour"]) <= 1e-5, tier["label"]
+        for key, exact in (
+            ("usd_day", recomputed * 24),
+            ("usd_month_24_7", recomputed * prices["hours_per_month"]),
+            ("usd_month_2h_day", tier["gpu_usd_hour"] * 60 + tier["usd_stopped_month"]),
+        ):
+            assert abs(exact - tier[key]) <= 0.01, (tier["label"], key)
+        assert tier["gpus"] >= 1 and tier["vram_per_gpu_mb"] > 0 and tier["disk_gb"] > 0
+        assert 0 < tier["reliability"] <= 1 and tier["offers_in_tier"] >= 1
+        assert tier["gpu_name"] and tier["location"]
+        # A tier must never be a GPU the current llama.cpp build cannot run.
+        families = [row["family"] for row in prices["filters"]["excluded_gpu_families"]]
+        assert not any(family in tier["gpu_name"] for family in families), tier["label"]
+    # The published table must be reproduced exactly by the builder, in both formats.
+    import runpy
+    builder = runpy.run_path(str(ROOT / "scripts/build-blog.py"))
+    html = builder["render_model_size_prices"](prices, html=True)
+    markdown = builder["render_model_size_prices"](prices)
+    assert html.count("<tr>") == len(tiers) + 1  # one header row plus one per tier
+    assert markdown.count("\n| ") == len(tiers) + 1  # separator plus one per tier; the header starts the block
+    assert prices["generated_at"][:10] in html and prices["generated_at"][:10] in markdown
+    for target in ("costs/index.html", "costs/index.md", "llms.txt", "llms-full.txt"):
+        text = (SITE / target).read_text()
+        assert "<!-- MODEL-SIZE-PRICES -->" in text and "<!-- /MODEL-SIZE-PRICES -->" in text, target
+        assert f"${tiers[0]['total_usd_hour']:.2f}" in text or tiers[0]["label"] in text, target
+    assert "/costs/" in (SITE / "sitemap.xml").read_text()
+    assert (SITE / "costs/index.html").read_text().count("<h1") == 1
 
 
 def test_shared_article_rendering_is_idempotent():
