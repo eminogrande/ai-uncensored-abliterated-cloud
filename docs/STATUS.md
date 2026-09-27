@@ -1,10 +1,30 @@
 # Operating status and evidence
 
-**Controls are deployed; usable model inference is not yet verified.** This is
+**Private streamed chat and confirmed worker deletion are verified.** This is
 an evidence record, not a live availability monitor. Follow the
 [operating guide](OPERATIONS.md) and inspect the authenticated panel before use.
 
-## Follow-up trial: 2026-09-27, 13:11 UTC
+## Successful chat trial: 2026-09-27, 14:29 UTC
+
+MCP started the model at 14:12:50 UTC. The response check passed at 14:27:59 UTC.
+A real streamed request through `router.paymentrequired.com/v1/internal` asked
+for 17 times 23; `OBLITERATUS/Qwen3.8-27B-OBLITERATED` answered **391** in 24 content
+chunks. The test immediately called Off. Deletion was confirmed at 14:28:20 UTC;
+independent inventory at 14:29:05 UTC found zero instances, owned endpoints and
+workergroups. An inference request while Off returned HTTP 409 without waking.
+
+The previous 20-minute request limit interrupted a healthy model during native
+benchmarking. The deployed limit and Pi's global HTTP idle timeout are now
+30 minutes. Runtime revision: `e00c00118f5b553bdcda5b2c913e9c39b2bfb3fd`.
+199 local tests and 10 focused deployed-image checks pass.
+
+The 21-minute idle threshold is configured and clock-tested, but its full live
+idle cycle remains unverified. Pi tool calling is also not yet verified. This
+proves owner-only chat, not public customer access or universal client compatibility.
+
+[Successful chat evidence](https://github.com/nuri-com/router-paymentrequired-com/blob/feat/abliterated-controls/docs/abliterated-chat-verification-2026-09-27.json)
+
+## Earlier follow-up trial: 2026-09-27, 13:11 UTC
 
 The actual engine failure was captured: **`No space left on device (os error 28)`**
 during model reconstruction. The temporary 100 GB disk was insufficient. The

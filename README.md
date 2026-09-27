@@ -7,11 +7,12 @@ and abliterated models. [Website](https://abliterated.cloud/) ·
 
 ## Private on-demand endpoint
 
-**Not yet ready for inference.** Router controls and Pi configuration are
-installed, but a successful model answer is still unverified. The disk-capacity failure
-was diagnosed and a 200 GB worker was tested through MCP. Final 2026-09-27 verification:
-manual Off, zero Vast workers and no retained worker disks. Leave it off until
-the model-start failure is resolved. See [the evidence](docs/STATUS.md).
+**Private chat and full deletion are verified.** On 2026-09-27, MCP started the
+model, a streamed router request returned the correct result for 17 × 23, and
+Off removed the workers and their temporary storage. Cold start took about
+15 minutes. Final inventory: zero instances, owned endpoints and workergroups.
+The real 21-minute idle cycle and Pi tool calling remain unverified; this is not
+a public self-service endpoint. See [the evidence](docs/STATUS.md).
 
 The owner integration is behind **`router.paymentrequired.com`**, not the static
 website. Its implementation lives in the
@@ -87,8 +88,8 @@ the Vast management key. `/model` reloads model definitions. Start with a fresh
 session; an existing frontier-model conversation may exceed this model's context.
 A client-side alias or context setting does not change the loaded weights.
 
-For long cold starts, Pi supports `httpIdleTimeoutMs: 1200000` in its settings;
-this is a global 20-minute timeout, not a per-provider setting. Use a smaller
+For long cold starts, Pi supports `httpIdleTimeoutMs: 1800000` in its settings;
+this is a global 30-minute timeout, not a per-provider setting. Use a smaller
 per-model compaction budget for this 32K model. Pi's token-cost display does not
 measure hourly GPU charges. Configuration is not proof of agent reliability.
 

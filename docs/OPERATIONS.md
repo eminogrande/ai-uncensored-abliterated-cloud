@@ -30,8 +30,10 @@ while it boots so status can be polled. See the router's
 
 Only provider-supplied download percentages are displayed. Otherwise the client
 reports the current phase with unknown percentage. Its boot check reaches 100%
-only after an actual nonempty model answer. That acceptance gate is still open
-in the latest bounded live trial; do not claim inference is ready.
+only after an actual nonempty model answer. The latest live trial passed that
+check, completed a streamed chat and confirmed full deletion. Cold start took
+about 15 minutes; the startup deadline is 30 minutes. Full live idle cleanup and
+Pi tool calling remain unverified. See [the evidence](STATUS.md).
 
 ## Fully off
 
