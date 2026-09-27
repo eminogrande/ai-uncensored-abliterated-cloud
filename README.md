@@ -1,48 +1,107 @@
 # ABLITERATED.cloud
 
-**Intelligence, freed.** Human-assisted cloud GPU renting and self-hosting for
-uncensored and abliterated models. Get help choosing a model and connecting it to
-your LLM router, chat app or coding tools.
+**Intelligence, freed.** Model research and human-assisted hosting of uncensored
+and abliterated models. [Website](https://abliterated.cloud/) ·
+[Model news](https://abliterated.cloud/blog/) ·
+[Setup help on Signal](https://signal.me/#p/+13103408213)
 
-[Talk on Signal](https://signal.me/#p/+13103408213) about your workload, model,
-hardware budget and client. Scope, access and any costs are agreed with a human
-before setup. The public website offers service information, documentation and
-[model news and guides](https://abliterated.cloud/blog/), not self-service inference
-or account checkout.
+## Private on-demand endpoint
 
-## Current operating docs
+**Not yet ready for inference.** Router controls and Pi configuration are
+installed, but the model startup trial failed. Final 2026-09-27 verification:
+manual Off, zero Vast workers and no retained worker disks. Leave it off until
+the model-start failure is resolved. See [the evidence](docs/STATUS.md).
 
-- [Operating guide](docs/OPERATIONS.md): the private **Vast.ai + llama.cpp** path,
-  SSH access, client configuration and manual start/stop.
-- [Status evidence](docs/STATUS.md): dated checks, last configuration and untested claims.
-- [Licensing scope](docs/LICENSING.md): project-owned MIT work versus upstream model terms.
-- [Website](https://abliterated.cloud/) · [Agent reading index](website/llms.txt) ·
-  [Website development](website/README.md)
+The owner integration is behind **`router.paymentrequired.com`**, not the static
+website. Its implementation lives in the
+[router repository](https://github.com/nuri-com/router-paymentrequired-com/tree/feat/abliterated-on-demand).
+This repository contains the website, operating instructions and dated evidence.
 
-## Current state
+- **Controls:** [Start / fully off](https://router.paymentrequired.com/abliterated/).
+  A private router bearer is required; the page does not issue credentials.
+- **OpenAI-compatible base URL:** `https://router.paymentrequired.com/v1/internal`.
+- **Model ID:** `abliterated/qwen3.8-27b`.
+- **Configured weights:** `OBLITERATUS/Qwen3.8-27B-OBLITERATED`, revision
+  `a58c3b53b3ce71551eafde2ed5ec8df48e0f4ff8`, vLLM, 32768-token context.
+  This is the new serving configuration, not the old Q6_K GGUF/llama.cpp instance.
+- **Verification:** see [status and evidence](docs/STATUS.md). A working panel or
+  model-catalog entry does not by itself prove inference or tool calling.
 
-**A100 STOPPED — operator state and rates rechecked 2026-09-05 at 20:12 UTC.**
-The [read-only snapshot](docs/evidence/2026-09-05-vast-recheck.json) found one A100
-PCIe 40 GB instance (`49433042`), actual `exited` / intended `stopped`, with a
-120 GB retained disk **still billed while stopped**. No inference was tested.
-This is not live availability or a statement about service enquiries.
+Access remains private and human-assisted. There is no public signup, self-service
+API-key issuance, checkout or GPU management key in the website.
 
-Last serving configuration: `OBLITERATUS/Qwen3.8-27B-OBLITERATED`,
-`Qwen3.8-27B-OBLITERATED-Q6_K.gguf`, llama.cpp, through a private SSH tunnel to
-`http://127.0.0.1:8080/v1`. The local endpoint was unreachable at the earlier
-19:39 UTC audit. Verify the actual loaded model before reconnecting.
+## What Start and Off mean
 
-Modal is retired from this project's operating path for its cost budget. The
-[implementation is archived](archive/modal/README.md), not decommissioned:
-four legacy apps had zero tasks at the earlier audit; remaining storage/other
-charges were not audited. It is not the current setup guide.
+1. **Start / enable automatic operation** creates an endpoint configuration and
+   permits authorized inference to recruit a GPU. Model download and loading can
+   take several minutes. Opening the website, polling status or running router
+   background probes does not start this model.
+2. **Automatic idle cleanup** deletes the endpoint and its temporary workers after
+   10 minutes without active router requests, checked every 30 seconds. Automatic
+   operation stays enabled, so a later authorized inference can start again.
+3. **Manual Off** first blocks automatic restarts and aborts active requests. It
+   then deletes this endpoint and its workers, including temporary model storage.
+   Pi requests cannot override manual Off; enable Start again explicitly.
+4. **Wait for confirmed removal.** Cleanup failures remain visible and are retried.
+   Do not assume zero resource costs while cleanup is pending. After confirmed
+   removal, no GPU worker or worker disk is retained for this endpoint.
+
+The existing router server remains separately billed. Model loading, active time,
+the idle grace period and transfer can cost money. This is not a zero-cost service
+or a zero-cost cold start. No standalone storage volume is created by this setup.
+Keep unique files outside disposable workers.
+
+This differs from ordinary Vast **Stop**, which retains a container disk that is
+**still billed while stopped**. The new Off control deliberately uses deletion,
+not pause. Never apply that deletion policy to unrelated instances or unique data.
+
+[Operating guide](docs/OPERATIONS.md) · [Implementation audit and design](docs/ENDPOINTS.md)
+
+## Connect Pi
+
+Merge this provider into `~/.pi/agent/models.json`; preserve unrelated providers:
+
+```json
+{
+  "providers": {
+    "abliterated": {
+      "baseUrl": "https://router.paymentrequired.com/v1/internal",
+      "api": "openai-completions",
+      "apiKey": "${ABLITERATED_ROUTER_KEY}",
+      "models": [{
+        "id": "abliterated/qwen3.8-27b",
+        "name": "Abliterated Qwen3.8 27B (Vast on demand)",
+        "reasoning": false,
+        "input": ["text"],
+        "contextWindow": 32768,
+        "maxTokens": 4096
+      }]
+    }
+  }
+}
+```
+
+Provide the private **router** key through your environment or secret store, never
+the Vast management key. `/model` reloads model definitions. Start with a fresh
+session; an existing frontier-model conversation may exceed this model's context.
+A client-side alias or context setting does not change the loaded weights.
+
+For long cold starts, Pi supports `httpIdleTimeoutMs: 1200000` in its settings;
+this is a global 20-minute timeout, not a per-provider setting. Use a smaller
+per-model compaction budget for this 32K model. Pi's token-cost display does not
+measure hourly GPU charges. Configuration is not proof of agent reliability.
 
 ## Cost
 
-Example infrastructure costs from the [20:12 UTC Vast recheck](docs/evidence/2026-09-05-vast-recheck.json),
-not a customer service quote or live public billing. Confirm current provider rates
-and the scope of assistance before authorizing spend. Running rates are not the
-stopped bill.
+Current Vast offers vary. The owner template allows one worker maximum, with a
+GPU-offer search ceiling of $2.50/hour and bounded transfer-price filters. This is
+not a total spending cap: storage during use, transfer and taxes are separate.
+Confirm current rates before enabling a session.
+
+The following is a **historical retained-instance quote from 2026-09-05**, not the
+current on-demand tariff or an assertion that this A100 still exists. The private
+**Vast.ai + llama.cpp** path is historical. Its disk charge explains why pause was
+not sufficient for the new zero-retained-resource requirement.
 
 <!-- RUNNING-COSTS -->
 | Usage | Cost |
@@ -53,39 +112,25 @@ stopped bill.
 | Stopped: retained disk / 30 days | **$24.00** |
 | 2 hours running per day / 30 days, disk retained throughout | **$60.00** |
 
-USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.
+USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. This historical manual setup had no automatic idle shutdown.
 <!-- /RUNNING-COSTS -->
-
-**Stop retains the disk and ends GPU compute billing; destroy deletes the instance
-and its container disk.** A normal pause is a stop, never a destroy.
-
-## Connect with consent
-
-1. Agree the model, provider/account, GPU/storage budget and client with the operator.
-2. Obtain explicit consent before paid compute, configuration changes or sharing
-   connection details. Use the [operating guide](docs/OPERATIONS.md), not old tokens
-   or archived wake routes.
-3. Verify the server and loaded artifact, connect through private SSH, then test
-   a bounded response and the intended LLM router/app. A client alias does not load
-   or switch model weights; model autostart is not verified.
-4. Stop after use and read back provider state. **Automatic idle shutdown is not
-   verified**; disk billing continues. Never destroy an instance as a routine stop.
 
 ## Evidence limits
 
-- **No universal zero-refusal guarantee.** Publisher claims and small prompt probes
-  do not establish general refusal rates, coding quality or agent reliability.
-- **No validated 262k workload.** `262144` is a recorded context setting, not proof
-  of long-context quality. Model/build pins and controlled speed benchmarks are missing.
-- **Human-assisted setup, not a public inference API.** No public self-service
-  endpoint, API-key issuance, account checkout, MCP service or automated billing is
-  deployed. Availability and setup scope must be agreed with a human.
+- **No universal zero-refusal guarantee.** Publisher claims and small probes do
+  not establish general refusal rates, coding quality or agent reliability.
+- **No validated 262k workload.** Historical `262144` settings were not proof of
+  long-context quality. The new template is configured for 32768 tokens.
+- The model-news catalog is not an inventory of hosted models. Licenses,
+  benchmark claims and estimates retain their publication dates and sources.
+- The old `api.abliterated.cloud` gateway is not the new router entry point.
+  Its unsafe SSH wake path was disabled. Open PR #18 is historical experimental
+  code, not the deployed native-Serverless implementation.
+- Modal is retired from this project's operating path. Its
+  [archive](archive/modal/README.md) is not a current setup guide or proof that
+  all historical Modal resources have been decommissioned.
 
-[Status](docs/STATUS.md) records what was checked and what still needs a paid-session
-test. The active blog's field notes retain their publication dates, model licenses
-and historical estimates; coverage is not a hosted-model inventory or current price.
-
-## Work on the website
+## Website development
 
 ```sh
 uv sync --group dev
@@ -94,23 +139,13 @@ uv run pytest -q
 python3 -m http.server 8788 --bind 127.0.0.1 --directory website
 ```
 
-Open `http://127.0.0.1:8788/`. Reading the static site requires no GPU, inference
-call, external font service or background artwork. See the
-[website guide](website/README.md) for publishing and verification.
-
-Current operations and evidence live in `docs/`; site content in `website/`;
-build, verification and signed Pages publishing helpers in `scripts/`; checks in
-`tests/`. `archive/modal/` is historical. This repository is the documentation
-source of truth, not stale status JSON or "live" badges in the earlier
-`ai-uncensored-selfhost` experiment repository.
+Open `http://127.0.0.1:8788/`. Reading or building the static site does not start a
+GPU. [Website guide](website/README.md) · [Agent reading index](website/llms.txt)
 
 ## License and history
 
-Our own code, documentation and website are [MIT licensed](LICENSE) from this
-release. Previous Apache-2.0 releases keep their terms; that license was a project
-choice, not a Vast.ai, Modal or llama.cpp requirement. Model weights, dependencies
-and third-party materials retain their upstream licenses; see
-[licensing scope](docs/LICENSING.md).
-
-The [changelog](CHANGELOG.md) and [release notes](docs/RELEASE_NOTES.md) preserve
-release history and earlier claim corrections without changing the current path.
+Project-owned code, documentation and website are [MIT licensed](LICENSE).
+Earlier Apache-2.0 releases retain their terms. Model weights, dependencies and
+third-party material retain their upstream licenses; see
+[licensing scope](docs/LICENSING.md). [Changelog](CHANGELOG.md) ·
+[Release history](docs/RELEASE_NOTES.md)

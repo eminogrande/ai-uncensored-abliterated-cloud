@@ -1,176 +1,79 @@
-# Vast.ai operations
+# Private on-demand GPU operations
 
-The only current runtime path is **Vast.ai + llama.cpp over private SSH**.
-Modal was retired from this project's operating path for its cost budget;
-its gateway and `mn` commands are [archive only](../archive/modal/README.md).
+Use [the authenticated router controls](https://router.paymentrequired.com/abliterated/).
+The public `abliterated.cloud` website is static; it only links to these controls.
+Never put a Vast account key into the browser, Pi configuration or this repository.
 
-## Before starting
+## Start a session
 
-The retained owner instance is `49433042`: A100 PCIe 40 GB, 120 GB container disk.
-It was **STOPPED** in the [2026-09-05 20:12 UTC recheck](evidence/2026-09-05-vast-recheck.json).
-No inference was tested. Do not start it to check billing or read docs.
-Other users need their own contract ID, credentials and approved hourly budget;
-review the [running and retained-disk costs](../README.md#cost).
+1. Unlock the panel with the owner's private router bearer. It remains only in
+   that browser tab's memory; reloading the page requires authentication again.
+2. Select **Start / Automatik erlauben** and confirm paid operation. This creates
+   the Vast endpoint/workergroup and allows authorized inference to recruit a GPU.
+3. Select `abliterated/qwen3.8-27b` through Pi's `abliterated` provider. Use a fresh
+   session and a bounded request. The configured context is 32768 tokens.
+4. Allow time for provisioning, downloads and model loading. A readiness timeout
+   is not permission to silently rent unlimited replacement workers.
 
-Use an authenticated Vast CLI compatible with your Python version. Check
-`vastai --help` and the [official CLI source](https://github.com/vast-ai/vast-python);
-the earlier `/tmp/vastai-venv/bin/vastai` installation no longer exists.
-Never commit the account API key or give it to inference clients.
+Owner inference uses `https://router.paymentrequired.com/v1/internal`; the same
+router bearer authenticates it. This model is not exposed on the public paid path,
+public model-test endpoint or background inference-probe list.
 
-## 1. Inspect, then start deliberately
+## Fully off
 
-```sh
-vastai show instance 49433042 --raw
-# Only when you want paid compute:
-vastai start instance 49433042
-vastai show instance 49433042 --raw
-```
+Select **Aus: GPU und Worker-Speicher löschen** and confirm. This is intentionally
+destructive for this endpoint's temporary workers, not for unrelated resources.
 
-Inspect `actual_status`, `intended_status` and `cur_state`, not `status_msg` prose.
-A successful start request is not proof of a running model. `scheduling` can mean
-someone else rented the GPU; resume availability and boot time are not guaranteed.
-For account inventory, use the current CLI's v1 listing; API/pagination details
-are in [status evidence](STATUS.md#inventory-details).
+- Automatic restarts are blocked before cleanup starts. Existing requests are
+  aborted; a Pi request receives an error rather than overriding manual Off.
+- The native Vast endpoint/workergroup and its workers are deleted, including
+  the temporary model download. No separate volume is created.
+- Wait until `state=off`, `enabled=false` and `zero_resources_verified=true`.
+  The status also reports the last cleanup-verification timestamp.
+- A cleanup error is not Off. The router retries cleanup every 30 seconds.
+  Inspect the provider inventory if cleanup does not complete.
 
-## 2. Verify the remote server
+The existing router server remains separately billed. Removal does not refund
+previous GPU time, downloads or storage use. Unique files do not belong on these
+workers: save them elsewhere before any destructive operation.
 
-Use fresh SSH connection details from Vast, including the actual SSH port mapping.
-Do not assume the old host/port still works. Keep host-key verification enabled;
-verify a changed host key before trusting it.
+## Automatic idle cleanup
 
-On the remote instance:
+With automatic operation enabled, the router deletes the endpoint after 600
+seconds without active requests, checked every 30 seconds. Activity is recorded
+at request completion, and active streaming requests block idle cleanup. Unlike
+manual Off, idle cleanup leaves automatic operation armed for the next authorized
+inference request. Status reads and public health checks never wake the GPU.
 
-```sh
-pgrep -af llama-server
-curl --fail --show-error --max-time 10 http://127.0.0.1:8080/health
-curl --fail --show-error --max-time 10 http://127.0.0.1:8080/v1/models
-```
+Native Vast scaling also has zero minimum load, zero cold-worker floor and a
+one-worker ceiling. Do not confuse zero active workers with zero total workers:
+retained inactive workers can still incur storage charges. The router's complete
+endpoint removal is the stronger shutdown path.
 
-The last inspected `onstart` was null: **model autostart is not verified**.
-If the server is absent, inspect the retained startup script, `/root/server.log`,
-available VRAM and the installed binary's `--help` before launching it. Do not start
-a second copy or indiscriminately kill matching processes.
+## Deployment and verification
 
-The last artifact was `/root/models/Qwen3.8-27B-OBLITERATED-Q6_K.gguf`, with
-`--jinja`, context `262144`, full GPU offload and explicit sampling. Model
-revision/hash and llama.cpp build pins were not captured. At the next approved
-restart, record them and verify a version-compatible launch command; there is no
-reproducibly pinned launch recipe here. Use loopback binding, not the old
-`--host 0.0.0.0` on an unprotected public port. Template generation and reasoning
-parser/output controls vary by runtime: `--reasoning off` is not a universal
-thinking-disable switch. Validate output rather than assuming a flag or quant
-has fixed every failure.
+The implementation is in the
+[router repository](https://github.com/nuri-com/router-paymentrequired-com/tree/feat/abliterated-on-demand):
+`abliterated.mjs`, `abliterated.config.json` and the private template source in
+`docs/abliterated-vast-template.json`. Model revision and runtime are configured
+in the template itself; overriding `--image` in workergroup launch arguments did
+not override the legacy template image during testing.
 
-## 3. Connect and test locally
+Preserve the existing router's payment journal and unrelated providers. Back up
+before a release, retain the previous image, and require explicit server-change
+and paid-test approval. Keep `ABLITERATED_VAST_KEY` server-side. The lifecycle
+controller currently assumes one router process, not multiple replicas.
 
-Keep this SSH session open, replacing the destination and port with Vast's values:
+Before claiming a release works, verify cold-start streaming, one harmless tool
+round trip, manual Off, denied restart while off and idle cleanup. Read back
+provider inventory after deletion. See [status](STATUS.md) for actual evidence;
+configuration alone is not a successful inference test.
 
-```sh
-ssh -i ~/.ssh/id_ed25519 -p <SSH_PORT> \
-  -o IdentitiesOnly=yes -o ExitOnForwardFailure=yes \
-  -o ServerAliveInterval=15 -o ServerAliveCountMax=3 \
-  -N -L 127.0.0.1:8080:127.0.0.1:8080 root@<SSH_HOST>
-```
+## Historical setup
 
-`<SSH_PORT>` and `<SSH_HOST>` are placeholders. Alternatively, inspect the existing
-Mac LaunchAgent `~/Library/LaunchAgents/com.emin.vast-tunnel.plist` and update only
-its verified destination. It maintains a tunnel, not a GPU or model server. Do not
-run both tunnels on the same local port.
-
-```sh
-curl --fail --show-error --max-time 10 http://127.0.0.1:8080/health
-curl --fail --show-error --max-time 10 http://127.0.0.1:8080/v1/models
-```
-
-Use the ID returned by `/v1/models` for direct API tests; historically it was the
-full GGUF path, while clients used alias `qwen3.8-27b-obl`. Several picker aliases
-do not load several models or switch weights: Huihui/R1 are not simultaneous
-alternatives on this single-model server.
-
-Test non-streaming and streaming with a bounded prompt such as "List three
-programming languages." Require non-empty `content` and normal completion;
-inspect `finish_reason`, errors and timings. HTTP 200 or health alone is not enough.
-Then test the intended client. **No inference smoke test was run in this audit:**
-the GPU stayed stopped.
-
-### Choose a client
-
-**Plain chat:** open `http://127.0.0.1:8080/` when the server and tunnel are ready.
-This is the built-in llama-server UI, not Open WebUI or the public website.
-
-**Pi:** custom providers live in `~/.pi/agent/models.json`, not
-`~/.config/pi/config.json`. Merge into the existing file; do not replace unrelated
-providers. The inspected local definition is:
-
-```json
-{
-  "providers": {
-    "uncensored": {
-      "baseUrl": "http://127.0.0.1:8080/v1",
-      "api": "openai-completions",
-      "apiKey": "none",
-      "models": [{"id": "qwen3.8-27b-obl", "contextWindow": 262144}]
-    }
-  }
-}
-```
-
-`none` is a client placeholder, not authentication; use a real key if required by
-the server. Verify the alias. `contextWindow` sets Pi's budget, not the server's
-capacity or proven long-context quality. [Pi's model documentation](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/models.md)
-says `/model` reloads definitions; restarting the app is not generally required.
-
-```sh
-pi --provider uncensored --model qwen3.8-27b-obl
-```
-
-To isolate a tool-loop issue, the installed Pi CLI supports this no-tools mode
-(flags checked with `pi --help`; generation not retested):
-
-```sh
-pi --provider uncensored --model qwen3.8-27b-obl \
-  --no-tools --no-extensions --no-skills --no-context-files \
-  --system-prompt "You are a helpful assistant."
-```
-
-**OpenCode:** the inspected `~/.config/opencode/opencode.json` uses provider
-`uncensored`, adapter `@ai-sdk/openai-compatible`, `options.baseURL` =
-`http://127.0.0.1:8080/v1`, model key `qwen3.8-27b-obl`, `limit.context` = `262144`
-and `limit.output` = `8192`.
-
-```sh
-opencode --model uncensored/qwen3.8-27b-obl
-```
-
-Pi, OpenCode and `hermes chat` are agent paths by default, not inherently raw chat.
-Config inspection does not establish tool/agent reliability; test the actual
-harness. Model size alone does not establish tool capability. On another computer,
-localhost means that computer: use an authorized tunnel or an explicitly secured
-shared endpoint. Do not distribute root SSH keys or the Vast account key.
-Public multi-user inference is not deployed.
-
-## 4. Stop and verify
-
-```sh
-vastai stop instance 49433042
-vastai show instance 49433042 --raw
-```
-
-Wait for actual `exited`/stopped and intended `stopped`; request acceptance is not
-confirmation. Stop the local tunnel if no longer needed.
-
-**GPU compute stops; storage billing continues.** The retained disk costs about
-$0.80/day. It persists while the instance/contract exists, but is not an off-host
-backup: host loss or contract expiry can threaten data. Keep unique work elsewhere.
-
-There is **no verified automatic idle shutdown**. The prior local timer was
-canceled. For unattended deadlines, configure and test a durable scheduler and
-read back the final cloud state; do not rely on a sleeping laptop.
-
-**Destruction is separate:** it permanently deletes the container disk and is not
-part of normal start/stop. Back up unique files, verify the backup and obtain
-explicit deletion approval first. A separate volume also costs money; none was
-provisioned or needed merely to stop/resume this instance.
-
-References: [Vast lifecycle](https://docs.vast.ai/documentation/instances/manage-instances.md) ·
-[Vast storage](https://docs.vast.ai/documentation/instances/storage/types.md)
+The earlier private SSH/llama.cpp instance used a retained disk. Ordinary Vast
+Stop has different semantics: **GPU compute stops; storage billing continues**.
+There was **no verified automatic idle shutdown** in that earlier audit. Its
+2026-09-05 snapshot and rates remain historical evidence, not instructions to
+reuse an old instance ID or SSH destination. The old gateway and tunnel services
+were disabled when moving to the router path.

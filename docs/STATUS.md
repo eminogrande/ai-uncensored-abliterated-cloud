@@ -1,9 +1,67 @@
 # Operating status and evidence
 
-**A100 STOPPED. No inference tested.** This is a dated owner-account snapshot,
-**not a live monitor**. Use the [operating guide](OPERATIONS.md) for the current path.
+**Controls are deployed; usable model inference is not yet verified.** This is
+an evidence record, not a live availability monitor. Follow the
+[operating guide](OPERATIONS.md) and inspect the authenticated panel before use.
 
-## Current Vast state and rates
+## Authorized inspection and implementation: 2026-09-27
+
+- Initial account inventory contained zero Vast instances. The legacy gateway
+  referenced a missing instance and its reaper timer was inactive. A public
+  `/health` request entered an unsafe wake path but did not start a GPU.
+- The existing router and CLIProxyAPI contained no Abliterated provider. The
+  new owner-only route and controls now run behind `router.paymentrequired.com`.
+  Existing payment settings and providers were preserved; deployment kept
+  state backups and rollback containers.
+- The legacy gateway, tunnel and reaper services were disabled after backup.
+  Open [PR #18](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/pull/18)
+  remains experimental historical code, not the new serving implementation.
+- Pi lists the added `abliterated` provider. This is configuration proof only,
+  not a successful model answer or tool round trip.
+- Router tests pass: 168 in the deployed image, 170 locally after adding two
+  regression checks. Website/documentation tests pass: 28. The control page
+  returns HTTP 200; unauthenticated control requests return HTTP 401.
+
+## Paid trial findings
+
+The target is `OBLITERATUS/Qwen3.8-27B-OBLITERATED`, pinned to revision
+`a58c3b53b3ce71551eafde2ed5ec8df48e0f4ff8`. The checkpoint declares architecture
+`Qwen3_5ForConditionalGeneration` and contains approximately 55.56 GB of
+safetensors. The owner template sets a 32768-token context and uses
+`vastai/vllm:v0.30.0-cuda-13.0`; eager execution avoids graph compilation at the
+cost of some runtime optimization. It is not the historical GGUF configuration.
+
+Trials identified and corrected these integration issues:
+
+1. The usable proxy route is `/<endpoint>/chat/completions`; inserting `/v1`
+   returned HTTP 404.
+2. Cold proxy requests timed out around 60 seconds. The router now polls the
+   native routing protocol before forwarding the user prompt, with a bounded
+   20-minute total request deadline.
+3. Workergroup `--image` did not override the legacy template's vLLM image.
+   A private template now selects vLLM 0.30.0 directly, confirmed in the actual
+   worker inventory and startup log.
+
+**Remaining blocker:** the corrected worker still reported `RuntimeError: Engine`
+during model initialization. Native Vast retried/replaced that worker. A
+replacement remained in image-loading state during observation. No successful
+streamed model answer or Pi tool round trip has been recorded. Do not describe
+this model as ready, and do not mistake passing lifecycle tests for inference
+proof. Live idle-shutdown acceptance remains pending.
+
+The deployed router commit is `86860d0af4a3e9c0d028ed904421070475b93374`.
+The [final read-back at 09:11 UTC](evidence/2026-09-27-router-on-demand.json)
+confirmed `enabled=false`, `state=off`, `zero_resources_verified=true`, zero
+instances, zero owned endpoints and zero owned workergroups. An authenticated
+inference request while off returned HTTP 409 without creating resources.
+The initial Off request returned HTTP 503 during cleanup; retry/reconciliation
+then confirmed complete removal. No temporary worker or its disk remains.
+The router server is still separately billed; settled charges were not audited.
+
+See [the endpoint audit](ENDPOINTS.md) for the legacy defects and acceptance gates.
+Historical evidence below has not been overwritten.
+
+## Historical Vast state and rates
 
 Source: [read-only recheck, 2026-09-05 20:12 UTC](evidence/2026-09-05-vast-recheck.json).
 
@@ -44,8 +102,8 @@ preserves the old implementation, not instructions to restart it.
 | Clients | Pi `uncensored`; OpenCode `uncensored`; historical Hermes `v100-local` | Pi/OpenCode config inspected; no fresh end-to-end generation |
 
 Alias `qwen3.8-27b-obl` is not proof of loaded weights, and multiple aliases do not
-load multiple models. In the next approved paid session, capture model revision and
-SHA-256, llama.cpp commit/build flags, GPU, context and sampling. Check model identity,
+load multiple models. For any future test of this historical configuration, capture
+model revision and SHA-256, llama.cpp commit/build flags, GPU, context and sampling. Check model identity,
 short streaming/non-streaming output and a bounded tool round trip. Test long-context
 quality, retrieval, timing and VRAM separately; then stop and record final cloud state.
 

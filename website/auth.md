@@ -17,9 +17,11 @@ The site does not issue inference credentials or OAuth tokens, register agents, 
 
 ## Currently documented runtime
 
-The [operating guide](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md) covers private Vast.ai + llama.cpp, with localhost:8080 reached through an operator-controlled SSH tunnel. Keep inference off unprotected public ports. The [dated snapshot](https://abliterated.cloud/.well-known/project-status.json) recorded the operator instance as stopped; it is not live telemetry or an availability promise.
+The [operating guide](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md) describes the private Vast Serverless/vLLM integration. [Owner controls](https://router.paymentrequired.com/abliterated/) and `https://router.paymentrequired.com/v1/internal` require the owner's router bearer. The page keeps that bearer only in tab memory. Never use the Vast management key as a client key.
 
-Start and stop manually with explicit authorization. Verify provider state after each change. No automatic idle shutdown is proven. Stopping retains disk and ongoing storage charges; destruction is a separate, destructive action requiring separate approval. Old Modal tokens and wake routes are historical, not this runtime's access contract.
+Enable paid operation only with explicit authorization. Manual Off blocks restarts and deletes this endpoint's workers and temporary storage; confirm the destructive action and wait for verified removal. Automatic idle cleanup leaves later authorized wake-up enabled. The router server is separately billed. Ordinary Vast Stop retains billed disk and is not this Off control.
+
+The [dated snapshot](https://abliterated.cloud/.well-known/project-status.json) describes the older retained instance, not current availability. Old Modal tokens, SSH tunnels and wake routes are historical. See status evidence for completed end-to-end tests.
 
 ## References
 

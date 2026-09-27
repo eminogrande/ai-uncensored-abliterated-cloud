@@ -13,7 +13,7 @@ Start with [Signal](https://signal.me/#p/+13103408213) to discuss your workload,
 ## Service and current documentation
 
 - [Service overview](https://abliterated.cloud/index.md): cloud GPU renting, self-hosting and LLM router/app integration help.
-- [Operating guide](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md): the current private Vast.ai + llama.cpp path, SSH access, client setup and manual start/stop.
+- [Operating guide](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md): the private router/Vast Serverless path, Pi setup and verified worker deletion.
 - [Status evidence](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/STATUS.md): what was checked, what remains untested and the last serving configuration.
 - [Dated status snapshot](https://abliterated.cloud/.well-known/project-status.json): an operator audit, not live telemetry.
 - [Access and setup](https://abliterated.cloud/auth.md): public reading needs no auth; private inference and paid setup require separate agreement and consent.
@@ -26,11 +26,11 @@ Start with [Signal](https://signal.me/#p/+13103408213) to discuss your workload,
 ## Dated operating snapshot
 
 <!-- PROJECT-STATUS -->
-Stopped. Provider snapshot: 2026-09-05 20:12 UTC, not live polling. 1 Vast.ai instance: 49433042, A100 PCIE 40960 MB, 120 GB disk. actual_status=exited; intended_status=stopped.
+Historical state: Stopped. Provider snapshot: 2026-09-05 20:12 UTC, not live polling. 1 Vast.ai instance: 49433042, A100 PCIE 40960 MB, 120 GB disk. actual_status=exited; intended_status=stopped.
 
-Last local health check (2026-09-05T19:39 UTC): localhost:8080 connection refused. No current inference test. Stopped storage remains billed.
+Historical local health check (2026-09-05T19:39 UTC): localhost:8080 connection refused. No inference test at that audit. Retained stopped storage remains billed.
 
-Last serving configuration: Qwen3.8-27B OBLITERATED, Q6_K, llama.cpp, 262144 tokens configured. Not serving now; long-context quality is unvalidated.
+Historical serving configuration: Qwen3.8-27B OBLITERATED, Q6_K, llama.cpp, 262144 tokens configured. Not serving at that snapshot; long-context quality is unvalidated.
 
 Modal: Retired and not used by this project because of its cost budget. Four old apps still existed with zero tasks at the 2026-09-05 19:39 UTC audit; they were not decommissioned. Possible legacy storage charges remain unaudited.
 <!-- /PROJECT-STATUS -->
@@ -48,10 +48,10 @@ These are dated costs for the operator's retained instance, not a service quote 
 | Stopped: retained disk / 30 days | **$24.00** |
 | 2 hours running per day / 30 days, disk retained throughout | **$60.00** |
 
-USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.
+USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. This historical manual setup had no automatic idle shutdown.
 <!-- /RUNNING-COSTS -->
 
-Manual start/stop, no proven automatic idle shutdown. Stop retains disk with ongoing storage charges. No current best-model or comparable performance claim; configured context is not long-context validation. No zero-refusal guarantee. MIT covers project-owned code and website only; model and upstream licenses are unchanged.
+The historical instance used manual start/stop and retained billed disk. The private router controls use deletion instead; check current status evidence for completed inference and shutdown tests. No current best-model or comparable performance claim; configured context is not long-context validation. No zero-refusal guarantee. MIT covers project-owned code and website only; model and upstream licenses are unchanged.
 
 ## Model news and guides
 
