@@ -19,6 +19,20 @@ Owner inference uses `https://router.paymentrequired.com/v1/internal`; the same
 router bearer authenticates it. This model is not exposed on the public paid path,
 public model-test endpoint or background inference-probe list.
 
+## CLI and MCP
+
+The owner's local CLI supports `abliterated status`,
+`abliterated start --confirm-paid` and `abliterated stop --confirm-delete`.
+`abliterated mcp` exposes the same controls through stdio MCP as `gpu_status`,
+`gpu_start` and `gpu_stop`. Start sends one fixed response probe; MCP returns
+while it boots so status can be polled. See the router's
+[client guide](https://github.com/nuri-com/router-paymentrequired-com/blob/feat/abliterated-controls/docs/ABLITERATED.md).
+
+Only provider-supplied download percentages are displayed. Otherwise the client
+reports the current phase with unknown percentage. Its boot check reaches 100%
+only after an actual nonempty model answer. That acceptance gate is still open
+in the latest bounded live trial; do not claim inference is ready.
+
 ## Fully off
 
 Select **Aus: GPU und Worker-Speicher löschen** and confirm. This is intentionally
@@ -39,7 +53,7 @@ workers: save them elsewhere before any destructive operation.
 
 ## Automatic idle cleanup
 
-With automatic operation enabled, the router deletes the endpoint after 600
+With automatic operation enabled, the router deletes the endpoint after 1260
 seconds without active requests, checked every 30 seconds. Activity is recorded
 at request completion, and active streaming requests block idle cleanup. Unlike
 manual Off, idle cleanup leaves automatic operation armed for the next authorized
@@ -53,7 +67,7 @@ endpoint removal is the stronger shutdown path.
 ## Deployment and verification
 
 The implementation is in the
-[router repository](https://github.com/nuri-com/router-paymentrequired-com/tree/feat/abliterated-on-demand):
+[router repository](https://github.com/nuri-com/router-paymentrequired-com/tree/feat/abliterated-controls):
 `abliterated.mjs`, `abliterated.config.json` and the private template source in
 `docs/abliterated-vast-template.json`. Model revision and runtime are configured
 in the template itself; overriding `--image` in workergroup launch arguments did

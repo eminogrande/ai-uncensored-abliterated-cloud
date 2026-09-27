@@ -4,6 +4,35 @@
 an evidence record, not a live availability monitor. Follow the
 [operating guide](OPERATIONS.md) and inspect the authenticated panel before use.
 
+## Follow-up trial: 2026-09-27, 13:11 UTC
+
+The actual engine failure was captured: **`No space left on device (os error 28)`**
+during model reconstruction. The temporary 100 GB disk was insufficient. The
+private template and worker now request 200 GB; the real worker allocation was
+verified as 200 GB and its usage passed the old failure threshold.
+
+CLI and stdio MCP now provide owner-approved start, passive status and destructive
+Off. Live MCP started a worker, reported `loading_model`, then confirmed deletion.
+The corrected worker was still loading when the remaining authorized test window
+ended; **no model answer is verified yet**. No additional paid retry was started.
+
+The idle threshold is now 1260 seconds (21 minutes), checked every 30 seconds.
+Clock-based tests prove the boundary and that status reads do not extend it.
+A full 21-minute live idle cycle remains untested. Percentages are shown only
+when measurable; the response check does not claim 100% without a real answer.
+
+Final independent inventory at 13:11 UTC: **zero instances, zero owned endpoints,
+zero owned workergroups**, manual Off and healthy router. Runtime revision:
+`108c05bf27b1657bc6d1e7179d16628d78a0f1a2`. Existing expert/Kimi work was preserved.
+199 local router tests pass; nine focused checks passed in the deployed image.
+An intermediate deployment rolled back after a configuration-file permission
+failure; the final release passed its health check without a payment-state rollback.
+
+[Detailed follow-up evidence](https://github.com/nuri-com/router-paymentrequired-com/blob/feat/abliterated-controls/docs/abliterated-verification-2026-09-27.json)
+· [CLI/MCP source and usage](https://github.com/nuri-com/router-paymentrequired-com/blob/feat/abliterated-controls/docs/ABLITERATED.md)
+
+The following earlier observations retain their original scope and counts.
+
 ## Authorized inspection and implementation: 2026-09-27
 
 - Initial account inventory contained zero Vast instances. The legacy gateway
@@ -49,7 +78,7 @@ streamed model answer or Pi tool round trip has been recorded. Do not describe
 this model as ready, and do not mistake passing lifecycle tests for inference
 proof. Live idle-shutdown acceptance remains pending.
 
-The deployed router commit is `86860d0af4a3e9c0d028ed904421070475b93374`.
+The router commit deployed in that earlier trial was `86860d0af4a3e9c0d028ed904421070475b93374`.
 The [final read-back at 09:11 UTC](evidence/2026-09-27-router-on-demand.json)
 confirmed `enabled=false`, `state=off`, `zero_resources_verified=true`, zero
 instances, zero owned endpoints and zero owned workergroups. An authenticated

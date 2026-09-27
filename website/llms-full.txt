@@ -51,7 +51,7 @@ Owner controls are at https://router.paymentrequired.com/abliterated/; private i
 
 For setup assistance, agree the provider/account, model artifact, budget, client and access method with the human operator. Ask the user before sending a Signal message, changing client/router configuration or provisioning infrastructure. Never ask for account or SSH secrets in a public issue or document.
 
-Enable paid operation only with explicit authorization. Manual Off blocks restarts and deletes this endpoint's temporary workers and storage; wait for confirmed removal. Automatic cleanup runs after 10 idle minutes, checked every 30 seconds, but stays armed for later authorized inference. Loading, active time, idle grace and transfer cost money; the router is separately billed. Ordinary Vast Stop still retains billed disk.
+Enable paid operation only with explicit authorization. Manual Off blocks restarts and deletes this endpoint's temporary workers and storage; wait for confirmed removal. Automatic cleanup runs after 21 idle minutes, checked every 30 seconds, but stays armed for later authorized inference. Loading, active time, idle grace and transfer cost money; the router is separately billed. Ordinary Vast Stop still retains billed disk.
 
 The old Modal and SSH/llama.cpp approaches are historical; the current owner integration uses native Vast Serverless. Old catalog identifiers, bearer tokens, wake routes and benchmark comparisons are not the current contract.
 

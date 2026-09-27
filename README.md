@@ -8,13 +8,14 @@ and abliterated models. [Website](https://abliterated.cloud/) ·
 ## Private on-demand endpoint
 
 **Not yet ready for inference.** Router controls and Pi configuration are
-installed, but the model startup trial failed. Final 2026-09-27 verification:
+installed, but a successful model answer is still unverified. The disk-capacity failure
+was diagnosed and a 200 GB worker was tested through MCP. Final 2026-09-27 verification:
 manual Off, zero Vast workers and no retained worker disks. Leave it off until
 the model-start failure is resolved. See [the evidence](docs/STATUS.md).
 
 The owner integration is behind **`router.paymentrequired.com`**, not the static
 website. Its implementation lives in the
-[router repository](https://github.com/nuri-com/router-paymentrequired-com/tree/feat/abliterated-on-demand).
+[router repository](https://github.com/nuri-com/router-paymentrequired-com/tree/feat/abliterated-controls).
 This repository contains the website, operating instructions and dated evidence.
 
 - **Controls:** [Start / fully off](https://router.paymentrequired.com/abliterated/).
@@ -37,7 +38,7 @@ API-key issuance, checkout or GPU management key in the website.
    take several minutes. Opening the website, polling status or running router
    background probes does not start this model.
 2. **Automatic idle cleanup** deletes the endpoint and its temporary workers after
-   10 minutes without active router requests, checked every 30 seconds. Automatic
+   21 minutes without active router requests, checked every 30 seconds. Automatic
    operation stays enabled, so a later authorized inference can start again.
 3. **Manual Off** first blocks automatic restarts and aborts active requests. It
    then deletes this endpoint and its workers, including temporary model storage.
