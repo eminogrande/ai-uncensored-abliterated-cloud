@@ -11,20 +11,20 @@ The public site provides service information, operating documentation and an act
 ## Current operating documentation
 
 - [Service overview](https://abliterated.cloud/index.md): help with models, cloud GPU renting, self-hosting and LLM router/app integration.
-- [Vast operating guide](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md): inspect, start, verify, connect through SSH, test your client, stop and read back state.
+- [Vast operating guide](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/OPERATIONS.md): enable private on-demand inference, connect Pi, fully delete temporary workers and verify removal.
 - [Status evidence](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/STATUS.md): dated observations, last configuration and outstanding validation.
 - [Licensing scope](https://github.com/eminogrande/ai-uncensored-abliterated-cloud/blob/main/docs/LICENSING.md): project MIT license versus each upstream artifact's terms.
 
-The currently documented runtime is private Vast.ai + llama.cpp. The snapshot below covers the operator's instance, not the availability of the human-assisted service or every model covered by the blog.
+The current owner integration uses Vast Serverless/vLLM behind router.paymentrequired.com. See status evidence for completed tests. The historical snapshot below covers the earlier llama.cpp instance, not current availability.
 
 ## Dated operating snapshot
 
 <!-- PROJECT-STATUS -->
-Stopped. Provider snapshot: 2026-09-05 20:12 UTC, not live polling. 1 Vast.ai instance: 49433042, A100 PCIE 40960 MB, 120 GB disk. actual_status=exited; intended_status=stopped.
+Historical state: Stopped. Provider snapshot: 2026-09-05 20:12 UTC, not live polling. 1 Vast.ai instance: 49433042, A100 PCIE 40960 MB, 120 GB disk. actual_status=exited; intended_status=stopped.
 
-Last local health check (2026-09-05T19:39 UTC): localhost:8080 connection refused. No current inference test. Stopped storage remains billed.
+Historical local health check (2026-09-05T19:39 UTC): localhost:8080 connection refused. No inference test at that audit. Retained stopped storage remains billed.
 
-Last serving configuration: Qwen3.8-27B OBLITERATED, Q6_K, llama.cpp, 262144 tokens configured. Not serving now; long-context quality is unvalidated.
+Historical serving configuration: Qwen3.8-27B OBLITERATED, Q6_K, llama.cpp, 262144 tokens configured. Not serving at that snapshot; long-context quality is unvalidated.
 
 Modal: Retired and not used by this project because of its cost budget. Four old apps still existed with zero tasks at the 2026-09-05 19:39 UTC audit; they were not decommissioned. Possible legacy storage charges remain unaudited.
 <!-- /PROJECT-STATUS -->
@@ -42,18 +42,18 @@ These are the dated operator-instance costs, not a customer service quote. Confi
 | Stopped: retained disk / 30 days | **$24.00** |
 | 2 hours running per day / 30 days, disk retained throughout | **$60.00** |
 
-USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.
+USD, contract quote checked 2026-09-05. GPU $0.60/hour plus storage $0.03333/hour. Stopped disk: $0.80/day. Two hours/day for 30 days: $36.00 GPU + $24.00 disk. GPU time is billed while running, even without requests. Storage is billed continuously. Bandwidth, applicable taxes and other services are excluded. This historical manual setup had no automatic idle shutdown.
 <!-- /RUNNING-COSTS -->
 
 ## Access and lifecycle
 
-The documented runtime is private localhost:8080, reached through an operator-controlled SSH tunnel. Confirm actual instance state and the loaded model before any evaluation. The website neither calls inference nor starts GPUs. Public documents require no authentication and cannot grant inference access. There is no public MCP service, OAuth issuer, agent registration or payment protocol.
+Owner controls are at https://router.paymentrequired.com/abliterated/; private inference uses https://router.paymentrequired.com/v1/internal with model ID abliterated/qwen3.8-27b. Both require the owner's router bearer. Never send the Vast account key to a client. Confirm actual state and the loaded model before evaluation. The website neither calls inference nor starts GPUs. Public documents require no authentication and cannot grant inference access. There is no public MCP service, OAuth issuer, agent registration or payment protocol.
 
 For setup assistance, agree the provider/account, model artifact, budget, client and access method with the human operator. Ask the user before sending a Signal message, changing client/router configuration or provisioning infrastructure. Never ask for account or SSH secrets in a public issue or document.
 
-Start and stop manually only with explicit authorization. After testing, stop and read back instance state. Stopping retains disk and ongoing storage charges; it is not deletion. No automatic idle shutdown is proven. Never infer that a stopped instance is free, or that an archived approach has been fully decommissioned.
+Enable paid operation only with explicit authorization. Manual Off blocks restarts and deletes this endpoint's temporary workers and storage; wait for confirmed removal. Automatic cleanup runs after 21 idle minutes, checked every 30 seconds, but stays armed for later authorized inference. Loading, active time, idle grace and transfer cost money; the router is separately billed. Ordinary Vast Stop still retains billed disk.
 
-The old Modal approach is archived; the current operating path is Vast.ai with llama.cpp. Old catalog identifiers, bearer tokens, wake routes and benchmark comparisons are not the current contract.
+The old Modal and SSH/llama.cpp approaches are historical; the current owner integration uses native Vast Serverless. Old catalog identifiers, bearer tokens, wake routes and benchmark comparisons are not the current contract.
 
 ## What has not been validated
 

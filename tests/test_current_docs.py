@@ -60,12 +60,18 @@ def test_current_relative_document_links_resolve():
     assert not errors, "\n".join(errors)
 
 
-def test_shutdown_documentation_does_not_use_destroy_as_stop():
+def test_current_shutdown_requires_verified_removal_and_blocks_restart():
     operations = (ROOT / "docs/OPERATIONS.md").read_text()
-    assert "vastai stop instance 49433042" in operations
-    assert "vastai destroy instance" not in operations
-    assert "no verified automatic idle shutdown" in operations
+    assert "zero_resources_verified=true" in operations
+    assert "enabled=false" in operations
+    assert "Automatic restarts are blocked before cleanup starts" in operations
+    assert "not for unrelated resources" in operations
     assert "GPU compute stops; storage billing continues" in operations
+    assert "vastai stop instance 49433042" not in operations
+    for name in ("index.html", "index.md"):
+        text = (ROOT / "website" / name).read_text()
+        assert "https://router.paymentrequired.com/abliterated/" in text
+        assert "You only pay while it runs" not in text
 
 
 def test_generated_costs_match_provider_evidence():

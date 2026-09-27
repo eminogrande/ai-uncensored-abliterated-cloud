@@ -346,7 +346,7 @@ def render_costs(status: dict, html: bool = False) -> str:
             f'GPU ${rates["gpu"]:.2f}/hour plus storage ${rates["disk"]:.5f}/hour. '
             f'Stopped disk: ${disk * 24:.2f}/day. Two hours/day for 30 days: ${gpu * 60:.2f} GPU + ${disk * 720:.2f} disk. '
             'GPU time is billed while running, even without requests. Storage is billed continuously. '
-            'Bandwidth, applicable taxes and other services are excluded. No automatic idle shutdown.')
+            'Bandwidth, applicable taxes and other services are excluded. This historical manual setup had no automatic idle shutdown.')
     rows = cost_rows(status)
     if html:
         return '<table><caption>Vast.ai A100 40 GB + 120 GB disk</caption><thead><tr><th scope="col">Usage</th><th scope="col">Cost</th></tr></thead><tbody>' + ''.join(f'<tr><th scope="row">{escape(label)}</th><td>{cost}</td></tr>' for label, cost in rows) + '</tbody></table><p>' + escape(note) + '</p>'
@@ -362,9 +362,10 @@ def plain_costs(status: dict, html: bool = False) -> str:
         ("About two hours a day, for a month", f"${gpu * 60 + disk * 720:.2f}"),
         ("Switched off, model kept ready", f"${disk * 720:.2f} a month"),
     ]
-    caption = f"Example: one A100 cloud GPU with 120 GB of storage, rates checked {status['snapshot_at'][:10]}"
-    note = ("You only pay while it runs. A switched-off machine keeps paying for storage until you delete it. "
-            "Setup help is priced separately, before we start. Taxes and other services are extra.")
+    caption = f"Historical retained-instance example: A100 with 120 GB storage, rates checked {status['snapshot_at'][:10]}"
+    note = ("GPU time includes loading and idle time. A paused instance still incurs storage charges. "
+            "The private on-demand controls instead delete temporary workers and their storage on Off; "
+            "wait for confirmed removal. The router server, setup help, transfer and taxes are separate costs.")
     if html:
         return f'<table><caption>{escape(caption)}</caption><thead><tr><th scope="col">What you use</th><th scope="col">What it costs</th></tr></thead><tbody>' + ''.join(f'<tr><th scope="row">{escape(label)}</th><td>{cost}</td></tr>' for label, cost in rows) + '</tbody></table><p>' + escape(note) + '</p>'
     return caption + '\n\n| What you use | What it costs |\n| --- | ---: |\n' + '\n'.join(f'| {label} | **{cost}** |' for label, cost in rows) + '\n\n' + note
@@ -376,9 +377,9 @@ def status_paragraphs(status: dict) -> list[str]:
     state = current["actual_status"]
     label = "Stopped" if state in ("exited", "stopped") else state.capitalize()
     return [
-        f'{label}. Provider snapshot: {stamp}, not live polling. {current["instance_count"]} Vast.ai instance: {current["instance_id"]}, {current["gpu"]} {current["gpu_memory_mb"]} MB, {current["disk_gb"]} GB disk. actual_status={state}; intended_status={current["intended_status"]}.',
-        f'Last local health check ({status["local_health_checked_at"][:16]} UTC): {current["local_health"]}. No current inference test. Stopped storage remains billed.',
-        f'Last serving configuration: {history["model"]}, {history["quantization"]}, {history["runtime"]}, {history["context_tokens_configured"]} tokens configured. Not serving now; long-context quality is unvalidated.',
+        f'Historical state: {label}. Provider snapshot: {stamp}, not live polling. {current["instance_count"]} Vast.ai instance: {current["instance_id"]}, {current["gpu"]} {current["gpu_memory_mb"]} MB, {current["disk_gb"]} GB disk. actual_status={state}; intended_status={current["intended_status"]}.',
+        f'Historical local health check ({status["local_health_checked_at"][:16]} UTC): {current["local_health"]}. No inference test at that audit. Retained stopped storage remains billed.',
+        f'Historical serving configuration: {history["model"]}, {history["quantization"]}, {history["runtime"]}, {history["context_tokens_configured"]} tokens configured. Not serving at that snapshot; long-context quality is unvalidated.',
         f'Modal: {status["legacy"]["modal"]}',
     ]
 

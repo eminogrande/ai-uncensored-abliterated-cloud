@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-09-27T09:11:55.571371+00:00",
+  "deployed_revision": "86860d0af4a3e9c0d028ed904421070475b93374",
+  "router_state": {
+    "model": "abliterated/qwen3.8-27b",
+    "enabled": false,
+    "state": "off",
+    "endpoint_id": null,
+    "active_requests": 0,
+    "idle_seconds": 600,
+    "last_used": 1790500215705,
+    "last_cleanup_verified_at": 1790500294218,
+    "zero_resources_verified": true,
+    "error": null,
+    "notice": "Off is confirmed only after endpoint and worker deletion. Loading and idle grace cost money. The router server is billed separately."
+  },
+  "vast_inventory": {
+    "total_instances": 0,
+    "enumerated_instances": 0,
+    "next_token": null
+  },
+  "owned_endpoints": 0,
+  "owned_workergroups": 0,
+  "off_request_http_status": 409,
+  "streamed_inference_verified": false,
+  "pi_tool_round_trip_verified": false,
+  "live_idle_cleanup_verified": false,
+  "local_router_tests_passed": 170,
+  "image_router_tests_passed": 168,
+  "website_tests_passed": 28,
+  "scope": "Owner-approved disposable workers only. Router-server costs remain separate. This snapshot does not audit historical Modal resources or settled charges."
+}

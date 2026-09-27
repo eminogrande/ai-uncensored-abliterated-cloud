@@ -4,7 +4,7 @@
 
 ## Current operating docs and sources of truth
 
-- [Operating guide](../docs/OPERATIONS.md): the current private Vast.ai + llama.cpp path, SSH access, client setup and manual start/stop.
+- [Operating guide](../docs/OPERATIONS.md): the private router/Vast Serverless integration, Pi setup and verified worker deletion.
 - [Status evidence](../docs/STATUS.md): the operator's dated checks, not live telemetry. The retained instance was stopped at the recorded audit.
 - `.well-known/project-status.json`: canonical operating snapshot. Update only from evidence, without credentials, private host details or account credits. Its scope is the operator runtime, not the whole service or publication.
 - `index.html`, `index.md`, `llms.txt`, `llms-full.txt`: service overview and reading guides. The build owns the marked status, cost and article-link sections. The root README cost section uses the same rates. Do not hand-edit generated blocks.
@@ -15,7 +15,7 @@
 
 ## Costs and limits
 
-The [root README cost table](../README.md#cost) shows dated example infrastructure costs, not a service quote. Agree assistance scope and current provider charges before spending. Manual start/stop is required; stopped disk remains billed and automatic idle shutdown is unverified.
+The [root README cost table](../README.md#cost) shows dated example infrastructure costs, not a service quote. Agree assistance scope and current provider charges before spending. Ordinary Vast Stop retains billed disk. The private router Off control deletes temporary workers and storage, blocks automatic restarts and requires confirmed removal. See status evidence for tested behavior; router-server costs remain separate.
 
 Public reading is unauthenticated. Private runtime access needs separate authorization; the site does not issue API keys, offer OAuth, run a public MCP/A2A service or accept automated payments. Static Pages cannot implement `Accept: text/markdown` negotiation or configurable discovery response headers. Explicit Markdown URLs and honest catalogs do not imply those features, and no scanner score is guaranteed.
 
