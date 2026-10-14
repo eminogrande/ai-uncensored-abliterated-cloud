@@ -10,6 +10,148 @@ before setup. The public website offers service information, documentation and
 [model news and guides](https://abliterated.cloud/blog/), not self-service inference
 or account checkout.
 
+## Logs
+
+- [CHANGELOG.md](CHANGELOG.md): release history, newest first.
+- [PROMPTLOG.md](PROMPTLOG.md): owner instructions that shaped this repo.
+
+## Status
+
+| Field | Value |
+| --- | --- |
+| Version | `website-v0.12.7` (package.json `0.12.7`) |
+| Date | 2026-10-14 |
+| Updated by | hermes-agent for emino |
+| Default branch HEAD | `main` at `1cb9c33f` |
+| Website | GitHub Pages from branch `gh-pages`, custom domain `abliterated.cloud` (`website/CNAME`), published by `scripts/deploy-website.sh` |
+| Operator runtime | Vast.ai + llama.cpp over private SSH, instance stopped at the 2026-09-05 snapshot (see [docs/STATUS.md](docs/STATUS.md)) |
+| CI workflows | none (no `.github/workflows`) |
+
+## Architecture
+
+```mermaid
+flowchart LR
+  subgraph Repo["main branch"]
+    POSTS["website/blog/posts.json + article HTML/MD"]
+    NOTES["website/blog/reading-notes.json"]
+    STATUS["website/.well-known/project-status.json"]
+    BUILD["scripts/build-blog.py"]
+    OUT["Generated: index, blog pages, feed.xml, sitemap.xml, llms.txt, llms-full.txt, README cost block"]
+    TESTS["tests/ via pytest"]
+    VERIFY["scripts/verify-agent-ready.mjs"]
+    DEPLOY["scripts/deploy-website.sh"]
+    SECRETS["scripts/check-secrets.sh"]
+  end
+  POSTS --> BUILD
+  NOTES --> BUILD
+  STATUS --> BUILD
+  BUILD --> OUT
+  OUT --> TESTS
+  DEPLOY --> TESTS
+  DEPLOY --> SECRETS
+  DEPLOY -->|"signed commit + signed tag"| PAGES["gh-pages branch"]
+  DEPLOY -->|"gh api pages/builds, gh release create"| GH["GitHub API"]
+  PAGES --> SITE["GitHub Pages: abliterated.cloud"]
+  VERIFY -->|"HTTP GET"| SITE
+  subgraph Runtime["Operator runtime, private"]
+    VAST["Vast.ai instance 49433042, A100 40 GB"]
+    LLAMA["llama.cpp server on 127.0.0.1:8080"]
+    VAST --> LLAMA
+  end
+  CLIENT["Chat app, coding tool, LLM router"] -->|"SSH tunnel to :8080 /v1"| LLAMA
+```
+
+The website is static: no JavaScript bundle, no inference call, no backend.
+`archive/` holds the retired Modal gateway, the old Cloudflare edge worker and old
+assets; none of it is part of the current path.
+
+## User flow
+
+```mermaid
+sequenceDiagram
+  participant U as User
+  participant W as abliterated.cloud
+  participant O as Operator
+  participant V as Vast.ai GPU
+  U->>W: Read models, blog, llms.txt, openapi.json
+  U->>O: Message on Signal: model, budget, client
+  O->>U: Agree scope, budget, consent
+  O->>V: vastai start instance
+  O->>V: Verify /health and /v1/models
+  U->>V: Connect client over private SSH tunnel to 127.0.0.1:8080/v1
+  U->>V: Bounded test prompt, then real use
+  O->>V: vastai stop instance, read back state
+```
+
+## Components
+
+| Component | Path | Role |
+| --- | --- | --- |
+| Static site | `website/` | Homepage, about, contact, privacy, 404, styles, assets |
+| Blog | `website/blog/` | 30 model field notes, `posts.json` index, pagination, RSS |
+| Agent discovery | `website/llms.txt`, `website/llms-full.txt`, `website/openapi.json`, `website/.well-known/` | Read-only discovery documents and dated status snapshot |
+| Agent skill | `website/skills/abliterated-cloud/SKILL.md` | Model selection and connection guidance |
+| Release notes | `website/releases/`, `website/RELEASE_NOTES.md` | Curated notes per `website-vX.Y.Z` release |
+| Site builder | `scripts/build-blog.py` | Regenerates indexes, feed, sitemap, llms files, README cost block |
+| Deploy | `scripts/deploy-website.sh` | Signed publish of `website/` to `gh-pages`, tag, GitHub release |
+| Secret scan | `scripts/check-secrets.sh` | Regex scan of staged or tracked files |
+| Live checks | `scripts/verify-agent-ready.mjs` | HTTP checks of the served site |
+| Tests | `tests/` | Docs, website, article SEO, reading notes |
+| Operating docs | `docs/` | Vast.ai operations, status evidence, licensing, editorial rules |
+| Archive | `archive/` | Retired Modal, edge worker, assets, old Apache-2.0 license |
+
+## API / Endpoints
+
+Public, read-only static GETs from `website/openapi.json`. No authentication.
+No inference, MCP, OAuth, account or payment API.
+
+| Method | Path | Auth | Purpose |
+| --- | --- | --- | --- |
+| GET | `/index.md` | none | Service overview in Markdown |
+| GET | `/auth.md` | none | Public access and private setup guidance |
+| GET | `/.well-known/project-status.json` | none | Dated operator snapshot, not live availability |
+| GET | `/blog/posts.json` | none | Model news and guide metadata |
+| GET | `/skills/abliterated-cloud/SKILL.md` | none | Model selection and connection skill |
+| GET | `/.well-known/ai-catalog.json` | none | AI resource discovery catalog |
+
+CLI commands in `scripts/`:
+
+| Command | Purpose |
+| --- | --- |
+| `python3 -I scripts/build-blog.py` | Build all generated surfaces |
+| `python3 -I scripts/build-blog.py --check` | Fail if generated files are stale |
+| `./scripts/deploy-website.sh website-vX.Y.Z` | Publish to GitHub Pages, signed tag, release |
+| `./scripts/check-secrets.sh` | Scan for leaked keys |
+| `node scripts/verify-agent-ready.mjs [base-url] [--local-only]` | Check served site, default `http://localhost:8788` |
+
+## Run
+
+```sh
+uv sync --group dev
+uv run python -I scripts/build-blog.py
+uv run python -I scripts/build-blog.py --check
+uv run pytest -q
+python3 -m http.server 8788 --bind 127.0.0.1 --directory website
+node scripts/verify-agent-ready.mjs http://127.0.0.1:8788 --local-only
+```
+
+npm scripts in `package.json`: `build:blog`, `dev:website`, `verify:agent-ready`,
+`verify:agent-ready:local`. No npm dependencies.
+
+Open `http://127.0.0.1:8788/`. Reading the static site requires no GPU, inference
+call, external font service or background artwork. See the
+[website guide](website/README.md) for publishing and verification.
+
+Env vars read by current scripts: `TMPDIR` (`deploy-website.sh`, falls back to `/tmp`).
+Deploy also requires SSH commit and tag signing in git config and an authenticated `gh`.
+The Vast.ai CLI needs its own account login; never commit that key.
+
+Current operations and evidence live in `docs/`; site content in `website/`;
+build, verification and signed Pages publishing helpers in `scripts/`; checks in
+`tests/`. `archive/modal/` is historical. This repository is the documentation
+source of truth, not stale status JSON or "live" badges in the earlier
+`ai-uncensored-selfhost` experiment repository.
+
 ## Current operating docs
 
 - [Operating guide](docs/OPERATIONS.md): the private **Vast.ai + llama.cpp** path,
@@ -21,7 +163,7 @@ or account checkout.
 
 ## Current state
 
-**A100 STOPPED — operator state and rates rechecked 2026-09-05 at 20:12 UTC.**
+**A100 STOPPED: operator state and rates rechecked 2026-09-05 at 20:12 UTC.**
 The [read-only snapshot](docs/evidence/2026-09-05-vast-recheck.json) found one A100
 PCIe 40 GB instance (`49433042`), actual `exited` / intended `stopped`, with a
 120 GB retained disk **still billed while stopped**. No inference was tested.
@@ -84,25 +226,6 @@ and its container disk.** A normal pause is a stop, never a destroy.
 [Status](docs/STATUS.md) records what was checked and what still needs a paid-session
 test. The active blog's field notes retain their publication dates, model licenses
 and historical estimates; coverage is not a hosted-model inventory or current price.
-
-## Work on the website
-
-```sh
-uv sync --group dev
-uv run python -I scripts/build-blog.py
-uv run pytest -q
-python3 -m http.server 8788 --bind 127.0.0.1 --directory website
-```
-
-Open `http://127.0.0.1:8788/`. Reading the static site requires no GPU, inference
-call, external font service or background artwork. See the
-[website guide](website/README.md) for publishing and verification.
-
-Current operations and evidence live in `docs/`; site content in `website/`;
-build, verification and signed Pages publishing helpers in `scripts/`; checks in
-`tests/`. `archive/modal/` is historical. This repository is the documentation
-source of truth, not stale status JSON or "live" badges in the earlier
-`ai-uncensored-selfhost` experiment repository.
 
 ## License and history
 
