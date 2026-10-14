@@ -3,6 +3,23 @@
 All notable changes to ABLITERATED.cloud are documented here. Older MN/Modal
 entries are historical, not current deployment instructions.
 
+## 2026-10-14 - [RELEASE] website-v0.12.7 - hermes-agent for emino
+
+### Repo hygiene: current state documented, no version bump
+
+- **State:** default branch `main` HEAD is `1cb9c33f` (Gemma 4 31B QAT field
+  note). Release `website-v0.12.7` already describes it: the tag points to the
+  signed `gh-pages` deploy commit `a16652c6`, whose message names source
+  `1cb9c33f`, and its tree equals `website/` at HEAD. Version stays
+  `website-v0.12.7`; no new tag or release.
+- Site: 30 field notes, 4 blog archive pages, read-only discovery documents,
+  GitHub Pages on `abliterated.cloud`. Operator runtime: Vast.ai + llama.cpp,
+  instance stopped at the 2026-09-05 snapshot. No code, runtime or cost change.
+- Docs only: README gains Logs, Status, Architecture and User flow (Mermaid),
+  Components, API / Endpoints and Run sections; `PROMPTLOG.md` added. No
+  commits landed on `main` since `website-v0.12.7`, so no entries are missing
+  below.
+
 ## [website-v0.12.7] - 2026-09-12
 
 ### Editorial archive: Gemma 4 31B uncensored from the QAT checkpoint
